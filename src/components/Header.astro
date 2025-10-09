@@ -1,0 +1,42 @@
+---
+const links = [
+  { href: '/notes/', label: 'Notes' },
+  { href: '/docs/', label: 'Docs' },
+  { href: 'https://github.com/dmthepm/infra-home-server', label: 'GitHub', external: true },
+];
+---
+<header class="commune-header">
+  <div class="wrap">
+    <a class="brand" href="/">Commune</a>
+    <nav>
+      {links.map(l => (
+        <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
+          {l.label}
+        </a>
+      ))}
+    </nav>
+    <button class="search-btn" aria-label="Search (⌘K)" onclick="dispatchEvent(new CustomEvent('commune:openSearch'))">
+      <span>Search</span><kbd>⌘K</kbd>
+    </button>
+  </div>
+</header>
+
+<style>
+  .commune-header{position:sticky;top:0;backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06);z-index:50}
+  .wrap{display:flex;align-items:center;gap:1rem;justify-content:space-between;padding:.85rem 1rem;max-width:1100px;margin:0 auto}
+  .brand{font-weight:700;letter-spacing:.2px}
+  nav{display:flex;gap:.9rem}
+  .search-btn{display:flex;align-items:center;gap:.5rem;border:1px solid rgba(0,0,0,.08);padding:.4rem .6rem;border-radius:.6rem}
+  kbd{font-size:.75rem;opacity:.7;border:1px solid rgba(0,0,0,.15);padding:.1rem .3rem;border-radius:.35rem}
+</style>
+
+<script is:inline>
+  // cmd/ctrl-k opens modal
+  addEventListener('keydown', (e) => {
+    const mac = navigator.platform.toUpperCase().includes('MAC');
+    if ((mac ? e.metaKey : e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      dispatchEvent(new CustomEvent('commune:openSearch'));
+    }
+  });
+</script>

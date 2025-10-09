@@ -1,0 +1,10 @@
+<div id="pane-stack"></div>
+<style>
+  #pane-stack{position:fixed;top:0;right:0;height:100vh;width:min(1200px,60vw);display:flex;gap:8px;
+    padding:12px;overflow-x:auto;pointer-events:none; z-index:55}
+  .pane{pointer-events:auto;background:var(--sl-color-bg,#fff);border:1px solid rgba(0,0,0,.1);
+    border-radius:12px;box-shadow:0 10px 40px rgba(0,0,0,.2);width:420px;height:calc(100vh - 24px);overflow:auto}
+  .pane header{display:flex;justify-content:space-between;align-items:center;padding:.6rem .8rem;border-bottom:1px solid rgba(0,0,0,.06)}
+  .pane .close{border:1px solid rgba(0,0,0,.12);border-radius:.45rem;padding:.15rem .45rem}
+  @media (max-width: 1024px){ #pane-stack{display:none} }
+</style>

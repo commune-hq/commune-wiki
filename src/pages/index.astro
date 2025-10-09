@@ -1,0 +1,40 @@
+---
+import Header from '../components/Header.astro';
+import SearchModal from '../components/SearchModal.astro';
+
+const cards = [
+  { t:'Private by Default', b:'Publish intentionally. Notes live on your box until you approve.' },
+  { t:'Runs at Home', b:'$300–$800 mini-PC replaces a pile of cloud tools.' },
+  { t:'Learns from You', b:'Git-based KB, local RAG, and agent diffs with approvals.' },
+  { t:'Build in Public', b:'Share selected notes as a living wiki.' },
+];
+---
+<html><head><title>Commune</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<body>
+  <Header />
+  <SearchModal />
+  <main class="wrap">
+    <section class="hero">
+      <h1>Welcome to Commune</h1>
+      <p>Your private, local-first knowledge OS.</p>
+      <div class="cta">
+        <a class="btn" href="/notes/">Explore Notes →</a>
+        <a class="btn ghost" href="/docs/">Docs & Decisions</a>
+      </div>
+    </section>
+    <section class="features">
+      {cards.map(c => (<div class="card"><h3>{c.t}</h3><p>{c.b}</p></div>))}
+    </section>
+  </main>
+</body></html>
+
+<style>
+  .wrap{max-width:1100px;margin:0 auto;padding:1.2rem 1rem 5rem}
+  .hero{padding:2.4rem 0 1.8rem}
+  .hero h1{font-size:3rem;margin:.2rem 0 .6rem}
+  .cta{display:flex;gap:.8rem;margin-top:.8rem}
+  .btn{border:1px solid rgba(0,0,0,.1);padding:.6rem 1rem;border-radius:.7rem}
+  .btn.ghost{background:transparent}
+  .features{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:1.2rem}
+  .card{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:14px}
+</style>

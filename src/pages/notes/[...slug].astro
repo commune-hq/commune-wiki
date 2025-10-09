@@ -1,138 +1,147 @@
 ---
-/**
- * Dynamic route for Andy-style atomic notes.
- * 
- * Features:
- * - Center column with prose typography
- * - Status badge (seed/growing/evergreen)
- * - Backlinks sidebar
- * - Related notes (by tags)
- * - Updated timestamp
- */
-
 import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
+import Header from '../../components/Header.astro';
+import SearchModal from '../../components/SearchModal.astro';
 import Backlinks from '../../components/Backlinks.astro';
-import RelatedNotes from '../../components/RelatedNotes.astro';
-import '../../styles/notes.css';
+import PaneStack from '../../components/PaneStack.astro';
 
 export async function getStaticPaths() {
 	const notes = await getCollection('notes', ({ data }) => data.visibility === 'public');
 	return notes.map((note) => ({
 		params: { slug: note.slug },
-		props: { note },
+		props: { entry: note },
 	}));
 }
 
 interface Props {
-	note: CollectionEntry<'notes'>;
+	entry: CollectionEntry<'notes'>;
 }
 
-const { note } = Astro.props;
-const { Content } = await note.render();
-const { title, status, tags, updated, summary } = note.data;
-
-// Status styling
-const statusColors = {
-	seed: 'bg-yellow-100 text-yellow-800 dark:bg-yellow-900/30 dark:text-yellow-400',
-	growing: 'bg-blue-100 text-blue-800 dark:bg-blue-900/30 dark:text-blue-400',
-	evergreen: 'bg-green-100 text-green-800 dark:bg-green-900/30 dark:text-green-400',
-};
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { slug, data } = entry;
+const title = data.title ?? slug;
 ---
-
-<!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>{title} - Commune Notes</title>
-		<meta name="description" content={summary || title} />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		
-		<!-- Open Graph -->
-		<meta property="og:title" content={title} />
-		<meta property="og:description" content={summary || title} />
-		<meta property="og:type" content="article" />
-		
-		<!-- Styles -->
-		<link rel="stylesheet" href="/src/styles/commune.css" />
-	</head>
-	<body class="bg-[var(--sl-color-bg)] text-[var(--sl-color-text)]">
-		<!-- Header -->
-		<header class="border-b border-gray-200 dark:border-gray-800 sticky top-0 bg-[var(--sl-color-bg)]/80 backdrop-blur-md z-10">
-			<div class="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-				<a href="/" class="font-bold text-xl text-[var(--sl-color-accent)]">Commune</a>
-				<nav class="flex gap-6 text-sm">
-					<a href="/" class="hover:text-[var(--sl-color-accent)]">Docs</a>
-					<a href="/notes/commune/" class="font-medium hover:text-[var(--sl-color-accent)]">Notes</a>
-					<a href="https://github.com/dmthepm/infra-home-server" target="_blank" class="hover:text-[var(--sl-color-accent)]">GitHub</a>
-				</nav>
-			</div>
-		</header>
+  <head>
+    <title>{title} | Commune</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={data.summary || title} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  </head>
+  <body>
+    <Header />
+    <SearchModal />
+    <main class="note">
+      <article class="prose">
+        <h1>{title}</h1>
+        <Content />
+      </article>
+      <Backlinks slug={`/notes/${slug}/`} title={title} />
+    </main>
+    <PaneStack />
+    <script type="module">
+      // Note preview functionality
+      const cache = new Map();
+      function setupNotePreviews(){
+        const show = (el, html, x, y) => {
+          let card = document.getElementById('note-hover');
+          if(!card){
+            card = document.createElement('div');
+            card.id = 'note-hover';
+            card.style.position = 'fixed';
+            card.style.maxWidth = '420px';
+            card.style.background = 'var(--sl-color-bg, #fff)';
+            card.style.boxShadow = '0 20px 60px rgba(0,0,0,.25)';
+            card.style.border = '1px solid rgba(0,0,0,.08)';
+            card.style.borderRadius = '10px';
+            card.style.padding = '12px 14px';
+            card.style.zIndex = '60';
+            document.body.appendChild(card);
+          }
+          card.innerHTML = html;
+          card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
+          card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
+          card.hidden = false;
+        };
+        const hide = () => {
+          const card = document.getElementById('note-hover');
+          if (card) card.hidden = true;
+        };
 
-		<!-- Main Layout: Center prose + Right sidebar -->
-		<div class="max-w-7xl mx-auto px-4 py-12 lg:grid lg:grid-cols-[1fr_min(65ch,100%)_1fr] lg:gap-8">
-			<!-- Left spacer (empty on mobile, spacing on desktop) -->
-			<div class="hidden lg:block"></div>
+        document.addEventListener('mouseover', async (e) => {
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if(!a) return;
+          const url = a.getAttribute('href');
+          if(cache.has(url)){ show(a, cache.get(url), e.clientX, e.clientY); return; }
+          try{
+            const r = await fetch(url);
+            const t = await r.text();
+            const doc = new DOMParser().parseFromString(t, 'text/html');
+            const main = doc.querySelector('main') ?? doc.body;
+            const paras = Array.from(main.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+            const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
+            cache.set(url, html);
+            show(a, html, e.clientX, e.clientY);
+          }catch{}
+        });
+        document.addEventListener('mouseout', (e) => {
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if(a) setTimeout(() => {
+            const card = document.getElementById('note-hover');
+            if (card) card.hidden = true;
+          }, 120);
+        });
+      }
 
-			<!-- Main content column -->
-			<main class="prose prose-lg prose-neutral dark:prose-invert max-w-none">
-				<!-- Title + Metadata -->
-				<header class="mb-8 not-prose">
-					<h1 class="text-4xl font-bold mb-3">{title}</h1>
-					<div class="flex flex-wrap items-center gap-3 text-sm text-gray-600 dark:text-gray-400">
-						<!-- Status badge -->
-						<span class={`px-2.5 py-0.5 rounded-full text-xs font-medium ${statusColors[status]}`}>
-							{status}
-						</span>
-						
-						<!-- Tags -->
-						{tags.map((tag) => (
-							<span class="px-2.5 py-0.5 rounded-full text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300">
-								#{tag}
-							</span>
-						))}
-						
-						<!-- Updated date -->
-						{updated && (
-							<span class="text-xs">
-								Updated {updated}
-							</span>
-						)}
-					</div>
-				</header>
+      // Pane stack functionality
+      function setupPanes(){
+        const stack = document.getElementById('pane-stack');
+        if(!stack) return;
 
-				<!-- Note content (rendered markdown) -->
-				<Content />
+        async function openPane(url){
+          const res = await fetch(url);
+          const html = await res.text();
+          const doc = new DOMParser().parseFromString(html, 'text/html');
+          const main = doc.querySelector('main') ?? doc.body;
+          const pane = document.createElement('div');
+          pane.className = 'pane';
+          pane.innerHTML = `<header><strong>${doc.title?.replace(/ \|.*/,'')}</strong>
+            <button class="close" aria-label="Close">×</button></header><div class="body">${main.innerHTML}</div>`;
+          pane.querySelector('.close').addEventListener('click', () => pane.remove());
+          stack.appendChild(pane);
+          stack.scrollLeft = stack.scrollWidth;
+          // limit
+          const panes = stack.querySelectorAll('.pane');
+          if(panes.length > 3) panes[0].remove();
+        }
 
-				<!-- Footer -->
-				<hr class="my-12" />
-				<footer class="text-sm text-gray-600 dark:text-gray-400 not-prose">
-					<p class="mb-4">
-						This is a <strong>working note</strong>. It evolves as I learn and think.
-					</p>
-					<p>
-						<a href="/" class="text-[var(--sl-color-accent)] hover:underline">← Back to Commune</a>
-					</p>
-				</footer>
-			</main>
+        document.addEventListener('click', (e) => {
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if(!a) return;
+          if (window.innerWidth < 1024) return; // mobile: let it navigate
+          e.preventDefault();
+          openPane(a.href);
+          history.pushState({ pane: a.href }, '', a.href);
+        });
 
-			<!-- Right sidebar: Backlinks + Related Notes -->
-			<aside class="hidden lg:block space-y-8 pt-16">
-				<Backlinks slug={note.slug} />
-				<RelatedNotes slug={note.slug} tags={tags} />
-			</aside>
-		</div>
+        addEventListener('popstate', (e) => {
+          // simple: close a pane on back, ignore forward for now
+          const panes = stack.querySelectorAll('.pane');
+          if(panes.length) panes[panes.length-1].remove();
+        });
+      }
 
-		<!-- Powered by Commune footer -->
-		<footer class="border-t border-gray-200 dark:border-gray-800 mt-24 py-8">
-			<div class="max-w-7xl mx-auto px-4 text-center text-sm text-gray-600 dark:text-gray-400">
-				<p>
-					Powered by <a href="https://github.com/dmthepm/infra-home-server" target="_blank" class="font-medium text-[var(--sl-color-accent)] hover:underline">Commune</a>
-					— Local-first personal AI infrastructure
-				</p>
-			</div>
-		</footer>
-	</body>
+      setupNotePreviews();
+      setupPanes();
+    </script>
+  </body>
 </html>
 
+<style>
+  .note{max-width:860px;margin:1.2rem auto;padding:0 1rem 6rem}
+  .prose{font-size:1.02rem;line-height:1.7;max-width:65ch}
+  .prose a{text-decoration:underline 1px; text-underline-offset:2px}
+  .prose h1{font-size:2.2rem;line-height:1.2;margin:.2rem 0 1.2rem}
+</style>

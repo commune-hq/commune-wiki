@@ -1,0 +1,103 @@
+---
+interface Result { url: string; title: string; excerpt?: string; score?: number; source?: 'pagefind'|'semantic'; }
+---
+<div id="commune-search" hidden>
+  <div class="shade" onclick="window.CommuneSearch.close()"></div>
+  <div class="modal" role="dialog" aria-modal="true">
+    <input id="q" placeholder="Search notes & docs… (Esc to close)" autofocus />
+    <ul id="results"></ul>
+  </div>
+</div>
+
+<style>
+  #commune-search[hidden]{display:none}
+  .shade{position:fixed;inset:0;background:rgba(0,0,0,.35)}
+  .modal{position:fixed;inset:auto;left:50%;top:12vh;transform:translateX(-50%);
+    width:min(880px,90vw);background:var(--sl-color-bg, #fff);border-radius:12px;padding:1rem 1rem 0.5rem;
+    box-shadow:0 20px 60px rgba(0,0,0,.25)}
+  #q{width:100%;font-size:1.05rem;padding:.75rem 1rem;border-radius:.6rem;border:1px solid rgba(0,0,0,.1);outline:none}
+  #results{list-style:none;margin:.8rem 0 .4rem;padding:0;max-height:60vh;overflow:auto}
+  #results li{padding:.65rem .5rem;border-radius:.5rem}
+  #results li:hover{background:rgba(0,0,0,.04)}
+  .src{font-size:.75rem;opacity:.6;margin-left:.35rem}
+</style>
+
+<script is:inline>
+  // Lightweight RRF combiner
+  const rrf = (lists) => {
+    const map = new Map();
+    lists.forEach((arr, idx) => arr.forEach((r, i) => {
+      const key = r.url;
+      const cur = map.get(key) ?? { ...r, score: 0 };
+      cur.score += 1 / (60 + i); // rank-biased
+      map.set(key, cur);
+    }));
+    return Array.from(map.values()).sort((a,b) => b.score - a.score);
+  };
+
+  async function ensurePagefind(){
+    if (window.__pagefind) return window.__pagefind;
+    try {
+      // Works in preview/build; dev falls back to empty searcher.
+      const pf = await import('/pagefind/pagefind.js');
+      window.__pagefind = await pf?.default?.init();
+    } catch (_) { window.__pagefind = { search: async () => ({ results: [] }) }; }
+    return window.__pagefind;
+  }
+
+  async function doPagefind(query){
+    const pf = await ensurePagefind();
+    const res = await pf.search(query);
+    const detailed = await Promise.all(res.results.slice(0,20).map(r => r.data()));
+    return detailed.map(d => ({ url: d.url, title: d.meta?.title ?? d.url, excerpt: d.excerpt, source:'pagefind' }));
+  }
+
+  async function doSemantic(query){
+    // Optional: served by your home server (SQLite-VSS/Qdrant)
+    try{
+      const r = await fetch(`/api/ask?q=${encodeURIComponent(query)}`);
+      if (!r.ok) return [];
+      const j = await r.json();
+      return (j.results ?? []).slice(0,10).map(x => ({ url: x.url, title: x.title, excerpt: x.snippet, source:'semantic' }));
+    }catch{ return []; }
+  }
+
+  function renderResults(items){
+    const ul = document.querySelector('#commune-search #results');
+    ul.innerHTML = '';
+    for(const it of items){
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${it.url}">${it.title}</a> <span class="src">• ${it.source}</span><div>${it.excerpt ?? ''}</div>`;
+      li.querySelector('a').onclick = () => window.CommuneSearch.close();
+      ul.appendChild(li);
+    }
+  }
+
+  window.CommuneSearch = {
+    open(){
+      document.querySelector('#commune-search')?.removeAttribute('hidden');
+      document.querySelector('#commune-search #q').focus();
+    },
+    close(){ document.querySelector('#commune-search')?.setAttribute('hidden',''); }
+  };
+
+  addEventListener('commune:openSearch', () => window.CommuneSearch.open());
+
+  // Esc closes modal; debounce search
+  (function init(){
+    const wrap = document.getElementById('commune-search');
+    if(!wrap) return;
+    const input = wrap.querySelector('#q');
+    let t;
+    input.addEventListener('input', async () => {
+      clearTimeout(t);
+      const q = input.value.trim();
+      if(!q){ renderResults([]); return; }
+      t = setTimeout(async () => {
+        const [lex, sem] = await Promise.all([doPagefind(q), doSemantic(q)]);
+        renderResults(rrf([lex, sem]));
+      }, 180);
+    });
+    addEventListener('keydown', (e) => e.key === 'Escape' && window.CommuneSearch.close());
+  })();
+</script>

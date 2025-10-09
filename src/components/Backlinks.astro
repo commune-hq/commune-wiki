@@ -1,56 +1,31 @@
 ---
-/**
- * Backlinks component - shows notes that link to this one.
- * 
- * This is Andy-style bidirectional linking: see what context
- * other notes reference this one in.
- */
-
-interface Props {
-	slug: string;
-}
-
+export interface Props { slug: string; title?: string; }
 const { slug } = Astro.props;
-
-// Backlinks will be populated at build time by the backlinks integration
-// This component just renders them - the data comes from the integration
-let backlinks: { slug: string; title: string }[] = [];
-
-// During build, the backlinks integration runs AFTER page generation,
-// so we can't access backlinks.json yet. For now, this will show "No backlinks yet"
-// until we implement a better solution (e.g., passing backlinks as props from the integration)
-// 
-// TODO: Pass backlinks data directly from the layout instead of fetching
 ---
+<aside class="backlinks">
+  <h4>Links to this note</h4>
+  <ul id="blist"></ul>
+</aside>
 
-{backlinks.length > 0 && (
-	<section class="backlinks">
-		<h3 class="text-sm font-semibold tracking-wide uppercase text-gray-500 dark:text-gray-400 mb-4">
-			Links to this note
-		</h3>
-		<ul class="space-y-2">
-			{backlinks.map(({ slug: linkSlug, title }) => (
-				<li>
-					<a 
-						href={`/notes/${linkSlug}/`}
-						class="text-sm text-[var(--sl-color-accent)] hover:underline hover:text-[var(--sl-color-accent-high)] block"
-					>
-						{title}
-					</a>
-				</li>
-			))}
-		</ul>
-	</section>
-)}
+<style>
+  .backlinks{margin-top:2.2rem;padding-top:.8rem;border-top:1px solid rgba(0,0,0,.08)}
+  .backlinks h4{font-size:.95rem;opacity:.8;margin:0 0 .6rem}
+  .backlinks li{margin:.35rem 0}
+</style>
 
-{backlinks.length === 0 && (
-	<section class="backlinks">
-		<h3 class="text-sm font-semibold tracking-wide uppercase text-gray-500 dark:text-gray-400 mb-4">
-			Links to this note
-		</h3>
-		<p class="text-sm text-gray-500 dark:text-gray-400">
-			No backlinks yet. Be the first to reference this note!
-		</p>
-	</section>
-)}
-
+<script>
+  (async () => {
+    async function getJSON(path){
+      try{ const r = await fetch(path); if(r.ok) return r.json(); } catch {}
+      return null;
+    }
+    const loc = import.meta.env.PROD ? '/backlinks.json' : '/backlinks.json';
+    const data = await getJSON(loc);
+    const list = document.getElementById('blist');
+    if(!data) { list.innerHTML = '<li>No backlinks yet.</li>'; return; }
+    const rec = data[location.pathname.replace(/\/$/,'')] || data[`/notes/${location.pathname.split('/notes/')[1]?.replace(/\/$/,'')}`];
+    const items = rec?.inbound ?? [];
+    if(!items.length){ list.innerHTML = '<li>No backlinks yet.</li>'; return; }
+    list.innerHTML = items.map(s => `<li><a href="${s}">${s.split('/').filter(Boolean).pop()}</a></li>`).join('');
+  })();
+</script>

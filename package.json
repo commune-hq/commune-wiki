@@ -6,9 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "node ../../scripts/filter-public.mjs && astro build && node ../../scripts/build-graph.mjs",
-    "build:filter": "node ../../scripts/filter-public.mjs",
-    "build:astro": "astro check && astro build",
+    "build": "astro build && node ../../scripts/build-backlinks.mjs",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -17,7 +15,9 @@
     "@astrojs/starlight": "^0.28.0",
     "astro": "^4.15.0",
     "sharp": "^0.33.0",
-    "unist-util-visit": "^5.0.0"
+    "unist-util-visit": "^5.0.0",
+    "globby": "^14.0.0",
+    "gray-matter": "^4.0.3"
   },
   "devDependencies": {
     "typescript": "^5.6.0"
