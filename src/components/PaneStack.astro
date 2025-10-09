@@ -1,14 +1,15 @@
 <div id="pane-stack"></div>
 <style>
-  /* Andy-style sliding panes - side by side */
+  /* Andy-style sliding panes - side by side, no overlap */
   #pane-stack{
     position:fixed; 
     top:64px; 
     right:0; 
     bottom:0;
     height:calc(100vh - 64px);
-    max-width:85vw;
-    display:flex; 
+    display:flex;
+    flex-direction:row;
+    align-items:stretch;
     gap:0;
     padding:0;
     overflow-x:auto; 
@@ -32,34 +33,31 @@
     pointer-events:auto; 
     background:var(--c-bg);
     border-left:1px solid var(--c-border); 
-    box-shadow:-4px 0 16px rgba(0,0,0,0.1);
-    min-width:450px;
-    max-width:450px;
-    width:450px;
+    box-shadow:-4px 0 20px rgba(0,0,0,0.15);
+    min-width:500px;
+    max-width:500px;
+    width:500px;
     height:100%;
     overflow-y:auto;
     overflow-x:hidden;
     overscroll-behavior:contain;
     flex-shrink:0;
+    flex-grow:0;
     isolation:isolate;
-    transform:translateX(100%);
-    animation:slideIn 0.25s ease forwards;
-  }
-  
-  @keyframes slideIn{
-    to{ transform:translateX(0); }
+    position:relative;
   }
   
   .pane header{ 
     display:flex; 
     justify-content:space-between; 
     align-items:center;
-    padding:1rem 1.25rem; 
+    padding:1.25rem; 
     border-bottom:1px solid var(--c-border);
     background:var(--c-bg-soft);
     position:sticky; 
-    top:0; 
+    top:0;
     z-index:10;
+    margin-top:0;
   }
   
   .pane header strong{

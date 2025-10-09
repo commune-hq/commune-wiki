@@ -171,17 +171,10 @@ const title = data.title ?? slug;
     max-width:860px;
     margin:var(--c-space-xl) auto;
     padding:0 var(--c-space-md) 6rem;
-    transition:opacity 0.2s ease, filter 0.2s ease;
-  }
-  /* Dim main content when panes are open */
-  body.panes-open .note{
-    opacity:0.4;
-    filter:blur(2px);
-    pointer-events:none;
   }
   .prose{font-size:1.05rem;line-height:1.7;max-width:65ch;color:var(--c-text)}
   .prose a{
-    color:var(--c-accent);
+    color:var(--c-accent) !important;
     text-decoration:none;
     border-bottom:2px solid var(--c-accent);
     padding-bottom:1px;
@@ -189,7 +182,7 @@ const title = data.title ?? slug;
     transition:all 0.15s ease;
   }
   .prose a:hover{
-    color:var(--c-accent-hover);
+    color:var(--c-accent-hover) !important;
     background:var(--c-accent-soft);
     border-bottom-color:var(--c-accent-hover);
   }
