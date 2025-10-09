@@ -101,22 +101,19 @@ const title = data.title ?? slug;
       // Pane stack functionality (inline for compatibility)
       function setupPanes(){
         const stack = document.getElementById('pane-stack');
-        const backdrop = document.getElementById('pane-backdrop');
-        if(!stack || !backdrop) return;
+        if(!stack) return;
 
         function updateStack(){
           const panes = stack.querySelectorAll('.pane');
           const count = panes.length;
           
           if(count === 0){
-            // No panes - hide everything
+            // No panes - hide stack
             stack.classList.remove('active', 'multiple');
-            backdrop.classList.remove('active');
             document.body.classList.remove('panes-open');
           } else {
-            // Has panes - show backdrop and stack
+            // Has panes - show stack
             stack.classList.add('active');
-            backdrop.classList.add('active');
             document.body.classList.add('panes-open');
             
             // Toggle "multiple" class for layout
@@ -133,10 +130,7 @@ const title = data.title ?? slug;
           const pane = document.createElement('div');
           pane.className = 'pane';
           pane.innerHTML = `
-            <header>
-              <strong>${doc.title?.replace(/ \|.*/,'')}</strong>
-              <button class="close" aria-label="Close">×</button>
-            </header>
+            <button class="close" aria-label="Close">×</button>
             <div class="body"><article class="prose">${main.innerHTML}</article></div>`;
 
           pane.querySelector('.close').addEventListener('click', () => {
@@ -159,13 +153,6 @@ const title = data.title ?? slug;
             }
           }, 50);
         }
-        
-        // Close panes when clicking backdrop
-        backdrop.addEventListener('click', () => {
-          const panes = stack.querySelectorAll('.pane');
-          panes.forEach(p => p.remove());
-          updateStack();
-        });
 
         // Only intercept clicks inside the main article area
         document.addEventListener('click', (e) => {

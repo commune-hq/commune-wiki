@@ -1,27 +1,7 @@
-<!-- Backdrop for panes -->
-<div id="pane-backdrop"></div>
 <!-- Pane container -->
 <div id="pane-stack"></div>
 
 <style>
-  /* Backdrop - dims main content when panes are open */
-  #pane-backdrop {
-    position: fixed;
-    top: 64px;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: rgba(0, 0, 0, 0.3);
-    z-index: var(--z-panes);
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity 0.2s ease;
-  }
-  
-  #pane-backdrop.active {
-    opacity: 1;
-    pointer-events: auto;
-  }
   
   /* Andy-style panes - centered when single, side-by-side when multiple */
   #pane-stack {
@@ -69,19 +49,19 @@
   /* Individual pane - card-like appearance */
   .pane {
     pointer-events: auto;
+    position: relative; /* For absolute positioning of close button */
     background: var(--c-bg);
     border: 2px solid var(--c-border);
     border-radius: var(--c-radius-lg);
-    /* Strong card shadow */
+    /* Strong card shadow for prominence */
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
                 0 8px 24px rgba(0, 0, 0, 0.2);
     /* Single pane: centered modal-like */
     width: 700px;
     max-width: 90vw;
     max-height: 85vh;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
+    overflow-y: auto;
+    overflow-x: hidden;
     flex-shrink: 0;
     flex-grow: 0;
     transition: all 0.2s ease;
@@ -93,31 +73,16 @@
     max-height: 90vh;
   }
   
-  .pane header { 
-    display: flex; 
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 1.5rem;
-    border-bottom: 1px solid var(--c-border);
-    background: var(--c-bg-soft);
-    flex-shrink: 0;
-  }
-  
-  .pane header strong {
-    font-size: 1.1rem;
-    font-weight: 600;
-    color: var(--c-text);
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-  
+  /* Close button - floating in top-right corner */
   .pane .close { 
-    flex-shrink: 0;
-    width: 28px;
-    height: 28px;
-    background: transparent; 
-    border: none;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
     border-radius: var(--c-radius-sm); 
     padding: 0;
     display: flex;
@@ -128,19 +93,16 @@
     line-height: 1;
     color: var(--c-text-muted);
     transition: all 0.15s ease;
-    margin-left: auto; /* Push to right */
   }
   
   .pane .close:hover { 
     background: var(--c-bg-muted); 
     color: var(--c-text);
+    border-color: var(--c-border-focus);
   }
   
   .pane .body { 
     padding: 2rem 1.5rem;
-    overflow-y: auto;
-    overflow-x: hidden;
-    flex: 1;
     /* Optimal line length for readability */
     max-width: 70ch;
     margin: 0 auto;
@@ -148,8 +110,7 @@
   
   /* Disable panes on mobile/tablet */
   @media (max-width: 1023px) {
-    #pane-stack,
-    #pane-backdrop {
+    #pane-stack {
       display: none !important;
     }
   }
