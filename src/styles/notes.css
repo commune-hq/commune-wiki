@@ -8,28 +8,8 @@
  * - Dense but not cramped
  */
 
-/* WikiLink styling - make [[links]] stand out subtly */
-.prose a[href^="/notes/"] {
-	color: var(--sl-color-accent);
-	text-decoration: none;
-	border-bottom: 1px solid var(--sl-color-accent);
-	border-bottom-color: rgba(var(--sl-color-accent-rgb, 88, 110, 255), 0.3);
-	transition: all 0.2s ease;
-}
-
-.prose a[href^="/notes/"]:hover {
-	border-bottom-color: var(--sl-color-accent-high);
-}
-
-/* Prose adjustments for Andy-style reading */
-.prose {
-	--tw-prose-body: var(--sl-color-text);
-	--tw-prose-headings: var(--sl-color-text);
-	--tw-prose-links: var(--sl-color-accent);
-	--tw-prose-bold: var(--sl-color-text);
-	--tw-prose-code: var(--sl-color-text);
-	--tw-prose-quotes: var(--sl-color-text-accent);
-}
+/* Link styling is now handled in page-specific styles */
+/* Removed conflicting Starlight variables */
 
 .prose h2, .prose h3 {
 	font-weight: 600;
@@ -80,7 +60,7 @@
 		position: static;
 		margin-top: 3rem;
 		padding-top: 2rem;
-		border-top: 1px solid var(--sl-color-gray-5);
+		border-top: 1px solid var(--c-border);
 	}
 }
 
