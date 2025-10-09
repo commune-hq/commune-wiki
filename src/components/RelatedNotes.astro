@@ -1,0 +1,77 @@
+---
+/**
+ * Related Notes component - finds notes with overlapping tags.
+ * 
+ * This helps discovery: "if you're interested in this, you might
+ * also like these other notes."
+ */
+
+import { getCollection } from 'astro:content';
+
+interface Props {
+	slug: string;
+	tags: string[];
+}
+
+const { slug, tags } = Astro.props;
+
+// Get all public notes
+const allNotes = await getCollection('notes', ({ data }) => data.visibility === 'public');
+
+// Find notes with overlapping tags (excluding current note)
+const related = allNotes
+	.filter((note) => note.slug !== slug)
+	.map((note) => {
+		const overlap = note.data.tags.filter((tag) => tags.includes(tag));
+		return {
+			slug: note.slug,
+			title: note.data.title,
+			tags: note.data.tags,
+			overlapCount: overlap.length,
+		};
+	})
+	.filter((note) => note.overlapCount > 0)
+	.sort((a, b) => b.overlapCount - a.overlapCount)
+	.slice(0, 8); // Show top 8
+---
+
+{related.length > 0 && (
+	<section class="related-notes">
+		<h3 class="text-sm font-semibold tracking-wide uppercase text-gray-500 dark:text-gray-400 mb-4">
+			Related Notes
+		</h3>
+		<ul class="space-y-3">
+			{related.map(({ slug: relSlug, title, tags: relTags }) => (
+				<li>
+					<a 
+						href={`/notes/${relSlug}/`}
+						class="block group"
+					>
+						<div class="text-sm text-[var(--sl-color-accent)] group-hover:underline group-hover:text-[var(--sl-color-accent-high)]">
+							{title}
+						</div>
+						<div class="flex flex-wrap gap-1.5 mt-1">
+							{relTags.slice(0, 3).map((tag) => (
+								<span class="text-xs text-gray-500 dark:text-gray-400">
+									#{tag}
+								</span>
+							))}
+						</div>
+					</a>
+				</li>
+			))}
+		</ul>
+	</section>
+)}
+
+{related.length === 0 && (
+	<section class="related-notes">
+		<h3 class="text-sm font-semibold tracking-wide uppercase text-gray-500 dark:text-gray-400 mb-4">
+			Related Notes
+		</h3>
+		<p class="text-sm text-gray-500 dark:text-gray-400">
+			No related notes yet. Try adding more tags!
+		</p>
+	</section>
+)}
+

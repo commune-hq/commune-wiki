@@ -1,0 +1,71 @@
+---
+/**
+ * Backlinks component - shows notes that link to this one.
+ * 
+ * This is Andy-style bidirectional linking: see what context
+ * other notes reference this one in.
+ */
+
+interface Props {
+	slug: string;
+}
+
+const { slug } = Astro.props;
+
+// In production, this will fetch from /backlinks.json
+// During dev, we'll need to handle gracefully if it doesn't exist yet
+let backlinks: { slug: string; title: string }[] = [];
+
+try {
+	// This will work after build (backlinks.json exists in dist/)
+	const response = await fetch(new URL('/backlinks.json', Astro.site));
+	if (response.ok) {
+		const graph = await response.json();
+		const note = graph[slug];
+		
+		if (note && note.inbound && note.inbound.length > 0) {
+			backlinks = note.inbound
+				.map((inSlug: string) => ({
+					slug: inSlug,
+					title: graph[inSlug]?.title || inSlug,
+				}))
+				.slice(0, 12); // Show max 12 backlinks
+		}
+	}
+} catch (error) {
+	// During dev or if backlinks.json doesn't exist yet, fail gracefully
+	console.warn(`Could not load backlinks for ${slug}:`, error);
+}
+---
+
+{backlinks.length > 0 && (
+	<section class="backlinks">
+		<h3 class="text-sm font-semibold tracking-wide uppercase text-gray-500 dark:text-gray-400 mb-4">
+			Links to this note
+		</h3>
+		<ul class="space-y-2">
+			{backlinks.map(({ slug: linkSlug, title }) => (
+				<li>
+					<a 
+						href={`/notes/${linkSlug}/`}
+						class="text-sm text-[var(--sl-color-accent)] hover:underline hover:text-[var(--sl-color-accent-high)] block"
+					>
+						{title}
+					</a>
+				</li>
+			))}
+		</ul>
+	</section>
+)}
+
+{backlinks.length === 0 && (
+	<section class="backlinks">
+		<h3 class="text-sm font-semibold tracking-wide uppercase text-gray-500 dark:text-gray-400 mb-4">
+			Links to this note
+		</h3>
+		<p class="text-sm text-gray-500 dark:text-gray-400">
+			No backlinks yet. Be the first to reference this note!
+		</p>
+	</section>
+)}
+

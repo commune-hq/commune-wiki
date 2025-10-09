@@ -1,10 +1,12 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import backlinks from './astro.backlinks.ts';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://wiki.thecommune.app',
 	integrations: [
+		backlinks(),
 		starlight({
 			title: 'Commune',
 			description: 'Local-first personal AI infrastructure - build in public documentation',
