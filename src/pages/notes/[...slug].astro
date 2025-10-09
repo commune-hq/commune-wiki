@@ -43,11 +43,121 @@ const title = data.title ?? slug;
       <Backlinks slug={`/notes/${slug}/`} title={title} />
     </main>
     <PaneStack />
-    <script type="module">
-      // Import and initialize note preview and panes
-      import { setupNotePreviews } from '../../components/note-preview.ts';
-      import { setupPanes } from '../../components/panes.ts';
+    <script>
+      // Note preview functionality (inline for compatibility)
+      const cache = new Map();
       
+      function setupNotePreviews(){
+        const show = (el, html, x, y) => {
+          let card = document.getElementById('note-hover');
+          if(!card){
+            card = document.createElement('div');
+            card.id = 'note-hover';
+            card.style.position = 'fixed';
+            card.style.maxWidth = '420px';
+            card.style.background = 'var(--sl-color-bg, #fff)';
+            card.style.boxShadow = '0 20px 60px rgba(0,0,0,.25)';
+            card.style.border = '1px solid rgba(0,0,0,.08)';
+            card.style.borderRadius = '10px';
+            card.style.padding = '12px 14px';
+            card.style.zIndex = '60';
+            card.style.pointerEvents = 'none';
+            document.body.appendChild(card);
+          }
+          card.innerHTML = html;
+          card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
+          card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
+          card.hidden = false;
+        };
+        const hide = () => {
+          const card = document.getElementById('note-hover');
+          if (card) card.hidden = true;
+        };
+
+        document.addEventListener('mouseover', async (e) => {
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if(!a) return;
+          const url = a.getAttribute('href');
+          if(cache.has(url)){ show(a, cache.get(url), e.clientX, e.clientY); return; }
+          try{
+            const r = await fetch(url);
+            const t = await r.text();
+            const doc = new DOMParser().parseFromString(t, 'text/html');
+            const main = doc.querySelector('main') ?? doc.body;
+            const paras = Array.from(main.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+            const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
+            cache.set(url, html);
+            show(a, html, e.clientX, e.clientY);
+          }catch{}
+        });
+        document.addEventListener('mouseout', (e) => {
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if(a) setTimeout(hide, 120);
+        });
+      }
+
+      // Pane stack functionality (inline for compatibility)
+      function setupPanes(){
+        const stack = document.getElementById('pane-stack');
+        if(!stack) return;
+
+        function activateStack(on){
+          stack.classList.toggle('active', on);
+          document.body.classList.toggle('panes-open', on);
+        }
+
+        async function openPane(url){
+          activateStack(true);
+
+          const res = await fetch(url, { headers: { 'Accept':'text/html;charset=utf-8' } });
+          const html = await res.text();
+          const doc = new DOMParser().parseFromString(html, 'text/html');
+          const main = doc.querySelector('main') ?? doc.body;
+
+          const pane = document.createElement('div');
+          pane.className = 'pane';
+          pane.innerHTML = `
+            <header><strong>${doc.title?.replace(/ \|.*/,'')}</strong>
+              <button class="close" aria-label="Close">×</button>
+            </header>
+            <div class="body"><article class="prose">${main.innerHTML}</article></div>`;
+
+          pane.querySelector('.close').addEventListener('click', () => {
+            pane.remove();
+            if(!stack.querySelector('.pane')) activateStack(false);
+          });
+
+          stack.appendChild(pane);
+          stack.scrollLeft = stack.scrollWidth;
+
+          const panes = stack.querySelectorAll('.pane');
+          if(panes.length > 3) panes[0].remove();
+        }
+
+        // Only intercept clicks inside the main article area
+        document.addEventListener('click', (e) => {
+          const inArticle = e.target?.closest?.('main, article.prose');
+          if (!inArticle) return;
+
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if(!a) return;
+          if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+          if (window.innerWidth < 1024) return;
+
+          e.preventDefault();
+          openPane(a.href);
+          history.pushState({ pane: a.href }, '', a.href);
+        });
+
+        addEventListener('popstate', () => {
+          const panes = stack.querySelectorAll('.pane');
+          if(panes.length){
+            panes[panes.length-1].remove();
+            if(!stack.querySelector('.pane')) activateStack(false);
+          }
+        });
+      }
+
       setupNotePreviews();
       setupPanes();
     </script>
