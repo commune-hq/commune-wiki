@@ -19,20 +19,7 @@ export default defineConfig({
 					label: 'Start Here',
 					items: [
 						{ label: 'Vision', slug: 'vision' },
-						{ label: 'Getting Started', slug: 'getting-started' },
 					],
-				},
-				{
-					label: 'Architecture',
-					autogenerate: { directory: 'architecture' },
-				},
-				{
-					label: 'Progress Reports',
-					autogenerate: { directory: 'progress' },
-				},
-				{
-					label: 'Deep Research',
-					autogenerate: { directory: 'research' },
 				},
 				{
 					label: 'Decisions',
