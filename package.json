@@ -6,7 +6,9 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro check && astro build",
+    "build": "node ../../scripts/filter-public.mjs && astro check && astro build && node ../../scripts/build-graph.mjs",
+    "build:filter": "node ../../scripts/filter-public.mjs",
+    "build:astro": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
