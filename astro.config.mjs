@@ -1,10 +1,14 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
 import backlinks from './astro.backlinks.ts';
+import remarkWikiLinks from './remark-wikilinks.ts';
 
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://wiki.thecommune.app',
+	markdown: {
+		remarkPlugins: [remarkWikiLinks],
+	},
 	integrations: [
 		backlinks(),
 		starlight({
