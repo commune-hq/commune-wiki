@@ -167,18 +167,31 @@ const title = data.title ?? slug;
 </html>
 
 <style>
-  .note{max-width:860px;margin:var(--c-space-xl) auto;padding:0 var(--c-space-md) 6rem}
+  .note{
+    max-width:860px;
+    margin:var(--c-space-xl) auto;
+    padding:0 var(--c-space-md) 6rem;
+    transition:opacity 0.2s ease, filter 0.2s ease;
+  }
+  /* Dim main content when panes are open */
+  body.panes-open .note{
+    opacity:0.4;
+    filter:blur(2px);
+    pointer-events:none;
+  }
   .prose{font-size:1.05rem;line-height:1.7;max-width:65ch;color:var(--c-text)}
   .prose a{
     color:var(--c-accent);
     text-decoration:none;
-    border-bottom:1.5px solid var(--c-accent-border);
+    border-bottom:2px solid var(--c-accent);
+    padding-bottom:1px;
     cursor:pointer;
     transition:all 0.15s ease;
   }
   .prose a:hover{
     color:var(--c-accent-hover);
-    border-bottom-color:var(--c-accent);
+    background:var(--c-accent-soft);
+    border-bottom-color:var(--c-accent-hover);
   }
   .prose h1{font-size:2.4rem;line-height:1.2;margin:.2rem 0 1.5rem;font-weight:700}
   .prose h2{font-size:1.75rem;margin-top:2.5rem;margin-bottom:1rem;font-weight:600}

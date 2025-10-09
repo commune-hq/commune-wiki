@@ -14,6 +14,10 @@ const links = [
         </a>
       ))}
     </nav>
+    <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </button>
     <button class="search-btn" aria-label="Search (⌘K)" onclick="window.dispatchEvent(new CustomEvent('commune:openSearch'))">
       <span>Search</span><kbd>⌘K</kbd>
     </button>
@@ -63,6 +67,45 @@ const links = [
   nav a:hover{
     color:var(--c-accent);
   }
+  .theme-btn{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:2.5rem;
+    height:2.5rem;
+    border:1.5px solid var(--c-border);
+    background:var(--c-bg-soft);
+    border-radius:var(--c-radius-md);
+    cursor:pointer;
+    transition:all 0.15s ease;
+    font-size:1.2rem;
+    position:relative;
+  }
+  .theme-btn:hover{
+    border-color:var(--c-accent);
+    transform:rotate(15deg);
+  }
+  .theme-btn .sun,
+  .theme-btn .moon{
+    position:absolute;
+    transition:opacity 0.2s ease, transform 0.2s ease;
+  }
+  :root[data-theme="light"] .theme-btn .sun{
+    opacity:1;
+    transform:rotate(0deg);
+  }
+  :root[data-theme="light"] .theme-btn .moon{
+    opacity:0;
+    transform:rotate(180deg);
+  }
+  :root[data-theme="dark"] .theme-btn .sun{
+    opacity:0;
+    transform:rotate(180deg);
+  }
+  :root[data-theme="dark"] .theme-btn .moon{
+    opacity:1;
+    transform:rotate(0deg);
+  }
   .search-btn{
     display:flex;
     align-items:center;
@@ -93,6 +136,26 @@ const links = [
 </style>
 
 <script is:inline>
+  // Theme toggle
+  (function initTheme(){
+    const toggle = document.getElementById('theme-toggle');
+    const root = document.documentElement;
+    
+    // Get saved theme or default to system preference
+    const savedTheme = localStorage.getItem('commune-theme');
+    const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    const initialTheme = savedTheme || (systemPrefersDark ? 'dark' : 'light');
+    
+    root.setAttribute('data-theme', initialTheme);
+    
+    toggle?.addEventListener('click', () => {
+      const currentTheme = root.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', newTheme);
+      localStorage.setItem('commune-theme', newTheme);
+    });
+  })();
+
   // cmd/ctrl-k opens modal
   addEventListener('keydown', (e) => {
     const mac = navigator.platform.toUpperCase().includes('MAC');

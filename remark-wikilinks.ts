@@ -137,11 +137,11 @@ export default function remarkWikiLinks() {
 						],
 					});
 				} else {
-					// Leave unresolved WikiLinks as text (with brackets)
-					// This makes broken links visible
+					// Leave unresolved WikiLinks as plain text (without brackets)
+					// These are notes that don't exist yet in the public wiki
 					newNodes.push({
 						type: 'text',
-						value: fullMatch,
+						value: displayText?.trim() || trimmedLinkText,
 					});
 				}
 

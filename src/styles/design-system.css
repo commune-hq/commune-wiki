@@ -46,8 +46,10 @@
   --c-space-xl: 2rem;
 }
 
+/* Dark mode via data-theme attribute or system preference */
+:root[data-theme="dark"],
 @media (prefers-color-scheme: dark) {
-  :root {
+  :root:not([data-theme="light"]) {
     --c-bg: #0f0f0f;
     --c-bg-soft: #1a1a1a;
     --c-bg-muted: #252525;
@@ -67,6 +69,27 @@
     --c-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
     --c-shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
   }
+}
+
+:root[data-theme="dark"] {
+  --c-bg: #0f0f0f;
+  --c-bg-soft: #1a1a1a;
+  --c-bg-muted: #252525;
+  --c-text: #e4e4e4;
+  --c-text-muted: #a1a1a1;
+  --c-text-accent: #c4c4c4;
+  --c-border: rgba(255, 255, 255, 0.1);
+  --c-border-focus: rgba(255, 255, 255, 0.25);
+  
+  --c-accent: #7089ff;
+  --c-accent-hover: #8a9eff;
+  --c-accent-soft: rgba(112, 137, 255, 0.15);
+  --c-accent-border: rgba(112, 137, 255, 0.4);
+  
+  --c-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --c-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+  --c-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+  --c-shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
 }
 
 /* Global resets and base styles */
