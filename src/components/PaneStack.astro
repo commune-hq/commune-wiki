@@ -3,19 +3,29 @@
   /* Keep the stack off the header (adjust 64px to your Header height) */
   #pane-stack{
     position:fixed; top:64px; right:0; height:calc(100vh - 64px);
-    width:min(1200px,60vw); display:flex; gap:8px; padding:12px;
-    overflow-x:auto; z-index:95; pointer-events:none; visibility:hidden;
+    width:min(1200px,60vw); display:flex; gap:12px; padding:16px;
+    overflow-x:auto; z-index:90; pointer-events:none; visibility:hidden;
   }
   #pane-stack.active{ pointer-events:auto; visibility:visible; }
   .pane{
-    pointer-events:auto; background:var(--sl-color-bg,#fff);
-    border:1px solid rgba(0,0,0,.1); border-radius:12px;
-    box-shadow:0 10px 40px rgba(0,0,0,.2);
-    width:420px; height:calc(100vh - 64px - 24px);
+    pointer-events:auto; background:#fff;
+    border-left:3px solid rgba(0,0,0,.15); 
+    box-shadow:-8px 0 40px rgba(0,0,0,.15);
+    width:480px; height:calc(100vh - 64px - 32px);
     overflow:auto; overscroll-behavior:contain;
+    flex-shrink:0;
   }
-  .pane header{ display:flex; justify-content:space-between; align-items:center;
-    padding:.6rem .8rem; border-bottom:1px solid rgba(0,0,0,.06) }
-  .pane .close{ border:1px solid rgba(0,0,0,.12); border-radius:.45rem; padding:.15rem .45rem }
+  .pane header{ 
+    display:flex; justify-content:space-between; align-items:center;
+    padding:.8rem 1rem; border-bottom:1px solid rgba(0,0,0,.08);
+    background:rgba(0,0,0,.02); position:sticky; top:0; z-index:1;
+  }
+  .pane .close{ 
+    background:transparent; border:1px solid rgba(0,0,0,.2); 
+    border-radius:.5rem; padding:.3rem .6rem; cursor:pointer;
+    font-size:1.2rem; line-height:1;
+  }
+  .pane .close:hover{ background:rgba(0,0,0,.05); }
+  .pane .body{ padding:1.5rem 1.2rem; }
   @media (max-width: 1024px){ #pane-stack{ display:none } }
 </style>

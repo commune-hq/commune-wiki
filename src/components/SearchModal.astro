@@ -13,13 +13,16 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
   #commune-search[hidden]{display:none}
   .shade{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:97}
   .modal{position:fixed;inset:auto;left:50%;top:12vh;transform:translateX(-50%);
-    width:min(880px,90vw);background:var(--sl-color-bg, #fff);border-radius:12px;padding:1rem 1rem .5rem;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);z-index:98}
-  #q{width:100%;font-size:1.05rem;padding:.75rem 1rem;border-radius:.6rem;border:1px solid rgba(0,0,0,.1);outline:none}
+    width:min(880px,90vw);background:var(--sl-color-bg, #fff);border-radius:12px;padding:1rem;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);z-index:98;box-sizing:border-box}
+  #q{width:100%;font-size:1.05rem;padding:.75rem 1rem;border-radius:.6rem;border:1px solid rgba(0,0,0,.1);outline:none;box-sizing:border-box}
   #results{list-style:none;margin:.8rem 0 .4rem;padding:0;max-height:60vh;overflow:auto}
-  #results li{padding:.65rem .5rem;border-radius:.5rem}
+  #results li{padding:.65rem .5rem;border-radius:.5rem;cursor:pointer}
   #results li:hover{background:rgba(0,0,0,.04)}
-  .src{font-size:.75rem;opacity:.6;margin-left:.35rem}
+  #results a{text-decoration:none;color:inherit;font-weight:500}
+  #results .meta{display:flex;gap:.35rem;align-items:center;margin-top:.2rem}
+  .src{font-size:.75rem;opacity:.6}
+  #results div{font-size:.85rem;opacity:.75;margin-top:.25rem}
 </style>
 
 <script is:inline>
@@ -92,7 +95,13 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
 
     function render(results) {
       list.innerHTML = results.map(r => (
-        `<li><a href="${r.url}">${r.title}</a><span class="src">${r.source||''}</span><div>${r.excerpt||''}</div></li>`
+        `<li>
+          <div class="meta">
+            <a href="${r.url}">${r.title}</a>
+            ${r.source ? `<span class="src">• ${r.source}</span>` : ''}
+          </div>
+          ${r.excerpt ? `<div>${r.excerpt}</div>` : ''}
+        </li>`
       )).join('');
       // Wire close on click
       list.querySelectorAll('a').forEach(a => a.onclick = () => window.CommuneSearch.close());
