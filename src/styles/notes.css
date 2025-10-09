@@ -84,3 +84,8 @@
 	}
 }
 
+/* Scroll lock when panes or modal are open */
+body.panes-open, body.modal-open {
+	overflow: hidden;
+}
+

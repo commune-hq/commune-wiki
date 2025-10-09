@@ -11,10 +11,10 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
 
 <style>
   #commune-search[hidden]{display:none}
-  .shade{position:fixed;inset:0;background:rgba(0,0,0,.35)}
+  .shade{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:97}
   .modal{position:fixed;inset:auto;left:50%;top:12vh;transform:translateX(-50%);
-    width:min(880px,90vw);background:var(--sl-color-bg, #fff);border-radius:12px;padding:1rem 1rem 0.5rem;
-    box-shadow:0 20px 60px rgba(0,0,0,.25)}
+    width:min(880px,90vw);background:var(--sl-color-bg, #fff);border-radius:12px;padding:1rem 1rem .5rem;
+    box-shadow:0 20px 60px rgba(0,0,0,.25);z-index:98}
   #q{width:100%;font-size:1.05rem;padding:.75rem 1rem;border-radius:.6rem;border:1px solid rgba(0,0,0,.1);outline:none}
   #results{list-style:none;margin:.8rem 0 .4rem;padding:0;max-height:60vh;overflow:auto}
   #results li{padding:.65rem .5rem;border-radius:.5rem}
@@ -29,7 +29,7 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
     lists.forEach((arr, idx) => arr.forEach((r, i) => {
       const key = r.url;
       const cur = map.get(key) ?? { ...r, score: 0 };
-      cur.score += 1 / (60 + i); // rank-biased
+      cur.score += 1 / (60 + i);
       map.set(key, cur);
     }));
     return Array.from(map.values()).sort((a,b) => b.score - a.score);
@@ -38,7 +38,6 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
   async function ensurePagefind(){
     if (window.__pagefind) return window.__pagefind;
     try {
-      // Starlight/ Astro emit Pagefind here:
       const pf = await import('/_pagefind/pagefind.js');
       window.__pagefind = await pf?.pagefind?.init();
     } catch (_) { window.__pagefind = { search: async () => ({ results: [] }) }; }
@@ -53,7 +52,6 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
   }
 
   async function doSemantic(query){
-    // Optional: served by your home server (SQLite-VSS/Qdrant)
     try{
       const r = await fetch(`/api/ask?q=${encodeURIComponent(query)}`);
       if (!r.ok) return [];
@@ -62,42 +60,89 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
     }catch{ return []; }
   }
 
-  function renderResults(items){
-    const ul = document.querySelector('#commune-search #results');
-    ul.innerHTML = '';
-    for(const it of items){
-      const li = document.createElement('li');
-      li.innerHTML = `<a href="${it.url}">${it.title}</a> <span class="src">• ${it.source}</span><div>${it.excerpt ?? ''}</div>`;
-      li.querySelector('a').onclick = () => window.CommuneSearch.close();
-      ul.appendChild(li);
-    }
+  // DEV fallback: use backlinks graph as minimal search index
+  async function devIndex() {
+    try {
+      const r = await fetch('/backlinks.json', { cache: 'no-store' });
+      if (!r.ok) return [];
+      const graph = await r.json();
+      return Object.entries(graph).map(([url, node]) => ({
+        url, title: node.title || url, excerpt: (node.summary || '').slice(0, 160)
+      }));
+    } catch { return []; }
   }
 
-  window.CommuneSearch = {
-    open(){
-      document.querySelector('#commune-search')?.removeAttribute('hidden');
-      document.querySelector('#commune-search #q').focus();
-    },
-    close(){ document.querySelector('#commune-search')?.setAttribute('hidden',''); }
-  };
+  async function doDevSearch(q) {
+    const idx = await devIndex();
+    if (!q) return [];
+    const norm = q.toLowerCase();
+    const scored = idx.map(d => {
+      const hay = `${d.title} ${d.excerpt}`.toLowerCase();
+      const pos = hay.indexOf(norm);
+      return pos === -1 ? null : { ...d, score: 1 / (1 + pos) };
+    }).filter(Boolean).sort((a,b) => b.score - a.score);
+    return scored.slice(0, 20).map(d => ({ url: d.url, title: d.title, excerpt: d.excerpt, source: 'pagefind' }));
+  }
 
-  addEventListener('commune:openSearch', () => window.CommuneSearch.open());
+  // Wire up modal
+  (function mountSearch(){
+    const root = document.getElementById('commune-search');
+    const input = root.querySelector('#q');
+    const list  = root.querySelector('#results');
 
-  // Esc closes modal; debounce search
-  (function init(){
-    const wrap = document.getElementById('commune-search');
-    if(!wrap) return;
-    const input = wrap.querySelector('#q');
+    function render(results) {
+      list.innerHTML = results.map(r => (
+        `<li><a href="${r.url}">${r.title}</a><span class="src">${r.source||''}</span><div>${r.excerpt||''}</div></li>`
+      )).join('');
+      // Wire close on click
+      list.querySelectorAll('a').forEach(a => a.onclick = () => window.CommuneSearch.close());
+    }
+
     let t;
-    input.addEventListener('input', async () => {
+    async function search(q) {
+      const [lex, sem] = await Promise.all([
+        doPagefind(q).catch(() => []),
+        doSemantic(q).catch(() => []),
+      ]);
+      let merged = rrf([lex, sem]);
+      if (!merged.length) merged = await doDevSearch(q);
+      render(merged);
+    }
+
+    function open() {
+      root.hidden = false;
+      document.body.classList.add('modal-open');
+      input.value = '';
+      render([]);
+      input.focus();
+    }
+    function close() {
+      root.hidden = true;
+      document.body.classList.remove('modal-open');
+    }
+    window.CommuneSearch = { open, close };
+
+    addEventListener('commune:openSearch', open);
+    addEventListener('keydown', e => {
+      const mac = navigator.platform.toUpperCase().includes('MAC');
+      if ((mac ? e.metaKey : e.ctrlKey) && e.key.toLowerCase() === 'k') {
+        e.preventDefault(); open();
+      }
+      if (e.key === 'Escape' && !root.hidden) close();
+    });
+
+    input.addEventListener('input', () => {
       clearTimeout(t);
       const q = input.value.trim();
-      if(!q){ renderResults([]); return; }
-      t = setTimeout(async () => {
-        const [lex, sem] = await Promise.all([doPagefind(q), doSemantic(q)]);
-        renderResults(rrf([lex, sem]));
-      }, 180);
+      t = setTimeout(() => search(q), 200);
     });
-    addEventListener('keydown', (e) => e.key === 'Escape' && window.CommuneSearch.close());
+
+    // Enter → first result
+    input.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        const first = list.querySelector('li a');
+        if (first) window.location.href = first.getAttribute('href');
+      }
+    });
   })();
 </script>

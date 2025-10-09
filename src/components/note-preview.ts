@@ -14,6 +14,7 @@ export function setupNotePreviews(){
       card.style.borderRadius = '10px';
       card.style.padding = '12px 14px';
       card.style.zIndex = '60';
+      card.style.pointerEvents = 'none';
       document.body.appendChild(card);
     }
     card.innerHTML = html;
