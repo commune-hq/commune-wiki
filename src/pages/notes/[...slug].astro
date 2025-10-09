@@ -4,7 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import Header from '../../components/Header.astro';
 import SearchModal from '../../components/SearchModal.astro';
 import Backlinks from '../../components/Backlinks.astro';
-import PaneStack from '../../components/PaneStack.astro';
+// Import of PaneStack.astro is removed.
 import '../../styles/design-system.css';
 import '../../styles/notes.css';
 
@@ -36,19 +36,27 @@ const title = data.title ?? slug;
   <body>
     <Header />
     <SearchModal />
-    <main class="note">
-      <article class="prose">
-        <h1>{title}</h1>
-        <Content />
-      </article>
-      <Backlinks slug={`/notes/${slug}/`} title={title} />
-    </main>
-    <PaneStack />
+    
+    <main id="pane-container"> 
+        
+        <div class="pane" data-url="" tabindex="-1"> 
+            <button class="close" aria-label="Close">×</button>
+            <div class="body">
+                <article class="prose">
+                    <h1>{title}</h1>
+                    <Content />
+                </article>
+                <Backlinks slug={`/notes/${slug}/`} title={title} />
+            </div>
+        </div>
+        
+        </main>
+
     <script>
-      // Note preview functionality (inline for compatibility)
+      // --- Note Previews (Existing functionality, updated selectors) ---
       const cache = new Map();
-      
       function setupNotePreviews(){
+        // ... (Keep existing show/hide logic for the hover card) ...
         const show = (el, html, x, y) => {
           let card = document.getElementById('note-hover');
           if(!card){
@@ -63,7 +71,6 @@ const title = data.title ?? slug;
             card.style.padding = '1rem 1.2rem';
             card.style.zIndex = 'var(--z-hover)';
             card.style.pointerEvents = 'none';
-            card.style.transition = 'opacity 0.15s ease';
             document.body.appendChild(card);
           }
           card.innerHTML = html;
@@ -85,8 +92,9 @@ const title = data.title ?? slug;
             const r = await fetch(url);
             const t = await r.text();
             const doc = new DOMParser().parseFromString(t, 'text/html');
-            const main = doc.querySelector('main') ?? doc.body;
-            const paras = Array.from(main.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+            // Updated: We look for the .pane .body in the fetched document now
+            const body = doc.querySelector('.pane .body') ?? doc.body;
+            const paras = Array.from(body.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
             const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
             cache.set(url, html);
             show(a, html, e.clientX, e.clientY);
@@ -98,84 +106,129 @@ const title = data.title ?? slug;
         });
       }
 
-      // Pane stack functionality (inline for compatibility)
+      // --- New Pane Management Functionality ---
       function setupPanes(){
-        const stack = document.getElementById('pane-stack');
-        if(!stack) return;
+        const container = document.getElementById('pane-container');
+        if (!container) return;
 
-        function updateStack(){
-          const panes = stack.querySelectorAll('.pane');
-          const count = panes.length;
-          
-          if(count === 0){
-            // No panes - hide stack
-            stack.classList.remove('active', 'multiple');
-            document.body.classList.remove('panes-open');
-          } else {
-            // Has panes - show stack
-            stack.classList.add('active');
-            document.body.classList.add('panes-open');
-            
-            // Toggle "multiple" class for layout
-            stack.classList.toggle('multiple', count > 1);
-          }
+        const normalizeUrl = (url) => new URL(url, window.location.origin).pathname;
+
+        async function openPane(url) {
+            const normalizedUrl = normalizeUrl(url);
+
+            // 1. Fetch and parse content
+            const res = await fetch(url, { headers: { 'Accept': 'text/html;charset=utf-8' } });
+            const html = await res.text();
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const fetchedPaneBody = doc.querySelector('.pane .body');
+
+            if (!fetchedPaneBody) return;
+
+            // 2. Create new pane
+            const pane = document.createElement('div');
+            pane.className = 'pane';
+            pane.dataset.url = normalizedUrl;
+            pane.setAttribute('tabindex', '-1'); // Make focusable
+
+            pane.innerHTML = `
+                <button class="close" aria-label="Close">×</button>
+                <div class="body">${fetchedPaneBody.innerHTML}</div>
+            `;
+
+            // 3. Attach close listener
+            pane.querySelector('.close').addEventListener('click', (e) => {
+                e.stopPropagation(); // Prevent click from focusing the pane itself
+                closePane(pane);
+            });
+
+            // 4. Append and scroll
+            container.appendChild(pane);
+            scrollToPane(pane);
         }
 
-        async function openPane(url){
-          const res = await fetch(url, { headers: { 'Accept':'text/html;charset=utf-8' } });
-          const html = await res.text();
-          const doc = new DOMParser().parseFromString(html, 'text/html');
-          const main = doc.querySelector('main') ?? doc.body;
+        function scrollToPane(pane) {
+            // Focus the pane (activates :focus-within CSS expansion)
+            pane.focus(); 
+            setTimeout(() => {
+                // Scroll the pane into view smoothly
+                pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            }, 50);
+        }
 
-          const pane = document.createElement('div');
-          pane.className = 'pane';
-          pane.innerHTML = `
-            <button class="close" aria-label="Close">×</button>
-            <div class="body"><article class="prose">${main.innerHTML}</article></div>`;
+        function closePane(pane) {
+            // Safety check: don't close the first pane
+            if (pane === container.firstElementChild) return;
 
-          pane.querySelector('.close').addEventListener('click', () => {
+            const previousPane = pane.previousElementSibling;
             pane.remove();
-            updateStack();
-          });
-
-          stack.appendChild(pane);
-          
-          // Limit to 3 panes
-          const panes = stack.querySelectorAll('.pane');
-          if(panes.length > 3) panes[0].remove();
-          
-          updateStack();
-          
-          // Scroll to show new pane
-          setTimeout(() => {
-            if(panes.length > 1) {
-              stack.scrollLeft = stack.scrollWidth;
+            
+            if (previousPane && previousPane.classList.contains('pane')) {
+                scrollToPane(previousPane);
+                // Update history using replaceState so closing doesn't add unnecessary history steps
+                history.replaceState({ pane: previousPane.dataset.url }, '', previousPane.dataset.url);
             }
-          }, 50);
         }
 
-        // Only intercept clicks inside the main article area
-        document.addEventListener('click', (e) => {
-          const inArticle = e.target?.closest?.('main, article.prose');
-          if (!inArticle) return;
+        // Click interception (Delegated listener on the container)
+        container.addEventListener('click', (e) => {
+            // Handle clicking on the pane background to focus it
+            const clickedPane = e.target?.closest?.('.pane');
+            if (clickedPane && document.activeElement !== clickedPane) {
+                // Don't refocus if clicking on interactive elements like links/buttons
+                if (!e.target?.closest('a, button')) {
+                    scrollToPane(clickedPane);
+                    // Update history when focusing a different pane
+                    history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
+                }
+            }
 
-          const a = e.target?.closest?.('a[href^="/notes/"]');
-          if(!a) return;
-          if (e.ctrlKey || e.metaKey || e.shiftKey) return;
-          if (window.innerWidth < 1024) return;
+            // Handle link clicks within content
+            const inContent = e.target?.closest?.('article.prose, aside.backlinks');
+            if (!inContent) return;
 
-          e.preventDefault();
-          openPane(a.href);
-          history.pushState({ pane: a.href }, '', a.href);
+            const a = e.target?.closest?.('a[href^="/notes/"]');
+            if (!a) return;
+            
+            if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+            
+            // On desktop (>= 1024px), intercept. On mobile, allow normal navigation.
+            if (window.innerWidth < 1024) return; 
+
+            e.preventDefault();
+            const targetUrl = normalizeUrl(a.href);
+            
+            // Andy's behavior allows duplicates.
+            openPane(a.href);
+            // Update history to the newly opened pane
+            history.pushState({ pane: targetUrl }, '', targetUrl);
         });
 
+        // Handle popstate (browser history navigation)
         addEventListener('popstate', () => {
-          const panes = stack.querySelectorAll('.pane');
-          if(panes.length){
-            panes[panes.length-1].remove();
-            updateStack();
-          }
+            const targetUrl = normalizeUrl(window.location.href);
+            
+            const panes = Array.from(container.querySelectorAll('.pane'));
+            // Search reverse (rightmost instance if duplicates exist)
+            const targetIndex = panes.findLastIndex(p => p.dataset.url === targetUrl);
+
+            if (targetIndex !== -1) {
+                // Close panes to the right
+                for (let i = panes.length - 1; i > targetIndex; i--) {
+                    panes[i].remove();
+                }
+                scrollToPane(panes[targetIndex]);
+            } else {
+                // Fallback: reload if state is lost
+                window.location.reload();
+            }
         });
+        
+        // Initialize the first pane
+        const firstPane = container.querySelector('.pane');
+        if (firstPane) {
+            firstPane.dataset.url = normalizeUrl(window.location.href);
+            firstPane.focus();
+        }
       }
 
       setupNotePreviews();
@@ -185,18 +238,117 @@ const title = data.title ?? slug;
 </html>
 
 <style>
-  .note{
-    max-width:860px;
-    margin:var(--c-space-xl) auto;
-    padding:0 var(--c-space-md) 6rem;
+  /* Ensure body scroll is locked on desktop as the pane container handles it */
+  @media (min-width: 1024px) {
+    body {
+      overflow: hidden;
+    }
   }
-  .prose{font-size:1.05rem;line-height:1.7;max-width:65ch;color:var(--c-text)}
+
+  /* --- Pane Container --- */
+  #pane-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start; 
+    overflow-x: auto; 
+    /* Position absolutely to cover the viewport below the header */
+    position: absolute;
+    top: 64px; /* Assuming 64px header height */
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 0;
+    /* Starting padding for the first pane */
+    padding-left: 5vw; 
+    scroll-behavior: smooth;
+  }
+
+  /* --- Individual Pane Styling & Cascading Logic --- */
+  .pane {
+    flex-shrink: 0;
+    /* Responsive width: optimized for readability */
+    --pane-width: clamp(450px, 45vw, 700px);
+    width: var(--pane-width); 
+    
+    background: var(--c-bg);
+    border-radius: var(--c-radius-md);
+    /* Strong shadows for depth */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--c-border);
+    
+    /* Height management */
+    height: calc(100vh - 64px - 3rem); /* Viewport - header - padding (1.5rem top/bottom) */
+    overflow-y: auto;
+    position: relative;
+    outline: none; /* Remove default focus outline */
+    
+    /* Cascading effect: Negative margin pulls the next pane closer */
+    /* Defines how much of the pane is visible when collapsed */
+    --collapsed-visible-width: 100px;
+    margin-right: calc(var(--pane-width) * -1 + var(--collapsed-visible-width));
+
+    /* Smooth transition for the sliding/collapsing effect */
+    transition: margin-right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+
+  /* When a pane is focused (clicked or scrolled to), expand it */
+  .pane:focus-within {
+      /* Expand the focused pane to have normal spacing */
+      margin-right: 1.5rem; 
+      border-color: var(--c-accent-border);
+  }
+
+  /* The last pane should always have spacing on the right edge of the screen */
+  .pane:last-child {
+      margin-right: 5vw; 
+  }
+  
+  /* --- Pane Content --- */
+  .pane .body {
+    padding: 2rem 1.5rem;
+    max-width: 65ch;
+    margin: 0 auto;
+  }
+
+  /* --- Close Button --- */
+  /* Hide close button on the first pane */
+  .pane:first-child .close {
+    display: none;
+  }
+
+  .pane .close { 
+    position: absolute;
+    top: 0.75rem;
+    right: 0.75rem;
+    z-index: 10;
+    width: 28px;
+    height: 28px;
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
+    border-radius: 50%; /* Circular button */
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem; 
+    line-height: 1;
+    color: var(--c-text-muted);
+    transition: all 0.15s ease;
+  }
+  
+  .pane .close:hover { 
+    background: var(--c-bg-muted); 
+    color: var(--c-text);
+  }
+
+  /* --- Typography (Existing styles, optimized) --- */
+  .prose{font-size:1.05rem;line-height:1.7;color:var(--c-text)}
   .prose a{
     color:var(--c-accent) !important;
     text-decoration:none;
     border-bottom:2px solid var(--c-accent);
     padding-bottom:1px;
-    cursor:pointer;
     transition:all 0.15s ease;
   }
   .prose a:hover{
@@ -208,6 +360,8 @@ const title = data.title ?? slug;
   .prose h2{font-size:1.75rem;margin-top:2.5rem;margin-bottom:1rem;font-weight:600}
   .prose h3{font-size:1.35rem;margin-top:2rem;margin-bottom:0.75rem;font-weight:600}
   .prose p{margin:1.25rem 0;line-height:1.75}
+  
+  /* ... (Keep existing prose styles for ul, li, code, blockquote) ... */
   .prose ul,.prose ol{margin:1.25rem 0;padding-left:1.75rem}
   .prose li{margin:0.5rem 0}
   .prose code{
@@ -222,5 +376,35 @@ const title = data.title ?? slug;
     margin:1.5rem 0;
     color:var(--c-text-muted);
     font-style:italic;
+  }
+
+
+  /* --- Mobile/Tablet Breakpoint (<= 1023px) --- */
+  @media (max-width: 1023px) {
+    /* Switch to optimized single column layout on mobile */
+    #pane-container {
+      padding: 0;
+      flex-direction: column;
+      align-items: stretch;
+      top: 64px;
+      overflow-x: hidden;
+    }
+    .pane {
+      width: 100vw;
+      --pane-width: 100vw;
+      margin-right: 0 !important;
+      height: auto;
+      min-height: calc(100vh - 64px);
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+    }
+    .pane .body {
+        padding: 2rem 1.5rem;
+    }
+    /* Hide dynamically loaded panes on mobile. */
+    .pane:not(:first-child) {
+      display: none;
+    }
   }
 </style>
