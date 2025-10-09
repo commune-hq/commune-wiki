@@ -101,16 +101,30 @@ const title = data.title ?? slug;
       // Pane stack functionality (inline for compatibility)
       function setupPanes(){
         const stack = document.getElementById('pane-stack');
-        if(!stack) return;
+        const backdrop = document.getElementById('pane-backdrop');
+        if(!stack || !backdrop) return;
 
-        function activateStack(on){
-          stack.classList.toggle('active', on);
-          document.body.classList.toggle('panes-open', on);
+        function updateStack(){
+          const panes = stack.querySelectorAll('.pane');
+          const count = panes.length;
+          
+          if(count === 0){
+            // No panes - hide everything
+            stack.classList.remove('active', 'multiple');
+            backdrop.classList.remove('active');
+            document.body.classList.remove('panes-open');
+          } else {
+            // Has panes - show backdrop and stack
+            stack.classList.add('active');
+            backdrop.classList.add('active');
+            document.body.classList.add('panes-open');
+            
+            // Toggle "multiple" class for layout
+            stack.classList.toggle('multiple', count > 1);
+          }
         }
 
         async function openPane(url){
-          activateStack(true);
-
           const res = await fetch(url, { headers: { 'Accept':'text/html;charset=utf-8' } });
           const html = await res.text();
           const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -119,22 +133,39 @@ const title = data.title ?? slug;
           const pane = document.createElement('div');
           pane.className = 'pane';
           pane.innerHTML = `
-            <header><strong>${doc.title?.replace(/ \|.*/,'')}</strong>
+            <header>
+              <strong>${doc.title?.replace(/ \|.*/,'')}</strong>
               <button class="close" aria-label="Close">×</button>
             </header>
             <div class="body"><article class="prose">${main.innerHTML}</article></div>`;
 
           pane.querySelector('.close').addEventListener('click', () => {
             pane.remove();
-            if(!stack.querySelector('.pane')) activateStack(false);
+            updateStack();
           });
 
           stack.appendChild(pane);
-          stack.scrollLeft = stack.scrollWidth;
-
+          
+          // Limit to 3 panes
           const panes = stack.querySelectorAll('.pane');
           if(panes.length > 3) panes[0].remove();
+          
+          updateStack();
+          
+          // Scroll to show new pane
+          setTimeout(() => {
+            if(panes.length > 1) {
+              stack.scrollLeft = stack.scrollWidth;
+            }
+          }, 50);
         }
+        
+        // Close panes when clicking backdrop
+        backdrop.addEventListener('click', () => {
+          const panes = stack.querySelectorAll('.pane');
+          panes.forEach(p => p.remove());
+          updateStack();
+        });
 
         // Only intercept clicks inside the main article area
         document.addEventListener('click', (e) => {
@@ -155,7 +186,7 @@ const title = data.title ?? slug;
           const panes = stack.querySelectorAll('.pane');
           if(panes.length){
             panes[panes.length-1].remove();
-            if(!stack.querySelector('.pane')) activateStack(false);
+            updateStack();
           }
         });
       }

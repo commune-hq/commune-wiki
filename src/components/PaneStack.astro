@@ -1,99 +1,134 @@
+<!-- Backdrop for panes -->
+<div id="pane-backdrop"></div>
+<!-- Pane container -->
 <div id="pane-stack"></div>
+
 <style>
-  /* Andy-style sliding panes - responsive, readable, professional */
+  /* Backdrop - dims main content when panes are open */
+  #pane-backdrop {
+    position: fixed;
+    top: 64px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: var(--z-panes);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s ease;
+  }
+  
+  #pane-backdrop.active {
+    opacity: 1;
+    pointer-events: auto;
+  }
+  
+  /* Andy-style panes - centered when single, side-by-side when multiple */
   #pane-stack {
     position: fixed; 
     top: 64px; 
-    right: 0; 
+    left: 0;
+    right: 0;
     bottom: 0;
     height: calc(100vh - 64px);
     display: flex;
-    flex-direction: row;
-    align-items: stretch;
-    gap: 1rem; /* Space between panes */
-    padding: 0 1rem; /* Edge padding */
+    justify-content: center; /* Center single pane */
+    align-items: center;
+    gap: 1.5rem; /* Space between panes */
+    padding: 2rem;
     overflow-x: auto; 
     overflow-y: hidden;
-    z-index: var(--z-panes); 
-    pointer-events: none; 
-    visibility: hidden;
-    transition: visibility 0.2s;
-    /* Hide scrollbar but keep functionality */
-    scrollbar-width: none;
+    z-index: calc(var(--z-panes) + 1); 
+    pointer-events: none;
+    transition: all 0.2s ease;
   }
   
   #pane-stack::-webkit-scrollbar {
-    display: none;
+    height: 8px;
+  }
+  
+  #pane-stack::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  #pane-stack::-webkit-scrollbar-thumb {
+    background: var(--c-border);
+    border-radius: 4px;
   }
   
   #pane-stack.active { 
-    pointer-events: auto; 
-    visibility: visible; 
+    pointer-events: auto;
   }
   
+  /* When multiple panes, align to start (left) instead of center */
+  #pane-stack.multiple {
+    justify-content: flex-start;
+    align-items: stretch;
+  }
+  
+  /* Individual pane - card-like appearance */
   .pane {
-    pointer-events: auto; 
+    pointer-events: auto;
     background: var(--c-bg);
-    border-left: 2px solid var(--c-border);
-    border-right: 1px solid var(--c-border); /* Right border for separation */
-    /* Subtle shadow for depth */
-    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1),
-                4px 0 8px rgba(0, 0, 0, 0.05);
-    /* Responsive width with readable text constraint */
-    width: clamp(360px, 35vw, 480px);
-    min-width: 360px;
-    max-width: min(480px, calc(65ch + 3rem)); /* Ensure readable line length */
-    height: 100%;
-    overflow-y: auto;
-    overflow-x: hidden;
-    overscroll-behavior: contain;
+    border: 2px solid var(--c-border);
+    border-radius: var(--c-radius-lg);
+    /* Strong card shadow */
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3),
+                0 8px 24px rgba(0, 0, 0, 0.2);
+    /* Single pane: centered modal-like */
+    width: 700px;
+    max-width: 90vw;
+    max-height: 85vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     flex-shrink: 0;
     flex-grow: 0;
-    isolation: isolate;
-    position: relative;
+    transition: all 0.2s ease;
+  }
+  
+  /* Multiple panes: side-by-side, narrower */
+  #pane-stack.multiple .pane {
+    width: clamp(420px, 40vw, 520px);
+    max-height: 90vh;
   }
   
   .pane header { 
     display: flex; 
     align-items: center;
-    gap: 0.75rem;
-    padding: 1rem 1.25rem;
-    min-height: 60px; /* Fix clipping */
+    gap: 0.5rem;
+    padding: 1rem 1.5rem;
     border-bottom: 1px solid var(--c-border);
     background: var(--c-bg-soft);
-    backdrop-filter: blur(8px);
-    position: sticky; 
-    top: 0;
-    z-index: 10;
+    flex-shrink: 0;
   }
   
   .pane header strong {
-    flex: 1;
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--c-text);
+    white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap;
-    min-width: 0; /* Don't let title push × button off-screen */
   }
   
   .pane .close { 
-    flex-shrink: 0; /* Never shrink the × button */
-    width: 32px;
-    height: 32px;
+    flex-shrink: 0;
+    width: 28px;
+    height: 28px;
     background: transparent; 
-    border: 1px solid var(--c-border-focus); 
+    border: none;
     border-radius: var(--c-radius-sm); 
     padding: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.3rem; 
+    font-size: 1.4rem; 
     line-height: 1;
     color: var(--c-text-muted);
     transition: all 0.15s ease;
+    margin-left: auto; /* Push to right */
   }
   
   .pane .close:hover { 
@@ -102,38 +137,31 @@
   }
   
   .pane .body { 
-    padding: 1.5rem 1.25rem;
+    padding: 2rem 1.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    flex: 1;
     /* Optimal line length for readability */
-    max-width: 65ch;
+    max-width: 70ch;
+    margin: 0 auto;
   }
   
-  /* Breakpoint strategy */
+  /* Disable panes on mobile/tablet */
   @media (max-width: 1023px) {
-    /* Disable panes on mobile/tablet */
-    #pane-stack {
+    #pane-stack,
+    #pane-backdrop {
       display: none !important;
     }
   }
   
+  /* Adjust for smaller desktops */
   @media (min-width: 1024px) and (max-width: 1279px) {
-    /* 2 panes on medium screens */
-    .pane {
-      width: clamp(400px, 45vw, 500px);
+    #pane-stack.multiple .pane {
+      width: clamp(380px, 45vw, 480px);
     }
-    /* Hide 3rd pane and beyond */
+    /* Hide 3rd pane on smaller screens */
     .pane:nth-child(n+3) {
       display: none;
-    }
-  }
-  
-  @media (min-width: 1280px) {
-    /* 3 panes on large screens */
-    .pane {
-      width: clamp(360px, 35vw, 480px);
-    }
-    #pane-stack {
-      /* Leave room for main content */
-      max-width: calc(100vw - 300px);
     }
   }
 </style>
