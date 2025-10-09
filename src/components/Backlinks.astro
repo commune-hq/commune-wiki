@@ -19,13 +19,15 @@ const { slug } = Astro.props;
       try{ const r = await fetch(path); if(r.ok) return r.json(); } catch {}
       return null;
     }
-    const loc = import.meta.env.PROD ? '/backlinks.json' : '/backlinks.json';
+    const loc = '/backlinks.json';
     const data = await getJSON(loc);
     const list = document.getElementById('blist');
     if(!data) { list.innerHTML = '<li>No backlinks yet.</li>'; return; }
-    const rec = data[location.pathname.replace(/\/$/,'')] || data[`/notes/${location.pathname.split('/notes/')[1]?.replace(/\/$/,'')}`];
+    const here = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
+    const rec = data[here];
     const items = rec?.inbound ?? [];
     if(!items.length){ list.innerHTML = '<li>No backlinks yet.</li>'; return; }
-    list.innerHTML = items.map(s => `<li><a href="${s}">${s.split('/').filter(Boolean).pop()}</a></li>`).join('');
+    const titleFor = (u) => data[u]?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
+    list.innerHTML = items.map(s => `<li><a href="${s}">${titleFor(s)}</a></li>`).join('');
   })();
 </script>

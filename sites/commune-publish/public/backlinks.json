@@ -1,1 +1,66 @@
-{}
+{
+  "/notes/atomic-notes/": {
+    "slug": "/notes/atomic-notes/",
+    "title": "Atomic Notes",
+    "aliases": [
+      "atomic",
+      "atomic-notes"
+    ],
+    "outbound": [
+      "/notes/evergreen-notes/"
+    ],
+    "inbound": [
+      "/notes/evergreen-notes/"
+    ],
+    "tags": [
+      "writing",
+      "thinking"
+    ],
+    "status": "growing",
+    "updated": "2025-10-09T00:00:00.000Z"
+  },
+  "/notes/commune/": {
+    "slug": "/notes/commune/",
+    "title": "Commune",
+    "aliases": [
+      "commune",
+      "homebase"
+    ],
+    "outbound": [
+      "/notes/evergreen-notes/"
+    ],
+    "inbound": [
+      "/notes/evergreen-notes/"
+    ],
+    "tags": [
+      "projects",
+      "local-first",
+      "ai"
+    ],
+    "status": "seed",
+    "updated": "2025-10-09T00:00:00.000Z"
+  },
+  "/notes/evergreen-notes/": {
+    "slug": "/notes/evergreen-notes/",
+    "title": "Evergreen Notes",
+    "aliases": [
+      "evergreen",
+      "evergreen-notes"
+    ],
+    "outbound": [
+      "/notes/atomic-notes/",
+      "/notes/commune/"
+    ],
+    "inbound": [
+      "/notes/atomic-notes/",
+      "/notes/commune/"
+    ],
+    "tags": [
+      "writing",
+      "thinking",
+      "knowledge-management"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-09T00:00:00.000Z"
+  }
+}

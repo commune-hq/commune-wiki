@@ -1,139 +1,66 @@
 {
   "/notes/atomic-notes/": {
+    "slug": "/notes/atomic-notes/",
     "title": "Atomic Notes",
+    "aliases": [
+      "atomic",
+      "atomic-notes"
+    ],
+    "outbound": [
+      "/notes/evergreen-notes/"
+    ],
     "inbound": [
       "/notes/evergreen-notes/"
     ],
-    "outbound": [
-      "/notes/evergreen-notesevergreen-note/",
-      "/notes/personal-knowledge-graphsknowledge-graph/",
-      "/notes/zettelkasten-method/",
-      "/notes/associative-linking-over-hierarchies/"
-    ]
+    "tags": [
+      "writing",
+      "thinking"
+    ],
+    "status": "growing",
+    "updated": "2025-10-09T00:00:00.000Z"
   },
   "/notes/commune/": {
+    "slug": "/notes/commune/",
     "title": "Commune",
+    "aliases": [
+      "commune",
+      "homebase"
+    ],
+    "outbound": [
+      "/notes/evergreen-notes/"
+    ],
     "inbound": [
       "/notes/evergreen-notes/"
     ],
-    "outbound": [
-      "/notes/git-as-database/",
-      "/notes/selective-publishing/",
-      "/notes/agentic-workflows/",
-      "/notes/evergreen-notes/",
-      "/notes/andy-matuschaks-notesandy-style-browsing/",
-      "/notes/local-first-software/",
-      "/notes/personal-knowledge-graphs/",
-      "/notes/build-in-public/"
-    ]
+    "tags": [
+      "projects",
+      "local-first",
+      "ai"
+    ],
+    "status": "seed",
+    "updated": "2025-10-09T00:00:00.000Z"
   },
   "/notes/evergreen-notes/": {
+    "slug": "/notes/evergreen-notes/",
     "title": "Evergreen Notes",
-    "inbound": [
-      "/notes/commune/"
+    "aliases": [
+      "evergreen",
+      "evergreen-notes"
     ],
     "outbound": [
       "/notes/atomic-notes/",
-      "/notes/associative-linking-over-hierarchies/",
-      "/notes/seed-notes/",
-      "/notes/commune/",
-      "/notes/andy-matuschaks-notes/",
-      "/notes/zettelkasten-method/",
-      "/notes/personal-knowledge-graphs/"
-    ]
-  },
-  "/notes/evergreen-notesevergreen-note/": {
-    "title": "evergreen-notesevergreen-note",
-    "inbound": [
-      "/notes/atomic-notes/"
+      "/notes/commune/"
     ],
-    "outbound": []
-  },
-  "/notes/personal-knowledge-graphsknowledge-graph/": {
-    "title": "personal-knowledge-graphsknowledge-graph",
-    "inbound": [
-      "/notes/atomic-notes/"
-    ],
-    "outbound": []
-  },
-  "/notes/zettelkasten-method/": {
-    "title": "zettelkasten-method",
     "inbound": [
       "/notes/atomic-notes/",
-      "/notes/evergreen-notes/"
-    ],
-    "outbound": []
-  },
-  "/notes/associative-linking-over-hierarchies/": {
-    "title": "associative-linking-over-hierarchies",
-    "inbound": [
-      "/notes/atomic-notes/",
-      "/notes/evergreen-notes/"
-    ],
-    "outbound": []
-  },
-  "/notes/git-as-database/": {
-    "title": "git-as-database",
-    "inbound": [
       "/notes/commune/"
     ],
-    "outbound": []
-  },
-  "/notes/selective-publishing/": {
-    "title": "selective-publishing",
-    "inbound": [
-      "/notes/commune/"
+    "tags": [
+      "writing",
+      "thinking",
+      "knowledge-management"
     ],
-    "outbound": []
-  },
-  "/notes/agentic-workflows/": {
-    "title": "agentic-workflows",
-    "inbound": [
-      "/notes/commune/"
-    ],
-    "outbound": []
-  },
-  "/notes/andy-matuschaks-notesandy-style-browsing/": {
-    "title": "andy-matuschaks-notesandy-style-browsing",
-    "inbound": [
-      "/notes/commune/"
-    ],
-    "outbound": []
-  },
-  "/notes/local-first-software/": {
-    "title": "local-first-software",
-    "inbound": [
-      "/notes/commune/"
-    ],
-    "outbound": []
-  },
-  "/notes/personal-knowledge-graphs/": {
-    "title": "personal-knowledge-graphs",
-    "inbound": [
-      "/notes/commune/",
-      "/notes/evergreen-notes/"
-    ],
-    "outbound": []
-  },
-  "/notes/build-in-public/": {
-    "title": "build-in-public",
-    "inbound": [
-      "/notes/commune/"
-    ],
-    "outbound": []
-  },
-  "/notes/seed-notes/": {
-    "title": "seed-notes",
-    "inbound": [
-      "/notes/evergreen-notes/"
-    ],
-    "outbound": []
-  },
-  "/notes/andy-matuschaks-notes/": {
-    "title": "andy-matuschaks-notes",
-    "inbound": [
-      "/notes/evergreen-notes/"
-    ],
-    "outbound": []
+    "status": "evergreen",
+    "updated": "2025-10-09T00:00:00.000Z"
   }
 }

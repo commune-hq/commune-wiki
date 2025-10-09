@@ -38,9 +38,9 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
   async function ensurePagefind(){
     if (window.__pagefind) return window.__pagefind;
     try {
-      // Works in preview/build; dev falls back to empty searcher.
-      const pf = await import('/pagefind/pagefind.js');
-      window.__pagefind = await pf?.default?.init();
+      // Starlight/ Astro emit Pagefind here:
+      const pf = await import('/_pagefind/pagefind.js');
+      window.__pagefind = await pf?.pagefind?.init();
     } catch (_) { window.__pagefind = { search: async () => ({ results: [] }) }; }
     return window.__pagefind;
   }

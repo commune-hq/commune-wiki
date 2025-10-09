@@ -25,6 +25,7 @@ const title = data.title ?? slug;
 ---
 <html lang="en">
   <head>
+    <meta charset="utf-8" />
     <title>{title} | Commune</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={data.summary || title} />
@@ -55,10 +56,11 @@ const title = data.title ?? slug;
             card.style.background = 'var(--sl-color-bg, #fff)';
             card.style.boxShadow = '0 20px 60px rgba(0,0,0,.25)';
             card.style.border = '1px solid rgba(0,0,0,.08)';
-            card.style.borderRadius = '10px';
-            card.style.padding = '12px 14px';
-            card.style.zIndex = '60';
-            document.body.appendChild(card);
+          card.style.borderRadius = '10px';
+          card.style.padding = '12px 14px';
+          card.style.zIndex = '60';
+          card.style.pointerEvents = 'none';
+          document.body.appendChild(card);
           }
           card.innerHTML = html;
           card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
@@ -101,6 +103,7 @@ const title = data.title ?? slug;
         if(!stack) return;
 
         async function openPane(url){
+          stack.classList.add('active');
           const res = await fetch(url);
           const html = await res.text();
           const doc = new DOMParser().parseFromString(html, 'text/html');
@@ -109,12 +112,16 @@ const title = data.title ?? slug;
           pane.className = 'pane';
           pane.innerHTML = `<header><strong>${doc.title?.replace(/ \|.*/,'')}</strong>
             <button class="close" aria-label="Close">×</button></header><div class="body">${main.innerHTML}</div>`;
-          pane.querySelector('.close').addEventListener('click', () => pane.remove());
+          pane.querySelector('.close').addEventListener('click', () => {
+            pane.remove();
+            if(stack.querySelectorAll('.pane').length === 0){ stack.classList.remove('active'); }
+          });
           stack.appendChild(pane);
           stack.scrollLeft = stack.scrollWidth;
           // limit
           const panes = stack.querySelectorAll('.pane');
           if(panes.length > 3) panes[0].remove();
+          if(stack.querySelectorAll('.pane').length === 0){ stack.classList.remove('active'); }
         }
 
         document.addEventListener('click', (e) => {
@@ -130,6 +137,7 @@ const title = data.title ?? slug;
           // simple: close a pane on back, ignore forward for now
           const panes = stack.querySelectorAll('.pane');
           if(panes.length) panes[panes.length-1].remove();
+          if(stack.querySelectorAll('.pane').length === 0){ stack.classList.remove('active'); }
         });
       }
 

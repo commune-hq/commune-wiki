@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
-    "build": "astro build && node ../../scripts/build-backlinks.mjs",
+    "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },

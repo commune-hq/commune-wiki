@@ -15,7 +15,7 @@ const links = [
         </a>
       ))}
     </nav>
-    <button class="search-btn" aria-label="Search (⌘K)" onclick="dispatchEvent(new CustomEvent('commune:openSearch'))">
+    <button class="search-btn" aria-label="Search (⌘K)" onclick="window.dispatchEvent(new CustomEvent('commune:openSearch'))">
       <span>Search</span><kbd>⌘K</kbd>
     </button>
   </div>

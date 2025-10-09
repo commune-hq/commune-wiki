@@ -116,8 +116,14 @@ export default function backlinksIntegration(): AstroIntegration {
 					// Write to dist directory
 					const distPath = path.join(dir.pathname, 'backlinks.json');
 					await writeFile(distPath, JSON.stringify(graph, null, 2));
+					
+					// Also write to /public for dev server parity
+					// Use relative path from cwd to handle different build contexts
+					const publicPath = path.join('public', 'backlinks.json');
+					await mkdir(path.dirname(publicPath), { recursive: true });
+					await writeFile(publicPath, JSON.stringify(graph, null, 2));
 
-					logger.info(`✅ Backlinks index written to /backlinks.json`);
+					logger.info(`✅ Backlinks index written to /backlinks.json (dist + public)`);
 
 					// Log some stats
 					const totalBacklinks = Array.from(notes.values()).reduce(
@@ -137,15 +143,16 @@ export default function backlinksIntegration(): AstroIntegration {
 }
 
 /**
- * Convert file path to note slug
- * Example: src/content/notes/evergreen-notes.md → evergreen-notes
+ * Convert file path to note slug (with /notes/ prefix for URL)
+ * Example: src/content/notes/evergreen-notes.md → /notes/evergreen-notes/
  */
 function pathToSlug(filePath: string): string {
-	return path
+	const slug = path
 		.relative('src/content/notes', filePath)
 		.replace(/\\/g, '/')
 		.replace(/\.(md|mdx)$/, '')
 		.replace(/\/index$/, '');
+	return `/notes/${slug}/`;
 }
 
 /**
