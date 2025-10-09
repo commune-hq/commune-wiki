@@ -12,6 +12,7 @@ export default defineConfig({
 	},
 	integrations: [
 		tailwind({
+			// Don't apply Tailwind's base styles - preserve our design system
 			applyBaseStyles: false,
 		}),
 		backlinks(),

@@ -3,8 +3,7 @@
  * Clean, modern, with light/dark mode support
  */
 
-@tailwind base;
-@tailwind components;
+/* Only import Tailwind utilities - NOT base (which resets everything) */
 @tailwind utilities;
 
 :root {
