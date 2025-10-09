@@ -21,12 +21,75 @@ const links = [
 </header>
 
 <style>
-  .commune-header{position:sticky;top:0;backdrop-filter:saturate(120%) blur(10px);border-bottom:1px solid rgba(0,0,0,.06);z-index:50}
-  .wrap{display:flex;align-items:center;gap:1rem;justify-content:space-between;padding:.85rem 1rem;max-width:1100px;margin:0 auto}
-  .brand{font-weight:700;letter-spacing:.2px}
-  nav{display:flex;gap:.9rem}
-  .search-btn{display:flex;align-items:center;gap:.5rem;border:1px solid rgba(0,0,0,.08);padding:.4rem .6rem;border-radius:.6rem}
-  kbd{font-size:.75rem;opacity:.7;border:1px solid rgba(0,0,0,.15);padding:.1rem .3rem;border-radius:.35rem}
+  .commune-header{
+    position:sticky;
+    top:0;
+    background:var(--c-bg);
+    backdrop-filter:saturate(120%) blur(12px);
+    border-bottom:1px solid var(--c-border);
+    z-index:var(--z-header);
+    box-shadow:var(--c-shadow-sm);
+  }
+  .wrap{
+    display:flex;
+    align-items:center;
+    gap:1rem;
+    justify-content:space-between;
+    padding:1rem 1.25rem;
+    max-width:1200px;
+    margin:0 auto;
+  }
+  .brand{
+    font-weight:700;
+    font-size:1.15rem;
+    letter-spacing:.3px;
+    color:var(--c-text);
+    cursor:pointer;
+    transition:color 0.15s ease;
+  }
+  .brand:hover{
+    color:var(--c-accent);
+  }
+  nav{
+    display:flex;
+    gap:1.25rem;
+  }
+  nav a{
+    color:var(--c-text);
+    font-weight:500;
+    cursor:pointer;
+    transition:color 0.15s ease;
+  }
+  nav a:hover{
+    color:var(--c-accent);
+  }
+  .search-btn{
+    display:flex;
+    align-items:center;
+    gap:.6rem;
+    border:1.5px solid var(--c-border);
+    background:var(--c-bg-soft);
+    padding:.5rem .8rem;
+    border-radius:var(--c-radius-md);
+    cursor:pointer;
+    transition:all 0.15s ease;
+  }
+  .search-btn:hover{
+    border-color:var(--c-accent);
+    background:var(--c-bg);
+  }
+  .search-btn span{
+    color:var(--c-text-muted);
+    font-size:.95rem;
+  }
+  kbd{
+    font-size:.75rem;
+    color:var(--c-text-muted);
+    border:1px solid var(--c-border);
+    background:var(--c-bg);
+    padding:.2rem .4rem;
+    border-radius:var(--c-radius-sm);
+  }
 </style>
 
 <script is:inline>

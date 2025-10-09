@@ -2,33 +2,187 @@
 import { getCollection } from 'astro:content';
 import Header from '../../components/Header.astro';
 import SearchModal from '../../components/SearchModal.astro';
+import '../../styles/design-system.css';
 
 const notes = await getCollection('notes');
 const list = notes
   .filter((n: any) => (n.data.visibility ?? 'private') === 'public')
   .sort((a: any, b: any) => (new Date(b.data.updated ?? 0)).valueOf() - (new Date(a.data.updated ?? 0)).valueOf());
+
+const evergreen = list.filter((n:any) => n.data.status === 'evergreen');
+const growing = list.filter((n:any) => n.data.status === 'growing');
+const seed = list.filter((n:any) => n.data.status === 'seed' || !n.data.status);
 ---
-<html><head><meta charset="utf-8"><title>Notes • Commune</title><meta name="viewport" content="width=device-width, initial-scale=1"/></head>
+<html><head>
+  <meta charset="utf-8">
+  <title>Notes • Commune</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+</head>
 <body>
   <Header />
   <SearchModal />
   <main class="wrap">
-    <h1>Notes</h1>
-    <p class="hint">Press <kbd>⌘K</kbd> to search across notes & docs.</p>
-    <ul class="grid">
-      {list.map((n:any) => (
-        <li><a href={`/notes/${n.slug}/`}>{n.data.title ?? n.slug}</a>
-          <div class="meta">{(n.data.tags ?? []).slice(0,3).join(' • ')}</div>
-        </li>
-      ))}
-    </ul>
+    <header class="page-header">
+      <h1>All Notes</h1>
+      <p class="hint">
+        Press <kbd>⌘K</kbd> to search. 
+        <span class="count">{list.length} notes published</span>
+      </p>
+    </header>
+
+    {evergreen.length > 0 && (
+      <section class="section">
+        <h2>🌲 Evergreen Notes</h2>
+        <p class="section-desc">Well-developed ideas, refined over time</p>
+        <ul class="grid">
+          {evergreen.map((n:any) => (
+            <li class="card">
+              <a href={`/notes/${n.slug}/`}>
+                <h3>{n.data.title ?? n.slug}</h3>
+                {n.data.summary && <p class="summary">{n.data.summary}</p>}
+                {n.data.tags && n.data.tags.length > 0 && (
+                  <div class="tags">{n.data.tags.slice(0,3).join(' • ')}</div>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {growing.length > 0 && (
+      <section class="section">
+        <h2>🌱 Growing Notes</h2>
+        <p class="section-desc">Ideas in progress, being actively developed</p>
+        <ul class="grid">
+          {growing.map((n:any) => (
+            <li class="card">
+              <a href={`/notes/${n.slug}/`}>
+                <h3>{n.data.title ?? n.slug}</h3>
+                {n.data.summary && <p class="summary">{n.data.summary}</p>}
+                {n.data.tags && n.data.tags.length > 0 && (
+                  <div class="tags">{n.data.tags.slice(0,3).join(' • ')}</div>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    {seed.length > 0 && (
+      <section class="section">
+        <h2>🌾 Seed Notes</h2>
+        <p class="section-desc">Early thoughts and rough captures</p>
+        <ul class="grid">
+          {seed.map((n:any) => (
+            <li class="card">
+              <a href={`/notes/${n.slug}/`}>
+                <h3>{n.data.title ?? n.slug}</h3>
+                {n.data.summary && <p class="summary">{n.data.summary}</p>}
+                {n.data.tags && n.data.tags.length > 0 && (
+                  <div class="tags">{n.data.tags.slice(0,3).join(' • ')}</div>
+                )}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
   </main>
 </body></html>
 
 <style>
-  .wrap{max-width:1100px;margin:1.2rem auto;padding:0 1rem 4rem}
-  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;list-style:none;padding:0}
-  .grid li{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:14px}
-  .meta{opacity:.65;font-size:.85rem;margin-top:.25rem}
-  kbd{font-size:.8rem;border:1px solid rgba(0,0,0,.2);padding:.1rem .3rem;border-radius:.35rem}
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:var(--c-space-xl) var(--c-space-md) 4rem;
+  }
+  .page-header{
+    margin-bottom:3rem;
+  }
+  .page-header h1{
+    font-size:2.75rem;
+    font-weight:800;
+    margin:.5rem 0 .75rem;
+  }
+  .hint{
+    font-size:1.05rem;
+    color:var(--c-text-muted);
+  }
+  .count{
+    color:var(--c-accent);
+    font-weight:600;
+    margin-left:.5rem;
+  }
+  kbd{
+    font-size:.8rem;
+    border:1px solid var(--c-border);
+    background:var(--c-bg-soft);
+    padding:.2rem .4rem;
+    border-radius:var(--c-radius-sm);
+    color:var(--c-text-muted);
+  }
+
+  .section{
+    margin-bottom:4rem;
+  }
+  .section h2{
+    font-size:1.75rem;
+    font-weight:700;
+    margin-bottom:.5rem;
+  }
+  .section-desc{
+    color:var(--c-text-muted);
+    font-size:1rem;
+    margin-bottom:1.5rem;
+  }
+
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(300px,1fr));
+    gap:1.25rem;
+    list-style:none;
+    padding:0;
+    margin:0;
+  }
+  
+  .card{
+    border:1px solid var(--c-border);
+    border-radius:var(--c-radius-md);
+    transition:all 0.2s ease;
+  }
+  
+  .card:hover{
+    border-color:var(--c-accent);
+    box-shadow:var(--c-shadow-md);
+    transform:translateY(-2px);
+  }
+  
+  .card a{
+    display:block;
+    padding:1.25rem;
+    color:inherit;
+    text-decoration:none;
+  }
+  
+  .card h3{
+    font-size:1.15rem;
+    font-weight:600;
+    margin:0 0 .5rem;
+    color:var(--c-text);
+  }
+  
+  .card .summary{
+    font-size:.95rem;
+    color:var(--c-text-muted);
+    line-height:1.6;
+    margin:.5rem 0 .75rem;
+  }
+  
+  .card .tags{
+    font-size:.8rem;
+    color:var(--c-accent);
+    opacity:.8;
+  }
 </style>

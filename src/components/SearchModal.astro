@@ -11,18 +11,77 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
 
 <style>
   #commune-search[hidden]{display:none}
-  .shade{position:fixed;inset:0;background:rgba(0,0,0,.35);z-index:97}
-  .modal{position:fixed;inset:auto;left:50%;top:12vh;transform:translateX(-50%);
-    width:min(880px,90vw);background:var(--sl-color-bg, #fff);border-radius:12px;padding:1rem;
-    box-shadow:0 20px 60px rgba(0,0,0,.25);z-index:98;box-sizing:border-box}
-  #q{width:100%;font-size:1.05rem;padding:.75rem 1rem;border-radius:.6rem;border:1px solid rgba(0,0,0,.1);outline:none;box-sizing:border-box}
-  #results{list-style:none;margin:.8rem 0 .4rem;padding:0;max-height:60vh;overflow:auto}
-  #results li{padding:.65rem .5rem;border-radius:.5rem;cursor:pointer}
-  #results li:hover{background:rgba(0,0,0,.04)}
-  #results a{text-decoration:none;color:inherit;font-weight:500}
-  #results .meta{display:flex;gap:.35rem;align-items:center;margin-top:.2rem}
-  .src{font-size:.75rem;opacity:.6}
-  #results div{font-size:.85rem;opacity:.75;margin-top:.25rem}
+  .shade{
+    position:fixed;
+    inset:0;
+    background:rgba(0,0,0,.5);
+    backdrop-filter:blur(4px);
+    z-index:var(--z-modal-shade);
+  }
+  .modal{
+    position:fixed;
+    inset:auto;
+    left:50%;
+    top:12vh;
+    transform:translateX(-50%);
+    width:min(720px,90vw);
+    background:var(--c-bg);
+    border:1px solid var(--c-border);
+    border-radius:var(--c-radius-lg);
+    padding:1.25rem;
+    box-shadow:var(--c-shadow-xl);
+    z-index:var(--z-modal);
+    box-sizing:border-box;
+  }
+  #q{
+    width:100%;
+    font-size:1.1rem;
+    padding:.85rem 1.1rem;
+    border-radius:var(--c-radius-md);
+    border:1.5px solid var(--c-border);
+    outline:none;
+    box-sizing:border-box;
+    background:var(--c-bg);
+    color:var(--c-text);
+    transition:border-color 0.15s ease;
+  }
+  #q:focus{
+    border-color:var(--c-accent);
+  }
+  #results{
+    list-style:none;
+    margin:1rem 0 .5rem;
+    padding:0;
+    max-height:60vh;
+    overflow:auto;
+  }
+  #results li{
+    padding:.85rem .75rem;
+    border-radius:var(--c-radius-sm);
+    cursor:pointer;
+    transition:background 0.1s ease;
+  }
+  #results li:hover{
+    background:var(--c-bg-soft);
+  }
+  #results a{
+    text-decoration:none;
+    color:var(--c-text);
+    font-weight:600;
+    font-size:1rem;
+  }
+  #results .excerpt{
+    font-size:.9rem;
+    color:var(--c-text-muted);
+    margin-top:.35rem;
+    line-height:1.5;
+  }
+  .empty{
+    text-align:center;
+    padding:2rem;
+    color:var(--c-text-muted);
+    font-size:.95rem;
+  }
 </style>
 
 <script is:inline>
@@ -94,16 +153,17 @@ interface Result { url: string; title: string; excerpt?: string; score?: number;
     const list  = root.querySelector('#results');
 
     function render(results) {
+      if(!results.length){
+        list.innerHTML = '<div class="empty">No results found</div>';
+        return;
+      }
       list.innerHTML = results.map(r => (
         `<li>
-          <div class="meta">
-            <a href="${r.url}">${r.title}</a>
-            ${r.source ? `<span class="src">• ${r.source}</span>` : ''}
-          </div>
-          ${r.excerpt ? `<div>${r.excerpt}</div>` : ''}
+          <a href="${r.url}">${r.title}</a>
+          ${r.excerpt ? `<div class="excerpt">${r.excerpt}</div>` : ''}
         </li>`
       )).join('');
-      // Wire close on click
+      // Wire close on click and enter-to-go
       list.querySelectorAll('a').forEach(a => a.onclick = () => window.CommuneSearch.close());
     }
 

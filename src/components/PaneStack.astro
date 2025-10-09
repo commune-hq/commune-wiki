@@ -1,31 +1,83 @@
 <div id="pane-stack"></div>
 <style>
-  /* Keep the stack off the header (adjust 64px to your Header height) */
+  /* Sliding panes from the right */
   #pane-stack{
-    position:fixed; top:64px; right:0; height:calc(100vh - 64px);
-    width:min(1200px,60vw); display:flex; gap:12px; padding:16px;
-    overflow-x:auto; z-index:90; pointer-events:none; visibility:hidden;
+    position:fixed; 
+    top:64px; 
+    right:0; 
+    height:calc(100vh - 64px);
+    width:min(1400px,70vw); 
+    display:flex; 
+    gap:0;
+    padding:0;
+    overflow-x:auto; 
+    overflow-y:hidden;
+    z-index:var(--z-panes); 
+    pointer-events:none; 
+    visibility:hidden;
+    background:rgba(0,0,0,0.02);
+    backdrop-filter:blur(4px);
   }
-  #pane-stack.active{ pointer-events:auto; visibility:visible; }
+  #pane-stack.active{ 
+    pointer-events:auto; 
+    visibility:visible; 
+  }
+  
   .pane{
-    pointer-events:auto; background:#fff;
-    border-left:3px solid rgba(0,0,0,.15); 
-    box-shadow:-8px 0 40px rgba(0,0,0,.15);
-    width:480px; height:calc(100vh - 64px - 32px);
-    overflow:auto; overscroll-behavior:contain;
+    pointer-events:auto; 
+    background:var(--c-bg);
+    border-left:2px solid var(--c-border); 
+    box-shadow:var(--c-shadow-lg);
+    width:500px; 
+    height:100%;
+    overflow-y:auto;
+    overflow-x:hidden;
+    overscroll-behavior:contain;
     flex-shrink:0;
+    isolation:isolate; /* Key: creates independent stacking context */
+    transition:transform 0.2s ease;
   }
+  
   .pane header{ 
-    display:flex; justify-content:space-between; align-items:center;
-    padding:.8rem 1rem; border-bottom:1px solid rgba(0,0,0,.08);
-    background:rgba(0,0,0,.02); position:sticky; top:0; z-index:1;
+    display:flex; 
+    justify-content:space-between; 
+    align-items:center;
+    padding:1rem 1.25rem; 
+    border-bottom:1px solid var(--c-border);
+    background:var(--c-bg-soft);
+    position:sticky; 
+    top:0; 
+    z-index:10;
   }
+  
+  .pane header strong{
+    font-size:1.1rem;
+    font-weight:600;
+    color:var(--c-text);
+  }
+  
   .pane .close{ 
-    background:transparent; border:1px solid rgba(0,0,0,.2); 
-    border-radius:.5rem; padding:.3rem .6rem; cursor:pointer;
-    font-size:1.2rem; line-height:1;
+    background:transparent; 
+    border:1px solid var(--c-border-focus); 
+    border-radius:var(--c-radius-sm); 
+    padding:.35rem .7rem; 
+    cursor:pointer;
+    font-size:1.3rem; 
+    line-height:1;
+    color:var(--c-text-muted);
+    transition:all 0.15s ease;
   }
-  .pane .close:hover{ background:rgba(0,0,0,.05); }
-  .pane .body{ padding:1.5rem 1.2rem; }
-  @media (max-width: 1024px){ #pane-stack{ display:none } }
+  
+  .pane .close:hover{ 
+    background:var(--c-bg-muted); 
+    color:var(--c-text);
+  }
+  
+  .pane .body{ 
+    padding:2rem 1.5rem; 
+  }
+  
+  @media (max-width: 1024px){ 
+    #pane-stack{ display:none } 
+  }
 </style>

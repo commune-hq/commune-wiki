@@ -1,0 +1,108 @@
+/**
+ * Commune Design System
+ * Clean, modern, with light/dark mode support
+ */
+
+:root {
+  /* Light mode colors */
+  --c-bg: #ffffff;
+  --c-bg-soft: #f8f9fa;
+  --c-bg-muted: #e9ecef;
+  --c-text: #1a1a1a;
+  --c-text-muted: #6c757d;
+  --c-text-accent: #495057;
+  --c-border: rgba(0, 0, 0, 0.08);
+  --c-border-focus: rgba(0, 0, 0, 0.2);
+  
+  /* Accent colors - vibrant but tasteful */
+  --c-accent: #5b7ff9;
+  --c-accent-hover: #4a6ed8;
+  --c-accent-soft: rgba(91, 127, 249, 0.1);
+  --c-accent-border: rgba(91, 127, 249, 0.3);
+  
+  /* Shadows */
+  --c-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+  --c-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.08);
+  --c-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.12);
+  --c-shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.15);
+  
+  /* Z-index scale */
+  --z-header: 50;
+  --z-panes: 40;
+  --z-hover: 60;
+  --z-modal-shade: 100;
+  --z-modal: 101;
+  
+  /* Border radius */
+  --c-radius-sm: 0.5rem;
+  --c-radius-md: 0.75rem;
+  --c-radius-lg: 1rem;
+  
+  /* Spacing */
+  --c-space-xs: 0.25rem;
+  --c-space-sm: 0.5rem;
+  --c-space-md: 1rem;
+  --c-space-lg: 1.5rem;
+  --c-space-xl: 2rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg: #0f0f0f;
+    --c-bg-soft: #1a1a1a;
+    --c-bg-muted: #252525;
+    --c-text: #e4e4e4;
+    --c-text-muted: #a1a1a1;
+    --c-text-accent: #c4c4c4;
+    --c-border: rgba(255, 255, 255, 0.1);
+    --c-border-focus: rgba(255, 255, 255, 0.25);
+    
+    --c-accent: #7089ff;
+    --c-accent-hover: #8a9eff;
+    --c-accent-soft: rgba(112, 137, 255, 0.15);
+    --c-accent-border: rgba(112, 137, 255, 0.4);
+    
+    --c-shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.3);
+    --c-shadow-md: 0 4px 16px rgba(0, 0, 0, 0.4);
+    --c-shadow-lg: 0 12px 40px rgba(0, 0, 0, 0.5);
+    --c-shadow-xl: 0 20px 60px rgba(0, 0, 0, 0.6);
+  }
+}
+
+/* Global resets and base styles */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background: var(--c-bg);
+  color: var(--c-text);
+  line-height: 1.6;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+a {
+  color: var(--c-accent);
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.15s ease;
+}
+
+a:hover {
+  color: var(--c-accent-hover);
+}
+
+button {
+  cursor: pointer;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+/* Scroll lock utilities */
+body.panes-open,
+body.modal-open {
+  overflow: hidden;
+}
+

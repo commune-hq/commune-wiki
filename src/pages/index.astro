@@ -1,39 +1,231 @@
 ---
+import { getCollection } from 'astro:content';
 import Header from '../components/Header.astro';
 import SearchModal from '../components/SearchModal.astro';
+import '../styles/design-system.css';
 
-const cards = [
-  { t:'Private by Default', b:'Publish intentionally. Notes live on your box until you approve.' },
-  { t:'Runs at Home', b:'$300–$800 mini-PC replaces a pile of cloud tools.' },
-  { t:'Learns from You', b:'Git-based KB, local RAG, and agent diffs with approvals.' },
-  { t:'Build in Public', b:'Share selected notes as a living wiki.' },
-];
+// Get all public notes
+const notes = await getCollection('notes', ({ data }) => data.visibility === 'public');
+
+// Sort by updated date (most recent first)
+const recentNotes = notes
+  .sort((a, b) => {
+    const dateA = a.data.updated ? new Date(a.data.updated) : new Date(0);
+    const dateB = b.data.updated ? new Date(b.data.updated) : new Date(0);
+    return dateB.getTime() - dateA.getTime();
+  })
+  .slice(0, 6);
+
+// Get stats
+const totalNotes = notes.length;
+const evergreenNotes = notes.filter(n => n.data.status === 'evergreen').length;
+const growingNotes = notes.filter(n => n.data.status === 'growing').length;
 ---
-<html><head><meta charset="utf-8"><title>Commune</title><meta name="viewport" content="width=device-width, initial-scale=1"></head>
+<html><head>
+  <meta charset="utf-8">
+  <title>Commune | Local-First Knowledge OS</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Your private, agentic knowledge base running on a home server">
+</head>
 <body>
   <Header />
   <SearchModal />
   <main class="wrap">
     <section class="hero">
       <h1>Welcome to Commune</h1>
-      <p>Your private, local-first knowledge OS.</p>
+      <p class="tagline">Your private, local-first knowledge OS.</p>
+      <p class="desc">
+        Run AI agents on your own hardware. Capture notes privately. 
+        Publish selected thoughts to the world. Build in public while staying sovereign.
+      </p>
       <div class="cta">
-        <a class="btn" href="/notes/">Explore Notes →</a>
+        <a class="btn primary" href="/notes/">Explore {totalNotes} Notes →</a>
+        <a class="btn ghost" href="https://github.com/dmthepm/infra-home-server" target="_blank" rel="noopener">View on GitHub</a>
       </div>
     </section>
-    <section class="features">
-      {cards.map(c => (<div class="card"><h3>{c.t}</h3><p>{c.b}</p></div>))}
+
+    <section class="stats">
+      <div class="stat">
+        <div class="num">{totalNotes}</div>
+        <div class="label">Total Notes</div>
+      </div>
+      <div class="stat">
+        <div class="num">{evergreenNotes}</div>
+        <div class="label">Evergreen</div>
+      </div>
+      <div class="stat">
+        <div class="num">{growingNotes}</div>
+        <div class="label">Growing</div>
+      </div>
+    </section>
+
+    <section class="recent">
+      <h2>Recent Notes</h2>
+      <div class="grid">
+        {recentNotes.map(note => (
+          <a href={`/notes/${note.slug}/`} class="note-card">
+            <h3>{note.data.title || note.slug}</h3>
+            {note.data.summary && <p class="summary">{note.data.summary}</p>}
+            {note.data.status && <span class={`badge ${note.data.status}`}>{note.data.status}</span>}
+          </a>
+        ))}
+      </div>
     </section>
   </main>
 </body></html>
 
 <style>
-  .wrap{max-width:1100px;margin:0 auto;padding:1.2rem 1rem 5rem}
-  .hero{padding:2.4rem 0 1.8rem}
-  .hero h1{font-size:3rem;margin:.2rem 0 .6rem}
-  .cta{display:flex;gap:.8rem;margin-top:.8rem}
-  .btn{border:1px solid rgba(0,0,0,.1);padding:.6rem 1rem;border-radius:.7rem}
-  .btn.ghost{background:transparent}
-  .features{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-top:1.2rem}
-  .card{border:1px solid rgba(0,0,0,.08);border-radius:12px;padding:14px}
+  .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    padding:var(--c-space-xl) var(--c-space-md) 5rem;
+  }
+  .hero{
+    padding:3rem 0 2rem;
+    text-align:center;
+  }
+  .hero h1{
+    font-size:3.5rem;
+    margin:.2rem 0 .8rem;
+    font-weight:800;
+    background:linear-gradient(135deg, var(--c-text) 0%, var(--c-accent) 100%);
+    -webkit-background-clip:text;
+    -webkit-text-fill-color:transparent;
+    background-clip:text;
+  }
+  .tagline{
+    font-size:1.35rem;
+    color:var(--c-text-muted);
+    margin:.5rem 0 1.5rem;
+  }
+  .desc{
+    max-width:600px;
+    margin:0 auto 2rem;
+    font-size:1.05rem;
+    line-height:1.7;
+    color:var(--c-text-accent);
+  }
+  .cta{
+    display:flex;
+    gap:1rem;
+    justify-content:center;
+    margin-top:2rem;
+  }
+  .btn{
+    display:inline-block;
+    border:2px solid var(--c-border);
+    padding:.75rem 1.5rem;
+    border-radius:var(--c-radius-md);
+    font-weight:600;
+    font-size:1.05rem;
+    cursor:pointer;
+    transition:all 0.2s ease;
+  }
+  .btn.primary{
+    background:var(--c-accent);
+    border-color:var(--c-accent);
+    color:#fff;
+  }
+  .btn.primary:hover{
+    background:var(--c-accent-hover);
+    border-color:var(--c-accent-hover);
+    transform:translateY(-2px);
+    box-shadow:var(--c-shadow-md);
+  }
+  .btn.ghost{
+    background:transparent;
+    color:var(--c-text);
+  }
+  .btn.ghost:hover{
+    border-color:var(--c-accent);
+    color:var(--c-accent);
+  }
+
+  .stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+    gap:1.5rem;
+    margin:3rem 0;
+    padding:2rem;
+    background:var(--c-bg-soft);
+    border:1px solid var(--c-border);
+    border-radius:var(--c-radius-lg);
+  }
+  .stat{
+    text-align:center;
+  }
+  .stat .num{
+    font-size:2.5rem;
+    font-weight:700;
+    color:var(--c-accent);
+    margin-bottom:.25rem;
+  }
+  .stat .label{
+    font-size:.9rem;
+    color:var(--c-text-muted);
+    text-transform:uppercase;
+    letter-spacing:.5px;
+  }
+
+  .recent{
+    margin-top:4rem;
+  }
+  .recent h2{
+    font-size:2rem;
+    font-weight:700;
+    margin-bottom:1.5rem;
+  }
+  .grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
+    gap:1.25rem;
+  }
+  .note-card{
+    display:block;
+    border:1px solid var(--c-border);
+    border-radius:var(--c-radius-md);
+    padding:1.5rem;
+    background:var(--c-bg);
+    transition:all 0.2s ease;
+    cursor:pointer;
+    position:relative;
+  }
+  .note-card:hover{
+    border-color:var(--c-accent);
+    box-shadow:var(--c-shadow-md);
+    transform:translateY(-3px);
+  }
+  .note-card h3{
+    font-size:1.2rem;
+    margin:0 0 .5rem;
+    color:var(--c-text);
+    font-weight:600;
+  }
+  .note-card .summary{
+    font-size:.95rem;
+    color:var(--c-text-muted);
+    line-height:1.6;
+    margin:.5rem 0 1rem;
+  }
+  .badge{
+    display:inline-block;
+    padding:.3rem .65rem;
+    border-radius:var(--c-radius-sm);
+    font-size:.75rem;
+    font-weight:600;
+    text-transform:uppercase;
+    letter-spacing:.3px;
+  }
+  .badge.evergreen{
+    background:rgba(34,197,94,0.15);
+    color:rgb(34,197,94);
+  }
+  .badge.growing{
+    background:rgba(251,146,60,0.15);
+    color:rgb(251,146,60);
+  }
+  .badge.seed{
+    background:var(--c-accent-soft);
+    color:var(--c-accent);
+  }
 </style>

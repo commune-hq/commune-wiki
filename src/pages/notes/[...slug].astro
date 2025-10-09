@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import SearchModal from '../../components/SearchModal.astro';
 import Backlinks from '../../components/Backlinks.astro';
 import PaneStack from '../../components/PaneStack.astro';
+import '../../styles/design-system.css';
 import '../../styles/notes.css';
 
 export async function getStaticPaths() {
@@ -55,13 +56,14 @@ const title = data.title ?? slug;
             card.id = 'note-hover';
             card.style.position = 'fixed';
             card.style.maxWidth = '420px';
-            card.style.background = 'var(--sl-color-bg, #fff)';
-            card.style.boxShadow = '0 20px 60px rgba(0,0,0,.25)';
-            card.style.border = '1px solid rgba(0,0,0,.08)';
-            card.style.borderRadius = '10px';
-            card.style.padding = '12px 14px';
-            card.style.zIndex = '60';
+            card.style.background = 'var(--c-bg)';
+            card.style.boxShadow = 'var(--c-shadow-xl)';
+            card.style.border = '1px solid var(--c-border)';
+            card.style.borderRadius = 'var(--c-radius-lg)';
+            card.style.padding = '1rem 1.2rem';
+            card.style.zIndex = 'var(--z-hover)';
             card.style.pointerEvents = 'none';
+            card.style.transition = 'opacity 0.15s ease';
             document.body.appendChild(card);
           }
           card.innerHTML = html;
@@ -165,8 +167,36 @@ const title = data.title ?? slug;
 </html>
 
 <style>
-  .note{max-width:860px;margin:1.2rem auto;padding:0 1rem 6rem}
-  .prose{font-size:1.02rem;line-height:1.7;max-width:65ch}
-  .prose a{text-decoration:underline 1px; text-underline-offset:2px}
-  .prose h1{font-size:2.2rem;line-height:1.2;margin:.2rem 0 1.2rem}
+  .note{max-width:860px;margin:var(--c-space-xl) auto;padding:0 var(--c-space-md) 6rem}
+  .prose{font-size:1.05rem;line-height:1.7;max-width:65ch;color:var(--c-text)}
+  .prose a{
+    color:var(--c-accent);
+    text-decoration:none;
+    border-bottom:1.5px solid var(--c-accent-border);
+    cursor:pointer;
+    transition:all 0.15s ease;
+  }
+  .prose a:hover{
+    color:var(--c-accent-hover);
+    border-bottom-color:var(--c-accent);
+  }
+  .prose h1{font-size:2.4rem;line-height:1.2;margin:.2rem 0 1.5rem;font-weight:700}
+  .prose h2{font-size:1.75rem;margin-top:2.5rem;margin-bottom:1rem;font-weight:600}
+  .prose h3{font-size:1.35rem;margin-top:2rem;margin-bottom:0.75rem;font-weight:600}
+  .prose p{margin:1.25rem 0;line-height:1.75}
+  .prose ul,.prose ol{margin:1.25rem 0;padding-left:1.75rem}
+  .prose li{margin:0.5rem 0}
+  .prose code{
+    background:var(--c-bg-soft);
+    padding:0.2rem 0.4rem;
+    border-radius:var(--c-radius-sm);
+    font-size:0.9em;
+  }
+  .prose blockquote{
+    border-left:3px solid var(--c-border);
+    padding-left:1rem;
+    margin:1.5rem 0;
+    color:var(--c-text-muted);
+    font-style:italic;
+  }
 </style>
