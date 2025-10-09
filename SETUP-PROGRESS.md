@@ -1,0 +1,228 @@
+# Commune Public Wiki - Setup Progress
+
+**Status**: Phase 4 (Implementation) - Scaffolding Complete  
+**Date**: 2025-10-09
+
+## ✅ Completed
+
+### Phase 1: iOS Stabilization
+- ✅ Verified iOS design system has no build errors
+- ✅ All design components (Buttons, RecordButton, StatusPill, Toast, RecordingTimerView) working correctly
+
+### Phase 2: Architecture Research & Design
+- ✅ Created `docs/decisions/ADR-001-static-site-generator.md`
+  - Selected: Astro + Starlight
+  - Rationale: Built-in Pagefind search, performance, content-first design
+- ✅ Created `docs/decisions/ADR-002-auto-publish-pipeline.md`
+  - Architecture: GitHub Actions → filter by visibility → Cloudflare Pages
+  - Security: Build-time filtering, private docs never deployed
+- ✅ Created `docs/decisions/ADR-003-domain-routing.md`
+  - Primary: `thecommune.app` (marketing), `wiki.thecommune.app` (docs)
+  - Secondary: `commun.ing` → short links, `notes.commun.ing` → wiki
+- ✅ Created `docs/decisions/ADR-004-kb-compartmentalization.md`
+  - Strategy: Private by default, explicit `visibility: public` opt-in
+  - Entities: Personal, Awake Happy, Ads Lab, Infrastructure
+
+### Phase 3: Commune Branding Update
+- ✅ Updated `README.md` - Rebranded to Commune
+- ✅ Renamed `docs/PRD.md` to `docs/PRD-commune.md`
+- ✅ Updated PRD to v3.0 with Commune vision and public wiki scope
+
+### Phase 4: Commune Publish Implementation (Partial)
+- ✅ Created `sites/commune-publish/` project structure
+- ✅ Added `package.json` with Astro + Starlight dependencies
+- ✅ Configured `astro.config.mjs` with Commune settings
+- ✅ Extended content schema with `visibility` field in `src/content/config.ts`
+- ✅ Created custom `PoweredBy.astro` footer component
+- ✅ Added `commune.css` brand styles
+- ✅ Created landing page (`index.mdx`) with hero and features
+- ✅ Wrote `scripts/build-public-wiki.sh` - filters docs by visibility
+- ✅ Marked initial docs as public:
+  - `docs/VISION.md`
+  - `docs/decisions/ADR-001.md` through `ADR-004.md`
+
+## 🔄 Next Steps (Immediate)
+
+### 1. Install Dependencies & Test Build
+
+```bash
+cd sites/commune-publish
+pnpm install
+
+# Test build script
+cd ../..
+./scripts/build-public-wiki.sh
+
+# Start dev server
+cd sites/commune-publish
+pnpm dev
+# Visit http://localhost:4321
+```
+
+**Expected Result**:
+- 5 public documents copied to `src/content/docs/`
+- Astro build succeeds
+- Landing page loads with vision and ADRs in sidebar
+- Search works (Pagefind)
+
+### 2. Add Docker Service
+
+Edit `compose.yml`:
+
+```yaml
+  commune-publish:
+    build: ./sites/commune-publish
+    container_name: commune-publish
+    volumes:
+      - ./docs:/workspace/docs:ro
+      - ./sites/commune-publish:/app
+    working_dir: /app
+    command: sh -c "pnpm install && pnpm dev --host"
+    ports:
+      - "4321:4321"
+    restart: unless-stopped
+    networks:
+      - homeserver
+    environment:
+      - NODE_ENV=development
+```
+
+### 3. Create GitHub Actions Workflow
+
+Create `.github/workflows/publish-wiki.yml`:
+
+```yaml
+name: Build & Deploy Commune Wiki
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'docs/**'
+      - 'sites/commune-publish/**'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'pnpm'
+      - name: Filter & Build
+        run: ./scripts/build-public-wiki.sh
+      - name: Deploy to Cloudflare Pages
+        uses: cloudflare/pages-action@v1
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          projectName: commune-wiki
+          directory: sites/commune-publish/dist
+```
+
+### 4. Configure Cloudflare Pages
+
+1. Create Cloudflare Pages project: `commune-wiki`
+2. Connect to GitHub repository
+3. Build command: `./scripts/build-public-wiki.sh`
+4. Build output: `sites/commune-publish/dist`
+5. Add custom domain: `wiki.thecommune.app`
+
+### 5. Add Caddy Reverse Proxy (Optional Home Server Mirror)
+
+Create `sites/caddy/Caddyfile`:
+
+```
+wiki-preview.thecommune.app {
+    reverse_proxy commune-publish:4321
+    tls internal  # Tailscale only
+    encode gzip zstd
+}
+```
+
+Add to `compose.yml`:
+
+```yaml
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    volumes:
+      - ./sites/caddy/Caddyfile:/etc/caddy/Caddyfile
+    ports:
+      - "80:80"
+      - "443:443"
+    restart: unless-stopped
+    networks:
+      - homeserver
+```
+
+## 📋 Remaining Phases
+
+### Phase 5: Initial Public Content (2 hours)
+- Mark additional docs as `visibility: public`
+- Test search functionality
+- Verify all links work
+- Check mobile responsiveness
+
+### Phase 6: Polish & Launch (2-4 hours)
+- Add OpenGraph images
+- Test SEO (sitemap, robots.txt auto-generated by Starlight)
+- Set up privacy-friendly analytics (optional: Plausible/Umami)
+- Performance audit (Lighthouse)
+- Launch checklist
+
+### Phase 7: PRD Update (1 hour)
+- Add Commune Publish module section to PRD
+- Update entity model documentation
+- Document growth strategy
+
+## 🎯 Success Criteria
+
+- [x] Astro + Starlight project scaffolded
+- [x] Content schema with visibility field
+- [x] Build script filters by visibility
+- [x] Initial 5 docs marked public
+- [ ] Dependencies installed, build succeeds locally
+- [ ] Docker service runs wiki at localhost:4321
+- [ ] GitHub Actions auto-deploys on push
+- [ ] Public site live at wiki.thecommune.app
+- [ ] Search works (<1s response)
+- [ ] Mobile responsive
+- [ ] Lighthouse score >90
+
+## 📚 References
+
+- [Astro Documentation](https://docs.astro.build/)
+- [Starlight Documentation](https://starlight.astro.build/)
+- [Pagefind](https://pagefind.app/)
+- [Plan Document](./.cursor/plans/commune-public-wiki-554fca4f.plan.md)
+
+## 🚀 Quick Test
+
+```bash
+# From project root
+./scripts/build-public-wiki.sh
+
+# Expected output:
+# 🔍 Filtering public documentation...
+# 📋 Copying public documents...
+#   ✓ VISION.md → src/content/docs/VISION.md
+#   ✓ decisions/ADR-001... → src/content/docs/decisions/ADR-001...
+#   ✓ decisions/ADR-002... → src/content/docs/decisions/ADR-002...
+#   ✓ decisions/ADR-003... → src/content/docs/decisions/ADR-003...
+#   ✓ decisions/ADR-004... → src/content/docs/decisions/ADR-004...
+# 📦 Found 5 public documents
+# 🏗️  Building Astro site...
+# ✅ Build complete!
+```
+
+---
+
+**Implementation by**: LOCAL_CURSOR  
+**Total Time So Far**: ~4 hours  
+**Ready for**: Local testing and iteration
+
