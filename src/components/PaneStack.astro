@@ -1,93 +1,139 @@
 <div id="pane-stack"></div>
 <style>
-  /* Andy-style sliding panes - side by side, no overlap */
-  #pane-stack{
-    position:fixed; 
-    top:64px; 
-    right:0; 
-    bottom:0;
-    height:calc(100vh - 64px);
-    display:flex;
-    flex-direction:row;
-    align-items:stretch;
-    gap:0;
-    padding:0;
-    overflow-x:auto; 
-    overflow-y:hidden;
-    z-index:var(--z-panes); 
-    pointer-events:none; 
-    visibility:hidden;
-    transition:visibility 0.2s;
+  /* Andy-style sliding panes - responsive, readable, professional */
+  #pane-stack {
+    position: fixed; 
+    top: 64px; 
+    right: 0; 
+    bottom: 0;
+    height: calc(100vh - 64px);
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 1rem; /* Space between panes */
+    padding: 0 1rem; /* Edge padding */
+    overflow-x: auto; 
+    overflow-y: hidden;
+    z-index: var(--z-panes); 
+    pointer-events: none; 
+    visibility: hidden;
+    transition: visibility 0.2s;
     /* Hide scrollbar but keep functionality */
-    scrollbar-width:none;
-  }
-  #pane-stack::-webkit-scrollbar{
-    display:none;
-  }
-  #pane-stack.active{ 
-    pointer-events:auto; 
-    visibility:visible; 
+    scrollbar-width: none;
   }
   
-  .pane{
-    pointer-events:auto; 
-    background:var(--c-bg);
-    border-left:1px solid var(--c-border); 
-    box-shadow:-4px 0 20px rgba(0,0,0,0.15);
-    min-width:500px;
-    max-width:500px;
-    width:500px;
-    height:100%;
-    overflow-y:auto;
-    overflow-x:hidden;
-    overscroll-behavior:contain;
-    flex-shrink:0;
-    flex-grow:0;
-    isolation:isolate;
-    position:relative;
+  #pane-stack::-webkit-scrollbar {
+    display: none;
   }
   
-  .pane header{ 
-    display:flex; 
-    justify-content:space-between; 
-    align-items:center;
-    padding:1.25rem; 
-    border-bottom:1px solid var(--c-border);
-    background:var(--c-bg-soft);
-    position:sticky; 
-    top:0;
-    z-index:10;
-    margin-top:0;
+  #pane-stack.active { 
+    pointer-events: auto; 
+    visibility: visible; 
   }
   
-  .pane header strong{
-    font-size:1.1rem;
-    font-weight:600;
-    color:var(--c-text);
+  .pane {
+    pointer-events: auto; 
+    background: var(--c-bg);
+    border-left: 2px solid var(--c-border);
+    border-right: 1px solid var(--c-border); /* Right border for separation */
+    /* Subtle shadow for depth */
+    box-shadow: -4px 0 16px rgba(0, 0, 0, 0.1),
+                4px 0 8px rgba(0, 0, 0, 0.05);
+    /* Responsive width with readable text constraint */
+    width: clamp(360px, 35vw, 480px);
+    min-width: 360px;
+    max-width: min(480px, calc(65ch + 3rem)); /* Ensure readable line length */
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+    overscroll-behavior: contain;
+    flex-shrink: 0;
+    flex-grow: 0;
+    isolation: isolate;
+    position: relative;
   }
   
-  .pane .close{ 
-    background:transparent; 
-    border:1px solid var(--c-border-focus); 
-    border-radius:var(--c-radius-sm); 
-    padding:.35rem .7rem; 
-    cursor:pointer;
-    font-size:1.3rem; 
-    line-height:1;
-    color:var(--c-text-muted);
-    transition:all 0.15s ease;
+  .pane header { 
+    display: flex; 
+    align-items: center;
+    gap: 0.75rem;
+    padding: 1rem 1.25rem;
+    min-height: 60px; /* Fix clipping */
+    border-bottom: 1px solid var(--c-border);
+    background: var(--c-bg-soft);
+    backdrop-filter: blur(8px);
+    position: sticky; 
+    top: 0;
+    z-index: 10;
   }
   
-  .pane .close:hover{ 
-    background:var(--c-bg-muted); 
-    color:var(--c-text);
+  .pane header strong {
+    flex: 1;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--c-text);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    min-width: 0; /* Don't let title push × button off-screen */
   }
   
-  .pane .body{ 
-    padding:2rem 1.5rem; 
+  .pane .close { 
+    flex-shrink: 0; /* Never shrink the × button */
+    width: 32px;
+    height: 32px;
+    background: transparent; 
+    border: 1px solid var(--c-border-focus); 
+    border-radius: var(--c-radius-sm); 
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.3rem; 
+    line-height: 1;
+    color: var(--c-text-muted);
+    transition: all 0.15s ease;
   }
   
-  @media (max-width: 1024px){ 
-    #pane-stack{ display:none } 
+  .pane .close:hover { 
+    background: var(--c-bg-muted); 
+    color: var(--c-text);
+  }
+  
+  .pane .body { 
+    padding: 1.5rem 1.25rem;
+    /* Optimal line length for readability */
+    max-width: 65ch;
+  }
+  
+  /* Breakpoint strategy */
+  @media (max-width: 1023px) {
+    /* Disable panes on mobile/tablet */
+    #pane-stack {
+      display: none !important;
+    }
+  }
+  
+  @media (min-width: 1024px) and (max-width: 1279px) {
+    /* 2 panes on medium screens */
+    .pane {
+      width: clamp(400px, 45vw, 500px);
+    }
+    /* Hide 3rd pane and beyond */
+    .pane:nth-child(n+3) {
+      display: none;
+    }
+  }
+  
+  @media (min-width: 1280px) {
+    /* 3 panes on large screens */
+    .pane {
+      width: clamp(360px, 35vw, 480px);
+    }
+    #pane-stack {
+      /* Leave room for main content */
+      max-width: calc(100vw - 300px);
+    }
   }
 </style>

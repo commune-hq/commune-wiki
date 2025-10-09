@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import starlight from '@astrojs/starlight';
+import tailwind from '@astrojs/tailwind';
 import backlinks from './astro.backlinks.ts';
 import remarkWikiLinks from './remark-wikilinks.ts';
 
@@ -10,6 +11,9 @@ export default defineConfig({
 		remarkPlugins: [remarkWikiLinks],
 	},
 	integrations: [
+		tailwind({
+			applyBaseStyles: false,
+		}),
 		backlinks(),
 		starlight({
 			title: 'Commune',

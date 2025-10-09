@@ -3,6 +3,10 @@
  * Clean, modern, with light/dark mode support
  */
 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
   /* Light mode colors */
   --c-bg: #ffffff;
