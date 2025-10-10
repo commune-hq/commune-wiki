@@ -41,22 +41,23 @@ const title = data.title ?? slug;
         
         <div class="pane" data-url="" tabindex="-1"> 
             <button class="close" aria-label="Close">×</button>
-            <div class="body">
-                <article class="prose">
-                    <h1>{title}</h1>
-                    <Content />
-                </article>
-                <Backlinks slug={`/notes/${slug}/`} title={title} />
+            <div class="body-wrapper">
+                <div class="body">
+                    <article class="prose">
+                        <h1>{title}</h1>
+                        <Content />
+                    </article>
+                    <Backlinks slug={`/notes/${slug}/`} title={title} />
+                </div>
             </div>
         </div>
         
-        </main>
+    </main>
 
     <script>
-      // --- Note Previews (Existing functionality, updated selectors) ---
+      // --- Note Previews (Existing functionality) ---
       const cache = new Map();
       function setupNotePreviews(){
-        // ... (Keep existing show/hide logic for the hover card) ...
         const show = (el, html, x, y) => {
           let card = document.getElementById('note-hover');
           if(!card){
@@ -92,7 +93,7 @@ const title = data.title ?? slug;
             const r = await fetch(url);
             const t = await r.text();
             const doc = new DOMParser().parseFromString(t, 'text/html');
-            // Updated: We look for the .pane .body in the fetched document now
+            // We look for the .pane .body in the fetched document
             const body = doc.querySelector('.pane .body') ?? doc.body;
             const paras = Array.from(body.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
             const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
@@ -106,7 +107,7 @@ const title = data.title ?? slug;
         });
       }
 
-      // --- New Pane Management Functionality ---
+      // --- Refined Pane Management Functionality ---
       function setupPanes(){
         const container = document.getElementById('pane-container');
         if (!container) return;
@@ -120,6 +121,7 @@ const title = data.title ?? slug;
             const res = await fetch(url, { headers: { 'Accept': 'text/html;charset=utf-8' } });
             const html = await res.text();
             const doc = new DOMParser().parseFromString(html, 'text/html');
+            // Updated selector to find the content within the fetched structure
             const fetchedPaneBody = doc.querySelector('.pane .body');
 
             if (!fetchedPaneBody) return;
@@ -130,9 +132,12 @@ const title = data.title ?? slug;
             pane.dataset.url = normalizedUrl;
             pane.setAttribute('tabindex', '-1'); // Make focusable
 
+            // FIX: Updated HTML structure to include the body-wrapper
             pane.innerHTML = `
                 <button class="close" aria-label="Close">×</button>
-                <div class="body">${fetchedPaneBody.innerHTML}</div>
+                <div class="body-wrapper">
+                    <div class="body">${fetchedPaneBody.innerHTML}</div>
+                </div>
             `;
 
             // 3. Attach close listener
@@ -143,16 +148,22 @@ const title = data.title ?? slug;
 
             // 4. Append and scroll
             container.appendChild(pane);
-            scrollToPane(pane);
+            // FIX: Ensure immediate focus so the pane opens expanded, preventing the glitch
+            scrollToPane(pane, true);
         }
 
-        function scrollToPane(pane) {
+        // Added immediateFocus parameter to stabilize opening behavior
+        function scrollToPane(pane, immediateFocus = false) {
             // Focus the pane (activates :focus-within CSS expansion)
-            pane.focus(); 
-            setTimeout(() => {
-                // Scroll the pane into view smoothly
+            if (immediateFocus || document.activeElement !== pane) {
+                pane.focus(); 
+            }
+            
+            // Scroll the pane into view smoothly
+            // Use requestAnimationFrame for better synchronization with the CSS transition
+            requestAnimationFrame(() => {
                 pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-            }, 50);
+            });
         }
 
         function closePane(pane) {
@@ -177,8 +188,10 @@ const title = data.title ?? slug;
                 // Don't refocus if clicking on interactive elements like links/buttons
                 if (!e.target?.closest('a, button')) {
                     scrollToPane(clickedPane);
-                    // Update history when focusing a different pane
-                    history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
+                    // Update history when focusing a different pane (if URL is initialized)
+                    if (clickedPane.dataset.url) {
+                       history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
+                    }
                 }
             }
 
@@ -197,7 +210,6 @@ const title = data.title ?? slug;
             e.preventDefault();
             const targetUrl = normalizeUrl(a.href);
             
-            // Andy's behavior allows duplicates.
             openPane(a.href);
             // Update history to the newly opened pane
             history.pushState({ pane: targetUrl }, '', targetUrl);
@@ -218,7 +230,7 @@ const title = data.title ?? slug;
                 }
                 scrollToPane(panes[targetIndex]);
             } else {
-                // Fallback: reload if state is lost
+                // Fallback: reload if state is lost (e.g., navigating back to a non-note page)
                 window.location.reload();
             }
         });
@@ -245,6 +257,13 @@ const title = data.title ?? slug;
     }
   }
 
+  /* Define pane width variable at the root level for easier calculation */
+  :root {
+      /* Optimized width for readability (around 65-70ch) */
+      --pane-width: clamp(480px, 45vw, 720px);
+      --header-height: 64px;
+  }
+
   /* --- Pane Container --- */
   #pane-container {
     display: flex;
@@ -253,42 +272,65 @@ const title = data.title ?? slug;
     overflow-x: auto; 
     /* Position absolutely to cover the viewport below the header */
     position: absolute;
-    top: 64px; /* Assuming 64px header height */
+    top: var(--header-height);
     bottom: 0;
     left: 0;
     right: 0;
-    padding: 1.5rem 0;
-    /* Starting padding for the first pane */
-    padding-left: 5vw; 
+    padding: 1.5rem 0; /* Vertical padding for the container */
     scroll-behavior: smooth;
+
+    /* FIX: Center the panes using calculated padding based on the pane width variable */
+    /* This aligns the content correctly whether one or multiple panes are open */
+    padding-left: max(1.5rem, calc(50vw - var(--pane-width) / 2));
   }
+
+  /* FIX: Hide the horizontal scrollbar on the main container */
+  #pane-container::-webkit-scrollbar {
+      display: none;
+  }
+  #pane-container {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+  }
+
 
   /* --- Individual Pane Styling & Cascading Logic --- */
   .pane {
     flex-shrink: 0;
-    /* Responsive width: optimized for readability */
-    --pane-width: clamp(450px, 45vw, 700px);
     width: var(--pane-width); 
     
     background: var(--c-bg);
-    border-radius: var(--c-radius-md);
-    /* Strong shadows for depth */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1);
-    border: 1px solid var(--c-border);
     
     /* Height management */
-    height: calc(100vh - 64px - 3rem); /* Viewport - header - padding (1.5rem top/bottom) */
-    overflow-y: auto;
+    /* Viewport - header - container padding (1.5rem top/bottom) */
+    height: calc(100vh - var(--header-height) - 3rem); 
+
+    /* CRITICAL FIX: Clip content that overflows the pane boundary horizontally */
+    overflow: hidden; 
+
     position: relative;
     outline: none; /* Remove default focus outline */
     
     /* Cascading effect: Negative margin pulls the next pane closer */
-    /* Defines how much of the pane is visible when collapsed */
-    --collapsed-visible-width: 100px;
+    --collapsed-visible-width: 120px;
     margin-right: calc(var(--pane-width) * -1 + var(--collapsed-visible-width));
 
     /* Smooth transition for the sliding/collapsing effect */
-    transition: margin-right 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+    transition: margin-right 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+                box-shadow 0.3s ease, 
+                border-color 0.3s ease;
+    
+    /* Default styles for subsequent panes (cards) */
+    border-radius: var(--c-radius-md);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow when collapsed */
+    border: 1px solid var(--c-border);
+  }
+
+  /* FIX: Differentiate the first pane: Make it look like the main page content (no card styles) */
+  .pane:first-child {
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
   }
 
   /* When a pane is focused (clicked or scrolled to), expand it */
@@ -296,16 +338,35 @@ const title = data.title ?? slug;
       /* Expand the focused pane to have normal spacing */
       margin-right: 1.5rem; 
       border-color: var(--c-accent-border);
+      /* Stronger shadow when focused (for depth) */
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.1);
   }
+
+  /* Ensure the first pane doesn't get card styles even when focused */
+   .pane:first-child:focus-within {
+      box-shadow: none;
+      border: none;
+   }
 
   /* The last pane should always have spacing on the right edge of the screen */
   .pane:last-child {
-      margin-right: 5vw; 
+      /* Calculate padding required to center the last pane when focused */
+      margin-right: max(1.5rem, calc(50vw - var(--pane-width) / 2));
   }
   
+  /* --- Pane Content Wrapper (Handles internal scrolling) --- */
+  .pane .body-wrapper {
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      /* Optional: Style the vertical scrollbar inside the pane */
+      scrollbar-width: thin;
+      scrollbar-color: var(--c-border) transparent;
+  }
+
   /* --- Pane Content --- */
   .pane .body {
-    padding: 2rem 1.5rem;
+    padding: 2rem 1.5rem 4rem; /* Added bottom padding for readability */
     max-width: 65ch;
     margin: 0 auto;
   }
@@ -335,14 +396,17 @@ const title = data.title ?? slug;
     line-height: 1;
     color: var(--c-text-muted);
     transition: all 0.15s ease;
+    opacity: 0.7;
   }
   
   .pane .close:hover { 
     background: var(--c-bg-muted); 
     color: var(--c-text);
+    opacity: 1;
   }
 
   /* --- Typography (Existing styles, optimized) --- */
+  /* Keep your existing .prose styles here */
   .prose{font-size:1.05rem;line-height:1.7;color:var(--c-text)}
   .prose a{
     color:var(--c-accent) !important;
@@ -361,7 +425,6 @@ const title = data.title ?? slug;
   .prose h3{font-size:1.35rem;margin-top:2rem;margin-bottom:0.75rem;font-weight:600}
   .prose p{margin:1.25rem 0;line-height:1.75}
   
-  /* ... (Keep existing prose styles for ul, li, code, blockquote) ... */
   .prose ul,.prose ol{margin:1.25rem 0;padding-left:1.75rem}
   .prose li{margin:0.5rem 0}
   .prose code{
@@ -383,10 +446,10 @@ const title = data.title ?? slug;
   @media (max-width: 1023px) {
     /* Switch to optimized single column layout on mobile */
     #pane-container {
-      padding: 0;
+      padding: 0 !important;
       flex-direction: column;
       align-items: stretch;
-      top: 64px;
+      top: var(--header-height);
       overflow-x: hidden;
     }
     .pane {
@@ -394,10 +457,15 @@ const title = data.title ?? slug;
       --pane-width: 100vw;
       margin-right: 0 !important;
       height: auto;
-      min-height: calc(100vh - 64px);
-      box-shadow: none;
-      border: none;
-      border-radius: 0;
+      min-height: calc(100vh - var(--header-height));
+      box-shadow: none !important;
+      border: none !important;
+      border-radius: 0 !important;
+    }
+    /* Ensure the wrapper doesn't constrain height on mobile */
+    .pane .body-wrapper {
+        height: auto;
+        overflow-y: visible;
     }
     .pane .body {
         padding: 2rem 1.5rem;
