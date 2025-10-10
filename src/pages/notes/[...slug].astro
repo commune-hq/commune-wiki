@@ -4,7 +4,6 @@ import type { CollectionEntry } from 'astro:content';
 import Header from '../../components/Header.astro';
 import SearchModal from '../../components/SearchModal.astro';
 import Backlinks from '../../components/Backlinks.astro';
-// Import of PaneStack.astro is removed.
 import '../../styles/design-system.css';
 import '../../styles/notes.css';
 
@@ -55,7 +54,7 @@ const title = data.title ?? slug;
     </main>
 
     <script>
-      // --- Note Previews (Existing functionality) ---
+      // --- Note Previews (Keep existing functionality) ---
       const cache = new Map();
       function setupNotePreviews(){
         const show = (el, html, x, y) => {
@@ -93,7 +92,6 @@ const title = data.title ?? slug;
             const r = await fetch(url);
             const t = await r.text();
             const doc = new DOMParser().parseFromString(t, 'text/html');
-            // We look for the .pane .body in the fetched document
             const body = doc.querySelector('.pane .body') ?? doc.body;
             const paras = Array.from(body.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
             const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
@@ -107,12 +105,19 @@ const title = data.title ?? slug;
         });
       }
 
-      // --- Refined Pane Management Functionality ---
+      // --- Stabilized and Dynamic Pane Management ---
       function setupPanes(){
         const container = document.getElementById('pane-container');
         if (!container) return;
 
         const normalizeUrl = (url) => new URL(url, window.location.origin).pathname;
+
+        // FIX: Function to dynamically update container alignment (Centered vs Left-Aligned)
+        function updateContainerLayout() {
+            const paneCount = container.querySelectorAll('.pane').length;
+            // Add a class if more than one pane is present. CSS handles the alignment shift transition.
+            container.classList.toggle('multi-pane', paneCount > 1);
+        }
 
         async function openPane(url) {
             const normalizedUrl = normalizeUrl(url);
@@ -121,7 +126,6 @@ const title = data.title ?? slug;
             const res = await fetch(url, { headers: { 'Accept': 'text/html;charset=utf-8' } });
             const html = await res.text();
             const doc = new DOMParser().parseFromString(html, 'text/html');
-            // Updated selector to find the content within the fetched structure
             const fetchedPaneBody = doc.querySelector('.pane .body');
 
             if (!fetchedPaneBody) return;
@@ -132,7 +136,6 @@ const title = data.title ?? slug;
             pane.dataset.url = normalizedUrl;
             pane.setAttribute('tabindex', '-1'); // Make focusable
 
-            // FIX: Updated HTML structure to include the body-wrapper
             pane.innerHTML = `
                 <button class="close" aria-label="Close">×</button>
                 <div class="body-wrapper">
@@ -142,26 +145,35 @@ const title = data.title ?? slug;
 
             // 3. Attach close listener
             pane.querySelector('.close').addEventListener('click', (e) => {
-                e.stopPropagation(); // Prevent click from focusing the pane itself
+                // FIX: Stop propagation to prevent the container listener from trying to focus this pane.
+                e.stopPropagation(); 
                 closePane(pane);
             });
 
-            // 4. Append and scroll
+            // 4. Append, update state, and scroll
             container.appendChild(pane);
-            // FIX: Ensure immediate focus so the pane opens expanded, preventing the glitch
+            updateContainerLayout(); // Update alignment BEFORE scrolling
             scrollToPane(pane, true);
         }
 
-        // Added immediateFocus parameter to stabilize opening behavior
+        // FIX: Stabilized scrolling behavior
         function scrollToPane(pane, immediateFocus = false) {
-            // Focus the pane (activates :focus-within CSS expansion)
-            if (immediateFocus || document.activeElement !== pane) {
-                pane.focus(); 
+            const needsFocus = immediateFocus || document.activeElement !== pane;
+
+            if (needsFocus) {
+                // Ensure a clean focus transition by blurring the current active element first.
+                if (document.activeElement && document.activeElement !== pane && document.activeElement.blur) {
+                    document.activeElement.blur();
+                }
+                // Focus without scrolling immediately to prevent race conditions with CSS transitions.
+                // This ensures the pane expands (via :focus-within) before we calculate the scroll position.
+                pane.focus({ preventScroll: true }); 
             }
             
-            // Scroll the pane into view smoothly
-            // Use requestAnimationFrame for better synchronization with the CSS transition
+            // Handle the scroll after focus and layout shifts.
+            // requestAnimationFrame ensures the browser has processed the focus event and started transitions.
             requestAnimationFrame(() => {
+                // Align the start of the pane with the start of the scrollable area
                 pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
             });
         }
@@ -173,25 +185,33 @@ const title = data.title ?? slug;
             const previousPane = pane.previousElementSibling;
             pane.remove();
             
+            updateContainerLayout(); // Update alignment AFTER closing
+
             if (previousPane && previousPane.classList.contains('pane')) {
                 scrollToPane(previousPane);
                 // Update history using replaceState so closing doesn't add unnecessary history steps
-                history.replaceState({ pane: previousPane.dataset.url }, '', previousPane.dataset.url);
+                if (previousPane.dataset.url) {
+                    history.replaceState({ pane: previousPane.dataset.url }, '', previousPane.dataset.url);
+                }
             }
         }
 
         // Click interception (Delegated listener on the container)
         container.addEventListener('click', (e) => {
-            // Handle clicking on the pane background to focus it
+            // Handle clicking on the pane background/collapsed area to focus it
             const clickedPane = e.target?.closest?.('.pane');
+            
+            // FIX: Ensure we aren't clicking an interactive element (links, buttons) before refocusing.
+            // Close button clicks are stopped by stopPropagation() in their own listener.
+            if (e.target?.closest('a, button, input, textarea')) {
+                return;
+            }
+
             if (clickedPane && document.activeElement !== clickedPane) {
-                // Don't refocus if clicking on interactive elements like links/buttons
-                if (!e.target?.closest('a, button')) {
-                    scrollToPane(clickedPane);
-                    // Update history when focusing a different pane (if URL is initialized)
-                    if (clickedPane.dataset.url) {
-                       history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
-                    }
+                scrollToPane(clickedPane);
+                // Update history when focusing a different pane
+                if (clickedPane.dataset.url) {
+                    history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
                 }
             }
 
@@ -220,7 +240,6 @@ const title = data.title ?? slug;
             const targetUrl = normalizeUrl(window.location.href);
             
             const panes = Array.from(container.querySelectorAll('.pane'));
-            // Search reverse (rightmost instance if duplicates exist)
             const targetIndex = panes.findLastIndex(p => p.dataset.url === targetUrl);
 
             if (targetIndex !== -1) {
@@ -228,9 +247,10 @@ const title = data.title ?? slug;
                 for (let i = panes.length - 1; i > targetIndex; i--) {
                     panes[i].remove();
                 }
+                updateContainerLayout();
                 scrollToPane(panes[targetIndex]);
             } else {
-                // Fallback: reload if state is lost (e.g., navigating back to a non-note page)
+                // Fallback: reload if state is lost
                 window.location.reload();
             }
         });
@@ -239,7 +259,8 @@ const title = data.title ?? slug;
         const firstPane = container.querySelector('.pane');
         if (firstPane) {
             firstPane.dataset.url = normalizeUrl(window.location.href);
-            firstPane.focus();
+            firstPane.focus({ preventScroll: true });
+            updateContainerLayout(); // Initialize alignment state
         }
       }
 
@@ -257,11 +278,31 @@ const title = data.title ?? slug;
     }
   }
 
-  /* Define pane width variable at the root level for easier calculation */
+  /* Define variables and responsive adjustments */
   :root {
-      /* Optimized width for readability (around 65-70ch) */
-      --pane-width: clamp(480px, 45vw, 720px);
       --header-height: 64px;
+      --transition-timing: 0.35s cubic-bezier(0.22, 1, 0.36, 1);
+      --container-padding-h: 3vw; /* Horizontal padding when left-aligned */
+
+      /* Default (Large Desktop > 1600px): Optimized for readability, aims for ~3 panes */
+      --pane-width: clamp(500px, 40vw, 700px);
+      --collapsed-visible-width: 120px;
+  }
+
+  /* Medium Desktop (e.g., 1440px laptop) - Adjust for better multi-pane view, aims for ~2-3 panes */
+  @media (max-width: 1600px) {
+      :root {
+          --pane-width: clamp(480px, 45vw, 680px);
+          --collapsed-visible-width: 100px;
+      }
+  }
+
+  /* Small Desktop (e.g., 1280px) - Aims for ~2 panes */
+   @media (max-width: 1280px) {
+      :root {
+          --pane-width: clamp(450px, 50vw, 650px);
+          --collapsed-visible-width: 80px;
+      }
   }
 
   /* --- Pane Container --- */
@@ -279,12 +320,21 @@ const title = data.title ?? slug;
     padding: 1.5rem 0; /* Vertical padding for the container */
     scroll-behavior: smooth;
 
-    /* FIX: Center the panes using calculated padding based on the pane width variable */
-    /* This aligns the content correctly whether one or multiple panes are open */
-    padding-left: max(1.5rem, calc(50vw - var(--pane-width) / 2));
+    /* Default (Single Pane): Center the pane */
+    /* Calculates required padding to center the pane, ensuring a minimum standard padding */
+    padding-left: max(var(--container-padding-h), calc(50vw - var(--pane-width) / 2));
+    
+    /* FIX: Add transition for the alignment shift */
+    transition: padding-left var(--transition-timing);
   }
 
-  /* FIX: Hide the horizontal scrollbar on the main container */
+  /* FIX: When multiple panes are open (via JS class), shift alignment to the left */
+  #pane-container.multi-pane {
+    padding-left: var(--container-padding-h);
+  }
+
+
+  /* Hide the horizontal scrollbar on the main container */
   #pane-container::-webkit-scrollbar {
       display: none;
   }
@@ -302,21 +352,19 @@ const title = data.title ?? slug;
     background: var(--c-bg);
     
     /* Height management */
-    /* Viewport - header - container padding (1.5rem top/bottom) */
     height: calc(100vh - var(--header-height) - 3rem); 
 
-    /* CRITICAL FIX: Clip content that overflows the pane boundary horizontally */
+    /* Clip content that overflows the pane boundary horizontally */
     overflow: hidden; 
 
     position: relative;
     outline: none; /* Remove default focus outline */
     
     /* Cascading effect: Negative margin pulls the next pane closer */
-    --collapsed-visible-width: 120px;
     margin-right: calc(var(--pane-width) * -1 + var(--collapsed-visible-width));
 
     /* Smooth transition for the sliding/collapsing effect */
-    transition: margin-right 0.35s cubic-bezier(0.22, 1, 0.36, 1), 
+    transition: margin-right var(--transition-timing), 
                 box-shadow 0.3s ease, 
                 border-color 0.3s ease;
     
@@ -326,7 +374,7 @@ const title = data.title ?? slug;
     border: 1px solid var(--c-border);
   }
 
-  /* FIX: Differentiate the first pane: Make it look like the main page content (no card styles) */
+  /* Differentiate the first pane: Make it look like the main page content (no card styles) */
   .pane:first-child {
       box-shadow: none;
       border: none;
@@ -349,10 +397,17 @@ const title = data.title ?? slug;
    }
 
   /* The last pane should always have spacing on the right edge of the screen */
+  /* Default (Single Pane): Needs centering margin on the right */
   .pane:last-child {
-      /* Calculate padding required to center the last pane when focused */
-      margin-right: max(1.5rem, calc(50vw - var(--pane-width) / 2));
+      margin-right: max(var(--container-padding-h), calc(50vw - var(--pane-width) / 2));
+      transition: margin-right var(--transition-timing); /* Animate the margin shift */
   }
+
+  /* FIX: When multiple panes are open, the last pane only needs standard spacing */
+  #pane-container.multi-pane .pane:last-child {
+     margin-right: var(--container-padding-h);
+  }
+
   
   /* --- Pane Content Wrapper (Handles internal scrolling) --- */
   .pane .body-wrapper {
@@ -446,7 +501,7 @@ const title = data.title ?? slug;
   @media (max-width: 1023px) {
     /* Switch to optimized single column layout on mobile */
     #pane-container {
-      padding: 0 !important;
+      padding-left: 0 !important;
       flex-direction: column;
       align-items: stretch;
       top: var(--header-height);
