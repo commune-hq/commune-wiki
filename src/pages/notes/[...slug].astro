@@ -153,7 +153,12 @@ const title = data.title ?? slug;
             // 4. Append, update state, and scroll
             container.appendChild(pane);
             updateContainerLayout(); // Update alignment BEFORE scrolling
-            scrollToPane(pane, true);
+            
+            // FIX: Force immediate focus and expansion for newly opened panes
+            // Use setTimeout to ensure DOM is fully updated before focusing
+            setTimeout(() => {
+                scrollToPane(pane, true);
+            }, 10);
         }
 
         // FIX: Stabilized scrolling behavior
@@ -165,16 +170,17 @@ const title = data.title ?? slug;
                 if (document.activeElement && document.activeElement !== pane && document.activeElement.blur) {
                     document.activeElement.blur();
                 }
-                // Focus without scrolling immediately to prevent race conditions with CSS transitions.
-                // This ensures the pane expands (via :focus-within) before we calculate the scroll position.
-                pane.focus({ preventScroll: true }); 
+                // FIX: Focus normally (not preventScroll) to ensure :focus-within triggers immediately
+                pane.focus(); 
             }
             
-            // Handle the scroll after focus and layout shifts.
-            // requestAnimationFrame ensures the browser has processed the focus event and started transitions.
+            // Handle the scroll after focus.
+            // Double requestAnimationFrame ensures the browser has fully processed focus and CSS changes
             requestAnimationFrame(() => {
-                // Align the start of the pane with the start of the scrollable area
-                pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                requestAnimationFrame(() => {
+                    // Align the start of the pane with the start of the scrollable area
+                    pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+                });
             });
         }
 
@@ -261,7 +267,7 @@ const title = data.title ?? slug;
         const firstPane = container.querySelector('.pane');
         if (firstPane) {
             firstPane.dataset.url = normalizeUrl(window.location.href);
-            firstPane.focus({ preventScroll: true });
+            firstPane.focus(); // Focus to enable keyboard navigation
             updateContainerLayout(); // Initialize alignment state
         }
       }
@@ -423,9 +429,15 @@ const title = data.title ?? slug;
 
   /* --- Pane Content --- */
   .pane .body {
-    padding: 2rem 1.5rem 4rem; /* Added bottom padding for readability */
+    /* FIX: Add extra top padding to make room for floating close button */
+    padding: 3.5rem 1.5rem 4rem; 
     max-width: 65ch;
     margin: 0 auto;
+  }
+  
+  /* FIX: First pane doesn't have close button, so use normal padding */
+  .pane:first-child .body {
+    padding-top: 2rem;
   }
 
   /* --- Close Button --- */
@@ -436,11 +448,11 @@ const title = data.title ?? slug;
 
   .pane .close { 
     position: absolute;
-    top: 0.75rem;
-    right: 0.75rem;
+    top: 1rem;
+    right: 1rem;
     z-index: 10;
-    width: 28px;
-    height: 28px;
+    width: 32px;
+    height: 32px;
     background: var(--c-bg-soft);
     border: 1px solid var(--c-border);
     border-radius: 50%; /* Circular button */
@@ -449,11 +461,11 @@ const title = data.title ?? slug;
     align-items: center;
     justify-content: center;
     cursor: pointer;
-    font-size: 1.2rem; 
+    font-size: 1.3rem; 
     line-height: 1;
     color: var(--c-text-muted);
     transition: all 0.15s ease;
-    opacity: 0.7;
+    opacity: 0.8;
   }
   
   .pane .close:hover { 
