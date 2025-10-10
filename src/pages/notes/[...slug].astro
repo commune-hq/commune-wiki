@@ -161,28 +161,30 @@ const title = data.title ?? slug;
             container.appendChild(pane);
             updateContainerLayout(); // Update alignment BEFORE scrolling
             
-            // Scroll immediately; synchronization is handled within scrollToPane
-            scrollToPane(pane, true);
+            // FIX: Let browser paint new pane, then focus and scroll it
+            // setTimeout(0) ensures DOM has been painted before we try to focus
+            setTimeout(() => scrollToPane(pane, true), 0);
         }
 
         // FIX: Stabilized scrolling behavior synchronization
         function scrollToPane(pane, immediateFocus = false) {
-            const needsFocus = immediateFocus || document.activeElement !== pane;
-
-            if (needsFocus) {
-                // Ensure a clean focus transition by blurring the current active element first.
-                if (document.activeElement && document.activeElement !== pane && document.activeElement.blur) {
-                    document.activeElement.blur();
-                }
-                // FIX: Use preventScroll to separate focus (which triggers CSS expansion) from scrolling.
-                // This prevents the browser from auto-scrolling before the pane expands.
-                pane.focus({ preventScroll: true });
-            }
-            
-            // Handle the scroll after focus.
-            // Double requestAnimationFrame ensures the browser has processed the focus event
-            // and the CSS transition for expansion has begun before we calculate scroll position.
+            // FIX: Defer entire function to next frame so click cycle finishes first
+            // This prevents browser from handing focus back to the clicked link
             requestAnimationFrame(() => {
+                const needsFocus = immediateFocus || document.activeElement !== pane;
+
+                if (needsFocus) {
+                    // Ensure a clean focus transition by blurring the current active element first.
+                    if (document.activeElement && document.activeElement !== pane && document.activeElement.blur) {
+                        document.activeElement.blur();
+                    }
+                    // FIX: Use preventScroll to separate focus (which triggers CSS expansion) from scrolling.
+                    // This prevents the browser from auto-scrolling before the pane expands.
+                    pane.focus({ preventScroll: true });
+                }
+                
+                // Handle the scroll after focus.
+                // Additional requestAnimationFrame ensures the CSS :focus-within expansion has started
                 requestAnimationFrame(() => {
                     // Align the start of the pane with the start of the scrollable area
                     pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
@@ -334,6 +336,9 @@ const title = data.title ?? slug;
     padding: 1.5rem 0; /* Vertical padding for the container */
     scroll-behavior: smooth;
 
+    /* FIX: Ensure pane area sits above page content but below header */
+    z-index: var(--z-panes);
+
     /* Default (Single Pane): Center the pane */
     /* Calculates required padding to center the pane, ensuring a minimum standard padding */
     padding-left: max(var(--container-padding-h), calc(50vw - var(--pane-width) / 2));
@@ -375,6 +380,9 @@ const title = data.title ?? slug;
     position: relative;
     outline: none; /* Remove default focus outline */
     
+    /* FIX: Z-index layering ensures active pane always paints on top with negative margin stack */
+    z-index: 1; /* Baseline for all panes */
+    
     /* Cascading effect: Negative margin pulls the next pane closer */
     margin-right: calc(var(--pane-width) * -1 + var(--collapsed-visible-width));
 
@@ -387,6 +395,15 @@ const title = data.title ?? slug;
     border-radius: var(--c-radius-md);
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Softer shadow when collapsed */
     border: 1px solid var(--c-border);
+  }
+
+  /* FIX: Bump z-index on hover and focus to ensure proper paint order */
+  .pane:hover {
+    z-index: 2;
+  }
+  
+  .pane:focus-within {
+    z-index: 3;
   }
 
   /* Differentiate the first pane: Make it look like the main page content (no card styles) */
