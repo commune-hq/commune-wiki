@@ -159,6 +159,10 @@ const title = data.title ?? slug;
 
             // 4. Append, update state, and scroll
             container.appendChild(pane);
+            
+            // FIX: Force browser to recalculate styles immediately
+            // This ensures CSS variables and z-index are applied before we try to focus
+            void pane.offsetHeight;
             updateContainerLayout(); // Update alignment BEFORE scrolling
             
             // FIX: Let browser paint new pane, then focus and scroll it
@@ -365,8 +369,11 @@ const title = data.title ?? slug;
 
   /* --- Individual Pane Styling & Cascading Logic --- */
   .pane {
-    flex-shrink: 0;
-    width: var(--pane-width); 
+    /* FIX: flex-basis is more reliable than width for flex children */
+    flex: 0 0 var(--pane-width);
+    width: var(--pane-width);
+    min-width: 0;
+    max-width: var(--pane-width);
     
     background: var(--c-bg);
     
