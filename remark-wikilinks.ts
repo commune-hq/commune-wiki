@@ -14,6 +14,9 @@ import { globby } from 'globby';
 import matter from 'gray-matter';
 import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Cache for note metadata to avoid re-reading files
 let notesCache: Map<string, { slug: string; title: string; aliases: string[] }> | null = null;
@@ -22,7 +25,7 @@ let notesCache: Map<string, { slug: string; title: string; aliases: string[] }> 
  * Build a lookup table of title/alias → slug for WikiLink resolution
  */
 async function buildNotesLookup(): Promise<Map<string, string>> {
-	if (notesCache) {
+	if (notesCache && notesCache.size > 0) {
 		const lookup = new Map<string, string>();
 		for (const note of notesCache.values()) {
 			lookup.set(note.title.toLowerCase(), note.slug);
@@ -37,7 +40,8 @@ async function buildNotesLookup(): Promise<Map<string, string>> {
 	const lookup = new Map<string, string>();
 
 	try {
-		const noteFiles = await globby(['src/content/notes/**/*.{md,mdx}']);
+		const notesDir = path.join(process.cwd(), 'src/content/notes');
+		const noteFiles = await globby(['**/*.{md,mdx}'], { cwd: notesDir, absolute: true });
 
 		for (const file of noteFiles) {
 			const content = readFileSync(file, 'utf8');
@@ -66,11 +70,9 @@ async function buildNotesLookup(): Promise<Map<string, string>> {
 }
 
 function pathToSlug(filePath: string): string {
+	// Extract just the filename without extension
 	return path
-		.relative('src/content/notes', filePath)
-		.replace(/\\/g, '/')
-		.replace(/\.(md|mdx)$/, '')
-		.replace(/\/index$/, '');
+		.basename(filePath, path.extname(filePath));
 }
 
 /**
@@ -108,45 +110,46 @@ export default function remarkWikiLinks() {
 			let lastIndex = 0;
 			let match;
 
-			while ((match = wikiLinkRegex.exec(text)) !== null) {
-				const [fullMatch, linkText, displayText] = match;
-				const startIndex = match.index;
+		while ((match = wikiLinkRegex.exec(text)) !== null) {
+			const [fullMatch, linkText, displayText] = match;
+			const startIndex = match.index;
 
-				// Add text before the WikiLink
-				if (startIndex > lastIndex) {
-					newNodes.push({
-						type: 'text',
-						value: text.slice(lastIndex, startIndex),
-					});
-				}
-
-				// Resolve WikiLink to slug
-				const trimmedLinkText = linkText.trim();
-				const resolvedSlug = lookup.get(trimmedLinkText.toLowerCase());
-
-				if (resolvedSlug) {
-					// Create a proper link node
-					newNodes.push({
-						type: 'link',
-						url: `/notes/${resolvedSlug}/`,
-						children: [
-							{
-								type: 'text',
-								value: displayText?.trim() || trimmedLinkText,
-							},
-						],
-					});
-				} else {
-					// Leave unresolved WikiLinks as plain text (without brackets)
-					// These are notes that don't exist yet in the public wiki
-					newNodes.push({
-						type: 'text',
-						value: displayText?.trim() || trimmedLinkText,
-					});
-				}
-
-				lastIndex = startIndex + fullMatch.length;
+			// Add text before the WikiLink
+			if (startIndex > lastIndex) {
+				newNodes.push({
+					type: 'text',
+					value: text.slice(lastIndex, startIndex),
+				});
 			}
+
+			// Resolve WikiLink to slug
+			const trimmedLinkText = linkText.trim();
+			const lookupKey = trimmedLinkText.toLowerCase();
+			const resolvedSlug = lookup.get(lookupKey);
+
+			if (resolvedSlug) {
+				// Create a proper link node
+				newNodes.push({
+					type: 'link',
+					url: `/notes/${resolvedSlug}/`,
+					children: [
+						{
+							type: 'text',
+							value: displayText?.trim() || trimmedLinkText,
+						},
+					],
+				});
+			} else {
+				// Leave unresolved WikiLinks as plain text (without brackets)
+				// These are notes that don't exist yet in the public wiki
+				newNodes.push({
+					type: 'text',
+					value: displayText?.trim() || trimmedLinkText,
+				});
+			}
+
+			lastIndex = startIndex + fullMatch.length;
+		}
 
 			// Add remaining text
 			if (lastIndex < text.length) {
