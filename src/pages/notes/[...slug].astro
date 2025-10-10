@@ -429,15 +429,9 @@ const title = data.title ?? slug;
 
   /* --- Pane Content --- */
   .pane .body {
-    /* FIX: Add extra top padding to make room for floating close button */
-    padding: 3.5rem 1.5rem 4rem; 
+    padding: 1.5rem 1.5rem 4rem; 
     max-width: 65ch;
     margin: 0 auto;
-  }
-  
-  /* FIX: First pane doesn't have close button, so use normal padding */
-  .pane:first-child .body {
-    padding-top: 2rem;
   }
 
   /* --- Close Button --- */
@@ -489,7 +483,10 @@ const title = data.title ?? slug;
     background:var(--c-accent-soft);
     border-bottom-color:var(--c-accent-hover);
   }
-  .prose h1{font-size:2.4rem;line-height:1.2;margin:.2rem 0 1.5rem;font-weight:700}
+  .prose h1{font-size:2.4rem;line-height:1.2;margin:2.5rem 0 1.5rem;font-weight:700}
+  
+  /* First pane H1 doesn't need extra top margin (no close button) */
+  .pane:first-child .prose h1{margin-top:.2rem}
   .prose h2{font-size:1.75rem;margin-top:2.5rem;margin-bottom:1rem;font-weight:600}
   .prose h3{font-size:1.35rem;margin-top:2rem;margin-bottom:0.75rem;font-weight:600}
   .prose p{margin:1.25rem 0;line-height:1.75}
