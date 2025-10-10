@@ -39,14 +39,16 @@ const title = data.title ?? slug;
     <main id="pane-container"> 
         
         <div class="pane" data-url="" tabindex="-1"> 
+            <button class="close" aria-label="Close">×</button>
             <div class="body-wrapper">
                 <div class="body">
-                    <button class="close" aria-label="Close">×</button>
-                    <article class="prose">
-                        <h1>{title}</h1>
-                        <Content />
-                    </article>
-                    <Backlinks slug={`/notes/${slug}/`} title={title} />
+                    <div class="pane-content">
+                        <article class="prose">
+                            <h1>{title}</h1>
+                            <Content />
+                        </article>
+                        <Backlinks slug={`/notes/${slug}/`} title={title} />
+                    </div>
                 </div>
             </div>
         </div>
@@ -92,8 +94,9 @@ const title = data.title ?? slug;
             const r = await fetch(url);
             const t = await r.text();
             const doc = new DOMParser().parseFromString(t, 'text/html');
-            const body = doc.querySelector('.pane .body') ?? doc.body;
-            const paras = Array.from(body.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+            // FIX: Update selector to match new structure for previews
+            const content = doc.querySelector('.pane .pane-content') ?? doc.body;
+            const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
             const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
             cache.set(url, html);
             show(a, html, e.clientX, e.clientY);
@@ -112,7 +115,6 @@ const title = data.title ?? slug;
 
         const normalizeUrl = (url) => new URL(url, window.location.origin).pathname;
 
-        // FIX: Function to dynamically update container alignment (Centered vs Left-Aligned)
         function updateContainerLayout() {
             const paneCount = container.querySelectorAll('.pane').length;
             // Add a class if more than one pane is present. CSS handles the alignment shift transition.
@@ -126,9 +128,11 @@ const title = data.title ?? slug;
             const res = await fetch(url, { headers: { 'Accept': 'text/html;charset=utf-8' } });
             const html = await res.text();
             const doc = new DOMParser().parseFromString(html, 'text/html');
-            const fetchedPaneBody = doc.querySelector('.pane .body');
+            
+            // FIX: Select the specific content wrapper to avoid structural duplication (like fetching the close button)
+            const fetchedContent = doc.querySelector('.pane .pane-content');
 
-            if (!fetchedPaneBody) return;
+            if (!fetchedContent) return;
 
             // 2. Create new pane
             const pane = document.createElement('div');
@@ -136,18 +140,19 @@ const title = data.title ?? slug;
             pane.dataset.url = normalizedUrl;
             pane.setAttribute('tabindex', '-1'); // Make focusable
 
+            // FIX: Inject content into the new, correct HTML structure
             pane.innerHTML = `
+                <button class="close" aria-label="Close">×</button>
                 <div class="body-wrapper">
                     <div class="body">
-                        <button class="close" aria-label="Close">×</button>
-                        ${fetchedPaneBody.innerHTML}
+                        <div class="pane-content">${fetchedContent.innerHTML}</div>
                     </div>
                 </div>
             `;
 
             // 3. Attach close listener
             pane.querySelector('.close').addEventListener('click', (e) => {
-                // FIX: Stop propagation to prevent the container listener from trying to focus this pane.
+                // Stop propagation to prevent the container listener from trying to focus this pane.
                 e.stopPropagation(); 
                 closePane(pane);
             });
@@ -156,14 +161,11 @@ const title = data.title ?? slug;
             container.appendChild(pane);
             updateContainerLayout(); // Update alignment BEFORE scrolling
             
-            // FIX: Force immediate focus and expansion for newly opened panes
-            // Use setTimeout to ensure DOM is fully updated before focusing
-            setTimeout(() => {
-                scrollToPane(pane, true);
-            }, 10);
+            // Scroll immediately; synchronization is handled within scrollToPane
+            scrollToPane(pane, true);
         }
 
-        // FIX: Stabilized scrolling behavior
+        // FIX: Stabilized scrolling behavior synchronization
         function scrollToPane(pane, immediateFocus = false) {
             const needsFocus = immediateFocus || document.activeElement !== pane;
 
@@ -172,12 +174,14 @@ const title = data.title ?? slug;
                 if (document.activeElement && document.activeElement !== pane && document.activeElement.blur) {
                     document.activeElement.blur();
                 }
-                // FIX: Focus normally (not preventScroll) to ensure :focus-within triggers immediately
-                pane.focus(); 
+                // FIX: Use preventScroll to separate focus (which triggers CSS expansion) from scrolling.
+                // This prevents the browser from auto-scrolling before the pane expands.
+                pane.focus({ preventScroll: true });
             }
             
             // Handle the scroll after focus.
-            // Double requestAnimationFrame ensures the browser has fully processed focus and CSS changes
+            // Double requestAnimationFrame ensures the browser has processed the focus event
+            // and the CSS transition for expansion has begun before we calculate scroll position.
             requestAnimationFrame(() => {
                 requestAnimationFrame(() => {
                     // Align the start of the pane with the start of the scrollable area
@@ -206,7 +210,7 @@ const title = data.title ?? slug;
 
         // Click interception (Delegated listener on the container)
         container.addEventListener('click', (e) => {
-            // PRIORITY 1: Handle link clicks within content FIRST (before checking for interactive elements)
+            // PRIORITY 1: Handle link clicks within content FIRST
             const inContent = e.target?.closest?.('article.prose, aside.backlinks');
             if (inContent) {
                 const a = e.target?.closest?.('a[href^="/notes/"]');
@@ -230,7 +234,6 @@ const title = data.title ?? slug;
 
             // PRIORITY 2: Handle pane focusing (only if we didn't handle a content link)
             // Skip if clicking on interactive elements (buttons, inputs, etc.)
-            // Close button clicks are stopped by stopPropagation() in their own listener.
             if (e.target?.closest('a, button, input, textarea')) {
                 return;
             }
@@ -269,7 +272,8 @@ const title = data.title ?? slug;
         const firstPane = container.querySelector('.pane');
         if (firstPane) {
             firstPane.dataset.url = normalizeUrl(window.location.href);
-            firstPane.focus(); // Focus to enable keyboard navigation
+            // Initialize focus correctly using the stabilized method
+            scrollToPane(firstPane, true);
             updateContainerLayout(); // Initialize alignment state
         }
       }
@@ -334,11 +338,11 @@ const title = data.title ?? slug;
     /* Calculates required padding to center the pane, ensuring a minimum standard padding */
     padding-left: max(var(--container-padding-h), calc(50vw - var(--pane-width) / 2));
     
-    /* FIX: Add transition for the alignment shift */
+    /* Add transition for the alignment shift */
     transition: padding-left var(--transition-timing);
   }
 
-  /* FIX: When multiple panes are open (via JS class), shift alignment to the left */
+  /* When multiple panes are open (via JS class), shift alignment to the left */
   #pane-container.multi-pane {
     padding-left: var(--container-padding-h);
   }
@@ -367,6 +371,7 @@ const title = data.title ?? slug;
     /* Clip content that overflows the pane boundary horizontally */
     overflow: hidden; 
 
+    /* FIX: Set position relative so the absolute close button anchors to it */
     position: relative;
     outline: none; /* Remove default focus outline */
     
@@ -413,7 +418,7 @@ const title = data.title ?? slug;
       transition: margin-right var(--transition-timing); /* Animate the margin shift */
   }
 
-  /* FIX: When multiple panes are open, the last pane only needs standard spacing */
+  /* When multiple panes are open, the last pane only needs standard spacing */
   #pane-container.multi-pane .pane:last-child {
      margin-right: var(--container-padding-h);
   }
@@ -431,7 +436,8 @@ const title = data.title ?? slug;
 
   /* --- Pane Content --- */
   .pane .body {
-    padding: 1.5rem 1.5rem 4rem; 
+    /* FIX: Adjusted padding. Increased right padding slightly to ensure text doesn't run under the absolute button. */
+    padding: 2rem 2.5rem 4rem 1.5rem;
     max-width: 65ch;
     margin: 0 auto;
   }
@@ -443,10 +449,16 @@ const title = data.title ?? slug;
   }
 
   .pane .close { 
-    /* Float to the right, will sit next to H1 */
-    float: right;
-    margin-left: 1rem;
-    margin-top: 0.2rem; /* Align with H1 baseline */
+    /* FIX: Revert to absolute positioning, anchored to the .pane */
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10; /* Ensure it's above content */
+
+    /* Reset float styles that caused the issue */
+    float: none;
+    margin: 0;
+
     width: 32px;
     height: 32px;
     background: var(--c-bg-soft);
