@@ -1,4 +1,23 @@
 {
+  "/notes/accurate-transcription-requires-personal-training/": {
+    "slug": "/notes/accurate-transcription-requires-personal-training/",
+    "title": "Accurate transcription requires training the model on personal proper nouns and context",
+    "aliases": [],
+    "outbound": [
+      "/notes/personalized-ai-optimizes-communication-strategies/"
+    ],
+    "inbound": [
+      "/notes/local-systems-require-enhancement-dashboards/",
+      "/notes/personalized-ai-optimizes-communication-strategies/"
+    ],
+    "tags": [
+      "transcription",
+      "training",
+      "proper-nouns",
+      "context"
+    ],
+    "status": "seed"
+  },
   "/notes/atomic-notes/": {
     "slug": "/notes/atomic-notes/",
     "title": "Atomic Notes",
@@ -19,6 +38,27 @@
     "status": "growing",
     "updated": "2025-10-09T00:00:00.000Z"
   },
+  "/notes/business-management-is-context-management/": {
+    "slug": "/notes/business-management-is-context-management/",
+    "title": "Business management is fundamentally the management of expanding context",
+    "aliases": [],
+    "outbound": [
+      "/notes/intelligent-router-eliminates-project-management/",
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/"
+    ],
+    "inbound": [
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/intelligent-router-eliminates-project-management/"
+    ],
+    "tags": [
+      "business",
+      "context",
+      "scaling",
+      "management"
+    ],
+    "status": "seed"
+  },
   "/notes/commune/": {
     "slug": "/notes/commune/",
     "title": "Commune",
@@ -27,7 +67,14 @@
       "homebase"
     ],
     "outbound": [
-      "/notes/evergreen-notes/"
+      "/notes/intelligent-router-eliminates-project-management/",
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
+      "/notes/evergreen-notes/",
+      "/notes/router-tasteful-knowledge-integration/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
     "inbound": [
       "/notes/evergreen-notes/"
@@ -39,6 +86,25 @@
     ],
     "status": "seed",
     "updated": "2025-10-09T00:00:00.000Z"
+  },
+  "/notes/defaulting-to-no-protects-deep-work/": {
+    "slug": "/notes/defaulting-to-no-protects-deep-work/",
+    "title": "Defaulting to No for unscheduled calls protects deep work",
+    "aliases": [],
+    "outbound": [
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
+      "/notes/intelligent-router-eliminates-project-management/"
+    ],
+    "inbound": [
+      "/notes/commune/"
+    ],
+    "tags": [
+      "deep-work",
+      "boundaries",
+      "focus",
+      "productivity"
+    ],
+    "status": "seed"
   },
   "/notes/evergreen-notes/": {
     "slug": "/notes/evergreen-notes/",
@@ -62,5 +128,181 @@
     ],
     "status": "evergreen",
     "updated": "2025-10-09T00:00:00.000Z"
+  },
+  "/notes/externalizing-thought-builds-cognitive-scaffold/": {
+    "slug": "/notes/externalizing-thought-builds-cognitive-scaffold/",
+    "title": "Externalizing thought builds a cognitive scaffold for solving complex problems",
+    "aliases": [],
+    "outbound": [],
+    "inbound": [
+      "/notes/commune/",
+      "/notes/defaulting-to-no-protects-deep-work/"
+    ],
+    "tags": [
+      "cognition",
+      "practice",
+      "workbench",
+      "thinking"
+    ],
+    "status": "seed"
+  },
+  "/notes/integrated-data-analysis-unlocks-impossible-observations/": {
+    "slug": "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+    "title": "Integrated data analysis unlocks observations impossible in siloed systems",
+    "aliases": [],
+    "outbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/personalized-ai-optimizes-communication-strategies/"
+    ],
+    "inbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/commune/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/personalized-ai-optimizes-communication-strategies/"
+    ],
+    "tags": [
+      "data",
+      "integration",
+      "analysis",
+      "insights"
+    ],
+    "status": "seed"
+  },
+  "/notes/intelligent-router-eliminates-project-management/": {
+    "slug": "/notes/intelligent-router-eliminates-project-management/",
+    "title": "A sufficiently intelligent router eliminates the need for traditional project management",
+    "aliases": [],
+    "outbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/router-tasteful-knowledge-integration/"
+    ],
+    "inbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/commune/",
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/router-tasteful-knowledge-integration/"
+    ],
+    "tags": [
+      "router",
+      "project-management",
+      "automation",
+      "commune"
+    ],
+    "status": "seed"
+  },
+  "/notes/local-systems-require-enhancement-dashboards/": {
+    "slug": "/notes/local-systems-require-enhancement-dashboards/",
+    "title": "Local systems require Enhancement Dashboards for user-in-the-loop model training",
+    "aliases": [],
+    "outbound": [
+      "/notes/router-tasteful-knowledge-integration/",
+      "/notes/accurate-transcription-requires-personal-training/"
+    ],
+    "inbound": [],
+    "tags": [
+      "local-ai",
+      "training",
+      "ui",
+      "enhancement"
+    ],
+    "status": "seed"
+  },
+  "/notes/owning-data-infrastructure-eliminates-middleware/": {
+    "slug": "/notes/owning-data-infrastructure-eliminates-middleware/",
+    "title": "Owning your data infrastructure eliminates the need for specialized middleware and roles",
+    "aliases": [],
+    "outbound": [
+      "/notes/intelligent-router-eliminates-project-management/",
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/"
+    ],
+    "inbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/commune/"
+    ],
+    "tags": [
+      "infrastructure",
+      "data-ownership",
+      "automation",
+      "roles"
+    ],
+    "status": "seed"
+  },
+  "/notes/personalized-ai-optimizes-communication-strategies/": {
+    "slug": "/notes/personalized-ai-optimizes-communication-strategies/",
+    "title": "Deeply personalized AI can analyze relationships and optimize communication strategies",
+    "aliases": [],
+    "outbound": [
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/accurate-transcription-requires-personal-training/"
+    ],
+    "inbound": [
+      "/notes/accurate-transcription-requires-personal-training/",
+      "/notes/commune/",
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/"
+    ],
+    "tags": [
+      "ai",
+      "relationships",
+      "communication",
+      "personalization"
+    ],
+    "status": "seed"
+  },
+  "/notes/reality-as-spiritual-hide-and-seek-game/": {
+    "slug": "/notes/reality-as-spiritual-hide-and-seek-game/",
+    "title": "Reality is often framed in esoteric traditions as a spiritual game of hide-and-seek",
+    "aliases": [],
+    "outbound": [
+      "/notes/spiritual-paradox-hider-and-seeker-are-same/"
+    ],
+    "inbound": [
+      "/notes/spiritual-paradox-hider-and-seeker-are-same/"
+    ],
+    "tags": [
+      "esoteric",
+      "spirituality",
+      "consciousness",
+      "reality"
+    ],
+    "status": "seed"
+  },
+  "/notes/router-tasteful-knowledge-integration/": {
+    "slug": "/notes/router-tasteful-knowledge-integration/",
+    "title": "The router's primary challenge is updating knowledge bases tastefully and non-destructively",
+    "aliases": [],
+    "outbound": [
+      "/notes/intelligent-router-eliminates-project-management/"
+    ],
+    "inbound": [
+      "/notes/commune/",
+      "/notes/intelligent-router-eliminates-project-management/",
+      "/notes/local-systems-require-enhancement-dashboards/"
+    ],
+    "tags": [
+      "router",
+      "technical",
+      "knowledge-base",
+      "integration"
+    ],
+    "status": "seed"
+  },
+  "/notes/spiritual-paradox-hider-and-seeker-are-same/": {
+    "slug": "/notes/spiritual-paradox-hider-and-seeker-are-same/",
+    "title": "The ultimate paradox of the spiritual search is realizing the Hider and the Seeker are the same",
+    "aliases": [],
+    "outbound": [
+      "/notes/reality-as-spiritual-hide-and-seek-game/"
+    ],
+    "inbound": [
+      "/notes/reality-as-spiritual-hide-and-seek-game/"
+    ],
+    "tags": [
+      "paradox",
+      "spirituality",
+      "consciousness",
+      "non-duality"
+    ],
+    "status": "seed"
   }
 }
