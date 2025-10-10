@@ -56,3 +56,21 @@ This enables [[Owning your data infrastructure eliminates the need for specializ
 - [[Personal Knowledge Graphs]]
 - [[Build in Public]]
 
+## How This Works
+
+Digital gardens are cool, but managing them sucks. This is different.
+
+I don't manage folders or links here. I just dump thoughts into my phone. My private AI agents (running on my secure Commune box) handle the rest. They synthesize the messy inputs, connect the dots, organize the insights, and update this site—all while preserving my voice.
+
+Honestly? It's the best way ever invented to build a public knowledge base.
+
+## Want This For Yourself?
+
+I do bespoke, high-ticket installations for busy individuals who want this level of automation without the setup.
+
+**Starting at $10k for a complete system.**
+
+[Contact me about custom installations →](#inquire)
+
+*The core of Commune is open source. If this resonates, share these notes or [star the repo on GitHub](https://github.com/dmthepm/infra-home-server).*
+

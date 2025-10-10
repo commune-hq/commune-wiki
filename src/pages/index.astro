@@ -1,231 +1,424 @@
 ---
-import { getCollection } from 'astro:content';
+import { getEntry } from 'astro:content';
 import Header from '../components/Header.astro';
 import SearchModal from '../components/SearchModal.astro';
+import Backlinks from '../components/Backlinks.astro';
 import '../styles/design-system.css';
+import '../styles/notes.css';
 
-// Get all public notes
-const notes = await getCollection('notes', ({ data }) => data.visibility === 'public');
-
-// Sort by updated date (most recent first)
-const recentNotes = notes
-  .sort((a, b) => {
-    const dateA = a.data.updated ? new Date(a.data.updated) : new Date(0);
-    const dateB = b.data.updated ? new Date(b.data.updated) : new Date(0);
-    return dateB.getTime() - dateA.getTime();
-  })
-  .slice(0, 6);
-
-// Get stats
-const totalNotes = notes.length;
-const evergreenNotes = notes.filter(n => n.data.status === 'evergreen').length;
-const growingNotes = notes.filter(n => n.data.status === 'growing').length;
+const entry = await getEntry('notes', 'commune');
+if (!entry) throw new Error('Commune note not found');
+const { Content } = await entry.render();
+const { slug, data } = entry;
+const title = data.title ?? slug;
 ---
-<html><head>
-  <meta charset="utf-8">
-  <title>Commune | Local-First Knowledge OS</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Your private, agentic knowledge base running on a home server">
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{title}</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={data.summary || title} />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 </head>
 <body>
   <Header />
   <SearchModal />
-  <main class="wrap">
-    <section class="hero">
-      <h1>Welcome to Commune</h1>
-      <p class="tagline">Your private, local-first knowledge OS.</p>
-      <p class="desc">
-        Run AI agents on your own hardware. Capture notes privately. 
-        Publish selected thoughts to the world. Build in public while staying sovereign.
-      </p>
-      <div class="cta">
-        <a class="btn primary" href="/notes/">Explore {totalNotes} Notes →</a>
-        <a class="btn ghost" href="https://github.com/dmthepm/infra-home-server" target="_blank" rel="noopener">View on GitHub</a>
+  <main id="pane-container">
+    <div class="pane" data-url="/notes/commune/" tabindex="-1">
+      <button class="close" aria-label="Close" style="display:none">×</button>
+      <div class="body-wrapper">
+        <div class="body">
+          <article class="prose">
+            <h1>{title}</h1>
+            <Content />
+          </article>
+          <Backlinks slug={`/notes/${slug}/`} title={title} />
+        </div>
       </div>
-    </section>
-
-    <section class="stats">
-      <div class="stat">
-        <div class="num">{totalNotes}</div>
-        <div class="label">Total Notes</div>
-      </div>
-      <div class="stat">
-        <div class="num">{evergreenNotes}</div>
-        <div class="label">Evergreen</div>
-      </div>
-      <div class="stat">
-        <div class="num">{growingNotes}</div>
-        <div class="label">Growing</div>
-      </div>
-    </section>
-
-    <section class="recent">
-      <h2>Recent Notes</h2>
-      <div class="grid">
-        {recentNotes.map(note => (
-          <a href={`/notes/${note.slug}/`} class="note-card">
-            <h3>{note.data.title || note.slug}</h3>
-            {note.data.summary && <p class="summary">{note.data.summary}</p>}
-            {note.data.status && <span class={`badge ${note.data.status}`}>{note.data.status}</span>}
-          </a>
-        ))}
-      </div>
-    </section>
+    </div>
   </main>
-</body></html>
+  <script>
+    // --- Note Previews (Existing functionality) ---
+    const cache = new Map();
+    function setupNotePreviews(){
+      const show = (el, html, x, y) => {
+        let card = document.getElementById('note-hover');
+        if(!card){
+          card = document.createElement('div');
+          card.id = 'note-hover';
+          card.style.position = 'fixed';
+          card.style.maxWidth = '420px';
+          card.style.background = 'var(--c-bg)';
+          card.style.boxShadow = 'var(--c-shadow-xl)';
+          card.style.border = '1px solid var(--c-border)';
+          card.style.borderRadius = 'var(--c-radius-lg)';
+          card.style.padding = '1rem 1.2rem';
+          card.style.zIndex = 'var(--z-hover)';
+          card.style.pointerEvents = 'none';
+          document.body.appendChild(card);
+        }
+        card.innerHTML = html;
+        card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
+        card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
+        card.hidden = false;
+      };
+      const hide = () => {
+        const card = document.getElementById('note-hover');
+        if (card) card.hidden = true;
+      };
+      document.addEventListener('mouseover', async (e) => {
+        const a = e.target?.closest?.('a[href^="/notes/"]');
+        if(!a) return;
+        const url = a.getAttribute('href');
+        if(cache.has(url)){
+          show(a, cache.get(url), e.clientX, e.clientY);
+          return;
+        }
+        try{
+          const r = await fetch(url);
+          const t = await r.text();
+          const doc = new DOMParser().parseFromString(t, 'text/html');
+          const body = doc.querySelector('.pane .body') ?? doc.body;
+          const paras = Array.from(body.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+          const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
+          cache.set(url, html);
+          show(a, html, e.clientX, e.clientY);
+        }catch{}
+      });
+      document.addEventListener('mouseout', (e) => {
+        const a = e.target?.closest?.('a[href^="/notes/"]');
+        if(a) setTimeout(hide, 120);
+      });
+    }
 
-<style>
-  .wrap{
-    max-width:1100px;
-    margin:0 auto;
-    padding:var(--c-space-xl) var(--c-space-md) 5rem;
-  }
-  .hero{
-    padding:3rem 0 2rem;
-    text-align:center;
-  }
-  .hero h1{
-    font-size:3.5rem;
-    margin:.2rem 0 .8rem;
-    font-weight:800;
-    background:linear-gradient(135deg, var(--c-text) 0%, var(--c-accent) 100%);
-    -webkit-background-clip:text;
-    -webkit-text-fill-color:transparent;
-    background-clip:text;
-  }
-  .tagline{
-    font-size:1.35rem;
-    color:var(--c-text-muted);
-    margin:.5rem 0 1.5rem;
-  }
-  .desc{
-    max-width:600px;
-    margin:0 auto 2rem;
-    font-size:1.05rem;
-    line-height:1.7;
-    color:var(--c-text-accent);
-  }
-  .cta{
-    display:flex;
-    gap:1rem;
-    justify-content:center;
-    margin-top:2rem;
-  }
-  .btn{
-    display:inline-block;
-    border:2px solid var(--c-border);
-    padding:.75rem 1.5rem;
-    border-radius:var(--c-radius-md);
-    font-weight:600;
-    font-size:1.05rem;
-    cursor:pointer;
-    transition:all 0.2s ease;
-  }
-  .btn.primary{
-    background:var(--c-accent);
-    border-color:var(--c-accent);
-    color:#fff;
-  }
-  .btn.primary:hover{
-    background:var(--c-accent-hover);
-    border-color:var(--c-accent-hover);
-    transform:translateY(-2px);
-    box-shadow:var(--c-shadow-md);
-  }
-  .btn.ghost{
-    background:transparent;
-    color:var(--c-text);
-  }
-  .btn.ghost:hover{
-    border-color:var(--c-accent);
-    color:var(--c-accent);
+    // --- New Pane Management Functionality ---
+    function setupPanes(){
+      const container = document.getElementById('pane-container');
+      if (!container) return;
+
+      const normalizeUrl = (url) => new URL(url, window.location.origin).pathname;
+
+      function updateContainerLayout() {
+        const panes = container.querySelectorAll('.pane');
+        if (panes.length > 1) {
+          container.classList.add('multi-pane');
+        } else {
+          container.classList.remove('multi-pane');
+        }
+      }
+
+      async function openPane(url) {
+        const normalizedUrl = normalizeUrl(url);
+        const res = await fetch(url, { headers: { 'Accept': 'text/html;charset=utf-8' } });
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const fetchedPaneContent = doc.querySelector('.pane .pane-content');
+        if (!fetchedPaneContent) return;
+
+        const pane = document.createElement('div');
+        pane.className = 'pane';
+        pane.dataset.url = normalizedUrl;
+        pane.setAttribute('tabindex', '-1');
+        pane.innerHTML = `
+          <button class="close" aria-label="Close">×</button>
+          <div class="body-wrapper">
+            <div class="body">
+              <div class="pane-content">${fetchedPaneContent.innerHTML}</div>
+            </div>
+          </div>
+        `;
+        pane.querySelector('.close').addEventListener('click', (e) => {
+          e.stopPropagation();
+          closePane(pane);
+        });
+
+        container.appendChild(pane);
+        updateContainerLayout();
+        setTimeout(() => scrollToPane(pane, true), 0);
+      }
+
+      function scrollToPane(pane, immediateFocus = false) {
+        requestAnimationFrame(() => {
+          const active = document.activeElement;
+          if (immediateFocus || active !== pane) {
+            if (active && active !== pane && active.blur) active.blur();
+            pane.focus();
+          }
+          requestAnimationFrame(() => {
+            pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+          });
+        });
+      }
+
+      function closePane(pane) {
+        if (pane === container.firstElementChild) return;
+        const previousPane = pane.previousElementSibling;
+        pane.remove();
+        updateContainerLayout();
+        if (previousPane && previousPane.classList.contains('pane')) {
+          scrollToPane(previousPane);
+          history.replaceState({ pane: previousPane.dataset.url }, '', previousPane.dataset.url);
+        }
+      }
+
+      container.addEventListener('click', (e) => {
+        const clickedPane = e.target?.closest?.('.pane');
+        if (clickedPane && document.activeElement !== clickedPane) {
+          if (!e.target?.closest('a, button, input, textarea')) {
+            scrollToPane(clickedPane);
+            history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
+          }
+        }
+
+        const inContent = e.target?.closest?.('article.prose, aside.backlinks');
+        if (!inContent) return;
+        const a = e.target?.closest?.('a[href^="/notes/"]');
+        if (!a) return;
+        if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+        if (window.innerWidth < 1024) return;
+        e.preventDefault();
+        const targetUrl = normalizeUrl(a.href);
+        openPane(a.href);
+        history.pushState({ pane: targetUrl }, '', targetUrl);
+      });
+
+      addEventListener('popstate', () => {
+        const targetUrl = normalizeUrl(window.location.href);
+        const panes = Array.from(container.querySelectorAll('.pane'));
+        const targetIndex = panes.findLastIndex(p => p.dataset.url === targetUrl);
+        if (targetIndex !== -1) {
+          for (let i = panes.length - 1; i > targetIndex; i--) {
+            panes[i].remove();
+          }
+          updateContainerLayout();
+          scrollToPane(panes[targetIndex]);
+        } else {
+          window.location.reload();
+        }
+      });
+
+      const firstPane = container.querySelector('.pane');
+      if (firstPane) {
+        firstPane.dataset.url = normalizeUrl(window.location.href);
+        firstPane.focus();
+      }
+    }
+
+    setupNotePreviews();
+    setupPanes();
+  </script>
+</body>
+</html>
+
+<style is:global>
+  @media (min-width: 1024px) {
+    body {
+      overflow: hidden;
+    }
   }
 
-  .stats{
-    display:grid;
-    grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
-    gap:1.5rem;
-    margin:3rem 0;
-    padding:2rem;
+  :root {
+    --pane-width: clamp(480px, 45vw, 700px);
+    --collapsed-visible-width: 100px;
+    --transition-timing: cubic-bezier(0.22, 1, 0.36, 1);
+    --container-padding-h: 5vw;
+    --header-height: 64px;
+  }
+
+  #pane-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-x: auto;
+    position: absolute;
+    top: 64px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 1.5rem 0;
+    padding-left: max(var(--container-padding-h), calc(50vw - var(--pane-width) / 2));
+    scroll-behavior: smooth;
+    z-index: var(--z-panes);
+    transition: padding-left 0.4s var(--transition-timing);
+  }
+
+  #pane-container.multi-pane {
+    padding-left: var(--container-padding-h);
+  }
+
+  #pane-container::-webkit-scrollbar {
+    display: none;
+  }
+  #pane-container {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .pane {
+    flex: 0 0 var(--pane-width);
+    min-width: 0;
+    max-width: var(--pane-width);
+    width: var(--pane-width);
+    background: var(--c-bg);
+    border-radius: var(--c-radius-md);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2), 0 4px 10px rgba(0, 0, 0, 0.1);
+    border: 1px solid var(--c-border);
+    height: calc(100vh - var(--header-height) - 3rem);
+    overflow: hidden;
+    position: relative;
+    outline: none;
+    margin-right: calc(var(--pane-width) * -1 + var(--collapsed-visible-width));
+    transition: margin-right 0.35s var(--transition-timing);
+    z-index: 1;
+  }
+
+  .pane:hover {
+    z-index: 2;
+  }
+
+  .pane:focus-within {
+    margin-right: 1.5rem;
+    border-color: var(--c-accent-border);
+    z-index: 3;
+  }
+
+  .pane:last-child {
+    margin-right: 5vw;
+  }
+
+  .pane:first-child {
+    box-shadow: none;
+    border: none;
+    border-radius: 0;
+  }
+
+  .pane:first-child .close {
+    display: none;
+  }
+
+  .pane .body-wrapper {
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  /* Custom scrollbar styling for dark theme */
+  .pane .body-wrapper::-webkit-scrollbar {
+    width: 8px;
+  }
+  .pane .body-wrapper::-webkit-scrollbar-track {
+    background: var(--c-bg-soft);
+  }
+  .pane .body-wrapper::-webkit-scrollbar-thumb {
+    background: var(--c-border);
+    border-radius: 4px;
+  }
+  .pane .body-wrapper::-webkit-scrollbar-thumb:hover {
+    background: var(--c-text-muted);
+  }
+  .pane .body-wrapper {
+    scrollbar-width: thin;
+    scrollbar-color: var(--c-border) var(--c-bg-soft);
+  }
+
+  .pane .body {
+    padding: 2rem 1.5rem;
+    max-width: 70ch;
+    margin: 0 auto;
+  }
+
+  .pane .pane-content {
+    /* Wrapper for dynamically loaded content */
+  }
+
+  .pane .close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    z-index: 10;
+    width: 28px;
+    height: 28px;
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
+    border-radius: 50%;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.2rem;
+    line-height: 1;
+    color: var(--c-text-muted);
+    transition: all 0.15s ease;
+    opacity: 0.7;
+  }
+
+  .pane .close:hover {
+    background: var(--c-bg-muted);
+    color: var(--c-text);
+    opacity: 1;
+  }
+
+  .prose{font-size:1.05rem;line-height:1.7;color:var(--c-text)}
+  .prose a{ 
+    color:var(--c-accent) !important; 
+    text-decoration:none; 
+    border-bottom:2px solid var(--c-accent); 
+    padding-bottom:1px; 
+    transition:all 0.15s ease; 
+  }
+  .prose a:hover{ 
+    color:var(--c-accent-hover) !important; 
+    background:var(--c-accent-soft); 
+    border-bottom-color:var(--c-accent-hover); 
+  }
+  .prose h1{font-size:2.4rem;line-height:1.2;margin:.2rem 0 1.5rem;font-weight:700}
+  .prose h2{font-size:1.75rem;margin-top:2.5rem;margin-bottom:1rem;font-weight:600}
+  .prose h3{font-size:1.35rem;margin-top:2rem;margin-bottom:0.75rem;font-weight:600}
+  .prose p{margin:1.25rem 0;line-height:1.75}
+  .prose ul,.prose ol{margin:1.25rem 0;padding-left:1.75rem}
+  .prose li{margin:0.5rem 0}
+  .prose code{
     background:var(--c-bg-soft);
-    border:1px solid var(--c-border);
-    border-radius:var(--c-radius-lg);
+    padding:0.2rem 0.4rem;
+    border-radius:var(--c-radius-sm);
+    font-size:0.9em;
   }
-  .stat{
-    text-align:center;
-  }
-  .stat .num{
-    font-size:2.5rem;
-    font-weight:700;
-    color:var(--c-accent);
-    margin-bottom:.25rem;
-  }
-  .stat .label{
-    font-size:.9rem;
+  .prose blockquote{
+    border-left:3px solid var(--c-border);
+    padding-left:1rem;
+    margin:1.5rem 0;
     color:var(--c-text-muted);
-    text-transform:uppercase;
-    letter-spacing:.5px;
+    font-style:italic;
   }
 
-  .recent{
-    margin-top:4rem;
-  }
-  .recent h2{
-    font-size:2rem;
-    font-weight:700;
-    margin-bottom:1.5rem;
-  }
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fill, minmax(320px,1fr));
-    gap:1.25rem;
-  }
-  .note-card{
-    display:block;
-    border:1px solid var(--c-border);
-    border-radius:var(--c-radius-md);
-    padding:1.5rem;
-    background:var(--c-bg);
-    transition:all 0.2s ease;
-    cursor:pointer;
-    position:relative;
-  }
-  .note-card:hover{
-    border-color:var(--c-accent);
-    box-shadow:var(--c-shadow-md);
-    transform:translateY(-3px);
-  }
-  .note-card h3{
-    font-size:1.2rem;
-    margin:0 0 .5rem;
-    color:var(--c-text);
-    font-weight:600;
-  }
-  .note-card .summary{
-    font-size:.95rem;
-    color:var(--c-text-muted);
-    line-height:1.6;
-    margin:.5rem 0 1rem;
-  }
-  .badge{
-    display:inline-block;
-    padding:.3rem .65rem;
-    border-radius:var(--c-radius-sm);
-    font-size:.75rem;
-    font-weight:600;
-    text-transform:uppercase;
-    letter-spacing:.3px;
-  }
-  .badge.evergreen{
-    background:rgba(34,197,94,0.15);
-    color:rgb(34,197,94);
-  }
-  .badge.growing{
-    background:rgba(251,146,60,0.15);
-    color:rgb(251,146,60);
-  }
-  .badge.seed{
-    background:var(--c-accent-soft);
-    color:var(--c-accent);
+  @media (max-width: 1023px) {
+    #pane-container {
+      padding: 0;
+      flex-direction: column;
+      align-items: stretch;
+      top: 64px;
+      overflow-x: hidden;
+    }
+    .pane {
+      width: 100vw;
+      --pane-width: 100vw;
+      margin-right: 0 !important;
+      height: auto;
+      min-height: calc(100vh - 64px);
+      box-shadow: none;
+      border: none;
+      border-radius: 0;
+    }
+    .pane .body-wrapper {
+      height: auto;
+      overflow-y: visible;
+    }
+    .pane .body {
+      padding: 2rem 1.5rem;
+    }
+    .pane:not(:first-child) {
+      display: none;
+    }
   }
 </style>

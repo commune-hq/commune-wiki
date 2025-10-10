@@ -1,19 +1,8 @@
 ---
-const links = [
-  { href: '/notes/', label: 'Notes' },
-  { href: 'https://github.com/dmthepm/infra-home-server', label: 'GitHub', external: true },
-];
 ---
 <header class="commune-header">
   <div class="wrap">
-    <a class="brand" href="/">Commune</a>
-    <nav>
-      {links.map(l => (
-        <a href={l.href} target={l.external ? '_blank' : undefined} rel={l.external ? 'noopener' : undefined}>
-          {l.label}
-        </a>
-      ))}
-    </nav>
+    <a class="brand" href="/">Devon</a>
     <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
       <span class="sun">☀️</span>
       <span class="moon">🌙</span>
@@ -40,7 +29,7 @@ const links = [
     gap:1rem;
     justify-content:space-between;
     padding:1rem 1.25rem;
-    max-width:1200px;
+    max-width:clamp(480px, 45vw, 700px);
     margin:0 auto;
   }
   .brand{
