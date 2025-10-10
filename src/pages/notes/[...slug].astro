@@ -198,15 +198,36 @@ const title = data.title ?? slug;
 
         // Click interception (Delegated listener on the container)
         container.addEventListener('click', (e) => {
-            // Handle clicking on the pane background/collapsed area to focus it
-            const clickedPane = e.target?.closest?.('.pane');
-            
-            // FIX: Ensure we aren't clicking an interactive element (links, buttons) before refocusing.
+            // PRIORITY 1: Handle link clicks within content FIRST (before checking for interactive elements)
+            const inContent = e.target?.closest?.('article.prose, aside.backlinks');
+            if (inContent) {
+                const a = e.target?.closest?.('a[href^="/notes/"]');
+                if (a) {
+                    // Don't intercept if modifier keys are pressed
+                    if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+                    
+                    // On desktop (>= 1024px), intercept. On mobile, allow normal navigation.
+                    if (window.innerWidth < 1024) return; 
+
+                    // Intercept the link and open in a pane!
+                    e.preventDefault();
+                    const targetUrl = normalizeUrl(a.href);
+                    
+                    openPane(a.href);
+                    // Update history to the newly opened pane
+                    history.pushState({ pane: targetUrl }, '', targetUrl);
+                    return; // Exit after handling link
+                }
+            }
+
+            // PRIORITY 2: Handle pane focusing (only if we didn't handle a content link)
+            // Skip if clicking on interactive elements (buttons, inputs, etc.)
             // Close button clicks are stopped by stopPropagation() in their own listener.
             if (e.target?.closest('a, button, input, textarea')) {
                 return;
             }
 
+            const clickedPane = e.target?.closest?.('.pane');
             if (clickedPane && document.activeElement !== clickedPane) {
                 scrollToPane(clickedPane);
                 // Update history when focusing a different pane
@@ -214,25 +235,6 @@ const title = data.title ?? slug;
                     history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
                 }
             }
-
-            // Handle link clicks within content
-            const inContent = e.target?.closest?.('article.prose, aside.backlinks');
-            if (!inContent) return;
-
-            const a = e.target?.closest?.('a[href^="/notes/"]');
-            if (!a) return;
-            
-            if (e.ctrlKey || e.metaKey || e.shiftKey) return;
-            
-            // On desktop (>= 1024px), intercept. On mobile, allow normal navigation.
-            if (window.innerWidth < 1024) return; 
-
-            e.preventDefault();
-            const targetUrl = normalizeUrl(a.href);
-            
-            openPane(a.href);
-            // Update history to the newly opened pane
-            history.pushState({ pane: targetUrl }, '', targetUrl);
         });
 
         // Handle popstate (browser history navigation)
