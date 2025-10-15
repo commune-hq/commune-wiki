@@ -4,6 +4,7 @@ import type { CollectionEntry } from 'astro:content';
 import Header from '../../components/Header.astro';
 import SearchModal from '../../components/SearchModal.astro';
 import Backlinks from '../../components/Backlinks.astro';
+import PlausibleScript from '../../components/PlausibleScript.astro';
 import '../../styles/design-system.css';
 import '../../styles/notes.css';
 
@@ -31,6 +32,7 @@ const title = data.title ?? slug;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="description" content={data.summary || title} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <PlausibleScript domain="devonmeadows.com" />
   </head>
   <body>
     <Header />
