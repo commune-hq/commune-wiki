@@ -1,6 +1,8 @@
-# Commune Publish - Devon's Public Wiki
+# Devon's Personal Wiki (Powered by Commune)
 
-A personal wiki built with Astro, featuring Andy Matuschak-style sliding panes, WikiLinks, backlinks, and hover previews.
+**Devon Meadows' personal knowledge base** built with Astro, featuring Andy Matuschak-style sliding panes, WikiLinks, backlinks, and hover previews.
+
+**Important Note**: This is NOT the official Commune product wiki. This is Devon's personal implementation showcasing Commune's capabilities for individual knowledge management. Commune is the underlying system that powers this wiki.
 
 ## Architecture
 
