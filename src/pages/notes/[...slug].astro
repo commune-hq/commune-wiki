@@ -99,31 +99,35 @@ const title = data.title ?? slug;
             }
           };
 
-          document.addEventListener('mouseover', async (e) => {
+          // Use mouseenter for immediate response, mouseover for compatibility
+          document.addEventListener('mouseenter', async (e) => {
             try {
               const a = e.target?.closest?.('a[href^="/notes/"]');
               if(!a) return;
               const url = a.getAttribute('href');
-              if(cache.has(url)){ 
-                show(a, cache.get(url), e.clientX, e.clientY); 
-                return; 
+              if(cache.has(url)){
+                show(a, cache.get(url), e.clientX, e.clientY);
+                return;
               }
-              
-              // Add timeout for fetch requests
+
+              // Show immediate loading state
+              show(a, '<div style="font-weight:600;color:var(--c-text-muted)">Loading preview...</div>', e.clientX, e.clientY);
+
+              // Reduced timeout for faster response
               const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 5000);
-              
-              const r = await fetch(url, { 
+              const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+              const r = await fetch(url, {
                 signal: controller.signal,
                 headers: { 'Accept': 'text/html' }
               });
               clearTimeout(timeoutId);
-              
+
               if (!r.ok) {
-                console.warn(`Failed to fetch preview for ${url}: ${r.status}`);
+                show(a, '<div style="color:var(--c-text-muted)">Preview unavailable</div>', e.clientX, e.clientY);
                 return;
               }
-              
+
               const t = await r.text();
               const doc = new DOMParser().parseFromString(t, 'text/html');
               const content = doc.querySelector('.pane .pane-content') ?? doc.body;
@@ -134,19 +138,20 @@ const title = data.title ?? slug;
               show(a, html, e.clientX, e.clientY);
             } catch (error) {
               if (error.name !== 'AbortError') {
-                console.error('Error in mouseover handler:', error);
+                show(a, '<div style="color:var(--c-text-muted)">Preview failed</div>', e.clientX, e.clientY);
               }
             }
-          });
+          }, true); // Use capture phase for faster response
           
-          document.addEventListener('mouseout', (e) => {
+          // Use mouseleave for better pairing with mouseenter
+          document.addEventListener('mouseleave', (e) => {
             try {
               const a = e.target?.closest?.('a[href^="/notes/"]');
-              if(a) setTimeout(hide, 120);
+              if(a) setTimeout(hide, 100); // Slightly faster hide
             } catch (error) {
-              console.error('Error in mouseout handler:', error);
+              console.error('Error in mouseleave handler:', error);
             }
-          });
+          }, true);
           
           console.log('Note previews setup completed');
         } catch (error) {
