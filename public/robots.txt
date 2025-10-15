@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://devonmeadows.com/sitemap.xml
+
+# Crawl-delay for respectful indexing
+Crawl-delay: 1

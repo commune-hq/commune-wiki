@@ -1,5 +1,6 @@
 import { defineConfig } from 'astro/config';
 import tailwind from '@astrojs/tailwind';
+import sitemap from '@astrojs/sitemap';
 import backlinks from './astro.backlinks.ts';
 import remarkWikiLinks from './remark-wikilinks.ts';
 
@@ -15,6 +16,11 @@ export default defineConfig({
 			applyBaseStyles: false,
 		}),
 		backlinks(),
+		sitemap({
+			changefreq: 'weekly',
+			priority: 0.7,
+			lastmod: new Date(),
+		}),
 	],
 });
 
