@@ -35,13 +35,51 @@
     ],
     "inbound": [
       "/notes/associative-linking-over-hierarchies/",
-      "/notes/build-in-public/",
-      "/notes/evergreen-notes/"
+      "/notes/build-in-public/"
     ],
     "tags": [
       "note-taking",
       "knowledge-management",
       "digital-gardens"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/ask-the-brain/": {
+    "slug": "/notes/ask-the-brain/",
+    "title": "Ask the Brain",
+    "aliases": [
+      "question answering",
+      "brain search",
+      "cited answers"
+    ],
+    "outbound": [
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/box-first-earns-trust/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/notes-beat-posts-for-showing-progress/"
+    ],
+    "inbound": [
+      "/notes/atomic-notes/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/box-first-earns-trust/",
+      "/notes/business-management-is-context-management/",
+      "/notes/commune/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/evergreen-notes/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/zen-practice-protects-attention/"
+    ],
+    "tags": [
+      "search",
+      "ai",
+      "answers",
+      "citations"
     ],
     "status": "evergreen",
     "updated": "2025-10-15T00:00:00.000Z"
@@ -62,8 +100,13 @@
     "inbound": [
       "/notes/andy-matuschaks-notes/",
       "/notes/atomic-notes/",
+      "/notes/business-management-is-context-management/",
       "/notes/evergreen-notes/",
-      "/notes/personal-knowledge-graphs/"
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/titles-are-takeaways-not-labels/"
     ],
     "tags": [
       "knowledge-management",
@@ -82,9 +125,14 @@
       "atomic-notes"
     ],
     "outbound": [
+      "/notes/associative-linking-over-hierarchies/",
       "/notes/evergreen-notes/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/titles-are-takeaways-not-labels/",
       "/notes/personal-knowledge-graphs/",
-      "/notes/associative-linking-over-hierarchies/"
+      "/notes/ask-the-brain/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/build-in-public/"
     ],
     "inbound": [
       "/notes/evergreen-notes/"
@@ -95,6 +143,76 @@
     ],
     "status": "growing",
     "updated": "2025-10-09T00:00:00.000Z"
+  },
+  "/notes/auto-essay-closes-loop-each-week/": {
+    "slug": "/notes/auto-essay-closes-loop-each-week/",
+    "title": "Auto-essay closes the loop each week",
+    "aliases": [
+      "weekly essay",
+      "auto synthesis",
+      "weekly wrap"
+    ],
+    "outbound": [
+      "/notes/ledger-replaces-feeds/",
+      "/notes/ask-the-brain/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/titles-are-takeaways-not-labels/"
+    ],
+    "inbound": [
+      "/notes/commune/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/"
+    ],
+    "tags": [
+      "writing",
+      "automation",
+      "synthesis",
+      "weekly-review"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/box-first-earns-trust/": {
+    "slug": "/notes/box-first-earns-trust/",
+    "title": "Box-first earns trust",
+    "aliases": [
+      "self-hosting",
+      "privacy-first",
+      "home server"
+    ],
+    "outbound": [
+      "/notes/ledger-replaces-feeds/",
+      "/notes/ask-the-brain/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/local-first-software/"
+    ],
+    "inbound": [
+      "/notes/ask-the-brain/",
+      "/notes/business-management-is-context-management/",
+      "/notes/commune/",
+      "/notes/evergreen-notes/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/zen-practice-protects-attention/"
+    ],
+    "tags": [
+      "privacy",
+      "local-first",
+      "trust",
+      "infrastructure"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/build-in-public/": {
     "slug": "/notes/build-in-public/",
@@ -111,7 +229,9 @@
     ],
     "inbound": [
       "/notes/andy-matuschaks-notes/",
-      "/notes/commune/"
+      "/notes/atomic-notes/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
       "transparency",
@@ -127,9 +247,11 @@
     "title": "Business management is fundamentally the management of expanding context",
     "aliases": [],
     "outbound": [
-      "/notes/intelligent-router-eliminates-project-management/",
-      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
-      "/notes/owning-data-infrastructure-eliminates-middleware/"
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/ask-the-brain/",
+      "/notes/box-first-earns-trust/",
+      "/notes/people-pay-to-follow-working-mind/"
     ],
     "inbound": [
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
@@ -145,30 +267,36 @@
   },
   "/notes/commune/": {
     "slug": "/notes/commune/",
-    "title": "Commune",
+    "title": "Devon's working brain in public",
     "aliases": [
       "commune",
-      "homebase"
+      "home",
+      "devon meadows"
     ],
     "outbound": [
-      "/notes/evergreen-notes/",
-      "/notes/local-first-software/",
-      "/notes/personal-knowledge-graphs/",
-      "/notes/build-in-public/"
+      "/notes/voice-in-approvals-out/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/ask-the-brain/",
+      "/notes/box-first-earns-trust/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/auto-essay-closes-loop-each-week/"
     ],
     "inbound": [
       "/notes/andy-matuschaks-notes/",
       "/notes/build-in-public/",
-      "/notes/evergreen-notes/",
       "/notes/local-first-software/"
     ],
     "tags": [
-      "projects",
-      "local-first",
-      "ai"
+      "home",
+      "navigation",
+      "working-in-public"
     ],
-    "status": "seed",
-    "updated": "2025-10-09T00:00:00.000Z"
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/defaulting-to-no-protects-deep-work/": {
     "slug": "/notes/defaulting-to-no-protects-deep-work/",
@@ -187,6 +315,73 @@
     ],
     "status": "seed"
   },
+  "/notes/depth-3-free-is-honest-gating/": {
+    "slug": "/notes/depth-3-free-is-honest-gating/",
+    "title": "Depth-3 free is honest gating",
+    "aliases": [
+      "paywall",
+      "free tier",
+      "access control"
+    ],
+    "outbound": [
+      "/notes/ask-the-brain/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/people-pay-to-follow-working-mind/"
+    ],
+    "inbound": [
+      "/notes/commune/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/"
+    ],
+    "tags": [
+      "monetization",
+      "access",
+      "transparency",
+      "design"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/discovery-runs-on-time-follows-and-why/": {
+    "slug": "/notes/discovery-runs-on-time-follows-and-why/",
+    "title": "Discovery runs on time, follows, and why",
+    "aliases": [
+      "discovery",
+      "anti-algorithm",
+      "intentional browsing"
+    ],
+    "outbound": [
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/voice-in-approvals-out/"
+    ],
+    "inbound": [
+      "/notes/box-first-earns-trust/",
+      "/notes/commune/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/zen-practice-protects-attention/"
+    ],
+    "tags": [
+      "discovery",
+      "algorithms",
+      "attention",
+      "intent"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
   "/notes/evergreen-notes/": {
     "slug": "/notes/evergreen-notes/",
     "title": "Evergreen Notes",
@@ -197,17 +392,21 @@
     "outbound": [
       "/notes/atomic-notes/",
       "/notes/associative-linking-over-hierarchies/",
-      "/notes/commune/",
-      "/notes/andy-matuschaks-notes/",
-      "/notes/personal-knowledge-graphs/"
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/ask-the-brain/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/box-first-earns-trust/"
     ],
     "inbound": [
       "/notes/andy-matuschaks-notes/",
       "/notes/associative-linking-over-hierarchies/",
       "/notes/atomic-notes/",
       "/notes/build-in-public/",
-      "/notes/commune/",
-      "/notes/personal-knowledge-graphs/"
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/titles-are-takeaways-not-labels/"
     ],
     "tags": [
       "writing",
@@ -235,6 +434,39 @@
     ],
     "status": "seed"
   },
+  "/notes/follow-and-collect-keep-signal-not-hype/": {
+    "slug": "/notes/follow-and-collect-keep-signal-not-hype/",
+    "title": "Follow and Collect keep signal, not hype",
+    "aliases": [
+      "follow collect",
+      "social features",
+      "curation"
+    ],
+    "outbound": [
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/associative-linking-over-hierarchies/"
+    ],
+    "inbound": [
+      "/notes/commune/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/"
+    ],
+    "tags": [
+      "social",
+      "curation",
+      "signal",
+      "taste"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
   "/notes/integrated-data-analysis-unlocks-impossible-observations/": {
     "slug": "/notes/integrated-data-analysis-unlocks-impossible-observations/",
     "title": "Integrated data analysis unlocks observations impossible in siloed systems",
@@ -244,7 +476,6 @@
       "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
     "inbound": [
-      "/notes/business-management-is-context-management/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
@@ -266,7 +497,6 @@
       "/notes/manual-file-management-is-high-friction-waste/"
     ],
     "inbound": [
-      "/notes/business-management-is-context-management/",
       "/notes/defaulting-to-no-protects-deep-work/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/router-tasteful-knowledge-integration/"
@@ -278,6 +508,44 @@
       "commune"
     ],
     "status": "seed"
+  },
+  "/notes/ledger-replaces-feeds/": {
+    "slug": "/notes/ledger-replaces-feeds/",
+    "title": "Ledger replaces feeds",
+    "aliases": [
+      "changelog",
+      "activity log",
+      "updates"
+    ],
+    "outbound": [
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/zen-practice-protects-attention/"
+    ],
+    "inbound": [
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/box-first-earns-trust/",
+      "/notes/commune/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/zen-practice-protects-attention/"
+    ],
+    "tags": [
+      "discovery",
+      "feeds",
+      "transparency",
+      "updates"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/local-first-software/": {
     "slug": "/notes/local-first-software/",
@@ -291,7 +559,9 @@
       "/notes/commune/"
     ],
     "inbound": [
-      "/notes/commune/"
+      "/notes/box-first-earns-trust/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
       "software-architecture",
@@ -326,7 +596,11 @@
       "manual file management",
       "file organization overhead"
     ],
-    "outbound": [],
+    "outbound": [
+      "/notes/zen-practice-protects-attention/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/notes-beat-posts-for-showing-progress/"
+    ],
     "inbound": [
       "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/intelligent-router-eliminates-project-management/"
@@ -335,6 +609,44 @@
       "productivity",
       "automation",
       "cognitive-load"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/notes-beat-posts-for-showing-progress/": {
+    "slug": "/notes/notes-beat-posts-for-showing-progress/",
+    "title": "Notes beat posts for showing progress",
+    "aliases": [
+      "notes vs posts",
+      "atomic writing",
+      "progress sharing"
+    ],
+    "outbound": [
+      "/notes/ask-the-brain/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/evergreen-notes/",
+      "/notes/personal-knowledge-graphs/"
+    ],
+    "inbound": [
+      "/notes/ask-the-brain/",
+      "/notes/atomic-notes/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/evergreen-notes/",
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/"
+    ],
+    "tags": [
+      "writing",
+      "progress",
+      "speed",
+      "format"
     ],
     "status": "evergreen",
     "updated": "2025-10-15T00:00:00.000Z"
@@ -348,9 +660,7 @@
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
       "/notes/private-ai-outperforms-cloud-ai/"
     ],
-    "inbound": [
-      "/notes/business-management-is-context-management/"
-    ],
+    "inbound": [],
     "tags": [
       "infrastructure",
       "data-ownership",
@@ -358,6 +668,47 @@
       "roles"
     ],
     "status": "seed"
+  },
+  "/notes/people-pay-to-follow-working-mind/": {
+    "slug": "/notes/people-pay-to-follow-working-mind/",
+    "title": "People pay to follow a working mind",
+    "aliases": [
+      "paid content",
+      "working in public",
+      "subscription model"
+    ],
+    "outbound": [
+      "/notes/ledger-replaces-feeds/",
+      "/notes/ask-the-brain/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/box-first-earns-trust/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/build-in-public/"
+    ],
+    "inbound": [
+      "/notes/ask-the-brain/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/box-first-earns-trust/",
+      "/notes/business-management-is-context-management/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/"
+    ],
+    "tags": [
+      "monetization",
+      "transparency",
+      "value",
+      "authenticity"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/personal-knowledge-graphs/": {
     "slug": "/notes/personal-knowledge-graphs/",
@@ -375,8 +726,10 @@
       "/notes/andy-matuschaks-notes/",
       "/notes/associative-linking-over-hierarchies/",
       "/notes/atomic-notes/",
-      "/notes/commune/",
-      "/notes/evergreen-notes/"
+      "/notes/evergreen-notes/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/private-ai-outperforms-cloud-ai/"
     ],
     "tags": [
       "knowledge-management",
@@ -416,7 +769,13 @@
       "local AI benefits",
       "proprietary memory"
     ],
-    "outbound": [],
+    "outbound": [
+      "/notes/box-first-earns-trust/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/ask-the-brain/",
+      "/notes/local-first-software/"
+    ],
     "inbound": [
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/personalized-ai-optimizes-communication-strategies/"
@@ -447,6 +806,38 @@
       "reality"
     ],
     "status": "seed"
+  },
+  "/notes/related-and-stroll-give-serendipity-without-feed/": {
+    "slug": "/notes/related-and-stroll-give-serendipity-without-feed/",
+    "title": "Related and Stroll give serendipity without a feed",
+    "aliases": [
+      "related stroll",
+      "serendipitous discovery",
+      "browsing"
+    ],
+    "outbound": [
+      "/notes/ledger-replaces-feeds/",
+      "/notes/box-first-earns-trust/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/people-pay-to-follow-working-mind/"
+    ],
+    "inbound": [
+      "/notes/commune/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/follow-and-collect-keep-signal-not-hype/"
+    ],
+    "tags": [
+      "discovery",
+      "serendipity",
+      "navigation",
+      "browsing"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/router-tasteful-knowledge-integration/": {
     "slug": "/notes/router-tasteful-knowledge-integration/",
@@ -485,6 +876,41 @@
     ],
     "status": "seed"
   },
+  "/notes/titles-are-takeaways-not-labels/": {
+    "slug": "/notes/titles-are-takeaways-not-labels/",
+    "title": "Titles are takeaways, not labels",
+    "aliases": [
+      "note titles",
+      "takeaway titles",
+      "claim titles"
+    ],
+    "outbound": [
+      "/notes/ask-the-brain/",
+      "/notes/box-first-earns-trust/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/evergreen-notes/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/people-pay-to-follow-working-mind/"
+    ],
+    "inbound": [
+      "/notes/ask-the-brain/",
+      "/notes/atomic-notes/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/evergreen-notes/",
+      "/notes/follow-and-collect-keep-signal-not-hype/"
+    ],
+    "tags": [
+      "writing",
+      "titles",
+      "clarity",
+      "claims"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
   "/notes/unscheduled-quick-calls-destroy-deep-work/": {
     "slug": "/notes/unscheduled-quick-calls-destroy-deep-work/",
     "title": "Unscheduled quick calls destroy deep work flow states",
@@ -500,6 +926,82 @@
       "deep-work",
       "communication",
       "boundaries"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/voice-in-approvals-out/": {
+    "slug": "/notes/voice-in-approvals-out/",
+    "title": "Voice in, approvals out",
+    "aliases": [
+      "voice capture",
+      "approval workflow"
+    ],
+    "outbound": [
+      "/notes/zen-practice-protects-attention/",
+      "/notes/ask-the-brain/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/box-first-earns-trust/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/notes-beat-posts-for-showing-progress/"
+    ],
+    "inbound": [
+      "/notes/ask-the-brain/",
+      "/notes/atomic-notes/",
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/box-first-earns-trust/",
+      "/notes/business-management-is-context-management/",
+      "/notes/commune/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/evergreen-notes/",
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/zen-practice-protects-attention/"
+    ],
+    "tags": [
+      "workflow",
+      "capture",
+      "ai-agents",
+      "voice"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/zen-practice-protects-attention/": {
+    "slug": "/notes/zen-practice-protects-attention/",
+    "title": "Zen practice protects attention",
+    "aliases": [
+      "zen practice",
+      "attention protection",
+      "mindfulness"
+    ],
+    "outbound": [
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/ask-the-brain/",
+      "/notes/box-first-earns-trust/",
+      "/notes/local-first-software/",
+      "/notes/build-in-public/"
+    ],
+    "inbound": [
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/commune/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/voice-in-approvals-out/"
+    ],
+    "tags": [
+      "attention",
+      "meditation",
+      "focus",
+      "practice"
     ],
     "status": "evergreen",
     "updated": "2025-10-15T00:00:00.000Z"

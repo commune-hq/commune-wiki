@@ -8,29 +8,13 @@ updated: 2025-10-09
 summary: Atomic, densely-linked notes that compound over time - the foundation of personal knowledge management.
 ---
 
-Evergreen notes are written and organized to evolve, contribute, and accumulate over time, rather than being dumped into an archive.
+Evergreen notes are written and organized to evolve, contribute, and accumulate over time, rather than being dumped into an archive. They embody [[Externalizing thought builds cognitive scaffold]] by creating persistent thinking tools.
 
-## Core Principles
+Each note should express a single idea through [[Atomic Notes]] principles. Notes gain value through connections via [[Associative linking over hierarchies]], not folder structures. They improve through revision, starting as rough captures and eventually reaching evergreen status through [[Titles are takeaways, not labels]] and clear claims.
 
-**Atomic**: Each note should express a single idea. See [[Atomic Notes]].
+Traditional note-taking creates piles of write-only notes that become [[Manual file management is high-friction waste]]. Evergreen notes create a **thinking system** that compounds—each note makes future notes easier to write and more valuable. This is why [[Notes beat posts for showing progress]] in knowledge work.
 
-**Densely Linked**: Notes gain value through connections. Related: [[Associative Linking Over Hierarchies]].
+The approach enables [[Voice in, approvals out]] because you can capture rough thoughts knowing they'll be refined over time. It supports [[Ask the Brain]] by creating a searchable knowledge base with clear, atomic claims. The system works through [[Private AI outperforms cloud AI]] because your personal terminology and connections become part of the model's context.
 
-**Iterative**: Notes improve through revision. They start as [[Seed Notes]], grow through use, and eventually reach evergreen status.
-
-## Why This Matters
-
-Traditional note-taking creates piles of write-only notes. Evergreen notes create a **thinking system** that compounds - each note makes future notes easier to write and more valuable.
-
-This is how [[Commune]] approaches knowledge: every capture becomes part of a living, interconnected graph.
-
-## Related Concepts
-
-- [[Andy Matuschak's Notes]]
-- [[Zettelkasten Method]]
-- [[Personal Knowledge Graphs]]
-
----
-
-*This is a working note. It evolves as I learn more about knowledge management.*
+This is how [[Andy Matuschaks Notes]] demonstrated the power of [[Personal Knowledge Graphs]] for serious intellectual work. The method requires [[Box-first earns trust]] to work at scale because you need complete control over your knowledge base to build genuine expertise over years.
 

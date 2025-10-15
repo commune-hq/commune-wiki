@@ -24,7 +24,7 @@ The solution is [[Defaulting to No protects deep work]] through communication bo
 - **Async-first communication** via messages or voice notes
 - **Clear urgency definitions** (true emergencies only)
 
-This connects to [[Manual file management is high-friction waste]] because both represent cognitive overhead that should be eliminated through better systems.
+This connects to [[Manual file management is a high-friction waste of cognitive resources]] because both represent cognitive overhead that should be eliminated through better systems.
 
 **Counter-intuitive insight**: Saying no to quick calls makes you more available for meaningful collaboration because you can engage fully when scheduled.
 

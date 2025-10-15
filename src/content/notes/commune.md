@@ -1,76 +1,24 @@
 ---
-title: Commune
+title: "Devon's working brain in public"
 visibility: public
-status: seed
-tags: [projects, local-first, ai]
-aliases: ["commune", "homebase"]
-updated: 2025-10-09
-summary: Local-first personal AI infrastructure running on a home server - your private thinking partner.
+status: evergreen
+tags: [home, navigation, working-in-public]
+aliases: ["commune", "home", "devon meadows"]
+updated: 2025-10-15
+summary: "I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and I run Ads Lab and Awake Happy. This is my working brain in public."
 ---
 
-**Welcome to my Public Workbench.**
+I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and I run Ads Lab and Awake Happy. This is my working brain in public.
 
-I'm Devon. I'm an artist and I build systems because I'm obsessed with reducing bullshit overhead. We spend way too much time managing information and not enough time actually *creating* shit.
+I capture by voice while I walk. The agent turns that into drafts. I approve or toss. See [[Voice in, approvals out]]. You'll see what changed in the [[Ledger replaces feeds]]. Three hops from here are open; deeper branches lock, which keeps this sane. See [[Depth-3 free is honest gating]].
 
-I'm building Commune—a platform that uses private, self-hosted AI to automate the organization of life, knowledge, and digital action. This site is where I dump my realizations and document the build in real-time.
+No feed. No vibes machine. Discovery is time, follows, and a clear reason for every link. See [[Discovery runs on time, follows, and why]] and [[Related and Stroll give serendipity without a feed]].
 
-## The Hook
+You can follow for updates or collect notes to build your own trail. See [[Follow and Collect keep signal, not hype]]. You can ask questions and get short answers with receipts. See [[Ask the Brain]]. If you've got a fix or an edge case, leave a suggestion; I review it and the record updates in the [[Ledger replaces feeds]]. See [[Suggestions and Proposals make readers part of the work]].
 
-Fuck file management.
+Everything private runs on my box at home. I only publish what I approve. See [[Box-first earns trust]].
 
-The real promise of AI isn't some chatbot assistant; it's augmentation. We're moving past the era of digital chores and into an era of intelligent, private automation. It's time to stop organizing and start focusing.
+Right now I'm focused on a calm, paid surface that respects attention. I'm also crossing systems work with practice—notes on tech next to notes on focus. See [[Zen practice protects attention]].
 
-## Core Realizations
-
-- [[Manual file management is high-friction waste]]
-- [[Intelligent router eliminates project management]]
-- [[Private AI outperforms cloud AI]]
-- [[Integrated data analysis unlocks impossible observations]]
-
-## How I Operate
-
-- [[Defaulting to No protects deep work]]
-- [[Externalizing thought builds cognitive scaffold]]
-
-## Architecture
-
-- **iOS App**: Fast capture and approvals
-- **Mobile Gateway**: Routes intents to specialized handlers  
-- **Agent Runtime**: Plans and executes via Cursor CLI
-- **Knowledge Bases**: Git + Markdown + [[Evergreen Notes]]
-- **Public Wiki**: Selective publishing with [[Andy Matuschaks Notes|Andy-style browsing]]
-
-## The Technical Challenge
-
-The core IP is [[Router tasteful knowledge integration]]. Anyone can dump information into files. The sophistication is in tasteful integration that preserves quality and maintains personal style.
-
-## Why This Matters
-
-Most AI tools treat you as a data source. Commune treats AI as a **tool you control**, running on **infrastructure you own**.
-
-This enables [[Owning data infrastructure eliminates middleware]] and unlocks [[Personalized AI optimizes communication strategies]].
-
-## Related Concepts
-
-- [[Local-First Software]]
-- [[Personal Knowledge Graphs]]
-- [[Build in Public]]
-
-## How This Works
-
-Digital gardens are cool, but managing them sucks. This is different.
-
-I don't manage folders or links here. I just dump thoughts into my phone. My private AI agents (running on my secure Commune box) handle the rest. They synthesize the messy inputs, connect the dots, organize the insights, and update this site—all while preserving my voice.
-
-Honestly? It's the best way ever invented to build a public knowledge base.
-
-## Want This For Yourself?
-
-I do bespoke, high-ticket installations for busy individuals who want this level of automation without the setup.
-
-**Starting at $10k for a complete system.**
-
-[Contact me about custom installations →](#inquire)
-
-*The core of Commune is open source. If this resonates, share these notes or [star the repo on GitHub](https://github.com/dmthepm/infra-home-server).*
+If you're new, skim today's ledger and last week's wrap: [[Ledger replaces feeds]] and [[Auto-essay closes the loop each week]]. Then ask the brain about whatever catches your eye.
 
