@@ -387,8 +387,8 @@ const title = data.title ?? slug;
       if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', initializeWhenReady);
       } else {
-        // DOM is already loaded
-        initializeWhenReady();
+        // DOM is already loaded - use setTimeout to ensure all elements are rendered
+        setTimeout(initializeWhenReady, 0);
       }
       
       // Backup initialization after a short delay
@@ -398,6 +398,21 @@ const title = data.title ?? slug;
           initializeWhenReady();
         }
       }, 1000);
+      
+      // Additional backup for very slow loading
+      setTimeout(() => {
+        if (!window.wikiInitialized) {
+          console.log('Final backup initialization triggered');
+          try {
+            setupNotePreviews();
+            setupPanes();
+            window.wikiInitialized = true;
+            console.log('Final backup completed');
+          } catch (error) {
+            console.error('Final backup failed:', error);
+          }
+        }
+      }, 2000);
     </script>
   </body>
 </html>
