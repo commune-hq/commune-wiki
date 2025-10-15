@@ -61,59 +61,108 @@ const title = data.title ?? slug;
       // --- Note Previews (Keep existing functionality) ---
       const cache = new Map();
       function setupNotePreviews(){
-        const show = (el, html, x, y) => {
-          let card = document.getElementById('note-hover');
-          if(!card){
-            card = document.createElement('div');
-            card.id = 'note-hover';
-            card.style.position = 'fixed';
-            card.style.maxWidth = '420px';
-            card.style.background = 'var(--c-bg)';
-            card.style.boxShadow = 'var(--c-shadow-xl)';
-            card.style.border = '1px solid var(--c-border)';
-            card.style.borderRadius = 'var(--c-radius-lg)';
-            card.style.padding = '1rem 1.2rem';
-            card.style.zIndex = 'var(--z-hover)';
-            card.style.pointerEvents = 'none';
-            document.body.appendChild(card);
-          }
-          card.innerHTML = html;
-          card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
-          card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
-          card.hidden = false;
-        };
-        const hide = () => {
-          const card = document.getElementById('note-hover');
-          if (card) card.hidden = true;
-        };
+        try {
+          console.log('Setting up note previews...');
+          
+          const show = (el, html, x, y) => {
+            try {
+              let card = document.getElementById('note-hover');
+              if(!card){
+                card = document.createElement('div');
+                card.id = 'note-hover';
+                card.style.position = 'fixed';
+                card.style.maxWidth = '420px';
+                card.style.background = 'var(--c-bg)';
+                card.style.boxShadow = 'var(--c-shadow-xl)';
+                card.style.border = '1px solid var(--c-border)';
+                card.style.borderRadius = 'var(--c-radius-lg)';
+                card.style.padding = '1rem 1.2rem';
+                card.style.zIndex = 'var(--z-hover)';
+                card.style.pointerEvents = 'none';
+                document.body.appendChild(card);
+              }
+              card.innerHTML = html;
+              card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
+              card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
+              card.hidden = false;
+            } catch (error) {
+              console.error('Error showing hover card:', error);
+            }
+          };
+          
+          const hide = () => {
+            try {
+              const card = document.getElementById('note-hover');
+              if (card) card.hidden = true;
+            } catch (error) {
+              console.error('Error hiding hover card:', error);
+            }
+          };
 
-        document.addEventListener('mouseover', async (e) => {
-          const a = e.target?.closest?.('a[href^="/notes/"]');
-          if(!a) return;
-          const url = a.getAttribute('href');
-          if(cache.has(url)){ show(a, cache.get(url), e.clientX, e.clientY); return; }
-          try{
-            const r = await fetch(url);
-            const t = await r.text();
-            const doc = new DOMParser().parseFromString(t, 'text/html');
-            // FIX: Update selector to match new structure for previews
-            const content = doc.querySelector('.pane .pane-content') ?? doc.body;
-            const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
-            const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
-            cache.set(url, html);
-            show(a, html, e.clientX, e.clientY);
-          }catch{}
-        });
-        document.addEventListener('mouseout', (e) => {
-          const a = e.target?.closest?.('a[href^="/notes/"]');
-          if(a) setTimeout(hide, 120);
-        });
+          document.addEventListener('mouseover', async (e) => {
+            try {
+              const a = e.target?.closest?.('a[href^="/notes/"]');
+              if(!a) return;
+              const url = a.getAttribute('href');
+              if(cache.has(url)){ 
+                show(a, cache.get(url), e.clientX, e.clientY); 
+                return; 
+              }
+              
+              // Add timeout for fetch requests
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 5000);
+              
+              const r = await fetch(url, { 
+                signal: controller.signal,
+                headers: { 'Accept': 'text/html' }
+              });
+              clearTimeout(timeoutId);
+              
+              if (!r.ok) {
+                console.warn(`Failed to fetch preview for ${url}: ${r.status}`);
+                return;
+              }
+              
+              const t = await r.text();
+              const doc = new DOMParser().parseFromString(t, 'text/html');
+              const content = doc.querySelector('.pane .pane-content') ?? doc.body;
+              const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+              const title = doc.title?.replace(/ \|.*/, '') || 'Untitled';
+              const html = `<div style="font-weight:600;margin-bottom:.3rem">${title}</div>${paras}`;
+              cache.set(url, html);
+              show(a, html, e.clientX, e.clientY);
+            } catch (error) {
+              if (error.name !== 'AbortError') {
+                console.error('Error in mouseover handler:', error);
+              }
+            }
+          });
+          
+          document.addEventListener('mouseout', (e) => {
+            try {
+              const a = e.target?.closest?.('a[href^="/notes/"]');
+              if(a) setTimeout(hide, 120);
+            } catch (error) {
+              console.error('Error in mouseout handler:', error);
+            }
+          });
+          
+          console.log('Note previews setup completed');
+        } catch (error) {
+          console.error('Failed to setup note previews:', error);
+        }
       }
 
       // --- Stabilized and Dynamic Pane Management ---
       function setupPanes(){
-        const container = document.getElementById('pane-container');
-        if (!container) return;
+        try {
+          console.log('Setting up panes...');
+          const container = document.getElementById('pane-container');
+          if (!container) {
+            console.error('Pane container not found!');
+            return;
+          }
 
         const normalizeUrl = (url) => new URL(url, window.location.origin).pathname;
 
@@ -124,52 +173,78 @@ const title = data.title ?? slug;
         }
 
         async function openPane(url) {
-            const normalizedUrl = normalizeUrl(url);
+            try {
+              console.log(`Opening pane for: ${url}`);
+              const normalizedUrl = normalizeUrl(url);
 
-            // 1. Fetch and parse content
-            const res = await fetch(url, { headers: { 'Accept': 'text/html;charset=utf-8' } });
-            const html = await res.text();
-            const doc = new DOMParser().parseFromString(html, 'text/html');
-            
-            // FIX: Select the specific content wrapper to avoid structural duplication (like fetching the close button)
-            const fetchedContent = doc.querySelector('.pane .pane-content');
+              // 1. Fetch and parse content with timeout
+              const controller = new AbortController();
+              const timeoutId = setTimeout(() => controller.abort(), 10000);
+              
+              const res = await fetch(url, { 
+                headers: { 'Accept': 'text/html;charset=utf-8' },
+                signal: controller.signal
+              });
+              clearTimeout(timeoutId);
+              
+              if (!res.ok) {
+                console.error(`Failed to fetch pane content: ${res.status}`);
+                return;
+              }
+              
+              const html = await res.text();
+              const doc = new DOMParser().parseFromString(html, 'text/html');
+              
+              // FIX: Select the specific content wrapper to avoid structural duplication
+              const fetchedContent = doc.querySelector('.pane .pane-content');
 
-            if (!fetchedContent) return;
+              if (!fetchedContent) {
+                console.error('No .pane-content found in fetched page');
+                return;
+              }
 
-            // 2. Create new pane
-            const pane = document.createElement('div');
-            pane.className = 'pane';
-            pane.dataset.url = normalizedUrl;
-            pane.setAttribute('tabindex', '-1'); // Make focusable
+              // 2. Create new pane
+              const pane = document.createElement('div');
+              pane.className = 'pane';
+              pane.dataset.url = normalizedUrl;
+              pane.setAttribute('tabindex', '-1'); // Make focusable
 
-            // FIX: Inject content into the new, correct HTML structure
-            pane.innerHTML = `
-                <button class="close" aria-label="Close">×</button>
-                <div class="body-wrapper">
-                    <div class="body">
-                        <div class="pane-content">${fetchedContent.innerHTML}</div>
-                    </div>
-                </div>
-            `;
+              // FIX: Inject content into the new, correct HTML structure
+              pane.innerHTML = `
+                  <button class="close" aria-label="Close">×</button>
+                  <div class="body-wrapper">
+                      <div class="body">
+                          <div class="pane-content">${fetchedContent.innerHTML}</div>
+                      </div>
+                  </div>
+              `;
 
-            // 3. Attach close listener
-            pane.querySelector('.close').addEventListener('click', (e) => {
-                // Stop propagation to prevent the container listener from trying to focus this pane.
-                e.stopPropagation(); 
-                closePane(pane);
-            });
+              // 3. Attach close listener
+              pane.querySelector('.close').addEventListener('click', (e) => {
+                  // Stop propagation to prevent the container listener from trying to focus this pane.
+                  e.stopPropagation(); 
+                  closePane(pane);
+              });
 
-            // 4. Append, update state, and scroll
-            container.appendChild(pane);
-            
-            // FIX: Force browser to recalculate styles immediately
-            // This ensures CSS variables and z-index are applied before we try to focus
-            void pane.offsetHeight;
-            updateContainerLayout(); // Update alignment BEFORE scrolling
-            
-            // FIX: Let browser paint new pane, then focus and scroll it
-            // setTimeout(0) ensures DOM has been painted before we try to focus
-            setTimeout(() => scrollToPane(pane, true), 0);
+              // 4. Append, update state, and scroll
+              container.appendChild(pane);
+              
+              // FIX: Force browser to recalculate styles immediately
+              // This ensures CSS variables and z-index are applied before we try to focus
+              void pane.offsetHeight;
+              updateContainerLayout(); // Update alignment BEFORE scrolling
+              
+              // FIX: Let browser paint new pane, then focus and scroll it
+              // setTimeout(0) ensures DOM has been painted before we try to focus
+              setTimeout(() => scrollToPane(pane, true), 0);
+              console.log('Pane opened successfully');
+            } catch (error) {
+              console.error('Error opening pane:', error);
+              if (error.name !== 'AbortError') {
+                // Fallback: navigate normally if pane opening fails
+                window.location.href = url;
+              }
+            }
         }
 
         // FIX: Stabilized scrolling behavior synchronization
@@ -284,10 +359,45 @@ const title = data.title ?? slug;
             scrollToPane(firstPane, true);
             updateContainerLayout(); // Initialize alignment state
         }
+        
+        // Mark as successfully initialized
+        window.wikiInitialized = true;
+        console.log('Panes setup completed');
+        
+        } catch (error) {
+          console.error('Failed to setup panes:', error);
+        }
       }
 
-      setupNotePreviews();
-      setupPanes();
+      // Wait for DOM to be fully loaded before initializing
+      function initializeWhenReady() {
+        try {
+          console.log('Initializing wiki features...');
+          setupNotePreviews();
+          setupPanes();
+          console.log('Wiki features initialized successfully');
+        } catch (error) {
+          console.error('Failed to initialize wiki features:', error);
+          // Fallback: at least try to make links work normally
+          document.body.classList.add('wiki-fallback-mode');
+        }
+      }
+
+      // Multiple initialization strategies for reliability
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initializeWhenReady);
+      } else {
+        // DOM is already loaded
+        initializeWhenReady();
+      }
+      
+      // Backup initialization after a short delay
+      setTimeout(() => {
+        if (!window.wikiInitialized) {
+          console.log('Backup initialization triggered');
+          initializeWhenReady();
+        }
+      }, 1000);
     </script>
   </body>
 </html>
@@ -545,6 +655,30 @@ const title = data.title ?? slug;
     font-style:italic;
   }
 
+
+  /* --- Fallback mode when JavaScript fails --- */
+  body.wiki-fallback-mode #pane-container {
+    padding-left: 0 !important;
+    flex-direction: column;
+    position: relative;
+    top: 0;
+    overflow-x: hidden;
+  }
+  
+  body.wiki-fallback-mode .pane {
+    width: 100%;
+    margin-right: 0 !important;
+    height: auto;
+    min-height: auto;
+    box-shadow: none !important;
+    border: none !important;
+    border-radius: 0 !important;
+  }
+  
+  body.wiki-fallback-mode .pane .body-wrapper {
+    height: auto;
+    overflow-y: visible;
+  }
 
   /* --- Mobile/Tablet Breakpoint (<= 1023px) --- */
   @media (max-width: 1023px) {
