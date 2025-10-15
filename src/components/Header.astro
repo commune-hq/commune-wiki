@@ -2,14 +2,20 @@
 ---
 <header class="commune-header">
   <div class="wrap">
-    <a class="brand" href="/">Devon</a>
-    <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
-      <span class="sun">☀️</span>
-      <span class="moon">🌙</span>
-    </button>
-    <button class="search-btn" aria-label="Search (⌘K)" onclick="window.dispatchEvent(new CustomEvent('commune:openSearch'))">
-      <span>Search</span><kbd>⌘K</kbd>
-    </button>
+    <div class="brand-section">
+      <img src="/avatar.jpg" alt="Devon" class="avatar" />
+      <a class="brand" href="/">Devon</a>
+    </div>
+    <div class="controls">
+      <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
+        <span class="sun">☀️</span>
+        <span class="moon">🌙</span>
+      </button>
+      <button class="search-btn" aria-label="Search (⌘K)" onclick="window.dispatchEvent(new CustomEvent('commune:openSearch'))">
+        <span class="search-icon">🔍</span>
+        <span class="search-text">Search</span><kbd>⌘K</kbd>
+      </button>
+    </div>
   </div>
 </header>
 
@@ -31,6 +37,27 @@
     padding:1rem 1.25rem;
     max-width:clamp(480px, 45vw, 700px);
     margin:0 auto;
+  }
+  .brand-section{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
+  }
+  .avatar{
+    width:2.5rem;
+    height:2.5rem;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid var(--c-border);
+    transition:border-color 0.15s ease;
+  }
+  .avatar:hover{
+    border-color:var(--c-accent);
+  }
+  .controls{
+    display:flex;
+    align-items:center;
+    gap:.75rem;
   }
   .brand{
     font-weight:700;
@@ -142,16 +169,26 @@
     border-radius:var(--c-radius-sm);
   }
   
-  /* Mobile: hide Command-K text */
+  /* Mobile: hide Command-K text and search text, show only icon */
   @media (max-width: 768px) {
-    .search-btn kbd {
+    .search-btn kbd,
+    .search-btn .search-text {
       display:none;
     }
     .search-btn {
-      padding:.6rem .8rem;
+      padding:.6rem;
+      min-width:2.5rem;
+      justify-content:center;
     }
-    .search-btn span {
-      font-size:.9rem;
+    .search-btn .search-icon {
+      font-size:1.1rem;
+    }
+    .avatar {
+      width:2.2rem;
+      height:2.2rem;
+    }
+    .controls {
+      gap:.5rem;
     }
   }
 </style>
