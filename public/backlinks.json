@@ -57,6 +57,7 @@
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
       "/notes/box-first-earns-trust/",
+      "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/notes-beat-posts-for-showing-progress/"
     ],
@@ -190,6 +191,7 @@
       "/notes/ask-the-brain/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/voice-in-approvals-out/",
+      "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/local-first-software/"
     ],
@@ -603,7 +605,8 @@
     ],
     "inbound": [
       "/notes/externalizing-thought-builds-cognitive-scaffold/",
-      "/notes/intelligent-router-eliminates-project-management/"
+      "/notes/intelligent-router-eliminates-project-management/",
+      "/notes/unscheduled-quick-calls-destroy-deep-work/"
     ],
     "tags": [
       "productivity",
@@ -777,6 +780,8 @@
       "/notes/local-first-software/"
     ],
     "inbound": [
+      "/notes/ask-the-brain/",
+      "/notes/box-first-earns-trust/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
@@ -919,7 +924,9 @@
       "interruption cost",
       "flow state protection"
     ],
-    "outbound": [],
+    "outbound": [
+      "/notes/manual-file-management-is-high-friction-waste/"
+    ],
     "inbound": [],
     "tags": [
       "productivity",
