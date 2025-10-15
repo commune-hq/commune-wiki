@@ -40,6 +40,14 @@
     cursor:pointer;
     transition:color 0.15s ease;
   }
+  
+  /* Mobile: smaller brand text */
+  @media (max-width: 768px) {
+    .brand {
+      font-size:1rem;
+      font-weight:600;
+    }
+  }
   .brand:hover{
     color:var(--c-accent);
   }
@@ -73,6 +81,17 @@
   .theme-btn:hover{
     border-color:var(--c-accent);
     transform:rotate(15deg);
+  }
+  
+  /* Mobile: prevent rotate transform issues on touch */
+  @media (max-width: 768px) {
+    .theme-btn:hover {
+      transform:none;
+    }
+    .theme-btn:active {
+      transform:scale(0.95);
+      transition:transform 0.1s ease;
+    }
   }
   .theme-btn .sun,
   .theme-btn .moon{
@@ -121,6 +140,19 @@
     background:var(--c-bg);
     padding:.2rem .4rem;
     border-radius:var(--c-radius-sm);
+  }
+  
+  /* Mobile: hide Command-K text */
+  @media (max-width: 768px) {
+    .search-btn kbd {
+      display:none;
+    }
+    .search-btn {
+      padding:.6rem .8rem;
+    }
+    .search-btn span {
+      font-size:.9rem;
+    }
   }
 </style>
 
