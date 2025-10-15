@@ -18,6 +18,62 @@
     ],
     "status": "seed"
   },
+  "/notes/andy-matuschaks-notes/": {
+    "slug": "/notes/andy-matuschaks-notes/",
+    "title": "Andy Matuschak's Notes",
+    "aliases": [
+      "Andy Matuschak",
+      "Matuschak notes",
+      "sliding panes"
+    ],
+    "outbound": [
+      "/notes/evergreen-notes/",
+      "/notes/commune/",
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/build-in-public/"
+    ],
+    "inbound": [
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/build-in-public/",
+      "/notes/evergreen-notes/"
+    ],
+    "tags": [
+      "note-taking",
+      "knowledge-management",
+      "digital-gardens"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/associative-linking-over-hierarchies/": {
+    "slug": "/notes/associative-linking-over-hierarchies/",
+    "title": "Associative linking over hierarchies",
+    "aliases": [
+      "associative ontologies",
+      "network thinking",
+      "non-hierarchical organization"
+    ],
+    "outbound": [
+      "/notes/andy-matuschaks-notes/",
+      "/notes/evergreen-notes/",
+      "/notes/personal-knowledge-graphs/"
+    ],
+    "inbound": [
+      "/notes/andy-matuschaks-notes/",
+      "/notes/atomic-notes/",
+      "/notes/evergreen-notes/",
+      "/notes/personal-knowledge-graphs/"
+    ],
+    "tags": [
+      "knowledge-management",
+      "organization",
+      "networks",
+      "thinking"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
   "/notes/atomic-notes/": {
     "slug": "/notes/atomic-notes/",
     "title": "Atomic Notes",
@@ -26,7 +82,9 @@
       "atomic-notes"
     ],
     "outbound": [
-      "/notes/evergreen-notes/"
+      "/notes/evergreen-notes/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/associative-linking-over-hierarchies/"
     ],
     "inbound": [
       "/notes/evergreen-notes/"
@@ -37,6 +95,32 @@
     ],
     "status": "growing",
     "updated": "2025-10-09T00:00:00.000Z"
+  },
+  "/notes/build-in-public/": {
+    "slug": "/notes/build-in-public/",
+    "title": "Build in Public",
+    "aliases": [
+      "building in public",
+      "transparent development",
+      "open development"
+    ],
+    "outbound": [
+      "/notes/commune/",
+      "/notes/andy-matuschaks-notes/",
+      "/notes/evergreen-notes/"
+    ],
+    "inbound": [
+      "/notes/andy-matuschaks-notes/",
+      "/notes/commune/"
+    ],
+    "tags": [
+      "transparency",
+      "learning",
+      "community",
+      "entrepreneurship"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/business-management-is-context-management/": {
     "slug": "/notes/business-management-is-context-management/",
@@ -67,17 +151,16 @@
       "homebase"
     ],
     "outbound": [
-      "/notes/intelligent-router-eliminates-project-management/",
-      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
-      "/notes/defaulting-to-no-protects-deep-work/",
-      "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/evergreen-notes/",
-      "/notes/router-tasteful-knowledge-integration/",
-      "/notes/owning-data-infrastructure-eliminates-middleware/",
-      "/notes/personalized-ai-optimizes-communication-strategies/"
+      "/notes/local-first-software/",
+      "/notes/personal-knowledge-graphs/",
+      "/notes/build-in-public/"
     ],
     "inbound": [
-      "/notes/evergreen-notes/"
+      "/notes/andy-matuschaks-notes/",
+      "/notes/build-in-public/",
+      "/notes/evergreen-notes/",
+      "/notes/local-first-software/"
     ],
     "tags": [
       "projects",
@@ -95,9 +178,7 @@
       "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/intelligent-router-eliminates-project-management/"
     ],
-    "inbound": [
-      "/notes/commune/"
-    ],
+    "inbound": [],
     "tags": [
       "deep-work",
       "boundaries",
@@ -115,11 +196,18 @@
     ],
     "outbound": [
       "/notes/atomic-notes/",
-      "/notes/commune/"
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/commune/",
+      "/notes/andy-matuschaks-notes/",
+      "/notes/personal-knowledge-graphs/"
     ],
     "inbound": [
+      "/notes/andy-matuschaks-notes/",
+      "/notes/associative-linking-over-hierarchies/",
       "/notes/atomic-notes/",
-      "/notes/commune/"
+      "/notes/build-in-public/",
+      "/notes/commune/",
+      "/notes/personal-knowledge-graphs/"
     ],
     "tags": [
       "writing",
@@ -133,9 +221,10 @@
     "slug": "/notes/externalizing-thought-builds-cognitive-scaffold/",
     "title": "Externalizing thought builds a cognitive scaffold for solving complex problems",
     "aliases": [],
-    "outbound": [],
+    "outbound": [
+      "/notes/manual-file-management-is-high-friction-waste/"
+    ],
     "inbound": [
-      "/notes/commune/",
       "/notes/defaulting-to-no-protects-deep-work/"
     ],
     "tags": [
@@ -156,7 +245,6 @@
     ],
     "inbound": [
       "/notes/business-management-is-context-management/",
-      "/notes/commune/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
@@ -174,11 +262,11 @@
     "aliases": [],
     "outbound": [
       "/notes/business-management-is-context-management/",
-      "/notes/router-tasteful-knowledge-integration/"
+      "/notes/router-tasteful-knowledge-integration/",
+      "/notes/manual-file-management-is-high-friction-waste/"
     ],
     "inbound": [
       "/notes/business-management-is-context-management/",
-      "/notes/commune/",
       "/notes/defaulting-to-no-protects-deep-work/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/router-tasteful-knowledge-integration/"
@@ -190,6 +278,29 @@
       "commune"
     ],
     "status": "seed"
+  },
+  "/notes/local-first-software/": {
+    "slug": "/notes/local-first-software/",
+    "title": "Local-First Software",
+    "aliases": [
+      "local-first",
+      "offline-first",
+      "data ownership"
+    ],
+    "outbound": [
+      "/notes/commune/"
+    ],
+    "inbound": [
+      "/notes/commune/"
+    ],
+    "tags": [
+      "software-architecture",
+      "privacy",
+      "ownership",
+      "resilience"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/local-systems-require-enhancement-dashboards/": {
     "slug": "/notes/local-systems-require-enhancement-dashboards/",
@@ -208,17 +319,37 @@
     ],
     "status": "seed"
   },
+  "/notes/manual-file-management-is-high-friction-waste/": {
+    "slug": "/notes/manual-file-management-is-high-friction-waste/",
+    "title": "Manual file management is a high-friction waste of cognitive resources",
+    "aliases": [
+      "manual file management",
+      "file organization overhead"
+    ],
+    "outbound": [],
+    "inbound": [
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
+      "/notes/intelligent-router-eliminates-project-management/"
+    ],
+    "tags": [
+      "productivity",
+      "automation",
+      "cognitive-load"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
   "/notes/owning-data-infrastructure-eliminates-middleware/": {
     "slug": "/notes/owning-data-infrastructure-eliminates-middleware/",
     "title": "Owning your data infrastructure eliminates the need for specialized middleware and roles",
     "aliases": [],
     "outbound": [
       "/notes/intelligent-router-eliminates-project-management/",
-      "/notes/integrated-data-analysis-unlocks-impossible-observations/"
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/private-ai-outperforms-cloud-ai/"
     ],
     "inbound": [
-      "/notes/business-management-is-context-management/",
-      "/notes/commune/"
+      "/notes/business-management-is-context-management/"
     ],
     "tags": [
       "infrastructure",
@@ -228,17 +359,45 @@
     ],
     "status": "seed"
   },
+  "/notes/personal-knowledge-graphs/": {
+    "slug": "/notes/personal-knowledge-graphs/",
+    "title": "Personal Knowledge Graphs",
+    "aliases": [
+      "PKG",
+      "knowledge graphs",
+      "personal knowledge networks"
+    ],
+    "outbound": [
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/evergreen-notes/"
+    ],
+    "inbound": [
+      "/notes/andy-matuschaks-notes/",
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/atomic-notes/",
+      "/notes/commune/",
+      "/notes/evergreen-notes/"
+    ],
+    "tags": [
+      "knowledge-management",
+      "graphs",
+      "personal-data",
+      "networks"
+    ],
+    "status": "growing",
+    "updated": "2025-10-15T00:00:00.000Z"
+  },
   "/notes/personalized-ai-optimizes-communication-strategies/": {
     "slug": "/notes/personalized-ai-optimizes-communication-strategies/",
     "title": "Deeply personalized AI can analyze relationships and optimize communication strategies",
     "aliases": [],
     "outbound": [
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/accurate-transcription-requires-personal-training/"
     ],
     "inbound": [
       "/notes/accurate-transcription-requires-personal-training/",
-      "/notes/commune/",
       "/notes/integrated-data-analysis-unlocks-impossible-observations/"
     ],
     "tags": [
@@ -248,6 +407,28 @@
       "personalization"
     ],
     "status": "seed"
+  },
+  "/notes/private-ai-outperforms-cloud-ai/": {
+    "slug": "/notes/private-ai-outperforms-cloud-ai/",
+    "title": "Private AI outperforms cloud AI by leveraging structured, proprietary memory",
+    "aliases": [
+      "private AI advantage",
+      "local AI benefits",
+      "proprietary memory"
+    ],
+    "outbound": [],
+    "inbound": [
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/personalized-ai-optimizes-communication-strategies/"
+    ],
+    "tags": [
+      "ai",
+      "privacy",
+      "local-first",
+      "memory"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/reality-as-spiritual-hide-and-seek-game/": {
     "slug": "/notes/reality-as-spiritual-hide-and-seek-game/",
@@ -275,7 +456,6 @@
       "/notes/intelligent-router-eliminates-project-management/"
     ],
     "inbound": [
-      "/notes/commune/",
       "/notes/intelligent-router-eliminates-project-management/",
       "/notes/local-systems-require-enhancement-dashboards/"
     ],
@@ -304,5 +484,24 @@
       "non-duality"
     ],
     "status": "seed"
+  },
+  "/notes/unscheduled-quick-calls-destroy-deep-work/": {
+    "slug": "/notes/unscheduled-quick-calls-destroy-deep-work/",
+    "title": "Unscheduled quick calls destroy deep work flow states",
+    "aliases": [
+      "quick calls",
+      "interruption cost",
+      "flow state protection"
+    ],
+    "outbound": [],
+    "inbound": [],
+    "tags": [
+      "productivity",
+      "deep-work",
+      "communication",
+      "boundaries"
+    ],
+    "status": "evergreen",
+    "updated": "2025-10-15T00:00:00.000Z"
   }
 }

@@ -22,15 +22,15 @@ The real promise of AI isn't some chatbot assistant; it's augmentation. We're mo
 
 ## Core Realizations
 
-- [[Manual file management is a high-friction waste of cognitive resources]]
-- [[A sufficiently intelligent router eliminates the need for traditional project management]]
-- [[Private AI outperforms cloud AI by leveraging structured, proprietary memory]]
-- [[Integrated data analysis unlocks observations impossible in siloed systems]]
+- [[Manual file management is high-friction waste]]
+- [[Intelligent router eliminates project management]]
+- [[Private AI outperforms cloud AI]]
+- [[Integrated data analysis unlocks impossible observations]]
 
 ## How I Operate
 
-- [[Defaulting to No for unscheduled calls protects deep work]]
-- [[Externalizing thought builds a cognitive scaffold for solving complex problems]]
+- [[Defaulting to No protects deep work]]
+- [[Externalizing thought builds cognitive scaffold]]
 
 ## Architecture
 
@@ -38,17 +38,17 @@ The real promise of AI isn't some chatbot assistant; it's augmentation. We're mo
 - **Mobile Gateway**: Routes intents to specialized handlers  
 - **Agent Runtime**: Plans and executes via Cursor CLI
 - **Knowledge Bases**: Git + Markdown + [[Evergreen Notes]]
-- **Public Wiki**: Selective publishing with [[Andy Matuschak's Notes|Andy-style browsing]]
+- **Public Wiki**: Selective publishing with [[Andy Matuschaks Notes|Andy-style browsing]]
 
 ## The Technical Challenge
 
-The core IP is [[The router's primary challenge is updating knowledge bases tastefully and non-destructively]]. Anyone can dump information into files. The sophistication is in tasteful integration that preserves quality and maintains personal style.
+The core IP is [[Router tasteful knowledge integration]]. Anyone can dump information into files. The sophistication is in tasteful integration that preserves quality and maintains personal style.
 
 ## Why This Matters
 
 Most AI tools treat you as a data source. Commune treats AI as a **tool you control**, running on **infrastructure you own**.
 
-This enables [[Owning your data infrastructure eliminates the need for specialized middleware and roles]] and unlocks [[Deeply personalized AI can analyze relationships and optimize communication strategies]].
+This enables [[Owning data infrastructure eliminates middleware]] and unlocks [[Personalized AI optimizes communication strategies]].
 
 ## Related Concepts
 
