@@ -60,7 +60,7 @@ const title = data.title ?? slug;
     <script>
       // --- Note Previews (Keep existing functionality) ---
       const cache = new Map();
-      function setupNotePreviews(){
+      window.setupNotePreviews = function setupNotePreviews(){
         try {
           console.log('Setting up note previews...');
           
@@ -155,7 +155,7 @@ const title = data.title ?? slug;
       }
 
       // --- Stabilized and Dynamic Pane Management ---
-      function setupPanes(){
+      window.setupPanes = function setupPanes(){
         try {
           console.log('Setting up panes...');
           const container = document.getElementById('pane-container');
@@ -373,8 +373,8 @@ const title = data.title ?? slug;
       function initializeWhenReady() {
         try {
           console.log('Initializing wiki features...');
-          setupNotePreviews();
-          setupPanes();
+          window.setupNotePreviews();
+          window.setupPanes();
           console.log('Wiki features initialized successfully');
         } catch (error) {
           console.error('Failed to initialize wiki features:', error);
@@ -404,8 +404,8 @@ const title = data.title ?? slug;
         if (!window.wikiInitialized) {
           console.log('Final backup initialization triggered');
           try {
-            setupNotePreviews();
-            setupPanes();
+            window.setupNotePreviews();
+            window.setupPanes();
             window.wikiInitialized = true;
             console.log('Final backup completed');
           } catch (error) {
