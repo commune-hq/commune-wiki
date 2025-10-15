@@ -28,11 +28,13 @@ const title = data.title ?? slug;
       <button class="close" aria-label="Close" style="display:none">×</button>
       <div class="body-wrapper">
         <div class="body">
-          <article class="prose">
-            <h1>{title}</h1>
-            <Content />
-          </article>
-          <Backlinks slug={`/notes/${slug}/`} title={title} />
+          <div class="pane-content">
+            <article class="prose">
+              <h1>{title}</h1>
+              <Content />
+            </article>
+            <Backlinks slug={`/notes/${slug}/`} title={title} />
+          </div>
         </div>
       </div>
     </div>
