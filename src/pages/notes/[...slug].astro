@@ -58,386 +58,300 @@ const title = data.title ?? slug;
     </main>
 
     <script is:inline>
-      // --- Note Previews (Keep existing functionality) ---
-      const cache = new Map();
-      window.setupNotePreviews = function setupNotePreviews(){
-        try {
-          console.log('Setting up note previews...');
-          
-          const show = (el, html, x, y) => {
-            try {
-              let card = document.getElementById('note-hover');
-              if(!card){
-                card = document.createElement('div');
-                card.id = 'note-hover';
-                card.style.position = 'fixed';
-                card.style.maxWidth = '420px';
-                card.style.background = 'var(--c-bg)';
-                card.style.boxShadow = 'var(--c-shadow-xl)';
-                card.style.border = '1px solid var(--c-border)';
-                card.style.borderRadius = 'var(--c-radius-lg)';
-                card.style.padding = '1rem 1.2rem';
-                card.style.zIndex = 'var(--z-hover)';
-                card.style.pointerEvents = 'none';
-                document.body.appendChild(card);
-              }
-              card.innerHTML = html;
-              card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
-              card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
-              card.hidden = false;
-            } catch (error) {
-              console.error('Error showing hover card:', error);
+      // === CLEAN WIKI ARCHITECTURE ===
+      // Single initialization, event delegation, no duplicates
+
+      if (window.wikiInitialized) {
+        console.log('Wiki already initialized, skipping...');
+      } else {
+        console.log('Initializing wiki with clean architecture...');
+
+        // --- Global State ---
+        const previewCache = new Map();
+        let isInitialized = false;
+
+        // --- Utility Functions ---
+        const normalizeUrl = (url) => new URL(url, window.location.origin).pathname;
+
+        const showPreview = (el, html, x, y) => {
+          try {
+            let card = document.getElementById('note-hover');
+            if(!card){
+              card = document.createElement('div');
+              card.id = 'note-hover';
+              card.style.position = 'fixed';
+              card.style.maxWidth = '420px';
+              card.style.background = 'var(--c-bg)';
+              card.style.boxShadow = 'var(--c-shadow-xl)';
+              card.style.border = '1px solid var(--c-border)';
+              card.style.borderRadius = 'var(--c-radius-lg)';
+              card.style.padding = '1rem 1.2rem';
+              card.style.zIndex = 'var(--z-hover)';
+              card.style.pointerEvents = 'none';
+              document.body.appendChild(card);
             }
-          };
-          
-          const hide = () => {
-            try {
-              const card = document.getElementById('note-hover');
-              if (card) card.hidden = true;
-            } catch (error) {
-              console.error('Error hiding hover card:', error);
+            card.innerHTML = html;
+            card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
+            card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
+            card.hidden = false;
+          } catch (error) {
+            console.error('Error showing hover card:', error);
+          }
+        };
+
+        const hidePreview = () => {
+          try {
+            const card = document.getElementById('note-hover');
+            if (card) card.hidden = true;
+          } catch (error) {
+            console.error('Error hiding hover card:', error);
+          }
+        };
+
+
+        // --- Preview Event Handler ---
+        const handlePreviewHover = async (e) => {
+          try {
+            const a = e.target?.closest?.('a[href^="/notes/"]');
+            if(!a) return;
+            const url = a.getAttribute('href');
+            if(previewCache.has(url)){
+              showPreview(a, previewCache.get(url), e.clientX, e.clientY);
+              return;
             }
-          };
 
-          // Use mouseenter for immediate response, mouseover for compatibility
-          document.addEventListener('mouseenter', async (e) => {
-            try {
-              const a = e.target?.closest?.('a[href^="/notes/"]');
-              if(!a) return;
-              const url = a.getAttribute('href');
-              if(cache.has(url)){
-                show(a, cache.get(url), e.clientX, e.clientY);
-                return;
-              }
+            // Show immediate loading state
+            showPreview(a, '<div style="font-weight:600;color:var(--c-text-muted)">Loading preview...</div>', e.clientX, e.clientY);
 
-              // Show immediate loading state
-              show(a, '<div style="font-weight:600;color:var(--c-text-muted)">Loading preview...</div>', e.clientX, e.clientY);
+            // Reduced timeout for faster response
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000);
 
-              // Reduced timeout for faster response
-              const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 2000);
+            const r = await fetch(url, {
+              signal: controller.signal,
+              headers: { 'Accept': 'text/html' }
+            });
+            clearTimeout(timeoutId);
 
-              const r = await fetch(url, {
-                signal: controller.signal,
-                headers: { 'Accept': 'text/html' }
-              });
-              clearTimeout(timeoutId);
-
-              if (!r.ok) {
-                show(a, '<div style="color:var(--c-text-muted)">Preview unavailable</div>', e.clientX, e.clientY);
-                return;
-              }
-
-              const t = await r.text();
-              const doc = new DOMParser().parseFromString(t, 'text/html');
-              const content = doc.querySelector('.pane .pane-content') ?? doc.body;
-              const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
-              const title = doc.title?.replace(/ \|.*/, '') || 'Untitled';
-              const html = `<div style="font-weight:600;margin-bottom:.3rem">${title}</div>${paras}`;
-              cache.set(url, html);
-              show(a, html, e.clientX, e.clientY);
-            } catch (error) {
-              if (error.name !== 'AbortError') {
-                show(a, '<div style="color:var(--c-text-muted)">Preview failed</div>', e.clientX, e.clientY);
-              }
+            if (!r.ok) {
+              showPreview(a, '<div style="color:var(--c-text-muted)">Preview unavailable</div>', e.clientX, e.clientY);
+              return;
             }
-          }, true); // Use capture phase for faster response
-          
-          // Use mouseleave for better pairing with mouseenter
-          document.addEventListener('mouseleave', (e) => {
-            try {
-              const a = e.target?.closest?.('a[href^="/notes/"]');
-              if(a) setTimeout(hide, 100); // Slightly faster hide
-            } catch (error) {
-              console.error('Error in mouseleave handler:', error);
-            }
-          }, true);
-          
-          console.log('Note previews setup completed');
-        } catch (error) {
-          console.error('Failed to setup note previews:', error);
-        }
-      }
 
-      // --- Stabilized and Dynamic Pane Management ---
-      window.setupPanes = function setupPanes(){
-        try {
-          console.log('Setting up panes...');
-          const container = document.getElementById('pane-container');
-          if (!container) {
-            console.error('Pane container not found!');
+            const t = await r.text();
+            const doc = new DOMParser().parseFromString(t, 'text/html');
+            const content = doc.querySelector('.pane .pane-content') ?? doc.body;
+            const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+            const title = doc.title?.replace(/ \|.*/, '') || 'Untitled';
+            const html = `<div style="font-weight:600;margin-bottom:.3rem">${title}</div>${paras}`;
+            previewCache.set(url, html);
+            showPreview(a, html, e.clientX, e.clientY);
+          } catch (error) {
+            if (error.name !== 'AbortError') {
+              showPreview(a, '<div style="color:var(--c-text-muted)">Preview failed</div>', e.clientX, e.clientY);
+            }
+          }
+        };
+
+        const handlePreviewLeave = (e) => {
+          try {
+            const a = e.target?.closest?.('a[href^="/notes/"]');
+            if(a) setTimeout(hidePreview, 100);
+          } catch (error) {
+            console.error('Error in mouseleave handler:', error);
+          }
+        };
+
+        // --- Pane Management Functions ---
+        const container = document.getElementById('pane-container');
+        if (!container) {
+          console.error('Pane container not found!');
+        } else {
+
+        const updateContainerLayout = () => {
+          const paneCount = container.querySelectorAll('.pane').length;
+          container.classList.toggle('multi-pane', paneCount > 1);
+        };
+
+        const openPane = async (url) => {
+          try {
+            console.log(`Opening pane for: ${url}`);
+            const normalizedUrl = normalizeUrl(url);
+
+            // Check for existing pane to prevent duplicates
+            const existingPane = container.querySelector(`[data-url="${normalizedUrl}"]`);
+            if (existingPane) {
+              console.log('Pane already exists, focusing existing pane');
+              focusPane(existingPane);
+              return;
+            }
+
+            // Fetch content
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+            const res = await fetch(url, {
+              headers: { 'Accept': 'text/html;charset=utf-8' },
+              signal: controller.signal
+            });
+            clearTimeout(timeoutId);
+
+            if (!res.ok) {
+              console.error(`Failed to fetch pane content: ${res.status}`);
+              return;
+            }
+
+            const html = await res.text();
+            const doc = new DOMParser().parseFromString(html, 'text/html');
+            const fetchedContent = doc.querySelector('.pane .pane-content');
+
+            if (!fetchedContent) {
+              console.error('No .pane-content found in fetched page');
+              return;
+            }
+
+            // Create new pane
+            const pane = document.createElement('div');
+            pane.className = 'pane';
+            pane.dataset.url = normalizedUrl;
+            pane.setAttribute('tabindex', '-1');
+
+            pane.innerHTML = `
+                <button class="close" aria-label="Close">×</button>
+                <div class="body-wrapper">
+                    <div class="body">
+                        <div class="pane-content">${fetchedContent.innerHTML}</div>
+                    </div>
+                </div>
+            `;
+
+            // Attach close listener
+            pane.querySelector('.close').addEventListener('click', (e) => {
+                e.stopPropagation();
+                closePane(pane);
+            });
+
+            // Append and focus
+            container.appendChild(pane);
+            void pane.offsetHeight;
+            updateContainerLayout();
+            setTimeout(() => focusPane(pane), 0);
+            console.log('Pane opened successfully');
+          } catch (error) {
+            console.error('Error opening pane:', error);
+            if (error.name !== 'AbortError') {
+              window.location.href = url;
+            }
+          }
+        };
+
+        const focusPane = (pane) => {
+          requestAnimationFrame(() => {
+            if (document.activeElement && document.activeElement !== pane && document.activeElement.blur) {
+              document.activeElement.blur();
+            }
+            pane.focus({ preventScroll: true });
+            requestAnimationFrame(() => {
+              pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
+            });
+          });
+        };
+
+        const closePane = (pane) => {
+          if (pane === container.firstElementChild) return;
+          const previousPane = pane.previousElementSibling;
+          pane.remove();
+          updateContainerLayout();
+          if (previousPane && previousPane.classList.contains('pane')) {
+            focusPane(previousPane);
+            if (previousPane.dataset.url) {
+              history.replaceState({ pane: previousPane.dataset.url }, '', previousPane.dataset.url);
+            }
+          }
+        };
+
+        // --- Single Event Delegation Handler ---
+        const handleWikiClick = (e) => {
+          // Handle link clicks within content
+          const inContent = e.target?.closest?.('article.prose, aside.backlinks');
+          if (inContent) {
+            const a = e.target?.closest?.('a[href^="/notes/"]');
+            if (a) {
+              // Don't intercept if modifier keys are pressed
+              if (e.ctrlKey || e.metaKey || e.shiftKey) return;
+
+              // On desktop (>= 1024px), intercept. On mobile, allow normal navigation.
+              if (window.innerWidth < 1024) return;
+
+              // Intercept the link and open in a pane!
+              e.preventDefault();
+              const targetUrl = normalizeUrl(a.href);
+
+              openPane(a.href);
+              history.pushState({ pane: targetUrl }, '', targetUrl);
+              return;
+            }
+          }
+
+          // Handle pane focusing (only if we didn't handle a content link)
+          if (e.target?.closest('a, button, input, textarea')) {
             return;
           }
 
-        const normalizeUrl = (url) => new URL(url, window.location.origin).pathname;
-
-        function updateContainerLayout() {
-            const paneCount = container.querySelectorAll('.pane').length;
-            // Add a class if more than one pane is present. CSS handles the alignment shift transition.
-            container.classList.toggle('multi-pane', paneCount > 1);
-        }
-
-        async function openPane(url) {
-            try {
-              console.log(`Opening pane for: ${url}`);
-              const normalizedUrl = normalizeUrl(url);
-
-              // 1. Fetch and parse content with timeout
-              const controller = new AbortController();
-              const timeoutId = setTimeout(() => controller.abort(), 10000);
-              
-              const res = await fetch(url, { 
-                headers: { 'Accept': 'text/html;charset=utf-8' },
-                signal: controller.signal
-              });
-              clearTimeout(timeoutId);
-              
-              if (!res.ok) {
-                console.error(`Failed to fetch pane content: ${res.status}`);
-                return;
-              }
-              
-              const html = await res.text();
-              const doc = new DOMParser().parseFromString(html, 'text/html');
-              
-              // FIX: Select the specific content wrapper to avoid structural duplication
-              const fetchedContent = doc.querySelector('.pane .pane-content');
-
-              if (!fetchedContent) {
-                console.error('No .pane-content found in fetched page');
-                return;
-              }
-
-              // 2. Create new pane
-              const pane = document.createElement('div');
-              pane.className = 'pane';
-              pane.dataset.url = normalizedUrl;
-              pane.setAttribute('tabindex', '-1'); // Make focusable
-
-              // FIX: Inject content into the new, correct HTML structure
-              pane.innerHTML = `
-                  <button class="close" aria-label="Close">×</button>
-                  <div class="body-wrapper">
-                      <div class="body">
-                          <div class="pane-content">${fetchedContent.innerHTML}</div>
-                      </div>
-                  </div>
-              `;
-
-              // 3. Attach close listener
-              pane.querySelector('.close').addEventListener('click', (e) => {
-                  // Stop propagation to prevent the container listener from trying to focus this pane.
-                  e.stopPropagation(); 
-                  closePane(pane);
-              });
-
-              // 4. Append, update state, and scroll
-              container.appendChild(pane);
-              
-              // FIX: Force browser to recalculate styles immediately
-              // This ensures CSS variables and z-index are applied before we try to focus
-              void pane.offsetHeight;
-              updateContainerLayout(); // Update alignment BEFORE scrolling
-              
-              // FIX: Let browser paint new pane, then focus and scroll it
-              // setTimeout(0) ensures DOM has been painted before we try to focus
-              setTimeout(() => scrollToPane(pane, true), 0);
-              console.log('Pane opened successfully');
-            } catch (error) {
-              console.error('Error opening pane:', error);
-              if (error.name !== 'AbortError') {
-                // Fallback: navigate normally if pane opening fails
-                window.location.href = url;
-              }
+          const clickedPane = e.target?.closest?.('.pane');
+          if (clickedPane && document.activeElement !== clickedPane) {
+            focusPane(clickedPane);
+            if (clickedPane.dataset.url) {
+              history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
             }
-        }
-
-        // FIX: Stabilized scrolling behavior synchronization
-        function scrollToPane(pane, immediateFocus = false) {
-            // FIX: Defer entire function to next frame so click cycle finishes first
-            // This prevents browser from handing focus back to the clicked link
-            requestAnimationFrame(() => {
-                const needsFocus = immediateFocus || document.activeElement !== pane;
-
-                if (needsFocus) {
-                    // Ensure a clean focus transition by blurring the current active element first.
-                    if (document.activeElement && document.activeElement !== pane && document.activeElement.blur) {
-                        document.activeElement.blur();
-                    }
-                    // FIX: Use preventScroll to separate focus (which triggers CSS expansion) from scrolling.
-                    // This prevents the browser from auto-scrolling before the pane expands.
-                    pane.focus({ preventScroll: true });
-                }
-                
-                // Handle the scroll after focus.
-                // Additional requestAnimationFrame ensures the CSS :focus-within expansion has started
-                requestAnimationFrame(() => {
-                    // Align the start of the pane with the start of the scrollable area
-                    pane.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'start' });
-                });
-            });
-        }
-
-        function closePane(pane) {
-            // Safety check: don't close the first pane
-            if (pane === container.firstElementChild) return;
-
-            const previousPane = pane.previousElementSibling;
-            pane.remove();
-            
-            updateContainerLayout(); // Update alignment AFTER closing
-
-            if (previousPane && previousPane.classList.contains('pane')) {
-                scrollToPane(previousPane);
-                // Update history using replaceState so closing doesn't add unnecessary history steps
-                if (previousPane.dataset.url) {
-                    history.replaceState({ pane: previousPane.dataset.url }, '', previousPane.dataset.url);
-                }
-            }
-        }
-
-        // Click interception (Delegated listener on the container)
-        container.addEventListener('click', (e) => {
-            // PRIORITY 1: Handle link clicks within content FIRST
-            const inContent = e.target?.closest?.('article.prose, aside.backlinks');
-            if (inContent) {
-                const a = e.target?.closest?.('a[href^="/notes/"]');
-                if (a) {
-                    // Don't intercept if modifier keys are pressed
-                    if (e.ctrlKey || e.metaKey || e.shiftKey) return;
-                    
-                    // On desktop (>= 1024px), intercept. On mobile, allow normal navigation.
-                    if (window.innerWidth < 1024) return; 
-
-                    // Intercept the link and open in a pane!
-                    e.preventDefault();
-                    const targetUrl = normalizeUrl(a.href);
-                    
-                    openPane(a.href);
-                    // Update history to the newly opened pane
-                    history.pushState({ pane: targetUrl }, '', targetUrl);
-                    return; // Exit after handling link
-                }
-            }
-
-            // PRIORITY 2: Handle pane focusing (only if we didn't handle a content link)
-            // Skip if clicking on interactive elements (buttons, inputs, etc.)
-            if (e.target?.closest('a, button, input, textarea')) {
-                return;
-            }
-
-            const clickedPane = e.target?.closest?.('.pane');
-            if (clickedPane && document.activeElement !== clickedPane) {
-                scrollToPane(clickedPane);
-                // Update history when focusing a different pane
-                if (clickedPane.dataset.url) {
-                    history.pushState({ pane: clickedPane.dataset.url }, '', clickedPane.dataset.url);
-                }
-            }
-        });
+          }
+        };
 
         // Handle popstate (browser history navigation)
-        addEventListener('popstate', () => {
-            const targetUrl = normalizeUrl(window.location.href);
-            
-            const panes = Array.from(container.querySelectorAll('.pane'));
-            const targetIndex = panes.findLastIndex(p => p.dataset.url === targetUrl);
+        const handlePopstate = () => {
+          const targetUrl = normalizeUrl(window.location.href);
+          const panes = Array.from(container.querySelectorAll('.pane'));
+          const targetIndex = panes.findLastIndex(p => p.dataset.url === targetUrl);
 
-            if (targetIndex !== -1) {
-                // Close panes to the right
-                for (let i = panes.length - 1; i > targetIndex; i--) {
-                    panes[i].remove();
-                }
-                updateContainerLayout();
-                scrollToPane(panes[targetIndex]);
-            } else {
-                // Fallback: reload if state is lost
-                window.location.reload();
+          if (targetIndex !== -1) {
+            for (let i = panes.length - 1; i > targetIndex; i--) {
+              panes[i].remove();
             }
-        });
-        
+            updateContainerLayout();
+            focusPane(panes[targetIndex]);
+          } else {
+            window.location.reload();
+          }
+        };
+
         // Initialize the first pane
         const firstPane = container.querySelector('.pane');
         if (firstPane) {
-            firstPane.dataset.url = normalizeUrl(window.location.href);
-            // Initialize focus correctly using the stabilized method
-            scrollToPane(firstPane, true);
-            updateContainerLayout(); // Initialize alignment state
+          firstPane.dataset.url = normalizeUrl(window.location.href);
+          focusPane(firstPane);
+          updateContainerLayout();
         }
-        
+
+        // --- SINGLE EVENT DELEGATION SETUP ---
+        // Remove any existing listeners to prevent duplicates
+        document.removeEventListener('mouseenter', handlePreviewHover, true);
+        document.removeEventListener('mouseleave', handlePreviewLeave, true);
+        container.removeEventListener('click', handleWikiClick);
+        window.removeEventListener('popstate', handlePopstate);
+
+        // Add single event listeners
+        document.addEventListener('mouseenter', handlePreviewHover, true);
+        document.addEventListener('mouseleave', handlePreviewLeave, true);
+        container.addEventListener('click', handleWikiClick);
+        window.addEventListener('popstate', handlePopstate);
+
         // Mark as successfully initialized
         window.wikiInitialized = true;
-        console.log('Panes setup completed');
-        
-        } catch (error) {
-          console.error('Failed to setup panes:', error);
-        }
+        console.log('Wiki initialized with clean architecture');
+        } // Close the else block for container check
       }
 
-      // Wait for DOM to be fully loaded before initializing
-      function initializeWhenReady() {
-        try {
-          console.log('Initializing wiki features...');
-          console.log('Document ready state:', document.readyState);
-          console.log('Container exists:', !!document.getElementById('pane-container'));
 
-          window.setupNotePreviews();
-          window.setupPanes();
-          console.log('Wiki features initialized successfully');
-        } catch (error) {
-          console.error('Failed to initialize wiki features:', error);
-          console.error('Error details:', error.message);
-          console.error('Error stack:', error.stack);
-          // Fallback: at least try to make links work normally
-          document.body.classList.add('wiki-fallback-mode');
-        }
-      }
-
-      // Immediate initialization - try right away
-      console.log('Attempting immediate initialization...');
-      initializeWhenReady();
-
-      // Multiple backup strategies for reliability
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initializeWhenReady);
-      }
-
-      // Aggressive backup timers
-      setTimeout(() => {
-        if (!window.wikiInitialized) {
-          console.log('100ms backup initialization triggered');
-          initializeWhenReady();
-        }
-      }, 100);
-
-      setTimeout(() => {
-        if (!window.wikiInitialized) {
-          console.log('500ms backup initialization triggered');
-          initializeWhenReady();
-        }
-      }, 500);
-
-      setTimeout(() => {
-        if (!window.wikiInitialized) {
-          console.log('1s backup initialization triggered');
-          initializeWhenReady();
-        }
-      }, 1000);
-
-      // Final backup
-      setTimeout(() => {
-        if (!window.wikiInitialized) {
-          console.log('2s final backup initialization triggered');
-          try {
-            window.setupNotePreviews();
-            window.setupPanes();
-            window.wikiInitialized = true;
-            console.log('Final backup completed');
-          } catch (error) {
-            console.error('Final backup failed:', error);
-          }
-        }
-      }, 2000);
     </script>
   </body>
 </html>
