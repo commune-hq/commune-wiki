@@ -28,14 +28,15 @@
     ],
     "outbound": [
       "/notes/evergreen-notes/",
-      "/notes/commune/",
       "/notes/associative-linking-over-hierarchies/",
+      "/notes/commune/",
       "/notes/personal-knowledge-graphs/",
       "/notes/build-in-public/"
     ],
     "inbound": [
       "/notes/associative-linking-over-hierarchies/",
-      "/notes/build-in-public/"
+      "/notes/build-in-public/",
+      "/notes/commune/"
     ],
     "tags": [
       "note-taking",
@@ -290,6 +291,7 @@
       "/notes/ask-the-brain/",
       "/notes/box-first-earns-trust/",
       "/notes/zen-practice-protects-attention/",
+      "/notes/andy-matuschaks-notes/",
       "/notes/auto-essay-closes-loop-each-week/"
     ],
     "inbound": [

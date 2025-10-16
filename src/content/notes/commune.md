@@ -21,5 +21,7 @@ Everything private runs on my box at home. I only publish what I approve. See [[
 
 Right now I'm focused on a calm, paid surface that respects attention. I'm also crossing systems work with practice—notes on tech next to notes on focus. See [[Zen practice protects attention]].
 
+The sliding panes interface here owes a debt to [[Andy Matuschak's Notes]]. His work showed how interface shapes thinking.
+
 If you're new, skim today's ledger and last week's wrap: [[Ledger replaces feeds]] and [[Auto-essay closes the loop each week]]. Then ask the brain about whatever catches your eye.
 

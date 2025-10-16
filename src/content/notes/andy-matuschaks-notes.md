@@ -9,19 +9,12 @@ updated: 2025-10-15
 summary: "Andy Matuschak's note-taking system pioneered the concept of evergreen notes with sliding pane interfaces and dense linking."
 ---
 
-Andy Matuschak's public note system at [notes.andymatuschak.org](https://notes.andymatuschak.org) demonstrates how digital note-taking can support serious intellectual work.
+Andy Matuschak's public note system at <a href="https://notes.andymatuschak.org" target="_blank" rel="noopener noreferrer">notes.andymatuschak.org<span class="external-link-icon" aria-hidden="true">↗</span></a> pioneered [[Evergreen Notes]] with sliding panes. Most note-taking optimizes for capture. His system optimizes for thinking.
 
-Key innovations:
-- **[[Evergreen Notes]]** that are atomic, concept-oriented, and densely linked
-- **Sliding pane interface** that allows multiple notes to be viewed simultaneously
-- **Public by default** approach that builds knowledge in the open
+The core innovation: notes that compound over time. Each note is atomic, concept-oriented, densely linked. See [[Evergreen Notes]]. They're not an archive—they're a thinking environment that evolves with you.
 
-His core insight: most note-taking systems optimize for capture, not for developing ideas over time. [[Evergreen Notes]] are designed to compound and evolve, creating a **thinking environment** rather than just an archive.
+Sliding panes solve context loss. Click a link in traditional hypertext, you lose where you came from. Sliding panes keep your exploration path visible. Multiple notes side-by-side let you see connections between ideas without losing the thread.
 
-The sliding panes interface solves a fundamental problem with hyperlinked notes: context loss. When you click a link, you lose the original context. Sliding panes preserve the path of exploration, making it easier to see connections between ideas.
+The interface shapes the thinking. Linear documents force linear thought. Networked interfaces enable [[Associative linking over hierarchies]]. This is why [[Commune]]'s sliding pane interface matters—it's not just aesthetics, it's cognitive architecture.
 
-This system influenced the design of [[Commune]] and many other digital garden implementations. The key principles translate beyond note-taking to any system designed for knowledge work.
-
-**Critical insight**: The interface shapes the thinking. Linear documents encourage linear thinking. Networked interfaces encourage associative thinking.
-
-**Related**: [[Associative linking over hierarchies]], [[Personal Knowledge Graphs]], [[Build in Public]]
+Built in public at <a href="https://notes.andymatuschak.org" target="_blank" rel="noopener noreferrer">notes.andymatuschak.org<span class="external-link-icon" aria-hidden="true">↗</span></a>. The system influenced dozens of [[Personal Knowledge Graphs]] and [[Build in Public]] implementations. The principles extend beyond notes to any system for knowledge work.
