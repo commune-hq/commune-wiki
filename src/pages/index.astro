@@ -325,9 +325,14 @@ const title = data.title ?? slug;
       container.removeEventListener('click', handleWikiClick);
       window.removeEventListener('popstate', handlePopstate);
 
-      // Add single event listeners
-      document.addEventListener('mouseenter', handlePreviewHover, true);
-      document.addEventListener('mouseleave', handlePreviewLeave, true);
+      // Add hover preview listeners ONLY on desktop (>= 1024px)
+      // This prevents the brief preview flash on mobile/tablet when tapping links
+      if (window.innerWidth >= 1024) {
+        document.addEventListener('mouseenter', handlePreviewHover, true);
+        document.addEventListener('mouseleave', handlePreviewLeave, true);
+      }
+
+      // Add navigation listeners on all devices
       container.addEventListener('click', handleWikiClick);
       window.addEventListener('popstate', handlePopstate);
 

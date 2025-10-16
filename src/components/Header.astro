@@ -2,10 +2,10 @@
 ---
 <header class="commune-header">
   <div class="wrap">
-    <div class="brand-section">
+    <a href="/" class="brand-section">
       <img src="/avatar.jpg" alt="Devon" class="avatar" />
-      <a class="brand" href="/">Devon</a>
-    </div>
+      <span class="brand">Devon</span>
+    </a>
     <div class="controls">
       <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
         <span class="sun">☀️</span>
@@ -42,6 +42,8 @@
     display:flex;
     align-items:center;
     gap:.75rem;
+    text-decoration:none;
+    color:inherit;
   }
   .avatar{
     width:2.5rem;
@@ -67,11 +69,14 @@
     cursor:pointer;
     transition:color 0.15s ease;
   }
-  
-  /* Mobile: smaller brand text */
+
+  /* Tablet and below: adjust brand text size and header padding */
   @media (max-width: 768px) {
+    .wrap {
+      padding:1rem 1.5rem;
+    }
     .brand {
-      font-size:1rem;
+      font-size:1.1rem;
       font-weight:600;
     }
   }
@@ -160,6 +165,10 @@
     color:var(--c-text-muted);
     font-size:.95rem;
   }
+  /* Hide search emoji on desktop */
+  .search-btn .search-icon {
+    display:none;
+  }
   kbd{
     font-size:.75rem;
     color:var(--c-text-muted);
@@ -168,20 +177,21 @@
     padding:.2rem .4rem;
     border-radius:var(--c-radius-sm);
   }
-  
+
   /* Mobile: hide Command-K text and search text, show only icon */
   @media (max-width: 768px) {
     .search-btn kbd,
     .search-btn .search-text {
       display:none;
     }
+    .search-btn .search-icon {
+      display:block;
+      font-size:1.1rem;
+    }
     .search-btn {
       padding:.6rem;
       min-width:2.5rem;
       justify-content:center;
-    }
-    .search-btn .search-icon {
-      font-size:1.1rem;
     }
     .avatar {
       width:2.2rem;
