@@ -38,13 +38,8 @@
         <div class="star-modal-body">
           <div class="star-modal-icon">⭐</div>
           <h2>Top 5% Most Referenced</h2>
-          <p>This note is in the <strong>top 5%</strong> of most referenced notes in this wiki.</p>
-          <p>It has earned a star because other notes frequently link to it, indicating it contains valuable insights that connect across different ideas.</p>
-          <div class="star-modal-detail">
-            <h3>Why Stars Matter</h3>
-            <p>Stars highlight the most connected ideas in my thinking. They're not about popularity—they're about <em>centrality</em> in the knowledge graph.</p>
-            <p>Inspired by Skool's approach to recognizing top contributors, the star system helps you discover the notes that anchor my understanding of key concepts.</p>
-          </div>
+          <p>This note sits in the <strong>top 5%</strong> by backlinks. Other notes reach for it often—a sign it anchors key ideas in the knowledge graph.</p>
+          <p><a href="/notes/the-star/" class="star-link">Learn more about the <span class="star-emoji">⭐</span> system</a></p>
         </div>
       </div>
     `;
@@ -56,6 +51,11 @@
 
     // Close on X button click
     modal.querySelector('.star-modal-close').addEventListener('click', hideStarModal);
+
+    // Prevent clicks on modal content from closing modal
+    modal.querySelector('.star-modal-content').addEventListener('click', (e) => {
+      e.stopPropagation();
+    });
 
     // Close on Escape key
     document.addEventListener('keydown', (e) => {
@@ -265,13 +265,13 @@
   }
 
   .star-modal-body {
-    padding: 3rem 2rem 2rem;
+    padding: 2.5rem 2rem 2rem;
     text-align: center;
   }
 
   .star-modal-icon {
-    font-size: 4rem;
-    margin-bottom: 1rem;
+    font-size: 3.5rem;
+    margin-bottom: 0.75rem;
     animation: starPulse 2s ease-in-out infinite;
   }
 
@@ -281,17 +281,21 @@
   }
 
   .star-modal-body h2 {
-    font-size: 1.75rem;
+    font-size: 1.5rem;
     font-weight: 700;
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
     color: var(--c-text);
   }
 
   .star-modal-body p {
-    font-size: 1.05rem;
-    line-height: 1.6;
+    font-size: 1rem;
+    line-height: 1.5;
     color: var(--c-text-accent);
-    margin-bottom: 1rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .star-modal-body p:last-child {
+    margin-bottom: 0;
   }
 
   .star-modal-body strong {
@@ -304,24 +308,20 @@
     color: var(--c-text);
   }
 
-  .star-modal-detail {
-    margin-top: 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--c-border);
-    text-align: left;
+  .star-link {
+    color: var(--c-accent);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 2px;
+    transition: opacity 0.2s ease;
   }
 
-  .star-modal-detail h3 {
-    font-size: 1.25rem;
-    font-weight: 600;
-    margin-bottom: 0.75rem;
-    color: var(--c-text);
+  .star-link:hover {
+    opacity: 0.8;
   }
 
-  .star-modal-detail p {
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin-bottom: 0.75rem;
+  .star-link .star-emoji {
+    text-decoration: none;
   }
 
   /* Mobile adjustments */
@@ -332,15 +332,22 @@
     }
 
     .star-modal-body {
-      padding: 2.5rem 1.5rem 1.5rem;
+      padding: 2rem 1.5rem 1.5rem;
     }
 
     .star-modal-body h2 {
-      font-size: 1.5rem;
+      font-size: 1.35rem;
+      margin-bottom: 0.5rem;
     }
 
     .star-modal-icon {
-      font-size: 3rem;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .star-modal-body p {
+      font-size: 0.95rem;
+      margin-bottom: 0.5rem;
     }
   }
 </style>
