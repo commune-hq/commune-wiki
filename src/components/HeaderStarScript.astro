@@ -46,15 +46,18 @@
 
     document.body.appendChild(modal);
 
-    // Close on backdrop click
-    modal.querySelector('.star-modal-backdrop').addEventListener('click', hideStarModal);
-
-    // Close on X button click
-    modal.querySelector('.star-modal-close').addEventListener('click', hideStarModal);
+    // Close on modal/backdrop click (but not on content)
+    modal.addEventListener('click', hideStarModal);
 
     // Prevent clicks on modal content from closing modal
     modal.querySelector('.star-modal-content').addEventListener('click', (e) => {
       e.stopPropagation();
+    });
+
+    // Close on X button click
+    modal.querySelector('.star-modal-close').addEventListener('click', (e) => {
+      e.stopPropagation(); // Prevent double-close
+      hideStarModal();
     });
 
     // Close on Escape key
