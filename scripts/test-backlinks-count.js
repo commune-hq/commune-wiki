@@ -11,6 +11,15 @@ import puppeteer from 'puppeteer';
   // Wait for backlinks to load
   await page.waitForSelector('.backlinks', { timeout: 5000 });
 
+  // Scroll to backlinks section
+  await page.evaluate(() => {
+    const backlinks = document.querySelector('.backlinks');
+    backlinks.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+
+  // Wait for scroll to complete
+  await new Promise(resolve => setTimeout(resolve, 500));
+
   // Get the backlinks heading text
   const headingText = await page.$eval('.backlinks h4', el => el.textContent);
   console.log('Backlinks heading text:', headingText);
@@ -26,8 +35,9 @@ import puppeteer from 'puppeteer';
     console.log('❌ Heading does NOT include count');
   }
 
-  // Take screenshot
-  await page.screenshot({ path: 'scripts/backlinks-count-test.png', fullPage: true });
+  // Take screenshot of just the backlinks section
+  const backlinkElement = await page.$('.backlinks');
+  await backlinkElement.screenshot({ path: 'scripts/backlinks-count-test.png' });
   console.log('Screenshot saved to scripts/backlinks-count-test.png');
 
   await browser.close();
