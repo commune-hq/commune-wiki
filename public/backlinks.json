@@ -276,6 +276,7 @@
       "devon meadows"
     ],
     "outbound": [
+      "/notes/commune/",
       "/notes/voice-in-approvals-out/",
       "/notes/ledger-replaces-feeds/",
       "/notes/depth-3-free-is-honest-gating/",
@@ -290,6 +291,7 @@
     "inbound": [
       "/notes/andy-matuschaks-notes/",
       "/notes/build-in-public/",
+      "/notes/commune/",
       "/notes/local-first-software/"
     ],
     "tags": [

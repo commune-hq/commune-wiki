@@ -3,6 +3,8 @@ import { getEntry } from 'astro:content';
 import Header from '../components/Header.astro';
 import SearchModal from '../components/SearchModal.astro';
 import Backlinks from '../components/Backlinks.astro';
+import BacklinksScript from '../components/BacklinksScript.astro';
+import Footer from '../components/Footer.astro';
 import PlausibleScript from '../components/PlausibleScript.astro';
 import '../styles/design-system.css';
 import '../styles/notes.css';
@@ -81,6 +83,7 @@ const title = data.title ?? slug;
             </article>
             <Backlinks slug={`/notes/${slug}/`} title={title} />
           </div>
+          <Footer />
         </div>
       </div>
     </div>
@@ -265,6 +268,12 @@ const title = data.title ?? slug;
           container.appendChild(pane);
           void pane.offsetHeight;
           updateContainerLayout();
+
+          // Initialize backlinks for the new pane
+          if (typeof window.initializeBacklinks === 'function') {
+            window.initializeBacklinks(pane);
+          }
+
           setTimeout(() => focusPane(pane), 0);
           console.log('Pane opened successfully');
         } catch (error) {
@@ -392,6 +401,7 @@ const title = data.title ?? slug;
 
 
   </script>
+  <BacklinksScript />
 </body>
 </html>
 

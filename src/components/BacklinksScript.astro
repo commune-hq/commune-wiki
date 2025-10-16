@@ -1,0 +1,62 @@
+<script is:inline>
+// === BACKLINKS INITIALIZATION ===
+// Handles dynamic backlinks loading for both static and dynamically loaded panes
+
+(function() {
+  let backlinksData = null;
+
+  async function initializeBacklinks(scope = document) {
+    try {
+      // Fetch backlinks data if not already loaded
+      if (!backlinksData) {
+        const res = await fetch('/backlinks.json');
+        if (res.ok) {
+          backlinksData = await res.json();
+        } else {
+          console.warn('Failed to load backlinks.json');
+          return;
+        }
+      }
+
+      // Find all backlinks sections within the scope
+      const backlinksSections = scope.querySelectorAll('.backlinks');
+
+      backlinksSections.forEach(section => {
+        const slug = section.dataset.backlinksFor;
+        if (!slug) return;
+
+        const list = section.querySelector('.backlinks-list');
+        if (!list) return;
+
+        // Get backlinks for this slug
+        const here = slug.endsWith('/') ? slug : slug + '/';
+        const rec = backlinksData?.[here];
+        const items = rec?.inbound ?? [];
+
+        if (!items.length) {
+          // Hide the entire section if no backlinks
+          section.classList.add('hidden');
+          return;
+        }
+
+        // Show the section and populate links
+        section.classList.remove('hidden');
+        const titleFor = (u) => backlinksData[u]?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
+        list.innerHTML = items.map(s => `<li><a href="${s}">${titleFor(s)}</a></li>`).join('');
+      });
+    } catch (error) {
+      console.error('Error initializing backlinks:', error);
+    }
+  }
+
+  // Make it globally available for dynamic pane loading
+  window.initializeBacklinks = initializeBacklinks;
+
+  // Auto-initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => initializeBacklinks());
+  } else {
+    initializeBacklinks();
+  }
+})();
+</script>

@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.16",
+    "puppeteer": "^24.25.0",
     "typescript": "^5.6.0"
   }
 }

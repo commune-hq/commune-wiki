@@ -2,32 +2,14 @@
 export interface Props { slug: string; title?: string; }
 const { slug } = Astro.props;
 ---
-<aside class="backlinks">
+<aside class="backlinks" data-backlinks-for={slug}>
   <h4>Links to this note</h4>
-  <ul id="blist"></ul>
+  <ul class="backlinks-list"></ul>
 </aside>
 
 <style>
   .backlinks{margin-top:2.2rem;padding-top:.8rem;border-top:1px solid rgba(0,0,0,.08)}
+  .backlinks.hidden{display:none}
   .backlinks h4{font-size:.95rem;opacity:.8;margin:0 0 .6rem}
   .backlinks li{margin:.35rem 0}
 </style>
-
-<script>
-  (async () => {
-    async function getJSON(path){
-      try{ const r = await fetch(path); if(r.ok) return r.json(); } catch {}
-      return null;
-    }
-    const loc = '/backlinks.json';
-    const data = await getJSON(loc);
-    const list = document.getElementById('blist');
-    if(!data) { list.innerHTML = '<li>No backlinks yet.</li>'; return; }
-    const here = location.pathname.endsWith('/') ? location.pathname : location.pathname + '/';
-    const rec = data[here];
-    const items = rec?.inbound ?? [];
-    if(!items.length){ list.innerHTML = '<li>No backlinks yet.</li>'; return; }
-    const titleFor = (u) => data[u]?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
-    list.innerHTML = items.map(s => `<li><a href="${s}">${titleFor(s)}</a></li>`).join('');
-  })();
-</script>
