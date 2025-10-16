@@ -7,7 +7,7 @@ export function setupNotePreviews(){
       card = document.createElement('div');
       card.id = 'note-hover';
       card.style.position = 'fixed';
-      card.style.maxWidth = '420px';
+      card.style.maxWidth = '380px';
       card.style.background = 'var(--sl-color-bg, #fff)';
       card.style.boxShadow = '0 20px 60px rgba(0,0,0,.25)';
       card.style.border = '1px solid rgba(0,0,0,.08)';
@@ -18,8 +18,55 @@ export function setupNotePreviews(){
       document.body.appendChild(card);
     }
     card.innerHTML = html;
-    card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
-    card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
+
+    // Viewport-aware positioning with padding from edges
+    const padding = 16;
+    const offsetFromCursor = 16;
+
+    // Temporarily show card to measure dimensions
+    card.style.opacity = '0';
+    card.hidden = false;
+    const rect = card.getBoundingClientRect();
+    const cardWidth = rect.width;
+    const cardHeight = rect.height;
+    card.style.opacity = '1';
+
+    // Calculate position with intelligent edge detection
+    let left = x + offsetFromCursor;
+    let top = y + offsetFromCursor;
+
+    // Check right edge overflow
+    if (left + cardWidth + padding > window.innerWidth) {
+      // Try positioning to the left of cursor instead
+      left = x - cardWidth - offsetFromCursor;
+      // If still overflows on left, clamp to right edge
+      if (left < padding) {
+        left = window.innerWidth - cardWidth - padding;
+      }
+    }
+
+    // Check left edge overflow
+    if (left < padding) {
+      left = padding;
+    }
+
+    // Check bottom edge overflow
+    if (top + cardHeight + padding > window.innerHeight) {
+      // Position above cursor instead
+      top = y - cardHeight - offsetFromCursor;
+      // If still overflows on top, clamp to bottom edge
+      if (top < padding) {
+        top = window.innerHeight - cardHeight - padding;
+      }
+    }
+
+    // Check top edge overflow
+    if (top < padding) {
+      top = padding;
+    }
+
+    card.style.left = left + 'px';
+    card.style.top = top + 'px';
     card.hidden = false;
   };
   const hide = () => {
@@ -38,7 +85,7 @@ export function setupNotePreviews(){
       const doc = new DOMParser().parseFromString(t, 'text/html');
       const main = doc.querySelector('main') ?? doc.body;
       const paras = Array.from(main.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
-      const html = `<div style="font-weight:600;margin-bottom:.3rem">${doc.title?.replace(/ \|.*/,'')}</div>${paras}`;
+      const html = `<div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem;line-height:1.3">${doc.title?.replace(/ \|.*/,'')}</div><div style="font-size:0.85rem;line-height:1.5;color:var(--sl-color-text-muted,#666)">${paras}</div>`;
       cache.set(url, html);
       show(a, html, e.clientX, e.clientY);
     }catch{}
