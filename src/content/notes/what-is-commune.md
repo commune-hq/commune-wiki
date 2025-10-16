@@ -4,7 +4,7 @@ created: 2025-10-16
 visibility: public
 status: live
 tags: [commune, platform, knowledge-sharing, working-in-public]
-aliases: ["commune", "what is commune", "about commune"]
+aliases: ["what is commune", "about commune", "commune platform"]
 summary: "A platform for sharing your thinking in public without algorithmic feeds. Voice capture flows into atomic notes, readers navigate via explicit links, and depth-gating protects attention."
 ---
 
