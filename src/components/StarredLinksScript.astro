@@ -31,11 +31,11 @@
 
         if (note?.isStarred) {
           // Check if star isn't already there
-          const firstChild = link.firstChild;
-          if (firstChild && firstChild.nodeType === Node.TEXT_NODE) {
-            const text = firstChild.textContent;
-            if (!text.startsWith('⭐')) {
-              firstChild.textContent = '⭐ ' + text;
+          const lastChild = link.lastChild;
+          if (lastChild && lastChild.nodeType === Node.TEXT_NODE) {
+            const text = lastChild.textContent;
+            if (!text.endsWith('⭐')) {
+              lastChild.textContent = text + ' ⭐';
             }
           }
         }

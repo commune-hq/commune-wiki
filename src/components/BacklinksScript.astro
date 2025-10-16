@@ -53,8 +53,8 @@
         const titleFor = (u) => {
           const note = backlinksData[u];
           const title = note?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
-          const star = note?.isStarred ? '⭐ ' : '';
-          return star + title;
+          const star = note?.isStarred ? ' ⭐' : '';
+          return title + star;
         };
         list.innerHTML = items.map(s => `<li><a href="${s}">${titleFor(s)}</a></li>`).join('');
       });
