@@ -78,7 +78,7 @@ const title = data.title ?? slug;
         <div class="body">
           <div class="pane-content">
             <article class="prose">
-              <h1>{title}</h1>
+              <h1>{title} {data.status && <span class={`status-badge status-${data.status}`}>{data.status}</span>}</h1>
               <Content />
             </article>
             <Backlinks slug={`/notes/${slug}/`} title={title} />
