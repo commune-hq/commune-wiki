@@ -50,7 +50,12 @@
           heading.textContent = `${count} ${linkText} to this note`;
         }
 
-        const titleFor = (u) => backlinksData[u]?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
+        const titleFor = (u) => {
+          const note = backlinksData[u];
+          const title = note?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
+          const star = note?.isStarred ? '⭐ ' : '';
+          return star + title;
+        };
         list.innerHTML = items.map(s => `<li><a href="${s}">${titleFor(s)}</a></li>`).join('');
       });
     } catch (error) {

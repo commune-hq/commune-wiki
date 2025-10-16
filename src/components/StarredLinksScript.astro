@@ -1,0 +1,58 @@
+<script is:inline>
+// === STARRED LINKS INITIALIZATION ===
+// Adds ⭐ stars to links pointing to starred notes
+
+(function() {
+  let backlinksData = null;
+
+  async function initializeStarredLinks(scope = document) {
+    try {
+      // Fetch backlinks data if not already loaded
+      if (!backlinksData) {
+        const res = await fetch('/backlinks.json');
+        if (res.ok) {
+          backlinksData = await res.json();
+        } else {
+          console.warn('Failed to load backlinks.json for starred links');
+          return;
+        }
+      }
+
+      // Find all links to /notes/ within the scope
+      const noteLinks = scope.querySelectorAll('a[href^="/notes/"]');
+
+      noteLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        if (!href) return;
+
+        // Normalize href to match backlinks.json format (ensure trailing slash)
+        const normalizedHref = href.endsWith('/') ? href : href + '/';
+        const note = backlinksData[normalizedHref];
+
+        if (note?.isStarred) {
+          // Check if star isn't already there
+          const firstChild = link.firstChild;
+          if (firstChild && firstChild.nodeType === Node.TEXT_NODE) {
+            const text = firstChild.textContent;
+            if (!text.startsWith('⭐')) {
+              firstChild.textContent = '⭐ ' + text;
+            }
+          }
+        }
+      });
+    } catch (error) {
+      console.error('Error initializing starred links:', error);
+    }
+  }
+
+  // Make it globally available for dynamic pane loading
+  window.initializeStarredLinks = initializeStarredLinks;
+
+  // Auto-initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => initializeStarredLinks());
+  } else {
+    initializeStarredLinks();
+  }
+})();
+</script>

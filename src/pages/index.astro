@@ -4,6 +4,7 @@ import Header from '../components/Header.astro';
 import SearchModal from '../components/SearchModal.astro';
 import Backlinks from '../components/Backlinks.astro';
 import BacklinksScript from '../components/BacklinksScript.astro';
+import StarredLinksScript from '../components/StarredLinksScript.astro';
 import Footer from '../components/Footer.astro';
 import PlausibleScript from '../components/PlausibleScript.astro';
 import '../styles/design-system.css';
@@ -310,9 +311,12 @@ const title = data.title ?? slug;
           void pane.offsetHeight;
           updateContainerLayout();
 
-          // Initialize backlinks for the new pane
+          // Initialize backlinks and starred links for the new pane
           if (typeof window.initializeBacklinks === 'function') {
             window.initializeBacklinks(pane);
+          }
+          if (typeof window.initializeStarredLinks === 'function') {
+            window.initializeStarredLinks(pane);
           }
 
           setTimeout(() => focusPane(pane), 0);
@@ -443,6 +447,7 @@ const title = data.title ?? slug;
 
   </script>
   <BacklinksScript />
+  <StarredLinksScript />
 </body>
 </html>
 

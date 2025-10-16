@@ -15,6 +15,135 @@ import { globby } from 'globby';
 import matter from 'gray-matter';
 import path from 'node:path';
 
+// =============================================================================
+// STAR SYSTEM CONFIGURATION - Easy to modify!
+// =============================================================================
+
+/**
+ * Star calculation strategy
+ * Change this to experiment with different ranking algorithms
+ */
+const STAR_CONFIG = {
+	// Strategy: 'top-percent' | 'top-absolute' | 'threshold'
+	strategy: 'top-percent' as const,
+
+	// For 'top-percent': What percentage gets stars?
+	topPercent: 5, // Top 5%
+
+	// For 'top-absolute': How many notes get stars?
+	topAbsolute: 3, // Top 3 notes
+
+	// For 'threshold': Minimum backlinks to get a star
+	threshold: 10, // 10+ backlinks
+
+	// Minimum notes required before stars are enabled
+	minNotesForStars: 20,
+
+	// What metric to rank by?
+	// 'backlinks' | 'revisions' | 'cross-theme' | 'weighted'
+	rankBy: 'backlinks' as const,
+
+	// For weighted ranking (future):
+	weights: {
+		backlinks: 0.5,
+		revisions: 0.3,
+		crossTheme: 0.2,
+	}
+};
+
+// =============================================================================
+
+/**
+ * Calculate which notes get stars based on STAR_CONFIG
+ * Returns a Set of slugs that should be starred
+ */
+function calculateStars(notes: Map<string, NoteMetadata>): Set<string> {
+	const starredSlugs = new Set<string>();
+
+	// Skip if too few notes
+	if (notes.size < STAR_CONFIG.minNotesForStars) {
+		return starredSlugs;
+	}
+
+	// Get all notes as array and calculate ranking scores
+	const notesArray = Array.from(notes.values());
+
+	// Calculate score based on rankBy strategy
+	const scored = notesArray.map(note => {
+		let score = 0;
+
+		switch (STAR_CONFIG.rankBy) {
+			case 'backlinks':
+				score = note.inbound.length;
+				break;
+
+			case 'revisions':
+				// Future: could track revision count in frontmatter or git history
+				score = 0;
+				break;
+
+			case 'cross-theme':
+				// Future: count unique tags across linked notes
+				score = 0;
+				break;
+
+			case 'weighted':
+				// Future: combine multiple metrics
+				score = note.inbound.length * STAR_CONFIG.weights.backlinks;
+				break;
+		}
+
+		return { slug: note.slug, score };
+	});
+
+	// Sort by score descending
+	scored.sort((a, b) => b.score - a.score);
+
+	// Determine which notes get stars based on strategy
+	let cutoffIndex = 0;
+
+	switch (STAR_CONFIG.strategy) {
+		case 'top-percent':
+			cutoffIndex = Math.ceil(notes.size * (STAR_CONFIG.topPercent / 100));
+			break;
+
+		case 'top-absolute':
+			cutoffIndex = Math.min(STAR_CONFIG.topAbsolute, notes.size);
+			break;
+
+		case 'threshold':
+			// All notes above threshold get stars
+			for (const { slug, score } of scored) {
+				if (score >= STAR_CONFIG.threshold) {
+					starredSlugs.add(slug);
+				}
+			}
+			return starredSlugs;
+	}
+
+	// Add top N notes to starred set
+	for (let i = 0; i < cutoffIndex; i++) {
+		starredSlugs.add(scored[i].slug);
+	}
+
+	// Handle ties at boundary
+	if (cutoffIndex > 0 && cutoffIndex < scored.length) {
+		const boundaryScore = scored[cutoffIndex - 1].score;
+		// Include all notes tied with the boundary score
+		for (let i = cutoffIndex; i < scored.length; i++) {
+			if (scored[i].score === boundaryScore) {
+				starredSlugs.add(scored[i].slug);
+			} else {
+				break;
+			}
+		}
+	}
+
+	return starredSlugs;
+}
+
+// =============================================================================
+
 interface NoteMetadata {
 	slug: string;
 	title: string;
@@ -24,6 +153,7 @@ interface NoteMetadata {
 	tags: string[];
 	status: string;
 	updated?: string;
+	isStarred?: boolean; // ⭐ indicator
 }
 
 export default function backlinksIntegration(): AstroIntegration {
@@ -105,6 +235,19 @@ export default function backlinksIntegration(): AstroIntegration {
 						}
 
 						note.outbound = resolvedOutbound;
+					}
+
+					// Calculate which notes get stars
+					const starredSlugs = calculateStars(notes);
+					for (const slug of starredSlugs) {
+						const note = notes.get(slug);
+						if (note) {
+							note.isStarred = true;
+						}
+					}
+
+					if (starredSlugs.size > 0) {
+						logger.info(`⭐ ${starredSlugs.size} notes starred (top ${STAR_CONFIG.topPercent}%)`);
 					}
 
 					// Convert to plain object for JSON

@@ -85,7 +85,8 @@
       "citations"
     ],
     "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
+    "updated": "2025-10-15T00:00:00.000Z",
+    "isStarred": true
   },
   "/notes/associative-linking-over-hierarchies/": {
     "slug": "/notes/associative-linking-over-hierarchies/",
@@ -987,7 +988,8 @@
       "voice"
     ],
     "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
+    "updated": "2025-10-15T00:00:00.000Z",
+    "isStarred": true
   },
   "/notes/what-is-commune/": {
     "slug": "/notes/what-is-commune/",
