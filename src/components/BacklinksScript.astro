@@ -41,6 +41,15 @@
 
         // Show the section and populate links
         section.classList.remove('hidden');
+
+        // Update heading with count
+        const heading = section.querySelector('h4');
+        if (heading) {
+          const count = items.length;
+          const linkText = count === 1 ? 'link' : 'links';
+          heading.textContent = `${count} ${linkText} to this note`;
+        }
+
         const titleFor = (u) => backlinksData[u]?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
         list.innerHTML = items.map(s => `<li><a href="${s}">${titleFor(s)}</a></li>`).join('');
       });
