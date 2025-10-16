@@ -1,7 +1,8 @@
 ---
 title: "Box-first earns trust"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [privacy, local-first, trust, infrastructure]
 aliases: ["self-hosting", "privacy-first", "home server"]
 updated: 2025-10-15

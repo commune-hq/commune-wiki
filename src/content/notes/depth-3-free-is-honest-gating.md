@@ -1,7 +1,8 @@
 ---
 title: "Depth-3 free is honest gating"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [monetization, access, transparency, design]
 aliases: ["paywall", "free tier", "access control"]
 updated: 2025-10-15

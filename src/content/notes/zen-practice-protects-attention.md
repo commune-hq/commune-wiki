@@ -1,7 +1,8 @@
 ---
 title: "Zen practice protects attention"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [attention, meditation, focus, practice]
 aliases: ["zen practice", "attention protection", "mindfulness"]
 updated: 2025-10-15

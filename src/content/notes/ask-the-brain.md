@@ -1,7 +1,8 @@
 ---
 title: "Ask the Brain"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [search, ai, answers, citations]
 aliases: ["question answering", "brain search", "cited answers"]
 updated: 2025-10-15

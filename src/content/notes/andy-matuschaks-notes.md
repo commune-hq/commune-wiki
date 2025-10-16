@@ -1,7 +1,8 @@
 ---
 title: "Andy Matuschak's Notes"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [note-taking, knowledge-management, digital-gardens]
 aliases: ["Andy Matuschak", "Matuschak notes", "sliding panes"]
 updated: 2025-10-15

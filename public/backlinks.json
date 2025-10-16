@@ -42,7 +42,7 @@
       "knowledge-management",
       "digital-gardens"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/ask-the-brain/": {
@@ -82,7 +82,7 @@
       "answers",
       "citations"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/associative-linking-over-hierarchies/": {
@@ -115,7 +115,7 @@
       "networks",
       "thinking"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/atomic-notes/": {
@@ -142,7 +142,7 @@
       "writing",
       "thinking"
     ],
-    "status": "growing",
+    "status": "live",
     "updated": "2025-10-09T00:00:00.000Z"
   },
   "/notes/auto-essay-closes-loop-each-week/": {
@@ -175,7 +175,7 @@
       "synthesis",
       "weekly-review"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/box-first-earns-trust/": {
@@ -213,7 +213,7 @@
       "trust",
       "infrastructure"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/build-in-public/": {
@@ -241,7 +241,7 @@
       "community",
       "entrepreneurship"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/business-management-is-context-management/": {
@@ -297,7 +297,7 @@
       "navigation",
       "working-in-public"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/defaulting-to-no-protects-deep-work/": {
@@ -345,7 +345,7 @@
       "transparency",
       "design"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/discovery-runs-on-time-follows-and-why/": {
@@ -381,7 +381,7 @@
       "attention",
       "intent"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/evergreen-notes/": {
@@ -415,7 +415,7 @@
       "thinking",
       "knowledge-management"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-09T00:00:00.000Z"
   },
   "/notes/externalizing-thought-builds-cognitive-scaffold/": {
@@ -466,7 +466,7 @@
       "signal",
       "taste"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/integrated-data-analysis-unlocks-impossible-observations/": {
@@ -546,7 +546,7 @@
       "transparency",
       "updates"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/local-first-software/": {
@@ -571,7 +571,7 @@
       "ownership",
       "resilience"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/local-systems-require-enhancement-dashboards/": {
@@ -613,7 +613,7 @@
       "automation",
       "cognitive-load"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/notes-beat-posts-for-showing-progress/": {
@@ -651,7 +651,7 @@
       "speed",
       "format"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/owning-data-infrastructure-eliminates-middleware/": {
@@ -710,7 +710,7 @@
       "value",
       "authenticity"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/personal-knowledge-graphs/": {
@@ -740,7 +740,7 @@
       "personal-data",
       "networks"
     ],
-    "status": "growing",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/personalized-ai-optimizes-communication-strategies/": {
@@ -791,7 +791,7 @@
       "local-first",
       "memory"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/reality-as-spiritual-hide-and-seek-game/": {
@@ -841,7 +841,7 @@
       "navigation",
       "browsing"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/router-tasteful-knowledge-integration/": {
@@ -913,7 +913,7 @@
       "clarity",
       "claims"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/unscheduled-quick-calls-destroy-deep-work/": {
@@ -934,7 +934,7 @@
       "communication",
       "boundaries"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/voice-in-approvals-out/": {
@@ -974,7 +974,7 @@
       "ai-agents",
       "voice"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/zen-practice-protects-attention/": {
@@ -1010,7 +1010,7 @@
       "focus",
       "practice"
     ],
-    "status": "evergreen",
+    "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   }
 }

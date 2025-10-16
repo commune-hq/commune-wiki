@@ -1,7 +1,8 @@
 ---
 title: "Associative linking over hierarchies"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [knowledge-management, organization, networks, thinking]
 aliases: ["associative ontologies", "network thinking", "non-hierarchical organization"]
 updated: 2025-10-15

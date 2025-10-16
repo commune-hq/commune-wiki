@@ -1,7 +1,8 @@
 ---
 title: "Notes beat posts for showing progress"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [writing, progress, speed, format]
 aliases: ["notes vs posts", "atomic writing", "progress sharing"]
 updated: 2025-10-15

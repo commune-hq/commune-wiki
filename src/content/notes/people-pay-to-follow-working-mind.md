@@ -1,7 +1,8 @@
 ---
 title: "People pay to follow a working mind"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [monetization, transparency, value, authenticity]
 aliases: ["paid content", "working in public", "subscription model"]
 updated: 2025-10-15

@@ -1,5 +1,6 @@
 ---
 title: "The router's primary challenge is updating knowledge bases tastefully and non-destructively"
+created: 2025-10-09
 visibility: "public"
 summary: "The technical challenge isn't routing information—it's integrating new context without degrading existing knowledge"
 tags: ["router", "technical", "knowledge-base", "integration"]

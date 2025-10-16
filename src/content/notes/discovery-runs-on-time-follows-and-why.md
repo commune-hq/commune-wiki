@@ -1,7 +1,8 @@
 ---
 title: "Discovery runs on time, follows, and why"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [discovery, algorithms, attention, intent]
 aliases: ["discovery", "anti-algorithm", "intentional browsing"]
 updated: 2025-10-15

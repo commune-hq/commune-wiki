@@ -1,5 +1,6 @@
 ---
 title: "Business management is fundamentally the management of expanding context"
+created: 2025-10-09
 visibility: "public"
 summary: "Running a business is really just managing an ever-growing amount of context that needs to remain accessible"
 tags: ["business", "context", "scaling", "management"]

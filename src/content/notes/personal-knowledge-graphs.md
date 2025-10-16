@@ -1,7 +1,8 @@
 ---
 title: "Personal Knowledge Graphs"
+created: 2025-10-15
 visibility: public
-status: growing
+status: live
 tags: [knowledge-management, graphs, personal-data, networks]
 aliases: ["PKG", "knowledge graphs", "personal knowledge networks"]
 updated: 2025-10-15

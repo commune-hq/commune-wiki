@@ -1,7 +1,8 @@
 ---
 title: "Related and Stroll give serendipity without a feed"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [discovery, serendipity, navigation, browsing]
 aliases: ["related stroll", "serendipitous discovery", "browsing"]
 updated: 2025-10-15

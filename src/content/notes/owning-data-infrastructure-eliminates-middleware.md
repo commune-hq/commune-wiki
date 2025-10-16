@@ -1,5 +1,6 @@
 ---
 title: "Owning your data infrastructure eliminates the need for specialized middleware and roles"
+created: 2025-10-09
 visibility: "public"
 summary: "When you control your full data stack, you can eliminate many traditional business roles and middleware solutions"
 tags: ["infrastructure", "data-ownership", "automation", "roles"]

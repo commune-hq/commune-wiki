@@ -1,7 +1,8 @@
 ---
 title: "Unscheduled quick calls destroy deep work flow states"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [productivity, deep-work, communication, boundaries]
 aliases: ["quick calls", "interruption cost", "flow state protection"]
 updated: 2025-10-15

@@ -1,7 +1,8 @@
 ---
 title: "Follow and Collect keep signal, not hype"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [social, curation, signal, taste]
 aliases: ["follow collect", "social features", "curation"]
 updated: 2025-10-15

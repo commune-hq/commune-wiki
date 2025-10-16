@@ -1,7 +1,8 @@
 ---
 title: "Private AI outperforms cloud AI by leveraging structured, proprietary memory"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [ai, privacy, local-first, memory]
 aliases: ["private AI advantage", "local AI benefits", "proprietary memory"]
 updated: 2025-10-15

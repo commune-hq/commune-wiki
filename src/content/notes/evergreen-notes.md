@@ -1,7 +1,8 @@
 ---
 title: Evergreen Notes
+created: 2025-10-09
 visibility: public
-status: evergreen
+status: live
 tags: [writing, thinking, knowledge-management]
 aliases: ["evergreen", "evergreen-notes"]
 updated: 2025-10-09

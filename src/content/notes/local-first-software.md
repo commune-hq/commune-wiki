@@ -1,7 +1,8 @@
 ---
 title: "Local-First Software"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [software-architecture, privacy, ownership, resilience]
 aliases: ["local-first", "offline-first", "data ownership"]
 updated: 2025-10-15

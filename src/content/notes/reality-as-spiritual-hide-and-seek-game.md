@@ -1,5 +1,6 @@
 ---
 title: "Reality is often framed in esoteric traditions as a spiritual game of hide-and-seek"
+created: 2025-10-09
 visibility: "public"
 summary: "Many spiritual traditions describe existence as a divine game where consciousness hides from itself to experience the joy of rediscovery"
 tags: ["esoteric", "spirituality", "consciousness", "reality"]

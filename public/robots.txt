@@ -1,8 +1,32 @@
+# robots.txt for devonmeadows.com
+# Allow LLM crawlers to index public wiki notes for citation and discovery
+
+# Default: Allow all crawlers
 User-agent: *
 Allow: /
 
+# LLM Crawlers (explicitly allow for content discovery and citation)
+# OpenAI GPTBot
+User-agent: GPTBot
+Allow: /notes/
+
+# Anthropic Claude
+User-agent: Claude-Web
+Allow: /notes/
+
+User-agent: anthropic-ai
+Allow: /notes/
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /notes/
+
+# Common Crawl (used by many AI models)
+User-agent: CCBot
+Allow: /notes/
+
 # Sitemap location
-Sitemap: https://devonmeadows.com/sitemap.xml
+Sitemap: https://devonmeadows.com/sitemap-index.xml
 
 # Crawl-delay for respectful indexing
 Crawl-delay: 1

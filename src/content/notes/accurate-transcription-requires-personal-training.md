@@ -1,5 +1,6 @@
 ---
 title: "Accurate transcription requires training the model on personal proper nouns and context"
+created: 2025-10-09
 visibility: "public"
 summary: "Speech-to-text accuracy depends on teaching the system your specific vocabulary, names, and contexts"
 tags: ["transcription", "training", "proper-nouns", "context"]

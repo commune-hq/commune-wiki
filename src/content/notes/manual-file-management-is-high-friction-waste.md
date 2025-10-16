@@ -1,7 +1,8 @@
 ---
 title: "Manual file management is a high-friction waste of cognitive resources"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [productivity, automation, cognitive-load]
 aliases: ["manual file management", "file organization overhead"]
 updated: 2025-10-15

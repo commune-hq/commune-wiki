@@ -1,7 +1,8 @@
 ---
 title: "Titles are takeaways, not labels"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [writing, titles, clarity, claims]
 aliases: ["note titles", "takeaway titles", "claim titles"]
 updated: 2025-10-15

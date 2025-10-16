@@ -1,7 +1,8 @@
 ---
 title: Atomic Notes
+created: 2025-10-09
 visibility: public
-status: growing
+status: live
 tags: [writing, thinking]
 aliases: ["atomic", "atomic-notes"]
 updated: 2025-10-09

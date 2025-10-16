@@ -1,5 +1,6 @@
 ---
 title: "Externalizing thought builds a cognitive scaffold for solving complex problems"
+created: 2025-10-09
 visibility: "public"
 summary: "The practice of making your thinking visible creates feedback loops that enhance problem-solving capacity"
 tags: ["cognition", "practice", "workbench", "thinking"]

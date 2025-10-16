@@ -1,5 +1,6 @@
 ---
 title: "Deeply personalized AI can analyze relationships and optimize communication strategies"
+created: 2025-10-09
 visibility: "public"
 summary: "AI with access to complete relationship history can help optimize how you communicate with specific people"
 tags: ["ai", "relationships", "communication", "personalization"]

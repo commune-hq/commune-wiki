@@ -1,7 +1,8 @@
 ---
 title: "Devon's working brain in public"
+created: 2025-10-09
 visibility: public
-status: evergreen
+status: live
 tags: [home, navigation, working-in-public]
 aliases: ["commune", "home", "devon meadows"]
 updated: 2025-10-15

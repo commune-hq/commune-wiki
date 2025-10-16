@@ -1,7 +1,8 @@
 ---
 title: "Build in Public"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [transparency, learning, community, entrepreneurship]
 aliases: ["building in public", "transparent development", "open development"]
 updated: 2025-10-15

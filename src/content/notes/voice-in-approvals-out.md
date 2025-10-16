@@ -1,7 +1,8 @@
 ---
 title: "Voice in, approvals out"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [workflow, capture, ai-agents, voice]
 aliases: ["voice capture", "approval workflow"]
 updated: 2025-10-15

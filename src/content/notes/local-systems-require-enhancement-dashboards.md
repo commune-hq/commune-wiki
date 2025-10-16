@@ -1,5 +1,6 @@
 ---
 title: "Local systems require Enhancement Dashboards for user-in-the-loop model training"
+created: 2025-10-09
 visibility: "public"
 summary: "Private AI systems need specialized interfaces for users to train and refine model behavior"
 tags: ["local-ai", "training", "ui", "enhancement"]

@@ -1,5 +1,6 @@
 ---
 title: "Defaulting to No for unscheduled calls protects deep work"
+created: 2025-10-09
 visibility: "public"
 summary: "Protecting focused work time requires saying no to spontaneous interruptions, even when they seem urgent"
 tags: ["deep-work", "boundaries", "focus", "productivity"]

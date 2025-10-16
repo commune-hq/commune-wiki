@@ -1,5 +1,6 @@
 ---
 title: "A sufficiently intelligent router eliminates the need for traditional project management"
+created: 2025-10-09
 visibility: "public"
 summary: "Automated context management makes traditional PM tools obsolete by capturing and routing all work naturally"
 tags: ["router", "project-management", "automation", "commune"]

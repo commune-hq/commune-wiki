@@ -1,7 +1,8 @@
 ---
 title: "Ledger replaces feeds"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [discovery, feeds, transparency, updates]
 aliases: ["changelog", "activity log", "updates"]
 updated: 2025-10-15

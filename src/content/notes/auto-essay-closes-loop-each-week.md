@@ -1,7 +1,8 @@
 ---
 title: "Auto-essay closes the loop each week"
+created: 2025-10-15
 visibility: public
-status: evergreen
+status: live
 tags: [writing, automation, synthesis, weekly-review]
 aliases: ["weekly essay", "auto synthesis", "weekly wrap"]
 updated: 2025-10-15

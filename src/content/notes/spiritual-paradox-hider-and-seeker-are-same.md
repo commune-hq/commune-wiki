@@ -1,5 +1,6 @@
 ---
 title: "The ultimate paradox of the spiritual search is realizing the Hider and the Seeker are the same"
+created: 2025-10-09
 visibility: "public"  
 summary: "The deepest spiritual realization is that the divine consciousness seeking itself is the same consciousness that chose to hide in the first place"
 tags: ["paradox", "spirituality", "consciousness", "non-duality"]

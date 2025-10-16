@@ -1,5 +1,6 @@
 ---
 title: "Integrated data analysis unlocks observations impossible in siloed systems"
+created: 2025-10-09
 visibility: "public"
 summary: "Connecting all your data sources—business, personal, creative—enables insights that are invisible in traditional separated systems"
 tags: ["data", "integration", "analysis", "insights"]
