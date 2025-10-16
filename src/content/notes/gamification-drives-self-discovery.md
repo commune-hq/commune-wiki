@@ -2,7 +2,7 @@
 title: Gamification drives self-discovery
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [gamification, purpose, business]
 aliases: ["gamification", "self-discovery"]
 updated: 2025-10-16

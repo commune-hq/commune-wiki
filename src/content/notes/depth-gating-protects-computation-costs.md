@@ -2,7 +2,7 @@
 title: Depth gating protects computation costs
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [commune, business, pricing]
 aliases: ["depth gating", "gating", "pricing"]
 updated: 2025-10-16

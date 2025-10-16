@@ -2,7 +2,7 @@
 title: Ads Lab
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [business, advertising, skool]
 aliases: ["adslab"]
 updated: 2025-10-16

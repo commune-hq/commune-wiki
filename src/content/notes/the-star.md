@@ -2,7 +2,7 @@
 title: The Star
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [commune, features, gamification]
 aliases: ["star", "star-system", "star-feature"]
 updated: 2025-10-16

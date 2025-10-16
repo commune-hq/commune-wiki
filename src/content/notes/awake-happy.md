@@ -2,7 +2,7 @@
 title: Awake Happy
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [business, clothing, brand]
 aliases: ["awake", "clothing-brand"]
 updated: 2025-10-16

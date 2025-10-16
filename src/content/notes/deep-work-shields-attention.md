@@ -2,7 +2,7 @@
 title: Deep work shields attention
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [work, focus, productivity]
 aliases: ["deep work", "focus", "flow"]
 updated: 2025-10-16

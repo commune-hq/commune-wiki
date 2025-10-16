@@ -2,7 +2,7 @@
 title: Daily walks attract downloads
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [thinking, process, self-care]
 aliases: ["daily walks", "walks", "downloads"]
 updated: 2025-10-16

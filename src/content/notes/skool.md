@@ -2,7 +2,7 @@
 title: Skool
 created: 2025-10-16
 visibility: public
-status: working
+status: live
 tags: [platforms, gamification, community]
 aliases: ["skool-platform"]
 updated: 2025-10-16
