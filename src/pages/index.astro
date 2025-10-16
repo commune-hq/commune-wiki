@@ -41,10 +41,10 @@ const title = data.title ?? slug;
       </div>
     </div>
   </main>
-  <script>
+  <script is:inline>
     // --- Note Previews (Existing functionality) ---
     const cache = new Map();
-    function setupNotePreviews(){
+    window.setupNotePreviews = function setupNotePreviews(){
       const show = (el, html, x, y) => {
         let card = document.getElementById('note-hover');
         if(!card){
@@ -96,7 +96,7 @@ const title = data.title ?? slug;
     }
 
     // --- New Pane Management Functionality ---
-    function setupPanes(){
+    window.setupPanes = function setupPanes(){
       const container = document.getElementById('pane-container');
       if (!container) return;
 
@@ -208,8 +208,71 @@ const title = data.title ?? slug;
       }
     }
 
-    setupNotePreviews();
-    setupPanes();
+    // Initialize wiki features with aggressive timing
+    function initializeWhenReady() {
+      try {
+        console.log('Initializing wiki features...');
+        console.log('Document ready state:', document.readyState);
+        console.log('Container exists:', !!document.getElementById('pane-container'));
+
+        window.setupNotePreviews();
+        window.setupPanes();
+        window.wikiInitialized = true;
+        console.log('Wiki features initialized successfully');
+      } catch (error) {
+        console.error('Failed to initialize wiki features:', error);
+        console.error('Error details:', error.message);
+        console.error('Error stack:', error.stack);
+        // Fallback: at least try to make links work normally
+        document.body.classList.add('wiki-fallback-mode');
+      }
+    }
+
+    // Immediate initialization - try right away
+    console.log('Attempting immediate initialization...');
+    initializeWhenReady();
+
+    // Multiple backup strategies for reliability
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initializeWhenReady);
+    }
+
+    // Aggressive backup timers
+    setTimeout(() => {
+      if (!window.wikiInitialized) {
+        console.log('100ms backup initialization triggered');
+        initializeWhenReady();
+      }
+    }, 100);
+
+    setTimeout(() => {
+      if (!window.wikiInitialized) {
+        console.log('500ms backup initialization triggered');
+        initializeWhenReady();
+      }
+    }, 500);
+
+    setTimeout(() => {
+      if (!window.wikiInitialized) {
+        console.log('1s backup initialization triggered');
+        initializeWhenReady();
+      }
+    }, 1000);
+
+    // Final backup
+    setTimeout(() => {
+      if (!window.wikiInitialized) {
+        console.log('2s final backup initialization triggered');
+        try {
+          window.setupNotePreviews();
+          window.setupPanes();
+          window.wikiInitialized = true;
+          console.log('Final backup completed');
+        } catch (error) {
+          console.error('Final backup failed:', error);
+        }
+      }
+    }, 2000);
   </script>
 </body>
 </html>
