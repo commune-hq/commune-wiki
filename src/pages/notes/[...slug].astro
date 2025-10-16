@@ -250,7 +250,7 @@ const title = data.title ?? slug;
             const content = doc.querySelector('.pane .pane-content') ?? doc.body;
             const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
             const title = doc.title?.replace(/ \|.*/, '') || 'Untitled';
-            const html = `<div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem;line-height:1.3">${title}</div><div style="font-size:0.85rem;line-height:1.5;color:var(--c-text-muted)">${paras}</div>`;
+            const html = `<div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem;line-height:1.3">${title}</div><div style="font-size:0.85rem;line-height:1.5;color:var(--c-text-accent)">${paras}</div>`;
             previewCache.set(url, html);
             showPreview(a, html, e.clientX, e.clientY);
           } catch (error) {
