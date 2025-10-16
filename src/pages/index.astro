@@ -531,11 +531,11 @@ const title = data.title ?? slug;
 
   @media (max-width: 1023px) {
     #pane-container {
+      position: static;
       padding: 0;
+      padding-top: var(--header-height);
       flex-direction: column;
       align-items: stretch;
-      top: 64px;
-      bottom: auto;
       overflow-x: hidden;
     }
     .pane {
@@ -543,14 +543,14 @@ const title = data.title ?? slug;
       --pane-width: 100vw;
       margin-right: 0 !important;
       height: auto;
-      min-height: auto;
+      overflow: visible;
       box-shadow: none;
       border: none;
       border-radius: 0;
     }
     .pane .body-wrapper {
       height: auto;
-      overflow-y: visible;
+      overflow: visible;
     }
     .pane .body {
       padding: 2rem 1.5rem;
