@@ -114,7 +114,6 @@ const title = data.title ?? slug;
 
                             {/* Metadata bar */}
                             <div class="note-meta">
-                              {data.status && <span class={`status-badge status-${data.status}`}>{data.status}</span>}
                               {(data.updated || data.created) && (
                                 <span class="meta-date">
                                   {new Date(data.updated || data.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
