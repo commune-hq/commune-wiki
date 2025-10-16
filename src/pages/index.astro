@@ -26,16 +26,20 @@ const title = data.title ?? slug;
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://devonmeadows.com/" />
   <meta property="og:site_name" content="Commune" />
+  <meta property="og:image" content="https://devonmeadows.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
 
   <!-- Twitter Card -->
-  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={data.summary || title} />
+  <meta name="twitter:image" content="https://devonmeadows.com/og-image.jpg" />
 
   <!-- Author -->
   <meta name="author" content="Devon Meadows" />
 
-  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" />
   <PlausibleScript domain="devonmeadows.com" />
 
   <!-- JSON-LD Structured Data: WebSite + Person -->
