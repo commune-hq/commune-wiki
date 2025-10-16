@@ -1,0 +1,87 @@
+<script is:inline>
+// === HEADER STAR INITIALIZATION ===
+// Adds a ⭐ star to the h1 title of starred notes with a tooltip
+
+(function() {
+  let backlinksData = null;
+
+  async function initializeHeaderStar(scope = document) {
+    try {
+      // Fetch backlinks data if not already loaded
+      if (!backlinksData) {
+        const res = await fetch('/backlinks.json');
+        if (res.ok) {
+          backlinksData = await res.json();
+        } else {
+          console.warn('Failed to load backlinks.json for header star');
+          return;
+        }
+      }
+
+      // Find the current note's slug from the URL
+      const currentPath = window.location.pathname;
+      const normalizedPath = currentPath.endsWith('/') ? currentPath : currentPath + '/';
+
+      // Check if current note is starred
+      const note = backlinksData[normalizedPath];
+
+      if (note?.isStarred) {
+        // Find all h1 elements within the scope
+        const h1s = scope.querySelectorAll('.prose h1');
+
+        h1s.forEach(h1 => {
+          // Check if star isn't already there
+          if (!h1.querySelector('.star-indicator')) {
+            // Create star element with tooltip
+            const star = document.createElement('span');
+            star.className = 'star-indicator';
+            star.innerHTML = ' ⭐';
+            star.title = 'Top 5% most referenced note in this wiki';
+            star.setAttribute('aria-label', 'Top 5% most referenced note');
+
+            h1.appendChild(star);
+          }
+        });
+      }
+    } catch (error) {
+      console.error('Error initializing header star:', error);
+    }
+  }
+
+  // Make it globally available for dynamic pane loading
+  window.initializeHeaderStar = initializeHeaderStar;
+
+  // Auto-initialize on DOM ready
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', () => initializeHeaderStar());
+  } else {
+    initializeHeaderStar();
+  }
+})();
+</script>
+
+<style is:global>
+  .star-indicator {
+    display: inline-block;
+    cursor: help;
+    font-size: 0.75em;
+    vertical-align: super;
+    position: relative;
+    top: -0.2em;
+    margin-left: 0.25em;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+  }
+
+  .star-indicator:hover {
+    opacity: 1;
+    transform: scale(1.15);
+  }
+
+  /* Mobile adjustments */
+  @media (max-width: 1023px) {
+    .star-indicator {
+      font-size: 0.7em;
+    }
+  }
+</style>
