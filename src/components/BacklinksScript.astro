@@ -52,11 +52,51 @@
 
         const titleFor = (u) => {
           const note = backlinksData[u];
-          const title = note?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
-          const star = note?.isStarred ? ' ⭐' : '';
-          return title + star;
+          return note?.title || u.split('/').filter(Boolean).pop()?.replace(/-/g,' ');
         };
+
+        // Render links and then add stars as separate clickable elements
         list.innerHTML = items.map(s => `<li><a href="${s}">${titleFor(s)}</a></li>`).join('');
+
+        // Add stars to starred notes
+        list.querySelectorAll('li').forEach((li, index) => {
+          const url = items[index];
+          const note = backlinksData[url];
+
+          if (note?.isStarred && !li.querySelector('.star-indicator-inline')) {
+            const link = li.querySelector('a');
+            if (link) {
+              const star = document.createElement('span');
+              star.className = 'star-indicator-inline';
+              star.textContent = ' ⭐';
+              star.setAttribute('aria-label', 'Top 5% most referenced - click to learn more');
+              star.setAttribute('role', 'button');
+              star.setAttribute('tabindex', '0');
+
+              // Click handler to open modal
+              star.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                if (typeof window.showStarModal === 'function') {
+                  window.showStarModal();
+                }
+              });
+
+              // Keyboard support
+              star.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  if (typeof window.showStarModal === 'function') {
+                    window.showStarModal();
+                  }
+                }
+              });
+
+              link.insertAdjacentElement('afterend', star);
+            }
+          }
+        });
       });
     } catch (error) {
       console.error('Error initializing backlinks:', error);

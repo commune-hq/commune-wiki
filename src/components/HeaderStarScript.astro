@@ -1,9 +1,69 @@
 <script is:inline>
 // === HEADER STAR INITIALIZATION ===
-// Adds a ⭐ star to the h1 title of starred notes with a tooltip
+// Adds a ⭐ star to the h1 title of starred notes with a clickable modal
 
 (function() {
   let backlinksData = null;
+
+  // Show the star modal
+  function showStarModal() {
+    const modal = document.getElementById('star-modal');
+    if (modal) {
+      modal.style.display = 'flex';
+      // Prevent body scroll when modal is open
+      document.body.style.overflow = 'hidden';
+    }
+  }
+
+  // Hide the star modal
+  function hideStarModal() {
+    const modal = document.getElementById('star-modal');
+    if (modal) {
+      modal.style.display = 'none';
+      document.body.style.overflow = '';
+    }
+  }
+
+  // Create the modal HTML (only once)
+  function createStarModal() {
+    if (document.getElementById('star-modal')) return; // Already exists
+
+    const modal = document.createElement('div');
+    modal.id = 'star-modal';
+    modal.className = 'star-modal';
+    modal.innerHTML = `
+      <div class="star-modal-backdrop"></div>
+      <div class="star-modal-content">
+        <button class="star-modal-close" aria-label="Close">&times;</button>
+        <div class="star-modal-body">
+          <div class="star-modal-icon">⭐</div>
+          <h2>Top 5% Most Referenced</h2>
+          <p>This note is in the <strong>top 5%</strong> of most referenced notes in this wiki.</p>
+          <p>It has earned a star because other notes frequently link to it, indicating it contains valuable insights that connect across different ideas.</p>
+          <div class="star-modal-detail">
+            <h3>Why Stars Matter</h3>
+            <p>Stars highlight the most connected ideas in my thinking. They're not about popularity—they're about <em>centrality</em> in the knowledge graph.</p>
+            <p>Inspired by Skool's approach to recognizing top contributors, the star system helps you discover the notes that anchor my understanding of key concepts.</p>
+          </div>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(modal);
+
+    // Close on backdrop click
+    modal.querySelector('.star-modal-backdrop').addEventListener('click', hideStarModal);
+
+    // Close on X button click
+    modal.querySelector('.star-modal-close').addEventListener('click', hideStarModal);
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.style.display === 'flex') {
+        hideStarModal();
+      }
+    });
+  }
 
   async function initializeHeaderStar(scope = document) {
     try {
@@ -17,6 +77,9 @@
           return;
         }
       }
+
+      // Create modal (only once globally)
+      createStarModal();
 
       // Find the current note's slug from the URL
       const currentPath = window.location.pathname;
@@ -32,12 +95,27 @@
         h1s.forEach(h1 => {
           // Check if star isn't already there
           if (!h1.querySelector('.star-indicator')) {
-            // Create star element with tooltip
+            // Create star element (inline, clickable)
             const star = document.createElement('span');
             star.className = 'star-indicator';
             star.innerHTML = ' ⭐';
-            star.title = 'Top 5% most referenced note in this wiki';
-            star.setAttribute('aria-label', 'Top 5% most referenced note');
+            star.setAttribute('aria-label', 'Top 5% most referenced note - click to learn more');
+            star.setAttribute('role', 'button');
+            star.setAttribute('tabindex', '0');
+
+            // Click handler to open modal
+            star.addEventListener('click', (e) => {
+              e.preventDefault();
+              showStarModal();
+            });
+
+            // Keyboard support
+            star.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                showStarModal();
+              }
+            });
 
             h1.appendChild(star);
           }
@@ -48,8 +126,9 @@
     }
   }
 
-  // Make it globally available for dynamic pane loading
+  // Make functions globally available
   window.initializeHeaderStar = initializeHeaderStar;
+  window.showStarModal = showStarModal;
 
   // Auto-initialize on DOM ready
   if (document.readyState === 'loading') {
@@ -61,27 +140,207 @@
 </script>
 
 <style is:global>
+  /* Star indicator - inline with title (Skool-style) */
   .star-indicator {
     display: inline-block;
-    cursor: help;
-    font-size: 0.75em;
-    vertical-align: super;
-    position: relative;
-    top: -0.2em;
-    margin-left: 0.25em;
+    cursor: pointer;
+    font-size: 1em;
+    margin-left: 0.35em;
     opacity: 0.9;
     transition: opacity 0.2s ease, transform 0.2s ease;
+    user-select: none;
   }
 
   .star-indicator:hover {
     opacity: 1;
-    transform: scale(1.15);
+    transform: scale(1.1);
+  }
+
+  .star-indicator:focus {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  /* Inline stars (in WikiLinks and backlinks) */
+  .star-indicator-inline {
+    display: inline-block;
+    cursor: pointer;
+    margin-left: 0.15em;
+    opacity: 0.9;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    user-select: none;
+    text-decoration: none !important;
+    border-bottom: none !important;
+  }
+
+  .star-indicator-inline:hover {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
+  .star-indicator-inline:focus {
+    outline: 2px solid var(--c-accent);
+    outline-offset: 4px;
+    border-radius: 4px;
+  }
+
+  /* Modal styles */
+  .star-modal {
+    display: none; /* Hidden by default, shown via JS */
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  .star-modal-backdrop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(4px);
+  }
+
+  .star-modal-content {
+    position: relative;
+    background: var(--c-bg);
+    border-radius: var(--c-radius-lg);
+    max-width: 540px;
+    width: 90%;
+    max-height: 85vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+    animation: slideUp 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    border: 1px solid var(--c-border);
+  }
+
+  @keyframes slideUp {
+    from {
+      transform: translateY(20px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+
+  .star-modal-close {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 32px;
+    height: 32px;
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--c-text-muted);
+    transition: all 0.2s ease;
+    padding: 0;
+  }
+
+  .star-modal-close:hover {
+    background: var(--c-bg-muted);
+    color: var(--c-text);
+    transform: rotate(90deg);
+  }
+
+  .star-modal-body {
+    padding: 3rem 2rem 2rem;
+    text-align: center;
+  }
+
+  .star-modal-icon {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    animation: starPulse 2s ease-in-out infinite;
+  }
+
+  @keyframes starPulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+  }
+
+  .star-modal-body h2 {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--c-text);
+  }
+
+  .star-modal-body p {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: var(--c-text-accent);
+    margin-bottom: 1rem;
+  }
+
+  .star-modal-body strong {
+    color: var(--c-accent);
+    font-weight: 600;
+  }
+
+  .star-modal-body em {
+    font-style: italic;
+    color: var(--c-text);
+  }
+
+  .star-modal-detail {
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--c-border);
+    text-align: left;
+  }
+
+  .star-modal-detail h3 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+    color: var(--c-text);
+  }
+
+  .star-modal-detail p {
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 0.75rem;
   }
 
   /* Mobile adjustments */
   @media (max-width: 1023px) {
-    .star-indicator {
-      font-size: 0.7em;
+    .star-modal-content {
+      width: 95%;
+      max-height: 90vh;
+    }
+
+    .star-modal-body {
+      padding: 2.5rem 1.5rem 1.5rem;
+    }
+
+    .star-modal-body h2 {
+      font-size: 1.5rem;
+    }
+
+    .star-modal-icon {
+      font-size: 3rem;
     }
   }
 </style>

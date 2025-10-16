@@ -31,12 +31,37 @@
 
         if (note?.isStarred) {
           // Check if star isn't already there
-          const lastChild = link.lastChild;
-          if (lastChild && lastChild.nodeType === Node.TEXT_NODE) {
-            const text = lastChild.textContent;
-            if (!text.endsWith('⭐')) {
-              lastChild.textContent = text + ' ⭐';
-            }
+          if (!link.querySelector('.star-indicator-inline')) {
+            // Create star as a separate clickable element (not part of the link)
+            const star = document.createElement('span');
+            star.className = 'star-indicator-inline';
+            star.textContent = ' ⭐';
+            star.setAttribute('aria-label', 'Top 5% most referenced - click to learn more');
+            star.setAttribute('role', 'button');
+            star.setAttribute('tabindex', '0');
+
+            // Click handler to open modal (not navigate)
+            star.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              if (typeof window.showStarModal === 'function') {
+                window.showStarModal();
+              }
+            });
+
+            // Keyboard support
+            star.addEventListener('keydown', (e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                e.stopPropagation();
+                if (typeof window.showStarModal === 'function') {
+                  window.showStarModal();
+                }
+              }
+            });
+
+            // Insert star after the link
+            link.insertAdjacentElement('afterend', star);
           }
         }
       });
