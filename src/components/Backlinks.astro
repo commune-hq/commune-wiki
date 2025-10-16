@@ -8,8 +8,10 @@ const { slug } = Astro.props;
 </aside>
 
 <style>
-  .backlinks{margin-top:2.2rem;padding-top:.8rem;border-top:1px solid rgba(0,0,0,.08)}
+  .backlinks{margin-top:3rem;padding-top:1.2rem;border-top:1px solid var(--c-border)}
   .backlinks.hidden{display:none}
-  .backlinks h4{font-size:.95rem;opacity:.8;margin:0 0 .6rem}
-  .backlinks li{margin:.35rem 0}
+  .backlinks h4{font-size:.85rem;color:var(--c-text-muted);margin:0 0 .8rem;font-weight:500}
+  .backlinks li{margin:.4rem 0;font-size:.9rem}
+  .backlinks a{opacity:.85}
+  .backlinks a:hover{opacity:1}
 </style>
