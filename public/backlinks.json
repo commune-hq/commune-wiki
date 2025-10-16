@@ -74,6 +74,7 @@
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
+      "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
@@ -167,7 +168,8 @@
       "/notes/ledger-replaces-feeds/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/titles-are-takeaways-not-labels/",
-      "/notes/voice-in-approvals-out/"
+      "/notes/voice-in-approvals-out/",
+      "/notes/what-is-commune/"
     ],
     "tags": [
       "writing",
@@ -205,6 +207,7 @@
       "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
+      "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
@@ -339,7 +342,8 @@
       "/notes/ledger-replaces-feeds/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/people-pay-to-follow-working-mind/",
-      "/notes/related-and-stroll-give-serendipity-without-feed/"
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/what-is-commune/"
     ],
     "tags": [
       "monetization",
@@ -375,6 +379,7 @@
       "/notes/ledger-replaces-feeds/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
@@ -460,7 +465,8 @@
       "/notes/commune/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/people-pay-to-follow-working-mind/",
-      "/notes/related-and-stroll-give-serendipity-without-feed/"
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/what-is-commune/"
     ],
     "tags": [
       "social",
@@ -540,6 +546,7 @@
       "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
+      "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
@@ -835,7 +842,8 @@
     "inbound": [
       "/notes/commune/",
       "/notes/discovery-runs-on-time-follows-and-why/",
-      "/notes/follow-and-collect-keep-signal-not-hype/"
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/what-is-commune/"
     ],
     "tags": [
       "discovery",
@@ -968,6 +976,7 @@
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/titles-are-takeaways-not-labels/",
+      "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
@@ -978,6 +987,34 @@
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/what-is-commune/": {
+    "slug": "/notes/what-is-commune/",
+    "title": "What is Commune",
+    "aliases": [
+      "commune platform",
+      "about commune"
+    ],
+    "outbound": [
+      "/notes/voice-in-approvals-out/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/ask-the-brain/",
+      "/notes/box-first-earns-trust/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/auto-essay-closes-loop-each-week/"
+    ],
+    "inbound": [],
+    "tags": [
+      "commune",
+      "product",
+      "platform",
+      "knowledge-sharing"
+    ],
+    "status": "live"
   },
   "/notes/zen-practice-protects-attention/": {
     "slug": "/notes/zen-practice-protects-attention/",
@@ -1004,7 +1041,8 @@
       "/notes/ledger-replaces-feeds/",
       "/notes/manual-file-management-is-high-friction-waste/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
-      "/notes/voice-in-approvals-out/"
+      "/notes/voice-in-approvals-out/",
+      "/notes/what-is-commune/"
     ],
     "tags": [
       "attention",
