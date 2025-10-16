@@ -353,6 +353,117 @@ docker compose restart commune-wiki
 - Astro partial hydration
 - Pagefind lazy loads search index
 
+## Testing & Validation
+
+### Puppeteer Testing Workflow
+
+**Philosophy:** Test against the live production site after deployment to catch rendering issues, JavaScript behavior, and browser-specific bugs that don't appear in local builds.
+
+**When to use Puppeteer:**
+- UI changes (layout, styling, components)
+- Interactive features (panes, hover previews, modals)
+- Responsive design (viewport-specific behavior)
+- JavaScript-dependent functionality
+
+**Standard Workflow:**
+
+```bash
+# 1. Make code changes locally
+# Edit files in src/
+
+# 2. Build project
+pnpm build
+
+# 3. Commit changes
+git add -A
+git commit -m "feat: description of changes"
+
+# 4. Push to GitHub
+git push
+
+# 5. Deploy to production server
+ssh devon@home-server 'cd ~/infra && git pull && cd sites/commune-publish && source ~/.nvm/nvm.sh && nvm use 20 && pnpm build && cp -r dist/* /srv/wiki/'
+
+# 6. Run Puppeteer tests against live site
+node scripts/test-<feature>.js
+```
+
+**Available Test Scripts:**
+
+```bash
+# Validate live site fixtures (backlinks, badges)
+node scripts/validate-live-site.js
+
+# Test preview card positioning and typography
+node scripts/test-preview-cards.js
+
+# Add more as needed for specific features
+```
+
+### Writing Puppeteer Tests
+
+**Test Template:**
+
+```javascript
+import puppeteer from 'puppeteer';
+
+async function testFeature() {
+  const browser = await puppeteer.launch({
+    headless: false,  // See what's happening
+    slowMo: 50       // Slow down for visibility
+  });
+
+  const page = await browser.newPage();
+
+  try {
+    // Set viewport
+    await page.setViewport({ width: 1920, height: 1080 });
+
+    // Navigate to live site
+    await page.goto('https://devonmeadows.com/', {
+      waitUntil: 'networkidle2'
+    });
+
+    // Test assertions
+    const result = await page.evaluate(() => {
+      // DOM inspection logic
+      return { /* test results */ };
+    });
+
+    // Validate results
+    if (result.expected) {
+      console.log('✓ PASS');
+    } else {
+      console.log('✗ FAIL');
+    }
+
+  } finally {
+    await browser.close();
+  }
+}
+
+testFeature();
+```
+
+**Best Practices:**
+
+1. **Test Real Scenarios:** Simulate actual user interactions
+2. **Multiple Viewports:** Test desktop, tablet, mobile
+3. **Wait for Network:** Use `waitUntil: 'networkidle2'`
+4. **Clear Feedback:** Use ✓/✗ symbols for pass/fail
+5. **Screenshots on Failure:** Capture evidence of issues
+6. **Test Edge Cases:** Viewport edges, overflow, empty states
+
+**Example Test Cases:**
+
+- Backlinks visibility (show/hide based on presence)
+- Preview cards staying within viewport bounds
+- Typography hierarchy (title vs body)
+- Status badges rendering correctly
+- Pane navigation and stacking
+- Responsive breakpoints
+- Search modal keyboard shortcuts
+
 ## Commands Reference
 
 ```bash
@@ -361,6 +472,10 @@ pnpm dev                    # Start dev server (port 4321)
 pnpm build                  # Build production site
 pnpm preview                # Preview built site
 
+# Testing
+node scripts/validate-live-site.js    # Validate core functionality
+node scripts/test-preview-cards.js    # Test preview card behavior
+
 # Debugging
 pnpm build 2>&1 | grep WikiLink    # Check WikiLink resolution
 pnpm build 2>&1 | grep Broken      # Find missing linked notes
@@ -368,6 +483,9 @@ pnpm build 2>&1 | grep Broken      # Find missing linked notes
 # Deployment
 cd ~/infra && git pull              # Pull latest (SERVER_CURSOR)
 ./scripts/deploy-wiki.sh            # Build + restart service
+
+# Full workflow (local → production → validate)
+pnpm build && git add -A && git commit -m "feat: changes" && git push && ssh devon@home-server 'cd ~/infra && git pull && cd sites/commune-publish && source ~/.nvm/nvm.sh && nvm use 20 && pnpm build && cp -r dist/* /srv/wiki/' && node scripts/test-<feature>.js
 ```
 
 ## Common Issues & Fixes

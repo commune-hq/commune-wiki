@@ -28,7 +28,7 @@
     ],
     "outbound": [
       "/notes/evergreen-notes/",
-      "/notes/commune/",
+      "/notes/what-is-commune/",
       "/notes/associative-linking-over-hierarchies/",
       "/notes/personal-knowledge-graphs/",
       "/notes/build-in-public/"
@@ -137,7 +137,8 @@
       "/notes/build-in-public/"
     ],
     "inbound": [
-      "/notes/evergreen-notes/"
+      "/notes/evergreen-notes/",
+      "/notes/what-is-commune/"
     ],
     "tags": [
       "writing",
@@ -228,7 +229,7 @@
       "open development"
     ],
     "outbound": [
-      "/notes/commune/",
+      "/notes/what-is-commune/",
       "/notes/andy-matuschaks-notes/",
       "/notes/evergreen-notes/"
     ],
@@ -291,11 +292,7 @@
       "/notes/zen-practice-protects-attention/",
       "/notes/auto-essay-closes-loop-each-week/"
     ],
-    "inbound": [
-      "/notes/andy-matuschaks-notes/",
-      "/notes/build-in-public/",
-      "/notes/local-first-software/"
-    ],
+    "inbound": [],
     "tags": [
       "home",
       "navigation",
@@ -566,7 +563,7 @@
       "data ownership"
     ],
     "outbound": [
-      "/notes/commune/"
+      "/notes/what-is-commune/"
     ],
     "inbound": [
       "/notes/box-first-earns-trust/",
@@ -841,8 +838,7 @@
     "inbound": [
       "/notes/commune/",
       "/notes/discovery-runs-on-time-follows-and-why/",
-      "/notes/follow-and-collect-keep-signal-not-hype/",
-      "/notes/what-is-commune/"
+      "/notes/follow-and-collect-keep-signal-not-hype/"
     ],
     "tags": [
       "discovery",
@@ -989,17 +985,18 @@
   },
   "/notes/what-is-commune/": {
     "slug": "/notes/what-is-commune/",
-    "title": "What is Commune",
+    "title": "Commune replaces social feeds with working memory",
     "aliases": [
-      "commune platform",
+      "commune",
+      "what is commune",
       "about commune"
     ],
     "outbound": [
       "/notes/voice-in-approvals-out/",
+      "/notes/atomic-notes/",
       "/notes/ledger-replaces-feeds/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/depth-3-free-is-honest-gating/",
-      "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/ask-the-brain/",
       "/notes/box-first-earns-trust/",
@@ -1007,13 +1004,16 @@
       "/notes/auto-essay-closes-loop-each-week/"
     ],
     "inbound": [
-      "/notes/commune/"
+      "/notes/andy-matuschaks-notes/",
+      "/notes/build-in-public/",
+      "/notes/commune/",
+      "/notes/local-first-software/"
     ],
     "tags": [
       "commune",
-      "product",
       "platform",
-      "knowledge-sharing"
+      "knowledge-sharing",
+      "working-in-public"
     ],
     "status": "live"
   },

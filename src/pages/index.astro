@@ -125,7 +125,7 @@ const title = data.title ?? slug;
             card = document.createElement('div');
             card.id = 'note-hover';
             card.style.position = 'fixed';
-            card.style.maxWidth = '420px';
+            card.style.maxWidth = '380px';
             card.style.background = 'var(--c-bg)';
             card.style.boxShadow = 'var(--c-shadow-xl)';
             card.style.border = '1px solid var(--c-border)';
@@ -136,8 +136,39 @@ const title = data.title ?? slug;
             document.body.appendChild(card);
           }
           card.innerHTML = html;
-          card.style.left = Math.min(x+16, window.innerWidth-460) + 'px';
-          card.style.top = Math.min(y+16, window.innerHeight-220) + 'px';
+
+          // Viewport-aware positioning
+          const padding = 16;
+          const offsetFromCursor = 16;
+
+          // Measure card dimensions
+          card.style.opacity = '0';
+          card.hidden = false;
+          const rect = card.getBoundingClientRect();
+          const cardWidth = rect.width;
+          const cardHeight = rect.height;
+          card.style.opacity = '1';
+
+          // Calculate position with edge detection
+          let left = x + offsetFromCursor;
+          let top = y + offsetFromCursor;
+
+          // Check right edge
+          if (left + cardWidth + padding > window.innerWidth) {
+            left = x - cardWidth - offsetFromCursor;
+            if (left < padding) left = window.innerWidth - cardWidth - padding;
+          }
+          if (left < padding) left = padding;
+
+          // Check bottom edge
+          if (top + cardHeight + padding > window.innerHeight) {
+            top = y - cardHeight - offsetFromCursor;
+            if (top < padding) top = window.innerHeight - cardHeight - padding;
+          }
+          if (top < padding) top = padding;
+
+          card.style.left = left + 'px';
+          card.style.top = top + 'px';
           card.hidden = false;
         } catch (error) {
           console.error('Error showing hover card:', error);
@@ -187,7 +218,7 @@ const title = data.title ?? slug;
           const content = doc.querySelector('.pane .pane-content') ?? doc.body;
           const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
           const title = doc.title?.replace(/ \|.*/, '') || 'Untitled';
-          const html = `<div style="font-weight:600;margin-bottom:.3rem">${title}</div>${paras}`;
+          const html = `<div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem;line-height:1.3">${title}</div><div style="font-size:0.85rem;line-height:1.5;color:var(--c-text-muted)">${paras}</div>`;
           previewCache.set(url, html);
           showPreview(a, html, e.clientX, e.clientY);
         } catch (error) {
