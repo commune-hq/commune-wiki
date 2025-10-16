@@ -70,11 +70,16 @@
     transition:color 0.15s ease;
   }
 
-  /* Tablet and below: adjust brand text size and header padding */
-  @media (max-width: 768px) {
+  /* Tablet and below: remove max-width to match body full-width layout */
+  @media (max-width: 1023px) {
     .wrap {
+      max-width: none;
       padding:1rem 1.5rem;
     }
+  }
+
+  /* Specific adjustments for 768px and below */
+  @media (max-width: 768px) {
     .brand {
       font-size:1.1rem;
       font-weight:600;
