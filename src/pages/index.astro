@@ -78,7 +78,18 @@ const title = data.title ?? slug;
         <div class="body">
           <div class="pane-content">
             <article class="prose">
-              <h1>{title} {data.status && <span class={`status-badge status-${data.status}`}>{data.status}</span>}</h1>
+              <h1>{title}</h1>
+
+              {/* Metadata bar */}
+              <div class="note-meta">
+                {data.status && <span class={`status-badge status-${data.status}`}>{data.status}</span>}
+                {(data.updated || data.created) && (
+                  <span class="meta-date">
+                    {new Date(data.updated || data.created).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                  </span>
+                )}
+              </div>
+
               <Content />
             </article>
             <Backlinks slug={`/notes/${slug}/`} title={title} />
@@ -571,6 +582,44 @@ const title = data.title ?? slug;
   .prose h2{font-size:1.75rem;margin-top:2.5rem;margin-bottom:1rem;font-weight:600}
   .prose h3{font-size:1.35rem;margin-top:2rem;margin-bottom:0.75rem;font-weight:600}
   .prose p{margin:1.25rem 0;line-height:1.75}
+
+  /* Note metadata bar (status badge + dates) */
+  .note-meta {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    font-size: 0.9rem;
+    color: var(--c-text-muted);
+  }
+
+  .status-badge {
+    padding: 0.25rem 0.75rem;
+    border-radius: 9999px;
+    font-size: 0.75rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .status-draft {
+    background: var(--c-bg-soft);
+    color: var(--c-text-muted);
+  }
+
+  .status-live {
+    background: rgba(34, 197, 94, 0.1);
+    color: rgb(22, 163, 74);
+  }
+
+  .status-updated {
+    background: rgba(59, 130, 246, 0.1);
+    color: rgb(37, 99, 235);
+  }
+
+  .meta-date {
+    font-variant-numeric: tabular-nums;
+  }
   .prose ul,.prose ol{margin:1.25rem 0;padding-left:1.75rem}
   .prose li{margin:0.5rem 0}
   .prose code{
