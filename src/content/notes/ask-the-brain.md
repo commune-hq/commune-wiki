@@ -15,4 +15,4 @@ Only works if notes have strong titles ([[Titles are takeaways, not labels]]). D
 
 Paid answers reveal weak spots. Same question keeps showing up? I add a sentence or write a new note. Next answer gets sharper. Private Q&A runs local on [[The Commune box]] ([[Private AI outperforms cloud AI]]). Public Q&A runs on public notes so readers check sources.
 
-Privacy stays intact. People learn fast. [[People pay to follow a working mind]] through instant cited answers. [[Notes beat posts for showing progress]] because atomic notes with clear claims make better retrieval targets.
+Privacy stays intact. People learn fast. [[I hope people will pay for a working mind]] through instant cited answers. [[Notes beat posts for showing progress]] because atomic notes with clear claims make better retrieval targets.

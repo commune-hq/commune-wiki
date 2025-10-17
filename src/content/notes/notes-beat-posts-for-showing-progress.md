@@ -15,6 +15,6 @@ Notes also make better inputs for agents. Short claims and strong titles feed [[
 
 The map should stay honest. [[Three panes deep, then you pay]] lets anyone try the path before meeting the paywall. If you want the long story, read the [[Release is a monthly human wrap]] that cites the [[Ledger replaces feeds]].
 
-This format supports [[People pay to follow a working mind]] because readers can see thinking in motion, not just polished conclusions. It enables [[Associative linking over hierarchies]] because each note can connect to any other note based on conceptual relationships.
+This format supports [[I hope people will pay for a working mind]] because readers can see thinking in motion, not just polished conclusions. It enables [[Associative linking over hierarchies]] because each note can connect to any other note based on conceptual relationships.
 
 Notes are the atomic unit of [[Evergreen Notes]] and the foundation of wikis.

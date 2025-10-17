@@ -17,4 +17,4 @@ This is library energy. You walk the stacks with a thread in hand. This pairs we
 
 The approach supports [[Discovery runs on time, follows, and why]] by providing serendipity without algorithmic manipulation. It enables [[Associative linking over hierarchies]] by letting conceptual relationships emerge naturally through use patterns.
 
-This connects to [[Zen practice protects attention]] because discovery feels intentional rather than compulsive. The browsing experience supports [[People pay to follow a working mind]] by creating natural pathways through someone's thinking process.
+This connects to [[Zen practice protects attention]] because discovery feels intentional rather than compulsive. The browsing experience supports [[I hope people will pay for a working mind]] by creating natural pathways through someone's thinking process.

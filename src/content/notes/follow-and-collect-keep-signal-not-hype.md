@@ -15,6 +15,6 @@ This stays human. No likes. No karma. No hidden rank. Updates live in the [[Ledg
 
 If a note gets collected a lot but confuses people, I tighten the title through [[Titles are takeaways, not labels]]. Social does not need to be loud to be useful. Taste, trails, and time are enough. This approach supports [[Discovery runs on time, follows, and why]] by keeping social signals clear and intentional.
 
-The system enables [[People pay to follow a working mind]] because followers can see both the work and the curation that shapes it. It connects to [[Zen practice protects attention]] by avoiding the dopamine loops of engagement-driven social features.
+The system enables [[I hope people will pay for a working mind]] because followers can see both the work and the curation that shapes it. It connects to [[Zen practice protects attention]] by avoiding the dopamine loops of engagement-driven social features.
 
 Collect creates natural pathways through your wiki based on human judgment rather than algorithmic recommendation. This supports [[Associative linking over hierarchies]] by letting readers create their own conceptual trails through the knowledge base.

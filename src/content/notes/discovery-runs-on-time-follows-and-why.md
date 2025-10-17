@@ -15,6 +15,6 @@ We get that with [[Related and Stroll give serendipity without a feed]]. Each li
 
 Collect builds human trails that others can browse. Staff Picks can exist, but they are labeled and small. Cross-notebook is opt-in and respects [[Three panes deep, then you pay]]. This keeps attention clean, which matters if you want a brain that thinks rather than reacts. See [[Zen practice protects attention]].
 
-The result is slower but better. People find quality by following people and following reasons. Not by training an addiction. This pairs with [[Ledger replaces feeds]] to replace ranking with time and intent, supporting [[People pay to follow a working mind]] through transparent, non-manipulative discovery.
+The result is slower but better. People find quality by following people and following reasons. Not by training an addiction. This pairs with [[Ledger replaces feeds]] to replace ranking with time and intent, supporting [[I hope people will pay for a working mind]] through transparent, non-manipulative discovery.
 
 Time-based discovery also enables [[Automated note shaping from voice]] because I can publish frequently without worrying about algorithmic punishment for "low engagement" content.

@@ -1,15 +1,17 @@
 ---
-title: "People pay to follow a working mind"
+title: "I hope people will pay for a working mind"
 created: 2025-10-15
 visibility: public
 status: live
 tags: [monetization, transparency, value, authenticity]
-aliases: ["paid content", "working in public", "subscription model"]
-updated: 2025-10-15
-summary: "People do not pay for polish. They pay to watch ideas move. A clear ledger shows motion with small diffs and reasons."
+aliases: ["paid content", "working in public", "subscription model", "people pay to follow a working mind"]
+updated: 2025-10-17
+summary: "People pay for polish. But I think the world is shifting. People will pay for access to a working mind over polished outputs. At least I hope so."
 ---
 
-People don't pay for polish. They pay to watch ideas move. [[Ledger replaces feeds]] shows motion with small diffs and reasons. Clean titles and tight links make [[Ask the Brain]] return short answers with receipts. [[Three panes deep, then you pay]] lets anyone try before it locks.
+People pay for polish. But I think the world is shifting. People will pay for access to a working mind over polished outputs. At least I hope so.
+
+[[Commune]] replaces algorithmic feeds with a ledger. [[Ledger replaces feeds]] shows motion with small diffs and reasons. Not a GitHub changelog. AI analyzes the ledger to write weekly summaries ([[Auto-essay closes the loop each week]]), answer questions about how notes evolved, and surface patterns across changes. Clean titles and tight links make [[Ask the Brain]] return short answers with receipts. [[Three panes deep, then you pay]] lets anyone try before it locks.
 
 The trade is recency and answers. I can see what changed and ask good questions, so I pay. Works if the surface stays calm and human. [[Discovery runs on time, follows, and why]] replaces ranking. [[Follow and Collect keep signal, not hype]] replaces likes.
 

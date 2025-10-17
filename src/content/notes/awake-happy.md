@@ -19,6 +19,6 @@ While running Awake Happy, I started [[Ads Lab]] to teach what I'm actually best
 
 Awake Happy sits in my story between the Google Panda update that killed my Black Hat SEO business and the moment I discovered [[Commune]]. It's the chapter where I learned that [[Business management is fundamentally the management of expanding context]]—you can't just make cool stuff. You have to manage the context around creation: cash flow, margins, distribution, customer acquisition costs.
 
-The brand is still here. I'm still learning from it. And those lessons feed directly into [[Commune]]—where the model works. [[People pay to follow a working mind]]. [[Subscription unlocks depth into the mind]] lets me charge for real value. The box lets super users own their data. It all clicks.
+The brand is still here. I'm still learning from it. And those lessons feed directly into [[Commune]]—where the model works. [[I hope people will pay for a working mind]]. [[Subscription unlocks depth into the mind]] lets me charge for real value. The box lets super users own their data. It all clicks.
 
 Awake Happy is school. [[Commune]] is the graduation project. [[Ads Lab]] is the bridge between them.

@@ -19,4 +19,4 @@ Three levels is enough to learn if the wiki is worth following. Too shallow, peo
 
 Helps me design too. I decide which branches stay public. Pin the important stuff near the home note. Let the rest live behind the gate.
 
-Clear walls work better than cheap walls. I hope [[People pay to follow a working mind]] when the value is obvious upfront.
+Clear walls work better than cheap walls. I hope [[I hope people will pay for a working mind]] when the value is obvious upfront.

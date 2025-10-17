@@ -17,7 +17,7 @@ The trick is making the game about something real. Your wiki shows how your idea
 
 When you see which notes anchor your wiki, you learn what you actually care about. When you track how notes evolve, you see how your thinking changes. That's self-discovery through the system itself, not despite it.
 
-The "make a living" part comes later. Once you've built a wiki worth following, [[People pay to follow a working mind]]. [[Subscription unlocks depth into the mind]] lets you charge for access to deeper insights. [[Build in Public]] shows progress and earns trust.
+The "make a living" part comes later. Once you've built a wiki worth following, [[I hope people will pay for a working mind]]. [[Subscription unlocks depth into the mind]] lets you charge for access to deeper insights. [[Build in Public]] shows progress and earns trust.
 
 Fifteen years of business evolution taught me what works. Lost it all in the Google Panda update. Burned out selling products I didn't care about. Finally found my way to [[Commune]], which syndicates everything I've learned.
 

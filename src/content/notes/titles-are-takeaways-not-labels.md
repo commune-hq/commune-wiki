@@ -17,4 +17,4 @@ Good titles let the agent draft better suggestions in [[Automated note shaping f
 
 This connects to [[Evergreen Notes]] principles because atomic notes need atomic titles. It supports [[Notes beat posts for showing progress]] because clear titles make individual notes more discoverable and linkable. The approach enables [[Associative linking over hierarchies]] because descriptive titles create natural connection points.
 
-Strong titles also improve [[People pay to follow a working mind]] because readers can quickly scan the [[Ledger replaces feeds]] and understand what changed without opening every note.
+Strong titles also improve [[I hope people will pay for a working mind]] because readers can quickly scan the [[Ledger replaces feeds]] and understand what changed without opening every note.

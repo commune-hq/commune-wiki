@@ -13,7 +13,7 @@ Feeds push. A ledger records. I want the record. Each line shows a small diff, a
 
 Readers can skim what moved, then dive into what matters. The ledger also powers [[Auto-essay closes the loop each week]]. The agent clusters the week by topics and momentum and drafts a clean wrap that cites back to notes and ledger lines.
 
-The ledger keeps free users in the loop without a noisy feed. It also shows what changed beyond the gate in [[Three panes deep, then you pay]]. The ledger is the spine of [[People pay to follow a working mind]] because it proves recency without tricks.
+The ledger keeps free users in the loop without a noisy feed. It also shows what changed beyond the gate in [[Three panes deep, then you pay]]. The ledger is the spine of [[I hope people will pay for a working mind]] because it proves recency without tricks.
 
 It pairs with [[Discovery runs on time, follows, and why]] to replace ranking with time and intent. Instead of algorithmic feeds that optimize for engagement, the ledger shows actual work with clear reasons. This supports [[Zen practice protects attention]] by removing the dopamine loops that fragment focus.
 
