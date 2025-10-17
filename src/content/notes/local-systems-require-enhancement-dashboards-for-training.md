@@ -5,6 +5,7 @@ visibility: public
 status: live
 tags: [ai, training, local-first, ux]
 summary: "Local AI needs a UI for correcting mistakes. User feedback trains the model. The dashboard shows what needs review."
+aliases: ['Local systems require "Enhancement Dashboards" for user-in-the-loop model training']
 ---
 
 Local AI gets better by learning from your corrections. But that requires an interface for you to fix its mistakes and confirm good outputs.
@@ -15,7 +16,7 @@ This is user-in-the-loop training. Not fine-tuning—more like ongoing calibrati
 
 The dashboard prevents review from becoming overwhelming. It shows only what needs attention, sorted by confidence or importance. You're not checking everything—just the edge cases where the model is uncertain.
 
-This connects to [[Accurate transcription requires personal training]]. Generic speech-to-text fails on your terminology, your accent, your speaking style. Local training fixes that, but only if you have a way to correct mistakes.
+This connects to [[Accurate transcription requires training the model on personal proper nouns and context]]. Generic speech-to-text fails on your terminology, your accent, your speaking style. Local training fixes that, but only if you have a way to correct mistakes.
 
 The workflow: capture automatically, surface uncertainties, human reviews and corrects, model improves. Repeat. The system gets smarter without manual training data preparation.
 
