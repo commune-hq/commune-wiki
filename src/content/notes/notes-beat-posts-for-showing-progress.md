@@ -13,8 +13,8 @@ Posts slow you down. Notes ship now. A post wants a mood and a full arc. A note 
 
 Notes also make better inputs for agents. Short claims and strong titles feed [[Ask the Brain]]. Notes feed the weekly [[Auto-essay closes the loop each week]] without breaking flow. Capture should be easy. I pace and talk. See [[Automated note shaping from voice]]. Approval should be fast. Create. Merge. Link. Do nothing.
 
-The map should stay honest. [[Three panes deep, then you pay]] lets anyone try the path before meeting the paywall. If you want the long story, read the [[Release is a monthly human wrap]] that cites the [[Ledger replaces feeds]].
+The map should stay honest. [[Three panes deep, then you pay]] lets anyone try the path before meeting the paywall. Long story? Read the [[Release is a monthly human wrap]] that cites the [[Ledger replaces feeds]].
 
-This format supports [[I hope people will pay for a working mind]] because readers can see thinking in motion, not just polished conclusions. It enables [[Associative linking over hierarchies]] because each note can connect to any other note based on conceptual relationships.
+[[I hope people will pay for a working mind]] because readers see thinking in motion, not just polished conclusions. [[Associative linking over hierarchies]] works because each note can connect to any other note based on conceptual relationships.
 
 Notes are the atomic unit of [[Evergreen Notes]] and the foundation of wikis.
