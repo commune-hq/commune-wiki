@@ -9,12 +9,12 @@ updated: 2025-10-15
 summary: "A title should read like a conclusion. Labels slow readers and weaken Ask the Brain. A sharp title makes a short note land."
 ---
 
-A title should read like a conclusion. Labels slow readers and weaken [[Ask the Brain]]. A sharp title makes a short note land. It also makes links work better because the title itself is a handle.
+A title should read like a conclusion. Labels slow readers and weaken [[Ask the Brain]]. A sharp title makes a short note land. Makes links work better because the title itself is a handle.
 
 "[[The Commune box]]" is stronger than "Self-hosting." "[[Ledger replaces feeds]]" is stronger than "Changelog." Writing the claim in the title forces clarity in the body. If I cannot name the claim, I split the note or I need to think more.
 
 Good titles let the agent draft better suggestions in [[Automated note shaping from voice]]. Good titles make the [[Auto-essay closes the loop each week]] outline easier to write. Titles are small, but they decide whether the whole system stays learnable.
 
-This connects to [[Evergreen Notes]] principles because atomic notes need atomic titles. It supports [[Notes beat posts for showing progress]] because clear titles make individual notes more discoverable and linkable. The approach enables [[Associative linking over hierarchies]] because descriptive titles create natural connection points.
+[[Evergreen Notes]] need atomic titles. Clear titles make individual notes more discoverable and linkable ([[Notes beat posts for showing progress]]). Descriptive titles create natural connection points ([[Associative linking over hierarchies]]).
 
-Strong titles also improve [[I hope people will pay for a working mind]] because readers can quickly scan the [[Ledger replaces feeds]] and understand what changed without opening every note.
+Strong titles improve [[I hope people will pay for a working mind]] because readers can quickly scan the [[Ledger replaces feeds]] and understand what changed without opening every note.
