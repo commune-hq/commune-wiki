@@ -11,9 +11,9 @@ summary: The simple view of Commune is free—you get a tease. But anything that
 
 The simple view of [[Commune]] is free. You get a tease of what it is and it looks great, but anything that gives you depth into the mind is subscription based. Like [[Substack]]. You can read the first half, subscribe to get the rest.
 
-Free tier gives you three pane levels deep ([[Depth-3 free is honest gating]]). You land on the home note ([[The Home note should guide the first three steps]]). Click through two more levels, then hit a wall. [[The Star]] notes guide you to the core ideas. But if you want to go deeper into the full mind, you have to pay.
+Free tier gives you three pane levels deep ([[Three panes deep, then you pay]]). You land on the home note ([[The Home note should guide the first three steps]]). Click through two more levels, then hit a wall. [[The Star]] notes guide you to the core ideas. But if you want to go deeper into the full mind, you have to pay.
 
-[[Depth-3 free is honest gating]] gets more interesting when AI layers on top. Followers want to search across all your notes. That costs money. AI can analyze how a note has changed over time, look at every edit, and write the story of all those changes. That costs money too.
+[[Three panes deep, then you pay]] gets more interesting when AI layers on top. Followers want to search across all your notes. That costs money. AI can analyze how a note has changed over time, look at every edit, and write the story of all those changes. That costs money too.
 
 I'm still figuring out pricing... I might do $2 to unlock the full brain, $5 for semantic search and commenting, and maybe $10 for deep research and some final level of depth I have yet to determine. Not sure if everyone should have the same tiers or if it should be different.
 

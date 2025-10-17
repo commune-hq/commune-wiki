@@ -11,7 +11,7 @@ summary: "Every note carries a few links in the prose. Each link explains itself
 
 Every note carries a few links in the prose. Each link explains itself. "See [[Ledger replaces feeds]] for why motion beats ranking." "See [[The Commune box]] for the privacy piece." The right rail can show a Related list, but the real work happens inside sentences.
 
-Click Stroll when you want a quiet wander. It shows one related note at a time with the "why" chip. Left. Right. No infinite scroll. Across-notebook discovery is off by default. When you turn it on, it still respects [[Depth-3 free is honest gating]].
+Click Stroll when you want a quiet wander. It shows one related note at a time with the "why" chip. Left. Right. No infinite scroll. Across-notebook discovery is off by default. When you turn it on, it still respects [[Three panes deep, then you pay]].
 
 This is library energy. You walk the stacks with a thread in hand. This pairs well with [[Follow and Collect keep signal, not hype]]. When someone you like Collects two notes together, that co-collection becomes a strong "why" for Related. The system stays legible. You always know why you are seeing a link.
 

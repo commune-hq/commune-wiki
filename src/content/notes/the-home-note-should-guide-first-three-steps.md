@@ -20,7 +20,7 @@ One option feels limiting. Five feels overwhelming. Three gives choice without p
 
 Recent work? Check the ledger. Specific question? Ask. Want ongoing updates? Follow. Different goals, different paths.
 
-[[Depth-3 free is honest gating]] lets you explore three panes deep before hitting a wall. The home note is where that exploration starts. First three clicks are always free.
+[[Three panes deep, then you pay]] lets you explore three panes deep before hitting a wall. The home note is where that exploration starts. First three clicks are always free.
 
 The guidance changes based on context. Homepage for first-timers. Category pages for topic exploration. Note pages for people already deep in the wiki.
 

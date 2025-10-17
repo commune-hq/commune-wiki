@@ -14,7 +14,7 @@ The core loop: capture thoughts by voice while walking, an agent drafts atomic n
 
 Discovery happens through explicit mechanisms, not algorithms. The [[Ledger replaces feeds]] shows recent changes across the graph. [[Discovery runs on time, follows, and why]] means every connection has a clear reason—no recommendation engines, no virality metrics.
 
-[[Depth-3 free is honest gating]] keeps three hops from the homepage open while protecting deeper exploration behind paid access. This creates calm surfaces for depth work. Readers get agency through [[Follow and Collect keep signal, not hype]], [[Ask the Brain]], and [[Suggestions and Proposals make readers part of the work]].
+[[Three panes deep, then you pay]] keeps three hops from the homepage open while protecting deeper exploration behind paid access. This creates calm surfaces for depth work. Readers get agency through [[Follow and Collect keep signal, not hype]], [[Ask the Brain]], and [[Suggestions and Proposals make readers part of the work]].
 
 Everything private runs on [[The Commune box]]—your own hardware at home. You control what publishes. The platform doesn't own your knowledge graph.
 

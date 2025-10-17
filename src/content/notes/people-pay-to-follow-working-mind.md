@@ -9,7 +9,7 @@ updated: 2025-10-15
 summary: "People do not pay for polish. They pay to watch ideas move. A clear ledger shows motion with small diffs and reasons."
 ---
 
-People do not pay for polish. They pay to watch ideas move. A clear [[Ledger replaces feeds]] shows motion with small diffs and reasons. Clean titles and tight links make [[Ask the Brain]] return short answers with receipts. [[Depth-3 free is honest gating]] lets anyone try the map before it locks.
+People do not pay for polish. They pay to watch ideas move. A clear [[Ledger replaces feeds]] shows motion with small diffs and reasons. Clean titles and tight links make [[Ask the Brain]] return short answers with receipts. [[Three panes deep, then you pay]] lets anyone try the map before it locks.
 
 The trade is recency and answers. If I can see what changed and ask a good question, I pay. This works if the surface stays calm and human. That is why [[Discovery runs on time, follows, and why]] replaces ranking. That is why [[Follow and Collect keep signal, not hype]] replaces likes.
 

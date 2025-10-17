@@ -11,7 +11,7 @@ summary: "I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and I 
 
 I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[Commune]] (that's what's powering this website). I also run [[Ads Lab]] and [[Awake Happy]]. This is my working brain in public.
 
-I capture by voice while I walk. The agent turns that into drafts. I approve or toss. See [[Voice in, approvals out]]. You'll see what changed in the [[Ledger replaces feeds]]. Three hops from here are open; deeper branches lock, which keeps this sane. See [[Depth-3 free is honest gating]].
+I capture by voice while I walk. The agent turns that into drafts. I approve or toss. See [[Voice in, approvals out]]. You'll see what changed in the [[Ledger replaces feeds]]. Three hops from here are open; deeper branches lock, which keeps this sane. See [[Three panes deep, then you pay]].
 
 No feed. No vibes machine. Discovery is time, follows, and a clear reason for every link. See [[Discovery runs on time, follows, and why]] and [[Related and Stroll give serendipity without a feed]].
 
