@@ -11,7 +11,7 @@ summary: AI generates OG images for notes automatically. Template-based, regener
 
 Rich results in Google and LLM citations need images. Every article needs an OG image.
 
-Manual image creation doesn't scale with [[Automated note shaping from voice]]. If I'm creating 10 notes in a day from voice dumps, I can't manually design 10 images.
+Manual image creation doesn't scale with [[AI shapes voice dumps into atomic notes]]. If I'm creating 10 notes in a day from voice dumps, I can't manually design 10 images.
 
 Solution: auto-generate them. Template system where you choose an image style. AI generates an image for each note. When the note gets a major edit, regenerate. Minor edits don't trigger new images.
 

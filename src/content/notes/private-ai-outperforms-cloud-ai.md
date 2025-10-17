@@ -14,6 +14,6 @@ Private AI running at home has access to everything. Complete conversation histo
 
 The agent can answer questions cloud models can't. What did Sarah and I decide about the Q4 launch? Show me all mentions of the pricing strategy from last month. Draft a follow-up in the style I used with this client before.
 
-Context beats raw intelligence. A smaller model with full access to your data outperforms a larger model without it. That's why [[Automated note shaping from voice]] works. The system learns your voice over time.
+Context beats raw intelligence. A smaller model with full access to your data outperforms a larger model without it. That's why [[AI shapes voice dumps into atomic notes]] works. The system learns your voice over time.
 
 Your data never leaves your infrastructure. No trust boundary with cloud providers. [[Owning your data infrastructure eliminates the need for specialized middleware and roles]] gives you this advantage. [[Integrated data analysis unlocks observations impossible in siloed systems]] becomes possible when everything connects. [[Local-First Software]] plus local AI changes the game.

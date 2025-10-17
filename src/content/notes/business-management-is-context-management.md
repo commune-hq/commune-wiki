@@ -10,7 +10,7 @@ Managing a business is really just managing a shit ton of context that keeps exp
 
 Traditional business tools create more containers: project folders, departmental silos, quarterly reports. Containers don't scale. They fragment context and create information islands. [[Associative linking over hierarchies]] matters for business systems, not just personal notes.
 
-Instead of managing context through artificial structures, capture it naturally through [[Automated note shaping from voice]] and make it intelligently accessible via [[Ask the Brain]]. [[The Commune box]] gives you complete control over business-critical context.
+Instead of managing context through artificial structures, capture it naturally through [[AI shapes voice dumps into atomic notes]] and make it intelligently accessible via [[Ask the Brain]]. [[The Commune box]] gives you complete control over business-critical context.
 
 When all your context connects (Shopify, ads, customer support, personal insights), you see patterns invisible in traditional business tools. [[Integrated data analysis unlocks observations impossible in siloed systems]]. [[Private AI outperforms cloud AI]] because it has access to your complete business context.
 

@@ -14,7 +14,7 @@ The problem isn't that people are bad at organization. Manual organization doesn
 
 Traditional solutions (better folder structures, naming conventions, tagging systems) treat symptoms, not the root cause. They still require humans to make classification decisions for every piece of information. Same busywork that [[Unscheduled quick calls destroy deep work]] represents. Constant interruption of focused thinking.
 
-[[A sufficiently intelligent router eliminates the need for traditional project management]] through automated classification. When AI understands content and context, it handles the organizational decisions that currently drain human attention. [[Automated note shaping from voice]] works because you can capture thoughts without stopping to organize them.
+[[A sufficiently intelligent router eliminates the need for traditional project management]] through automated classification. When AI understands content and context, it handles the organizational decisions that currently drain human attention. [[AI shapes voice dumps into atomic notes]] works because you can capture thoughts without stopping to organize them.
 
 Proper automation frees mental resources for higher-order thinking. [[Externalizing thought builds a cognitive scaffold for solving complex problems]]. Instead of managing information, you focus on synthesizing insights and making connections. [[Owning your data infrastructure eliminates the need for specialized middleware and roles]] makes this work effectively.
 

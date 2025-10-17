@@ -15,6 +15,6 @@ The essay cites notes inline. Helps readers who won't pane-surf through the full
 
 They expose dead weight. If a section repeats itself, I make a new note or merge two existing ones. The essay turns fragments into a story without breaking the cadence of daily notes. [[Notes beat posts for showing progress]] because the atomic notes stay primary.
 
-The weekly synthesis builds on [[Automated note shaping from voice]]. Raw material comes from daily voice captures. [[I hope people will pay for a working mind]] when they can choose between granular updates and broader narrative context. This automates synthesis work that would otherwise require dedicated writing sessions.
+The weekly synthesis builds on [[AI shapes voice dumps into atomic notes]]. Raw material comes from daily voice captures. [[I hope people will pay for a working mind]] when they can choose between granular updates and broader narrative context. This automates synthesis work that would otherwise require dedicated writing sessions.
 
 Improves [[Titles are takeaways, not labels]] too. Unclear titles become obvious when the agent tries to cluster related notes for the weekly narrative.

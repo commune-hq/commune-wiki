@@ -13,6 +13,6 @@ I want to be able to ask questions and get answers from my notes. Not generic AI
 
 Ask "How do I think about automation?" and get back an answer that links to the exact notes where I've written about it. No hallucinations. If it can't cite a note, it doesn't answer.
 
-This only works if notes are [[Atomic Notes]] with clear claims. [[Automated note shaping from voice]] needs to create notes that are actually searchable and cite-able.
+This only works if notes are [[Atomic Notes]] with clear claims. [[AI shapes voice dumps into atomic notes]] needs to create notes that are actually searchable and cite-able.
 
 Private questions run on [[The Commune box]] ([[Private AI outperforms cloud AI]]). Your sensitive questions never leave your server.

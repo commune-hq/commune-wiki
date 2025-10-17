@@ -11,7 +11,7 @@ summary: Each note should express exactly one idea. This is a key property of Ev
 
 One note, one idea. This is a core principle of [[Evergreen Notes]].
 
-Atomic notes are reusable. You can link from multiple contexts without baggage. They're composable. Combine them to build arguments. They're maintainable. Update one idea without breaking others ([[Automated note shaping from voice]]).
+Atomic notes are reusable. You can link from multiple contexts without baggage. They're composable. Combine them to build arguments. They're maintainable. Update one idea without breaking others ([[AI shapes voice dumps into atomic notes]]).
 
 Traditional notes mix multiple concepts. Hard to reference precisely. Same problem as [[Manual file management is a high-friction waste of cognitive resources]]. Too many decisions bundled together. Atomic notes split topics into constituent ideas.
 

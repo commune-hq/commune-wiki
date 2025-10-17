@@ -15,7 +15,7 @@ Each note expresses a single idea ([[Atomic Notes]]). Notes gain value through c
 
 Traditional note-taking creates piles of write-only notes ([[Manual file management is a high-friction waste of cognitive resources]]). Evergreen notes create a thinking system that compounds. Each note makes future notes easier to write and more valuable. [[Notes beat posts for showing progress]] in knowledge work.
 
-[[Automated note shaping from voice]] works because I capture rough thoughts knowing they'll be refined over time. [[Ask the Brain]] works because the knowledge base has clear, atomic claims. [[Private AI outperforms cloud AI]] because my personal terminology and connections become part of the model's context.
+[[AI shapes voice dumps into atomic notes]] works because I capture rough thoughts knowing they'll be refined over time. [[Ask the Brain]] works because the knowledge base has clear, atomic claims. [[Private AI outperforms cloud AI]] because my personal terminology and connections become part of the model's context.
 
 [[Andy Matuschak's Notes]] demonstrated the power of [[Networked thinking reveals hidden connections]] for serious intellectual work. Requires [[The Commune box]] to work at scale. Need complete control over the knowledge base to build genuine expertise over years.
 

@@ -15,6 +15,6 @@ The workflow hit a wall. [[Reflect]] is end-to-end encrypted. I'd have to downlo
 
 Before [[Reflect]], I used [[Obsidian]]. Before that, Voice Notes. I kept hitting the same wall. Good ideas, bad execution. Lost in translation.
 
-That's why I decided to build [[Commune]]. [[Automated note shaping from voice]] does what I used to do manually. [[The Commune box]] means I own my data. [[Ask the Brain]] uses everything in context. No manual copying. No locked-in data.
+That's why I decided to build [[Commune]]. [[AI shapes voice dumps into atomic notes]] does what I used to do manually. [[The Commune box]] means I own my data. [[Ask the Brain]] uses everything in context. No manual copying. No locked-in data.
 
 Manual refinement works for a while. But it doesn't scale. You need the system to do the heavy lifting so you can focus on thinking, not formatting.

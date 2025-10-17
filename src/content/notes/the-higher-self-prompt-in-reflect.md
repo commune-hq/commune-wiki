@@ -17,6 +17,6 @@ But the workflow was really limiting. I had to manually double-tap the entire tr
 
 If I had ideas about how to change the higher self prompt based on these outputs, I'd have to go to the note in Reflect and edit it. Then copy the whole thing, go to my AI prompt library in Reflect, replace the whole prompt, and save it. Really arduous.
 
-The concept was right. Personal knowledge as a prompt. But [[Manual note refinement doesn't scale]]. [[Automated note shaping from voice]] does what the higher self prompt tried to do, but automatically.
+The concept was right. Personal knowledge as a prompt. But [[Manual note refinement doesn't scale]]. [[AI shapes voice dumps into atomic notes]] does what the higher self prompt tried to do, but automatically.
 
 [[The Commune box]] means the prompt can access all my notes in context. No manual copying. No locked-in data. Just the workflow working.

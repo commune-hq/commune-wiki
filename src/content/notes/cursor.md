@@ -13,7 +13,7 @@ summary: An AI-powered code editor that changed my mindset about what's possible
 
 When [[Reflect]] couldn't handle the automation I needed and agents like Cursor came into the scene, I realized I needed to build [[Commune]]. Cursor showed me the future. AI that understands your codebase, your context, your intent.
 
-That's the model I want for thinking. Not just code. [[Automated note shaping from voice]] takes the same concept. AI that understands how I write, what I link, how I structure thoughts.
+That's the model I want for thinking. Not just code. [[AI shapes voice dumps into atomic notes]] takes the same concept. AI that understands how I write, what I link, how I structure thoughts.
 
 [[The Commune box]] runs locally like Cursor can. [[Private AI outperforms cloud AI]] because it learns your specific patterns instead of serving millions of users with one model.
 

@@ -17,7 +17,7 @@ More entry points means more chances to rank for niche queries. Someone searchin
 
 This works even better with LLMs. When ChatGPT or Perplexity crawls for sources, [[Atomic Notes]] with clear claims are better retrieval targets than rambling blog posts.
 
-For [[Commune]], this means the voice-first workflow actually creates better SEO than manual blogging. [[Automated note shaping from voice]] turns your thinking into dozens of focused articles automatically.
+For [[Commune]], this means the voice-first workflow actually creates better SEO than manual blogging. [[AI shapes voice dumps into atomic notes]] turns your thinking into dozens of focused articles automatically.
 
 Combined with [[Auto-generated OG images for notes]], every note gets optimized for rich results without manual work.
 

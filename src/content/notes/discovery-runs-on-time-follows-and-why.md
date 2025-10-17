@@ -17,4 +17,4 @@ Collect builds human trails that others can browse. Staff Picks can exist, but t
 
 The result is slower but better. People find quality by following people and following reasons. Not by training an addiction. [[See what I'm working on]] replaces ranking with time and intent.
 
-Time-based discovery means I can publish frequently without worrying about algorithmic punishment for "low engagement" content. [[Automated note shaping from voice]] works because the platform doesn't optimize for virality.
+Time-based discovery means I can publish frequently without worrying about algorithmic punishment for "low engagement" content. [[AI shapes voice dumps into atomic notes]] works because the platform doesn't optimize for virality.

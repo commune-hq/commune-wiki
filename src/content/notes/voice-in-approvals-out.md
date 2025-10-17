@@ -1,13 +1,15 @@
 ---
-title: "Automated note shaping from voice"
+title: "AI shapes voice dumps into atomic notes"
 created: 2025-10-15
 visibility: public
 status: live
 tags: [workflow, capture, ai-agents, voice, vision]
-aliases: ["voice capture", "approval workflow", "voice in approvals out"]
+aliases: ["voice capture", "approval workflow", "voice in approvals out", "automated note shaping from voice", "Automated note shaping from voice"]
 updated: 2025-10-17
 summary: "Dump thoughts while walking. AI shapes them into atomic notes. Review in iOS app. Refine with more voice. Infinite game of hammering notes into 150-250 word format."
 ---
+
+[[Manual note refinement doesn't scale]]. I used Reflect for years, manually copying and pasting. That's why I'm building this.
 
 I dump thoughts while walking. The vision is AI that understands how I write shapes them into [[Atomic Notes]]. 150 to 250 words, single concept, densely linked.
 
@@ -21,4 +23,4 @@ Still building the agent and algorithm. Current state: I talk, AI drafts, I manu
 
 If the draft sounds like me, it ships. If it sounds like a bot, it waits. Voice stays intact. Pace stays high.
 
-Clear notes feed [[Ask the Brain]]. Real edits feed [[Ledger replaces feeds]]. [[Notes beat posts for showing progress]] because you capture atomic thoughts immediately.
+Clear notes feed [[Ask the Brain]]. Real edits feed [[See what I'm working on]]. [[Notes beat posts for showing progress]] because you capture atomic thoughts immediately.

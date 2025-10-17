@@ -21,6 +21,6 @@ Traditional search can't answer these questions: Which ideas influenced how I th
 
 [[Private AI outperforms cloud AI]] because the agent has access to all these connections. [[Integrated data analysis unlocks observations impossible in siloed systems]] when your Shopify data, ad campaigns, voice notes, and wiki all link together.
 
-The trick is balance. Too much automatic linking creates noise. Too little manual curation misses connections. [[Automated note shaping from voice]] works because I capture freely, the agent proposes links, I approve what fits.
+The trick is balance. Too much automatic linking creates noise. Too little manual curation misses connections. [[AI shapes voice dumps into atomic notes]] works because I capture freely, the agent proposes links, I approve what fits.
 
 [[Externalizing thought builds a cognitive scaffold for solving complex problems]]. Each note becomes a building block. The more you write, the more sophisticated your thinking becomes.
