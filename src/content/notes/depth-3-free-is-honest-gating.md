@@ -13,7 +13,7 @@ summary: Commune lets creators gate their wiki at any depth. Three panes is the 
 
 The wall is visible. See what's locked before clicking.
 
-Become a subscriber and access deeper levels. [[Subscription unlocks depth into the mind]]. Different pricing tiers unlock different depths.
+The gate might be email unlock. Might be payment. Haven't decided yet. [[Subscription unlocks depth into the mind]] explores the pricing ideas. Different tiers could unlock different depths.
 
 Three levels is enough to learn if the wiki is worth following. Too shallow, people bounce. Too deep, nobody pays.
 
