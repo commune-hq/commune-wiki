@@ -1,27 +1,22 @@
 ---
-title: The Home note should guide the first three steps
+title: The home note triages to your best ideas
 created: 2025-10-16
 visibility: public
 status: live
-tags: [navigation, ux, onboarding, design]
-summary: Blank slate paralysis kills exploration. Guide the first three clicks—ledger, ask, follow—so readers find value before leaving.
+tags: [navigation, ux, onboarding, design, commune]
+aliases: ["home note", "starting note"]
+summary: The home note is the first note when you land on a Commune-powered site. Everyone needs to design their starting note—it triages readers to your best ideas.
+updated: 2025-10-17
 ---
 
-Blank slate paralysis kills exploration. Too many wikis dump readers in with no guidance. They click around, get lost, leave.
+[[Commune]] requires a starting note—the first note when someone lands on your site. You must design it. No blank slate.
 
-Home note fixes this. Guide the first three clicks. Not required paths—suggested starting points.
+Purpose: triage readers to your best ideas. Not a comprehensive index. Not your entire graph. Just the entry points that matter most right now.
 
-[[Commune]] offers three paths:
-1. Read the ledger and last week's summary
-2. Ask the brain what interests you
-3. Follow for updates, collect notes for your own trail
+My home note links to [[Ledger replaces feeds]], [[Ask the Brain]], and [[The Commune box]]. Those are my current best ideas for understanding what I'm building. Next month it might change. Year from now it'll definitely change.
 
-One option feels limiting. Five feels overwhelming. Three gives choice without paralysis.
+Home note evolves. As your thinking changes, update it. Dead links get pruned. New concepts get added. Reflects where your mind is right now, not where it was.
 
-Recent work? Ledger. Specific question? Ask. Ongoing updates? Follow. Different goals, different paths.
+Traditional wikis dump readers into notes with no guidance. They click around, get lost, leave. Home note fixes this by giving clear starting points.
 
-[[Three panes deep, then you pay]] lets you explore three clicks before hitting a wall. Home note is where that starts. First three clicks always free.
-
-Traditional wikis assume everyone knows how to navigate linked notes. Most don't. Guide them or they bounce.
-
-Notes matter, but discoverability determines whether anyone reads them.
+Design it like triage. Different readers want different things—give them paths to what matters. Not required paths, just obvious places to start based on what you think is important.

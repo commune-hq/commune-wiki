@@ -11,7 +11,7 @@ summary: "Longform should be a by-product of work, not a second job. The agent s
 
 Longform should be a by-product of work, not a second job. The agent scans the [[Ledger replaces feeds]], clusters the week by topic and momentum, and drafts 700–1,200 words in my voice. I can approve, tighten, or snooze.
 
-The essay cites notes inline. It helps readers who will never pane-surf. It helps me see if the week had a real through-line. If not, next week I plan a sharper arc at [[The Home note should guide the first three steps]]. Essays also surface questions that belong in [[Ask the Brain]].
+The essay cites notes inline. It helps readers who will never pane-surf. It helps me see if the week had a real through-line. If not, next week I plan a sharper arc at [[The home note triages to your best ideas]]. Essays also surface questions that belong in [[Ask the Brain]].
 
 They expose dead weight. If a section repeats, I make a new note or merge two. The essay turns fragments into a story without breaking the cadence of daily notes. This supports [[Notes beat posts for showing progress]] because the atomic notes remain the primary format.
 

@@ -9,7 +9,7 @@ updated: 2025-10-17
 summary: Commune lets creators gate their wiki at any depth. Three panes is the default—land on home, click twice more, hit a wall.
 ---
 
-[[Commune]] lets creators gate their public wiki at any depth. Three pane levels is the default. You land on the home note. [[The Home note should guide the first three steps]]. Click through two more levels, then you hit a wall.
+[[Commune]] lets creators gate their public wiki at any depth. Three pane levels is the default. You land on the home note. [[The home note triages to your best ideas]]. Click through two more levels, then you hit a wall.
 
 The wall is visible. You see what's locked before you click.
 
