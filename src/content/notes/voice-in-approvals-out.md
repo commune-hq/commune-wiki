@@ -9,12 +9,14 @@ updated: 2025-10-15
 summary: "I pace and talk. That is the input. The agent drafts a note, proposes links, and shows a small diff that says why. I approve, merge, link, or ignore."
 ---
 
-I pace and talk. That is the input. The agent drafts a note, proposes links, and shows a small diff that says why. I approve, merge, link, or ignore. No tags to babysit. No graph gardening. The UI shows actions. Not confidence. This approach embodies [[Zen practice protects attention]] by keeping the capture process calm and focused.
+I pace and talk. That's the input. AI drafts a note, proposes links, shows a diff. I approve, merge, or toss. No tags to babysit. No graph gardening. The UI shows actions, not confidence. [[Zen practice protects attention]] because capture stays calm.
 
-This keeps my voice intact and my pace high. If the draft sounds like a bot, it waits. If it sounds like me, it ships. This loop feeds [[Ask the Brain]] because clear notes make better answers. It also feeds [[Auto-essay closes the loop each week]] because the [[Ledger replaces feeds]] will have real reasons and real edits.
+If the draft sounds like a bot, it waits. If it sounds like me, it ships. My voice stays intact. My pace stays high.
 
-Voice-in pairs with privacy through [[The Commune box]]. The capture and heavy compute live at home, enabling [[Private AI outperforms cloud AI]] through complete context access. The public notebook stays small and sharp. That is how you publish daily without burning out, supporting [[People pay to follow a working mind]].
+Clear notes feed [[Ask the Brain]]. Real edits feed the [[Ledger replaces feeds]]. The weekly wrap ([[Auto-essay closes the loop each week]]) pulls from both.
 
-The workflow eliminates [[Manual file management is a high-friction waste of cognitive resources]] by removing classification decisions from the capture moment. I don't think about where it goes or how to organize it. I just speak the thought. The routing system handles the rest, showing how [[A sufficiently intelligent router eliminates the need for traditional project management]], which is why [[Defaulting to No for unscheduled calls protects deep work]] becomes possible.
+[[The Commune box]] keeps capture private. Heavy compute lives at home ([[Private AI outperforms cloud AI]]). The public side stays small and sharp. That's how you publish daily without burning out ([[People pay to follow a working mind]]).
 
-This connects to how [[Externalizing thought builds a cognitive scaffold for solving complex problems]] because voice capture removes the friction between thinking and recording. Ideas flow directly from mind to system without the bottleneck of typing or organizing. The result enables [[Notes beat posts for showing progress]] because you can capture and publish atomic thoughts immediately.
+I don't think about where thoughts go or how to organize them. I speak. The system routes. [[A sufficiently intelligent router eliminates the need for traditional project management]] handles the rest. [[Defaulting to No for unscheduled calls protects deep work]] becomes possible.
+
+Voice capture removes friction between thinking and recording ([[Externalizing thought builds a cognitive scaffold for solving complex problems]]). Ideas flow from mind to system without typing or organizing. [[Notes beat posts for showing progress]] because you can capture atomic thoughts immediately. [[Manual file management is a high-friction waste of cognitive resources]]—voice capture eliminates that.
