@@ -6,7 +6,7 @@ summary: "Automated context management makes traditional PM tools obsolete by ca
 tags: ["router", "project-management", "automation", "commune"]
 ---
 
-Full project management is a joke. The premise is broken. PM tools exist because you need oversight, but if you capture everything—meetings, transcripts, the work you did—and the router updates the knowledge base, you don't need the oversight tool. The team just queries the KB. "What did Issa do yesterday?" If everyone uses the router, we're good.
+Full project management is a joke. The premise is broken. PM tools exist because you need oversight, but if you capture everything (meetings, transcripts, the work you did) and the router updates the knowledge base, you don't need the oversight tool. The team just queries the KB. "What did Issa do yesterday?" If everyone uses the router, we're good.
 
 The traditional PM workflow:
 1. Do work

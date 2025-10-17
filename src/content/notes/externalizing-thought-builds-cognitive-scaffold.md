@@ -8,7 +8,7 @@ tags: ["cognition", "practice", "workbench", "thinking"]
 
 People call these "digital gardens," but I think of this as my Public Workbench. It's a practice. Putting it out there and seeing it helps you think and get better at solving the problems you're trying to solve in life. It's the feedback loop of externalizing and structuring thought.
 
-The magic isn't in the storage—it's in the act of articulation. When you force yourself to write down what you're thinking, you discover gaps in your logic, connections you hadn't seen, and clarity you didn't know you were missing.
+The magic isn't in the storage. It's in the act of articulation. When I force myself to write down what I'm thinking, I discover gaps in my logic, connections I hadn't seen, and clarity I didn't know I was missing.
 
 This connects to why [[Manual file management is a high-friction waste of cognitive resources]]. The cognitive load should be on the thinking, not the organizing. The workbench handles the structure so your brain can focus on the connections.
 
