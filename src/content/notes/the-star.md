@@ -17,6 +17,6 @@ Stars appear inline with the title—[[Titles are takeaways, not labels|Skool-st
 
 The ranking logic lives in a single config file. I want to experiment with this—maybe stars should factor in revisions, cross-theme links, or time decay. The system needs to stay tunable because [[Evergreen Notes]] evolve, and what counts as "important" might shift as the wiki grows.
 
-Stars help readers discover high-value notes without AI summaries, which connects to [[Depth gating protects computation costs]]. They support [[Build in Public]] by showing what ideas compound over time. The feature emerged from wanting [[Gamification drives self-discovery]]—surface the best work, make progress visible, keep people engaged.
+Stars help readers discover high-value notes without AI summaries, which connects to [[Subscription unlocks depth into the mind]]. They support [[Build in Public]] by showing what ideas compound over time. The feature emerged from wanting [[Gamification drives self-discovery]]—surface the best work, make progress visible, keep people engaged.
 
 For now, backlinks alone decide rankings. Top 5%, relative not absolute, to prevent gaming. Clean, simple, tunable.

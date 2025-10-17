@@ -35,7 +35,6 @@
     "inbound": [
       "/notes/awake-happy/",
       "/notes/commune/",
-      "/notes/depth-gating-protects-computation-costs/",
       "/notes/film-production-managing-information/",
       "/notes/networked-thinking-reveals-hidden-connections/"
     ],
@@ -228,12 +227,11 @@
       "/notes/what-is-commune/",
       "/notes/business-management-is-context-management/",
       "/notes/people-pay-to-follow-working-mind/",
-      "/notes/depth-gating-protects-computation-costs/"
+      "/notes/subscription-unlocks-depth-into-the-mind/"
     ],
     "inbound": [
       "/notes/ads-lab/",
       "/notes/commune/",
-      "/notes/depth-gating-protects-computation-costs/",
       "/notes/film-production-managing-information/",
       "/notes/networked-thinking-reveals-hidden-connections/"
     ],
@@ -271,6 +269,7 @@
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
       "/notes/what-is-commune/",
@@ -304,11 +303,11 @@
       "/notes/andy-matuschaks-notes/",
       "/notes/atomic-notes/",
       "/notes/daily-walks-attract-downloads/",
-      "/notes/depth-gating-protects-computation-costs/",
       "/notes/gamification-drives-self-discovery/",
       "/notes/learning-in-public-accelerates-growth/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/skool/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/suggestions-and-proposals-make-readers-part-of-work/",
       "/notes/the-star/",
       "/notes/transparent-decision-making-builds-trust/",
@@ -510,6 +509,7 @@
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/what-is-commune/"
     ],
@@ -521,36 +521,6 @@
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
-  },
-  "/notes/depth-gating-protects-computation-costs/": {
-    "slug": "/notes/depth-gating-protects-computation-costs/",
-    "title": "Depth gating protects computation costs",
-    "aliases": [
-      "depth gating",
-      "gating",
-      "pricing"
-    ],
-    "outbound": [
-      "/notes/the-star/",
-      "/notes/build-in-public/",
-      "/notes/what-is-commune/",
-      "/notes/awake-happy/",
-      "/notes/ads-lab/",
-      "/notes/skool/",
-      "/notes/gamification-drives-self-discovery/"
-    ],
-    "inbound": [
-      "/notes/awake-happy/",
-      "/notes/gamification-drives-self-discovery/",
-      "/notes/the-star/"
-    ],
-    "tags": [
-      "commune",
-      "business",
-      "pricing"
-    ],
-    "status": "live",
-    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/discovery-runs-on-time-follows-and-why/": {
     "slug": "/notes/discovery-runs-on-time-follows-and-why/",
@@ -733,13 +703,13 @@
       "/notes/the-star/",
       "/notes/skool/",
       "/notes/people-pay-to-follow-working-mind/",
-      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/build-in-public/"
     ],
     "inbound": [
       "/notes/ads-lab/",
-      "/notes/depth-gating-protects-computation-costs/",
       "/notes/skool/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/the-star/"
     ],
     "tags": [
@@ -1261,7 +1231,6 @@
     ],
     "inbound": [
       "/notes/ads-lab/",
-      "/notes/depth-gating-protects-computation-costs/",
       "/notes/gamification-drives-self-discovery/",
       "/notes/the-star/"
     ],
@@ -1290,6 +1259,54 @@
       "non-duality"
     ],
     "status": "seed"
+  },
+  "/notes/subscription-unlocks-depth-into-the-mind/": {
+    "slug": "/notes/subscription-unlocks-depth-into-the-mind/",
+    "title": "Subscription unlocks depth into the mind",
+    "aliases": [],
+    "outbound": [
+      "/notes/what-is-commune/",
+      "/notes/substack/",
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/the-home-note-should-guide-first-three-steps/",
+      "/notes/the-star/",
+      "/notes/box-first-earns-trust/",
+      "/notes/build-in-public/",
+      "/notes/gamification-drives-self-discovery/"
+    ],
+    "inbound": [
+      "/notes/awake-happy/",
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/substack/",
+      "/notes/the-star/"
+    ],
+    "tags": [
+      "commune",
+      "business",
+      "pricing",
+      "monetization"
+    ],
+    "status": "live",
+    "updated": "2025-10-17T00:00:00.000Z"
+  },
+  "/notes/substack/": {
+    "slug": "/notes/substack/",
+    "title": "Substack",
+    "aliases": [],
+    "outbound": [
+      "/notes/what-is-commune/",
+      "/notes/subscription-unlocks-depth-into-the-mind/"
+    ],
+    "inbound": [
+      "/notes/subscription-unlocks-depth-into-the-mind/"
+    ],
+    "tags": [
+      "platforms",
+      "monetization",
+      "writing"
+    ],
+    "status": "draft",
+    "updated": "2025-10-17T00:00:00.000Z"
   },
   "/notes/suggestions-and-proposals-make-readers-part-of-work/": {
     "slug": "/notes/suggestions-and-proposals-make-readers-part-of-work/",
@@ -1324,7 +1341,8 @@
     ],
     "inbound": [
       "/notes/auto-essay-closes-loop-each-week/",
-      "/notes/depth-3-free-is-honest-gating/"
+      "/notes/depth-3-free-is-honest-gating/",
+      "/notes/subscription-unlocks-depth-into-the-mind/"
     ],
     "tags": [
       "navigation",
@@ -1343,19 +1361,20 @@
       "star-feature"
     ],
     "outbound": [
+      "/notes/what-is-commune/",
       "/notes/skool/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/evergreen-notes/",
-      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/build-in-public/",
       "/notes/gamification-drives-self-discovery/"
     ],
     "inbound": [
-      "/notes/depth-gating-protects-computation-costs/",
       "/notes/gamification-drives-self-discovery/",
       "/notes/network-effects-in-knowledge-work/",
       "/notes/networked-thinking-reveals-hidden-connections/",
-      "/notes/skool/"
+      "/notes/skool/",
+      "/notes/subscription-unlocks-depth-into-the-mind/"
     ],
     "tags": [
       "commune",
@@ -1522,14 +1541,16 @@
       "/notes/commune/",
       "/notes/daily-walks-attract-downloads/",
       "/notes/data-sovereignty-for-individuals/",
-      "/notes/depth-gating-protects-computation-costs/",
       "/notes/film-production-managing-information/",
       "/notes/gamification-drives-self-discovery/",
       "/notes/learning-in-public-accelerates-growth/",
       "/notes/local-first-software/",
       "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/skool/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
+      "/notes/substack/",
       "/notes/the-home-note-should-guide-first-three-steps/",
+      "/notes/the-star/",
       "/notes/zettelkasten-method/"
     ],
     "tags": [
