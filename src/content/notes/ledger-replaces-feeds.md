@@ -1,20 +1,20 @@
 ---
-title: "Ledger replaces feeds"
+title: "See what I'm working on"
 created: 2025-10-15
 visibility: public
 status: live
-tags: [discovery, feeds, transparency, updates]
-aliases: ["changelog", "activity log", "updates"]
-updated: 2025-10-15
-summary: "Feeds push. A ledger records. Each line shows a small diff, a reason, and a link to the exact note. That tone is calm. It lowers the urge to perform."
+tags: [discovery, transparency, updates, changelog, activity]
+aliases: ["changelog", "activity log", "updates", "ledger replaces feeds", "Ledger replaces feeds"]
+updated: 2025-10-17
+summary: "AI analyzes my commit history and shows you what I'm actually working on. No raw commits. No algorithmic feed. Just a smart summary of my recent thinking."
 ---
 
-Feeds push. A ledger records. I want the record. Each line shows a small diff, a reason, and a link to the exact note. "Renamed to say the claim." "Added link to bridge topics." "Tightened first sentence." That tone is calm. It lowers the urge to perform. It raises trust.
+I want people to be able to follow what I'm working on without algorithmic feeds or verbose commit logs.
 
-Readers can skim what moved, then dive into what matters. The ledger also powers [[Auto-essay closes the loop each week]]. The agent clusters the week by topics and momentum and drafts a clean wrap that cites back to notes and ledger lines.
+The solution: AI analyzes my git commit history every day. It looks at what notes changed, how they changed, and summarizes what I'm actually working on. "Devon's been refining his thoughts on subscriptions this week" with links to the specific notes.
 
-The ledger keeps free users in the loop without a noisy feed. It also shows what changed beyond the gate in [[Three panes deep, then you pay]]. The ledger is the spine of [[I hope people will pay for a working mind]] because it proves recency without tricks.
+Not every tiny edit. Not "fixed typo" commits. A smart rollup that tells the story. You can see what themes I'm exploring, what ideas are evolving, what's new.
 
-It pairs with [[Discovery runs on time, follows, and why]] to replace ranking with time and intent. Instead of algorithmic feeds that optimize for engagement, the ledger shows actual work with clear reasons. This supports [[Zen practice protects attention]] by removing the dopamine loops that fragment focus.
+This runs on [[Commune]] using my home server ([[The Commune box]]). The activity feed shows actual work without the dopamine loops of social feeds. If you want to go deeper into the full changelog, that's behind the paywall.
 
-The ledger also enables [[Suggestions and Proposals make readers part of the work]] because changes are visible and trackable.
+No algorithms deciding what you see. No tricks to keep you scrolling. Just an intelligent summary of what's happening in my brain.

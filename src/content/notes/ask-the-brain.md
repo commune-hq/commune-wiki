@@ -5,14 +5,14 @@ visibility: public
 status: live
 tags: [search, ai, answers, citations]
 aliases: ["question answering", "brain search", "cited answers"]
-updated: 2025-10-15
-summary: "Question in. Short answer out. The answer cites notes and versions. It links to the exact anchor you need. It does not invent. If an answer cannot cite, it does not ship."
+updated: 2025-10-17
+summary: "Ask a question, get an answer that cites specific notes. No invention. If it can't cite, it doesn't answer."
 ---
 
-Question in. Short answer out. The answer cites notes and versions. Links to the exact anchor you need. No invention. If it can't cite, it doesn't ship.
+I want to be able to ask questions and get answers from my notes. Not generic AI slop. Real answers with citations.
 
-Only works if notes have strong titles ([[Titles are takeaways, not labels]]). Depends on clean capture ([[Automated note shaping from voice]]). Free search for basic lookup. Paid answers save time. Turn the notebook from reading surface to learning surface.
+Ask "How do I think about automation?" and get back an answer that links to the exact notes where I've written about it. No hallucinations. If it can't cite a note, it doesn't answer.
 
-Paid answers reveal weak spots. Same question keeps showing up? I add a sentence or write a new note. Next answer gets sharper. Private Q&A runs local on [[The Commune box]] ([[Private AI outperforms cloud AI]]). Public Q&A runs on public notes so readers check sources.
+This only works if notes are [[Atomic Notes]] with clear claims. [[Automated note shaping from voice]] needs to create notes that are actually searchable and cite-able.
 
-Privacy stays intact. People learn fast. [[I hope people will pay for a working mind]] through instant cited answers. [[Notes beat posts for showing progress]] because atomic notes with clear claims make better retrieval targets.
+Private questions run on [[The Commune box]] ([[Private AI outperforms cloud AI]]). Your sensitive questions never leave your server.

@@ -11,11 +11,11 @@ summary: I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and run
 
 I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[Commune]] (that's what's powering this site). I also run [[Ads Lab]] and [[Awake Happy]]. This is my working brain in public.
 
-I realized I walk and talk into my phone and a lot of things get lost in translation. For a long time, I've been trying to figure out how to convert gigantic chunks of my raw transcripts into some kind of useful format ([[Manual note refinement doesnt scale]]). That's what I'm currently building. As my vision evolves, I'm adding it along the way. AI turns voice into drafts ([[Automated note shaping from voice]]). I see what changed in the [[Ledger replaces feeds]]. Three clicks from here are open. Deeper branches will lock behind some kind of gate ([[Three panes deep, then you pay]]). Might be email unlock. Might be payment. Haven't decided yet.
+I walk and talk into my phone a lot. Good ideas come out, but they get buried in messy transcripts. For a long time, I've been trying to figure out how to convert those raw voice dumps into something useful.
 
-Ask questions and get answers with receipts ([[Ask the Brain]]). See a fix? Leave a suggestion. I review it and the [[Ledger replaces feeds]] shows the change ([[Suggestions and Proposals make readers part of the work]]).
+I finally realized [[Manual note refinement doesnt scale]]. That's why I'm building [[Commune]]. These working notes reflect my evolving vision to automatically convert my raw thoughts into ordered [[Atomic Notes]] in a public wiki while also logging my daily notes in full to my private home server ([[The Commune box]]) so I can run automations and agentic workflows on top of them. No sending sensitive data to cloud providers.
 
 Everything runs on my home server. Hosting, data, app, all of it ([[The Commune box]]).
 
-The sliding panes owe a debt to [[Andy Matuschak's Notes]]. His work showed how interface shapes thinking.
+The sliding panes owe a debt to [[Andy Matuschaks Notes]]. His work showed how interface shapes thinking.
 

@@ -4,7 +4,8 @@ created: 2025-10-15
 visibility: public
 status: live
 tags: [note-taking, knowledge-management, digital-gardens]
-updated: 2025-10-15
+aliases: ["Andy Matuschaks Notes"]
+updated: 2025-10-17
 summary: "Andy Matuschak's note-taking system pioneered the concept of evergreen notes with sliding pane interfaces and dense linking."
 ---
 
