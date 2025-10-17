@@ -19,4 +19,4 @@ Winning the Skool Games validated the approach, which connects to [[Gamification
 
 The skill transfer is direct: [[Business management is fundamentally the management of expanding context]]. Ads Lab manages client context (offers, audiences, goals). [[Commune]] manages personal context (thinking, knowledge, story). Different applications, same core skill.
 
-Ads Lab proves the model works. [[Commune]] takes it deeper—from teaching a skill to externalizing entire thought processes.
+Ads Lab proves the model works. [[Commune]] takes it deeper. From teaching a skill to externalizing entire thought processes.
