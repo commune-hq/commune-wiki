@@ -9,20 +9,14 @@ updated: 2025-10-15
 summary: "Knowledge is naturally networked, not hierarchical. Associative links between concepts create more flexible and discoverable information structures."
 ---
 
-Traditional knowledge organization uses hierarchical taxonomies: folders within folders, categories within categories. This forces artificial choices about where information "belongs."
+Folders force you to decide where information "belongs." But knowledge doesn't naturally fit into trees. Ideas connect across domains, concepts relate in multiple ways, insights emerge from unexpected combinations. Networks represent how we actually think.
 
-But knowledge doesn't naturally fit into trees. Ideas connect across domains, concepts relate in multiple ways, and insights emerge from unexpected combinations. **Networks better represent how we actually think**.
+Links give you multiple pathways to the same information. Organization emerges instead of being forced. You discover connections instead of filing things away. Relevance depends on context, not fixed categories.
 
-Associative linking allows:
-- **Multiple pathways** to the same information
-- **Emergent organization** that evolves with understanding
-- **Serendipitous discovery** through unexpected connections
-- **Context-dependent relevance** rather than fixed categories
+[[Andy Matuschaks Notes]] and [[Evergreen Notes]] use dense linking instead of folder structures. Each note connects to any other note based on conceptual relationships, not arbitrary hierarchies.
 
-This is why [[Andy Matuschak's Notes]] and [[Evergreen Notes]] use dense linking instead of folder structures. Each note can connect to any other note based on conceptual relationships, not arbitrary hierarchies.
+You stop remembering where you filed something. You follow conceptual threads instead. "What was that idea about automation?" leads to "Oh right, it connects to this other concept about cognitive load."
 
-The practical benefit: information becomes more discoverable. Instead of remembering where you filed something, you follow conceptual threads. "What was that idea about automation?" leads to "Oh right, it connects to this other concept about cognitive load."
+Works beyond note-taking too. APIs, databases, user interfaces all benefit from associative organization over pure hierarchy.
 
-This principle applies beyond note-taking to any information system. APIs, databases, and user interfaces all benefit from associative rather than purely hierarchical organization.
-
-**Related**: [[Networked thinking reveals hidden connections]], [[Zettelkasten Method]], [[Network effects in knowledge work]]
+[[Networked thinking reveals hidden connections]], [[Zettelkasten Method]], [[Network effects in knowledge work]]

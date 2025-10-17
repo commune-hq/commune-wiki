@@ -13,7 +13,7 @@ I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[Commune]] (that's what
 
 I walk and talk into my phone a lot. Good ideas come out, but they get buried in messy transcripts. For a long time, I've been trying to figure out how to convert those raw voice dumps into something useful.
 
-I finally realized [[Manual note refinement doesnt scale]]. That's why I'm building [[Commune]]. These working notes reflect my evolving vision to automatically convert my raw thoughts into ordered [[Atomic Notes]] in a public wiki while also logging my daily notes in full to my private home server ([[The Commune box]]) so I can run automations and agentic workflows on top of them. No sending sensitive data to cloud providers.
+I finally realized [[Manual note refinement doesnt scale]]. That's why I'm building [[Commune]]. These working notes reflect my evolving vision to automatically convert my raw thoughts into [[Evergreen Notes]] in a public wiki while also logging my daily notes in full to my private home server ([[The Commune box]]) so I can run automations and agentic workflows on top of them. No sending sensitive data to cloud providers.
 
 Everything runs on my home server. Hosting, data, app, all of it ([[The Commune box]]).
 

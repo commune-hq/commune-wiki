@@ -9,12 +9,12 @@ updated: 2025-10-15
 summary: "Follow is for updates. Collect is for taste. That is enough social. No likes. No karma. No hidden rank."
 ---
 
-Follow is for updates. Collect is for taste. That is enough social. Collect a note, it shows on your profile. People can browse your library, follow you, and walk your trail. Co-collection is a strong signal for [[Related and Stroll give serendipity without a feed]].
+[[Commune]] has two social features: Follow and Collect. Follow is for updates. Collect is for taste. That's enough social.
 
-Stays human. No likes. No karma. No hidden rank. Updates live in the [[Ledger replaces feeds]] and in monthly [[Release is a monthly human wrap]]. Collect helps creators. If two notes are often collected together but never linked, I add a line to connect them.
+When you collect a note, it shows on your profile. People can browse your library, follow you, walk your trail. Co-collection becomes a strong signal for [[Related and Stroll give serendipity without a feed]]. If two people collect the same pair of notes, that connection matters.
 
-If a note gets collected a lot but confuses people, I tighten the title ([[Titles are takeaways, not labels]]). Social does not need to be loud to be useful. Taste, trails, and time are enough. [[Discovery runs on time, follows, and why]] by keeping social signals clear and intentional.
+No likes. No karma. No hidden ranking algorithms. Updates live in [[See what I'm working on]]. If two notes get collected together frequently but I've never linked them, that's a signal I should add a connection.
 
-[[I hope people will pay for a working mind]] because followers see both the work and the curation that shapes it. [[Zen practice protects attention]] by avoiding the dopamine loops of engagement-driven social features.
+If a note gets collected a lot but confuses people, I tighten the title ([[Titles are takeaways, not labels]]). Social doesn't need to be loud to be useful. Taste, trails, and time are enough.
 
-Collect creates natural pathways through wikis based on human judgment rather than algorithmic recommendation. [[Associative linking over hierarchies]] by letting readers create their own conceptual trails through the knowledge base.
+[[I hope people will pay for a working mind]] when followers see both the work and the curation that shapes it. Collect creates natural pathways through wikis based on human judgment, not algorithmic recommendation. [[Associative linking over hierarchies]] works when readers can create their own conceptual trails through the knowledge base.

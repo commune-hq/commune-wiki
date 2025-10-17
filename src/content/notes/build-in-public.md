@@ -5,28 +5,20 @@ visibility: public
 status: live
 tags: [transparency, learning, community, entrepreneurship]
 aliases: ["building in public", "transparent development", "open development"]
-updated: 2025-10-15
-summary: "Building in public means sharing your work, decisions, and learning process openly, creating accountability and community around your projects."
+updated: 2025-10-17
+summary: "Share your work as you build it. Show the mess, the decisions, the failures. Don't wait for polish."
 ---
 
-Building in public means documenting your work as you do it, sharing both successes and failures with an audience. This creates accountability, attracts collaborators, and builds trust through transparency.
+I'm building [[Commune]] in public. That means you see the work as it happens. Not polished announcements. The actual process.
 
-Benefits:
-- **Accountability**: Public commitments create motivation to follow through
-- **Feedback loops**: Early input prevents costly mistakes
-- **Community building**: Shared journey creates invested followers
-- **Learning amplification**: Teaching others deepens your own understanding
+I share decisions as I make them. Failed experiments. Work-in-progress screenshots. What's broken. What's working. The constraints I'm dealing with.
 
-The key is sharing **process, not just outcomes**. Instead of announcing finished products, document:
-- Decision-making rationale
-- Failed experiments and lessons learned
-- Work-in-progress screenshots and demos
-- Resource constraints and trade-offs
+Most people wait until something's done to show it. That's backwards. Sharing incomplete work gets better feedback. People can see where you're headed and suggest course corrections before you waste time.
 
-This approach influenced [[Commune]]'s development: architecture decisions become [[Andy Matuschak's Notes]]-style public notes, implementation progress gets documented in real-time, and the entire knowledge base serves as a case study.
+The architecture decisions become [[Evergreen Notes]] you can read. The implementation progress is documented in real-time through [[See what I'm working on]]. The entire knowledge base is the case study.
 
-**Counter-intuitive insight**: Sharing incomplete work often generates more valuable feedback than polished presentations. People can see where you're heading and suggest course corrections.
+Building in public creates accountability. If I say I'm working on something, I better ship it. It attracts people who care about the same problems. [[Transparent decision-making builds trust]] faster than marketing copy.
 
-The risk is premature optimization for audience rather than solving real problems. The solution: build for yourself first, document for others second.
+The trap is optimizing for audience instead of solving real problems. I avoid that by building for myself first, documenting for others second. If it works for me, the documentation helps others. If it doesn't work, the documentation shows why.
 
-**Related**: [[Evergreen Notes]], [[Learning in public accelerates growth]], [[Transparent decision-making builds trust]]
+[[Learning in public accelerates growth]] because teaching forces clarity.

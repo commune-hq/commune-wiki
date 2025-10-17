@@ -5,11 +5,13 @@ visibility: public
 status: live
 tags: [writing, thinking]
 aliases: ["atomic", "atomic-notes"]
-updated: 2025-10-09
-summary: Each note should express exactly one idea - the foundation of composable knowledge.
+updated: 2025-10-17
+summary: Each note should express exactly one idea. This is a key property of Evergreen Notes that makes them reusable and composable.
 ---
 
-One note, one idea. Makes notes reusable. Link from multiple contexts without baggage. Makes them composable. Combine to build arguments ([[Evergreen Notes]]). Makes them maintainable. Update one idea without breaking others ([[Automated note shaping from voice]]).
+One note, one idea. This is a core principle of [[Evergreen Notes]].
+
+Atomic notes are reusable. You can link from multiple contexts without baggage. They're composable. Combine them to build arguments. They're maintainable. Update one idea without breaking others ([[Automated note shaping from voice]]).
 
 Traditional notes mix multiple concepts. Hard to reference precisely. Same problem as [[Manual file management is a high-friction waste of cognitive resources]]. Too many decisions bundled together. Atomic notes split topics into constituent ideas.
 

@@ -8,16 +8,16 @@ aliases: ["commune", "what is commune", "about commune", "commune platform"]
 summary: "A platform for sharing your thinking in public without algorithmic feeds. Voice capture flows into atomic notes, readers navigate via explicit links, and depth-gating protects attention."
 ---
 
-[[Commune]] is a platform for making a living by finding yourself through the process of working notes in public. No feeds. No algorithms. Just your thinking in the open.
+I'm building [[Commune]] to make a living by finding yourself through working notes in public. No feeds. No algorithms. Just your thinking in the open.
 
-I walk and talk. AI drafts atomic notes ([[Automated note shaping from voice]]). Published notes become [[Atomic Notes]] you can navigate, not posts fighting for attention.
+The goal is simple. Talk into your phone and thought dump. AI drafts atomic notes ([[Automated note shaping from voice]]) and helps you connect things. You use subscriptions and discovery features to grow a following interested in the way you think. Published notes become [[Evergreen Notes]] you can navigate, not posts fighting for attention.
 
-Discovery runs on time and explicit links. [[Ledger replaces feeds]] shows what changed. [[Discovery runs on time, follows, and why]] means every connection has a reason. No recommendations. No virality metrics.
+Discovery runs on time and explicit links. [[See what I'm working on]] shows what changed. [[Discovery runs on time, follows, and why]] means every connection has a reason. No recommendations. No virality metrics.
 
-[[Three panes deep, then you pay]] keeps three clicks from the homepage free. Deeper exploration needs a subscription ([[Subscription unlocks depth into the mind]]). Readers get [[Follow and Collect keep signal, not hype]], [[Ask the Brain]], and [[Suggestions and Proposals make readers part of the work]].
+You can read notes for free, but deeper exploration requires a subscription ([[Subscription unlocks depth into the mind]]).
 
-[[The Commune box]] runs at home. You control what publishes. The platform doesn't own your notes.
+I run [[The Commune box]] at home. It's optional. You control what publishes. The platform doesn't own your notes. You can self-host like I do, or use our cloud if you prefer.
 
-[[Zen practice protects attention]] meets transparency. Share the messy process, not just polished outputs. [[Auto-essay closes the loop each week]] turns fragmented notes into coherent thought every week.
+Share the messy process, not just polished outputs. [[Auto-essay closes the loop each week]] turns fragmented notes into coherent thought every week.
 
-This site runs an early version. I'm building it in public. Follow the [[Ledger replaces feeds]] to see what changes.
+This site runs an early version. I'm building it in public. Follow [[See what I'm working on]] to see what changes.

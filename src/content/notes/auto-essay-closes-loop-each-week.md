@@ -9,12 +9,12 @@ updated: 2025-10-15
 summary: "Longform should be a by-product of work, not a second job. The agent scans the ledger, clusters the week by topic and momentum, and drafts 700–1,200 words in my voice."
 ---
 
-Longform should be a by-product of work, not a second job. The agent scans the [[Ledger replaces feeds]], clusters the week by topic and momentum, and drafts 700–1,200 words in my voice. I can approve, tighten, or snooze.
+Longform should be a by-product of work, not a second job. An agent scans [[See what I'm working on]], clusters the week by topic and momentum, and drafts 700–1,200 words in my voice. I can approve, tighten, or skip it.
 
-The essay cites notes inline. It helps readers who will never pane-surf. It helps me see if the week had a real through-line. If not, next week I plan a sharper arc at [[The home note triages to your best ideas]]. Essays also surface questions that belong in [[Ask the Brain]].
+The essay cites notes inline. Helps readers who won't pane-surf through the full wiki. Helps me see if the week had a real through-line. If not, I know to plan a sharper arc for next week. Essays also surface questions that belong in [[Ask the Brain]].
 
-They expose dead weight. If a section repeats, I make a new note or merge two. The essay turns fragments into a story without breaking the cadence of daily notes. This supports [[Notes beat posts for showing progress]] because the atomic notes remain the primary format.
+They expose dead weight. If a section repeats itself, I make a new note or merge two existing ones. The essay turns fragments into a story without breaking the cadence of daily notes. [[Notes beat posts for showing progress]] because the atomic notes stay primary.
 
-The weekly synthesis connects to [[Automated note shaping from voice]] because the raw material comes from daily voice captures. It enables [[I hope people will pay for a working mind]] by providing both granular updates and broader narrative context. The approach respects [[Zen practice protects attention]] by automating the synthesis work that would otherwise require dedicated writing sessions.
+The weekly synthesis builds on [[Automated note shaping from voice]]. Raw material comes from daily voice captures. [[I hope people will pay for a working mind]] when they can choose between granular updates and broader narrative context. This automates synthesis work that would otherwise require dedicated writing sessions.
 
-This process also improves [[Titles are takeaways, not labels]] because unclear titles become obvious when the agent tries to cluster related notes for the weekly narrative.
+Improves [[Titles are takeaways, not labels]] too. Unclear titles become obvious when the agent tries to cluster related notes for the weekly narrative.
