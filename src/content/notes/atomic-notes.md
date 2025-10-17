@@ -9,9 +9,9 @@ updated: 2025-10-09
 summary: Each note should express exactly one idea - the foundation of composable knowledge.
 ---
 
-One note, one idea. Makes notes reusable—link from multiple contexts without baggage. Makes them composable—combine to build arguments ([[Evergreen Notes]]). Makes them maintainable—update one idea without breaking others ([[Automated note shaping from voice]]).
+One note, one idea. Makes notes reusable. Link from multiple contexts without baggage. Makes them composable. Combine to build arguments ([[Evergreen Notes]]). Makes them maintainable. Update one idea without breaking others ([[Automated note shaping from voice]]).
 
-Traditional notes mix multiple concepts. Hard to reference precisely. Same problem as [[Manual file management is a high-friction waste of cognitive resources]]—too many decisions bundled together. Atomic notes split topics into constituent ideas.
+Traditional notes mix multiple concepts. Hard to reference precisely. Same problem as [[Manual file management is a high-friction waste of cognitive resources]]. Too many decisions bundled together. Atomic notes split topics into constituent ideas.
 
 Writing an evergreen note? Ask: "What's the one idea here?" Multiple ideas means split into separate notes. Requires [[Titles are takeaways, not labels]] because each title captures a specific claim.
 

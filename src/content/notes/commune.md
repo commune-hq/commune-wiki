@@ -15,7 +15,7 @@ I walk and talk into my phone. AI turns that into drafts ([[Automated note shapi
 
 Ask questions and get answers with receipts ([[Ask the Brain]]). See a fix? Leave a suggestion. I review it and the [[Ledger replaces feeds]] shows the change ([[Suggestions and Proposals make readers part of the work]]).
 
-Everything runs on my home server—hosting, data, app, all of it ([[The Commune box]]).
+Everything runs on my home server. Hosting, data, app, all of it ([[The Commune box]]).
 
 The sliding panes owe a debt to [[Andy Matuschak's Notes]]. His work showed how interface shapes thinking.
 

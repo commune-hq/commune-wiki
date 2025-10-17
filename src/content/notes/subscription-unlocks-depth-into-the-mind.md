@@ -6,7 +6,7 @@ status: live
 tags: [commune, business, pricing, monetization]
 aliases: []
 updated: 2025-10-17
-summary: The simple view of Commune is free—you get a tease. But anything that gives you depth into the mind is subscription based, like Substack.
+summary: The simple view of Commune is free. You get a tease. But anything that gives you depth into the mind is subscription based, like Substack.
 ---
 
 The simple view of [[Commune]] is free. You get a tease of what it is and it looks great, but anything that gives you depth into the mind is subscription based. Like [[Substack]]. You can read the first half, subscribe to get the rest.

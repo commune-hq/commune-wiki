@@ -6,12 +6,12 @@ status: live
 tags: [privacy, local-first, self-hosting, infrastructure]
 aliases: []
 updated: 2025-10-17
-summary: Commune runs at home. Capture happens on the box—drafts, clustering, AI analysis over private notes. Push only what you approve to the public wiki.
+summary: Commune runs at home. Capture happens on the box. Drafts, clustering, AI analysis over private notes. Push only what you approve to the public wiki.
 ---
 
 [[Commune]] runs at home. Everything happens on the box first. Voice capture, drafts, clustering, AI analysis over private notes. I only push what I approve to the public wiki.
 
-That split matters. I can pace and talk without worrying about leaks. Family docs, business notes, wiki content—all in one place. The box is the source of truth.
+That split matters. I can pace and talk without worrying about leaks. Family docs, business notes, wiki content. All in one place. The box is the source of truth.
 
 Readers see what I choose to share. They get the public notes, [[Ledger replaces feeds]], [[Ask the Brain]] over public content. If I want to move to hosted later, I can. But the box stays mine.
 
