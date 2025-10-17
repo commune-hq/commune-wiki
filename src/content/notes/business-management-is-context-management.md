@@ -4,6 +4,7 @@ created: 2025-10-09
 visibility: "public"
 summary: "Running a business is really just managing an ever-growing amount of context that needs to remain accessible"
 tags: ["business", "context", "scaling", "management"]
+aliases: ["Business management is context management"]
 ---
 
 Managing a business is really just managing a shit ton of context that is continuously expanding. This creates the same problem as [[Manual file management is high-friction waste]]—but at business scale. Your marketing campaigns are better if you have a gigantic, accessible style guide from all prior successes. The [[Intelligent router eliminates project management]] allows you to manage way more stuff because it manages the context automatically.

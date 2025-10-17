@@ -4,7 +4,7 @@ created: 2025-10-15
 visibility: public
 status: live
 tags: [ai, privacy, local-first]
-aliases: ["private AI", "local AI"]
+aliases: ["private AI", "local AI", "Private AI outperforms cloud AI by leveraging structured, proprietary memory"]
 updated: 2025-10-16
 summary: "AI running on your hardware with access to all your data beats cloud models trained on generic internet content. Context wins."
 ---
