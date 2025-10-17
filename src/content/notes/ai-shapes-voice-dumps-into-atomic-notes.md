@@ -9,7 +9,7 @@ updated: 2025-10-17
 summary: "Dump thoughts while walking. AI shapes them into atomic notes. Review in iOS app. Refine with more voice. Infinite game of hammering notes into 150-250 word format."
 ---
 
-[[Manual note refinement doesn't scale]]. I used Reflect for years, manually copying and pasting. That's why I'm building this.
+[[Manual note refinement doesnt scale]]. That's why I'm building this.
 
 I dump thoughts while walking. The vision is AI that understands how I write shapes them into [[Atomic Notes]]. 150 to 250 words, single concept, densely linked.
 

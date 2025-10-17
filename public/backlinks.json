@@ -84,7 +84,6 @@
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/seo-optimized-atomic-notes/",
       "/notes/the-commune-box/",
-      "/notes/the-higher-self-prompt-in-reflect/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/what-is-commune/"
     ],
@@ -952,8 +951,7 @@
     "inbound": [
       "/notes/ai-shapes-voice-dumps-into-atomic-notes/",
       "/notes/my-working-notes/",
-      "/notes/reflect/",
-      "/notes/the-higher-self-prompt-in-reflect/"
+      "/notes/reflect/"
     ],
     "tags": [
       "workflow",
@@ -1554,7 +1552,6 @@
       "/notes/reflect/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/subscription-unlocks-depth-into-the-mind/",
-      "/notes/the-higher-self-prompt-in-reflect/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/what-is-commune/"
@@ -1579,9 +1576,7 @@
     ],
     "outbound": [
       "/notes/reflect/",
-      "/notes/manual-note-refinement-doesnt-scale/",
-      "/notes/ai-shapes-voice-dumps-into-atomic-notes/",
-      "/notes/the-commune-box/"
+      "/notes/what-is-commune/"
     ],
     "inbound": [
       "/notes/manual-note-refinement-doesnt-scale/"
@@ -1803,6 +1798,7 @@
       "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/substack/",
       "/notes/the-commune-box/",
+      "/notes/the-higher-self-prompt-in-reflect/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/the-star/",
       "/notes/three-panes-deep-then-you-pay/",
