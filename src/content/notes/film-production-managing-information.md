@@ -17,8 +17,8 @@ The producer role was about managing information and creative teams—watching o
 
 The machine room was quieter. Less client management, more focused work. But the producer experience taught me something important: [[Business management is context management]]. You're not just delivering files. You're managing expectations, timelines, creative vision, technical constraints—all the context around the actual work.
 
-That lesson carried into [[Awake Happy]], where managing context meant tracking cash flow, margins, distribution. It carried into [[Ads Lab]], where client context is offers, audiences, goals. And it's the foundation of [[Commune]]—managing personal context at scale.
+That lesson carried into [[Awake Happy]], where managing context meant tracking cash flow, margins, distribution. It carried into [[Ads Lab]], where client context is offers, audiences, goals. And it's the foundation of [[What is Commune|Commune]]—managing personal context at scale.
 
 Film production was where I learned that the system around the work matters as much as the work itself. I spent years watching creative professionals fight their tools instead of creating.
 
-The machine room was peaceful. But the producer role taught me what I needed to build [[Commune]].
+The machine room was peaceful. But the producer role taught me what I needed to build [[What is Commune|Commune]].

@@ -25,7 +25,7 @@ This approach eliminates many problems with cloud software:
 
 The challenge is collaboration. Local-first systems need sophisticated sync protocols to merge changes from multiple devices and users. Technologies like CRDTs (Conflict-free Replicated Data Types) enable this without central servers.
 
-This philosophy drives [[Commune]]'s architecture: AI runs locally, knowledge bases are Git repositories, and cloud services are optional enhancements rather than dependencies.
+This philosophy drives [[What is Commune|Commune]]'s architecture: AI runs locally, knowledge bases are Git repositories, and cloud services are optional enhancements rather than dependencies.
 
 **Key insight**: Local-first doesn't mean local-only. It means local-capable with optional cloud features.
 

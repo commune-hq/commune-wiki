@@ -23,7 +23,7 @@ The key is sharing **process, not just outcomes**. Instead of announcing finishe
 - Work-in-progress screenshots and demos
 - Resource constraints and trade-offs
 
-This approach influenced [[Commune]]'s development: architecture decisions become [[Andy Matuschak's Notes]]-style public notes, implementation progress gets documented in real-time, and the entire knowledge base serves as a case study.
+This approach influenced [[What is Commune|Commune]]'s development: architecture decisions become [[Andy Matuschak's Notes]]-style public notes, implementation progress gets documented in real-time, and the entire knowledge base serves as a case study.
 
 **Counter-intuitive insight**: Sharing incomplete work often generates more valuable feedback than polished presentations. People can see where you're heading and suggest course corrections.
 

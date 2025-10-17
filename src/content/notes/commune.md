@@ -9,7 +9,7 @@ updated: 2025-10-15
 summary: "I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and I run Ads Lab and Awake Happy. This is my working brain in public."
 ---
 
-I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[What is Commune|Commune]] and I run <a href="https://noontide.co/adslab?utm_source=devonmeadows&utm_medium=website&utm_campaign=bio" target="_blank" rel="noopener noreferrer" style="white-space:nowrap">Ads Lab&nbsp;<span class="external-link-icon" aria-hidden="true">↗</span></a> and <a href="https://awakehappy.com/?utm_source=devonmeadows&utm_medium=website&utm_campaign=bio" target="_blank" rel="noopener noreferrer" style="white-space:nowrap">Awake Happy&nbsp;<span class="external-link-icon" aria-hidden="true">↗</span></a>. This is my working brain in public.
+I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[What is Commune|Commune]] and I run [[Ads Lab]] and [[Awake Happy]]. This is my working brain in public.
 
 I capture by voice while I walk. The agent turns that into drafts. I approve or toss. See [[Voice in, approvals out]]. You'll see what changed in the [[Ledger replaces feeds]]. Three hops from here are open; deeper branches lock, which keeps this sane. See [[Depth-3 free is honest gating]].
 
