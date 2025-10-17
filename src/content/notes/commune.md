@@ -4,12 +4,12 @@ created: 2025-10-09
 visibility: public
 status: live
 tags: [home, navigation, working-in-public]
-aliases: ["commune", "home", "devon meadows"]
+aliases: ["home", "devon meadows"]
 updated: 2025-10-15
 summary: "I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and I run Ads Lab and Awake Happy. This is my working brain in public."
 ---
 
-I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[What is Commune|Commune]] (that's what's powering this website). I also run [[Ads Lab]] and [[Awake Happy]]. This is my working brain in public.
+I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[Commune]] (that's what's powering this website). I also run [[Ads Lab]] and [[Awake Happy]]. This is my working brain in public.
 
 I capture by voice while I walk. The agent turns that into drafts. I approve or toss. See [[Voice in, approvals out]]. You'll see what changed in the [[Ledger replaces feeds]]. Three hops from here are open; deeper branches lock, which keeps this sane. See [[Depth-3 free is honest gating]].
 

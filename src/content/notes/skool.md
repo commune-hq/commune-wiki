@@ -13,7 +13,7 @@ summary: A community platform that nails gamification—recognize top contributo
 
 What they understand: recognition works. Not hidden metrics or buried leaderboards. Visible badges that show up everywhere your name does. The rocket isn't about collecting points—it's a signal that you add value. That changes how people engage.
 
-I ran communities and info products before building [[What is Commune|Commune]]. Tried different platforms, watched what worked. Skool's approach stuck with me because it's clean. They don't overcomplicate it. Top contributors get recognized. Period.
+I ran communities and info products before building [[Commune]]. Tried different platforms, watched what worked. Skool's approach stuck with me because it's clean. They don't overcomplicate it. Top contributors get recognized. Period.
 
 The lesson for Commune: make progress visible. Stars on notes work like rockets on names—they surface what matters without requiring explanation. [[The Star]] applies that thinking to ideas instead of people. Which notes anchor your wiki? The stars tell you.
 

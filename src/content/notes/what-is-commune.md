@@ -1,10 +1,10 @@
 ---
-title: "Commune replaces social feeds with working memory"
+title: "Commune"
 created: 2025-10-16
 visibility: public
 status: live
 tags: [commune, platform, knowledge-sharing, working-in-public]
-aliases: ["what is commune", "about commune", "commune platform"]
+aliases: ["commune", "what is commune", "about commune", "commune platform"]
 summary: "A platform for sharing your thinking in public without algorithmic feeds. Voice capture flows into atomic notes, readers navigate via explicit links, and depth-gating protects attention."
 ---
 

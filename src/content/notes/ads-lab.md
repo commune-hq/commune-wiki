@@ -15,8 +15,8 @@ Advertising is probably my highest monetizable skill. After [[Awake Happy]] taug
 
 Ads Lab bridges what I learned in e-commerce, film production (managing creative teams and information), and agency work into a teaching model that works. The [[Skool]] platform lets us build community around the skill instead of just delivering content.
 
-Winning the Skool Games validated the approach, which connects to [[Gamification drives self-discovery]]—make learning visible, reward progress, keep people engaged. Same principles I'm applying to [[What is Commune|Commune]].
+Winning the Skool Games validated the approach, which connects to [[Gamification drives self-discovery]]—make learning visible, reward progress, keep people engaged. Same principles I'm applying to [[Commune]].
 
-The skill transfer is direct: [[Business management is context management]]. Ads Lab manages client context (offers, audiences, goals). [[What is Commune|Commune]] manages personal context (thinking, knowledge, story). Different applications, same core skill.
+The skill transfer is direct: [[Business management is context management]]. Ads Lab manages client context (offers, audiences, goals). [[Commune]] manages personal context (thinking, knowledge, story). Different applications, same core skill.
 
-Ads Lab proves the model works. [[What is Commune|Commune]] takes it deeper—from teaching a skill to externalizing entire thought processes.
+Ads Lab proves the model works. [[Commune]] takes it deeper—from teaching a skill to externalizing entire thought processes.

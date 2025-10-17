@@ -11,11 +11,11 @@ summary: AI summaries, RAG search, commit history analysis—these cost money. G
 
 Any computation we do gets depth gated. AI summaries? Gated. RAG search across all notes? Gated. Evolution story of a note from commit diffs? Definitely gated.
 
-The free tier gets you in. You can read [[The Star|starred notes]], browse the wiki, see [[Build in Public|progress]]. But if you want AI to analyze 20 commit diffs and tell you how my thinking evolved on [[What is Commune|Commune]]? That's a subscription.
+The free tier gets you in. You can read [[The Star|starred notes]], browse the wiki, see [[Build in Public|progress]]. But if you want AI to analyze 20 commit diffs and tell you how my thinking evolved on [[Commune]]? That's a subscription.
 
-This isn't about being stingy—it's about sustainability. Wikis with thousands of notes and deep analysis eat large token windows. The [[What is Commune|Commune]] agent needs to remember context about people like Matt and Joel, track projects like [[Awake Happy]] and [[Ads Lab]], understand boundaries between public and private. That gets expensive fast.
+This isn't about being stingy—it's about sustainability. Wikis with thousands of notes and deep analysis eat large token windows. The [[Commune]] agent needs to remember context about people like Matt and Joel, track projects like [[Awake Happy]] and [[Ads Lab]], understand boundaries between public and private. That gets expensive fast.
 
-The pricing structure makes the [[What is Commune|Commune]] box sell itself to super users. Cloud credits run out, but the box lets you self-host the agent, bring your own keys, configure your own models. You save money and peek behind the curtain. Maybe even modify the agent.
+The pricing structure makes the [[Commune]] box sell itself to super users. Cloud credits run out, but the box lets you self-host the agent, bring your own keys, configure your own models. You save money and peek behind the curtain. Maybe even modify the agent.
 
 Different mechanisms, same principle:
 - Flat rate for basic use

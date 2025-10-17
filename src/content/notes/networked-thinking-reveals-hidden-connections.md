@@ -13,7 +13,7 @@ Building a wiki where notes link to each other lets you see patterns you'd miss 
 
 The power isn't in storing information—it's in discovering connections. When you write [[Awake Happy]] taught me economics matter, and link it to [[Ads Lab]] bridges what I learned in e-commerce, you start seeing threads across your whole story.
 
-Cross-domain insights happen naturally. A business lesson connects to a personal observation through shared principles. [[Film production taught me context management]] links to [[Business management is context management]] links to [[What is Commune|Commune]]—suddenly fifteen years of experience has a through-line.
+Cross-domain insights happen naturally. A business lesson connects to a personal observation through shared principles. [[Film production taught me context management]] links to [[Business management is context management]] links to [[Commune]]—suddenly fifteen years of experience has a through-line.
 
 This is why [[The Star]] matters. The notes with the most backlinks aren't just popular—they're central to how you think. They anchor everything else.
 

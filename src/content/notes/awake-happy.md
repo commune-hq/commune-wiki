@@ -17,8 +17,8 @@ Clothing is brutal on margins. You care deeply, design well, build a brand peopl
 
 While running Awake Happy, I started [[Ads Lab]] to teach what I'm actually best at: running ads, building funnels, scaling info products. I didn't pivot away from the brand—I built on top of it. Ads Lab proved my highest monetizable skill is advertising, not designing t-shirts.
 
-Awake Happy sits in my story between the Google Panda update that killed my Black Hat SEO business and the moment I discovered [[What is Commune|Commune]]. It's the chapter where I learned [[Business management is context management]]—you can't just make cool stuff. You have to manage the context around creation: cash flow, margins, distribution, customer acquisition costs.
+Awake Happy sits in my story between the Google Panda update that killed my Black Hat SEO business and the moment I discovered [[Commune]]. It's the chapter where I learned [[Business management is context management]]—you can't just make cool stuff. You have to manage the context around creation: cash flow, margins, distribution, customer acquisition costs.
 
-The brand is still here. I'm still learning from it. And those lessons feed directly into [[What is Commune|Commune]]—where the model works. [[People pay to follow a working mind]]. [[Depth gating protects computation costs]] lets me charge for real value. The box lets super users own their data. It all clicks.
+The brand is still here. I'm still learning from it. And those lessons feed directly into [[Commune]]—where the model works. [[People pay to follow a working mind]]. [[Depth gating protects computation costs]] lets me charge for real value. The box lets super users own their data. It all clicks.
 
-Awake Happy is school. [[What is Commune|Commune]] is the graduation project. [[Ads Lab]] is the bridge between them.
+Awake Happy is school. [[Commune]] is the graduation project. [[Ads Lab]] is the bridge between them.
