@@ -8,16 +8,16 @@ aliases: ["commune", "what is commune", "about commune", "commune platform"]
 summary: "A platform for sharing your thinking in public without algorithmic feeds. Voice capture flows into atomic notes, readers navigate via explicit links, and depth-gating protects attention."
 ---
 
-Commune is a platform for working in public without the chaos of social feeds. Instead of optimizing for engagement, it protects attention while making thinking transparent.
+[[Commune]] is a platform for working in public without the chaos. No feeds. No algorithms. Just your thinking in the open.
 
-The core loop: capture thoughts by voice while walking, an agent drafts atomic notes, you approve or toss. See [[Voice in, approvals out]]. Published notes become [[Atomic Notes]] in a navigable knowledge graph, not chronological posts competing for attention.
+I walk and talk. AI drafts atomic notes ([[Voice in, approvals out]]). I approve or toss. Published notes become [[Atomic Notes]] you can navigate—not posts fighting for attention.
 
-Discovery happens through explicit mechanisms, not algorithms. The [[Ledger replaces feeds]] shows recent changes across the graph. [[Discovery runs on time, follows, and why]] means every connection has a clear reason—no recommendation engines, no virality metrics.
+Discovery runs on time and explicit links. [[Ledger replaces feeds]] shows what changed. [[Discovery runs on time, follows, and why]] means every connection has a reason. No recommendations. No virality metrics.
 
-[[Three panes deep, then you pay]] keeps three hops from the homepage open while protecting deeper exploration behind paid access. This creates calm surfaces for depth work. Readers get agency through [[Follow and Collect keep signal, not hype]], [[Ask the Brain]], and [[Suggestions and Proposals make readers part of the work]].
+[[Three panes deep, then you pay]] keeps three clicks from the homepage free. Deeper exploration needs a subscription ([[Subscription unlocks depth into the mind]]). Readers get [[Follow and Collect keep signal, not hype]], [[Ask the Brain]], and [[Suggestions and Proposals make readers part of the work]].
 
-Everything private runs on [[The Commune box]]—your own hardware at home. You control what publishes. The platform doesn't own your knowledge graph.
+[[The Commune box]] runs at home. You control what publishes. The platform doesn't own your notes.
 
-This combines [[Zen practice protects attention]] with transparency. Share the messy process of thinking, not just polished outputs. Weekly synthesis happens via [[Auto-essay closes the loop each week]], turning fragmented notes into coherent thought.
+[[Zen practice protects attention]] meets transparency. Share the messy process, not just polished outputs. [[Auto-essay closes the loop each week]] turns fragmented notes into coherent thought every week.
 
-Commune is in active development. This site runs an early version. If you're building something similar, explore the linked notes. To stay updated, follow via the ledger.
+This site runs an early version. I'm building it in public. Follow the [[Ledger replaces feeds]] to see what changes.

@@ -4,7 +4,8 @@
   <div class="wrap">
     <a href="/" class="brand-section">
       <img src="/avatar.jpg" alt="Devon" class="avatar" />
-      <span class="brand">Devon</span>
+      <span class="brand brand-full">Devon Meadows</span>
+      <span class="brand brand-short">Devon</span>
     </a>
     <div class="controls">
       <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme">
@@ -70,6 +71,11 @@
     transition:color 0.15s ease;
   }
 
+  /* Show full name on desktop, hide short name */
+  .brand-short {
+    display: none;
+  }
+
   /* Tablet and below: remove max-width to match body full-width layout */
   @media (max-width: 1023px) {
     .wrap {
@@ -78,9 +84,13 @@
     }
   }
 
-  /* Specific adjustments for 768px and below */
+  /* Mobile: show short name, hide full name */
   @media (max-width: 768px) {
-    .brand {
+    .brand-full {
+      display: none;
+    }
+    .brand-short {
+      display: block;
       font-size:1.1rem;
       font-weight:600;
     }

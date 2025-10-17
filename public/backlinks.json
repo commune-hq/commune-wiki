@@ -84,7 +84,7 @@
     "outbound": [
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/notes-beat-posts-for-showing-progress/"
@@ -92,13 +92,12 @@
     "inbound": [
       "/notes/atomic-notes/",
       "/notes/auto-essay-closes-loop-each-week/",
-      "/notes/box-first-earns-trust/",
       "/notes/business-management-is-context-management/",
       "/notes/commune/",
-      "/notes/depth-3-free-is-honest-gating/",
       "/notes/evergreen-notes/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/people-pay-to-follow-working-mind/",
+      "/notes/the-commune-box/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
       "/notes/what-is-commune/",
@@ -243,47 +242,6 @@
     "status": "live",
     "updated": "2025-10-16T00:00:00.000Z"
   },
-  "/notes/box-first-earns-trust/": {
-    "slug": "/notes/box-first-earns-trust/",
-    "title": "Box-first earns trust",
-    "aliases": [
-      "self-hosting",
-      "privacy-first",
-      "home server"
-    ],
-    "outbound": [
-      "/notes/ledger-replaces-feeds/",
-      "/notes/ask-the-brain/",
-      "/notes/discovery-runs-on-time-follows-and-why/",
-      "/notes/voice-in-approvals-out/",
-      "/notes/private-ai-outperforms-cloud-ai/",
-      "/notes/people-pay-to-follow-working-mind/",
-      "/notes/local-first-software/"
-    ],
-    "inbound": [
-      "/notes/ask-the-brain/",
-      "/notes/business-management-is-context-management/",
-      "/notes/commune/",
-      "/notes/data-sovereignty-for-individuals/",
-      "/notes/evergreen-notes/",
-      "/notes/people-pay-to-follow-working-mind/",
-      "/notes/private-ai-outperforms-cloud-ai/",
-      "/notes/related-and-stroll-give-serendipity-without-feed/",
-      "/notes/subscription-unlocks-depth-into-the-mind/",
-      "/notes/titles-are-takeaways-not-labels/",
-      "/notes/voice-in-approvals-out/",
-      "/notes/what-is-commune/",
-      "/notes/zen-practice-protects-attention/"
-    ],
-    "tags": [
-      "privacy",
-      "local-first",
-      "trust",
-      "infrastructure"
-    ],
-    "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
-  },
   "/notes/build-in-public/": {
     "slug": "/notes/build-in-public/",
     "title": "Build in Public",
@@ -332,7 +290,7 @@
       "/notes/associative-linking-over-hierarchies/",
       "/notes/voice-in-approvals-out/",
       "/notes/ask-the-brain/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/people-pay-to-follow-working-mind/",
@@ -358,11 +316,8 @@
   },
   "/notes/commune/": {
     "slug": "/notes/commune/",
-    "title": "Devon's working brain in public",
-    "aliases": [
-      "home",
-      "devon meadows"
-    ],
+    "title": "Working notes",
+    "aliases": [],
     "outbound": [
       "/notes/what-is-commune/",
       "/notes/ads-lab/",
@@ -375,7 +330,7 @@
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/ask-the-brain/",
       "/notes/suggestions-and-proposals-make-readers-part-of-work/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/zen-practice-protects-attention/",
       "/notes/andy-matuschaks-notes/",
       "/notes/auto-essay-closes-loop-each-week/"
@@ -387,7 +342,7 @@
       "working-in-public"
     ],
     "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
+    "updated": "2025-10-17T00:00:00.000Z"
   },
   "/notes/daily-walks-attract-downloads/": {
     "slug": "/notes/daily-walks-attract-downloads/",
@@ -422,7 +377,7 @@
     "aliases": [],
     "outbound": [
       "/notes/local-first-software/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/what-is-commune/"
@@ -489,17 +444,12 @@
   },
   "/notes/depth-3-free-is-honest-gating/": {
     "slug": "/notes/depth-3-free-is-honest-gating/",
-    "title": "Depth-3 free is honest gating",
-    "aliases": [
-      "paywall",
-      "free tier",
-      "access control"
-    ],
+    "title": "Three panes deep, then you pay",
+    "aliases": [],
     "outbound": [
-      "/notes/ask-the-brain/",
-      "/notes/ledger-replaces-feeds/",
+      "/notes/what-is-commune/",
       "/notes/the-home-note-should-guide-first-three-steps/",
-      "/notes/discovery-runs-on-time-follows-and-why/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/people-pay-to-follow-working-mind/"
     ],
     "inbound": [
@@ -516,11 +466,11 @@
     "tags": [
       "monetization",
       "access",
-      "transparency",
-      "design"
+      "commune",
+      "freemium"
     ],
     "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
+    "updated": "2025-10-17T00:00:00.000Z"
   },
   "/notes/discovery-runs-on-time-follows-and-why/": {
     "slug": "/notes/discovery-runs-on-time-follows-and-why/",
@@ -540,13 +490,12 @@
       "/notes/voice-in-approvals-out/"
     ],
     "inbound": [
-      "/notes/box-first-earns-trust/",
       "/notes/commune/",
-      "/notes/depth-3-free-is-honest-gating/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/ledger-replaces-feeds/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/the-commune-box/",
       "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
     ],
@@ -578,7 +527,7 @@
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/andy-matuschaks-notes/",
       "/notes/networked-thinking-reveals-hidden-connections/",
-      "/notes/box-first-earns-trust/"
+      "/notes/the-commune-box/"
     ],
     "inbound": [
       "/notes/andy-matuschaks-notes/",
@@ -809,9 +758,7 @@
     ],
     "inbound": [
       "/notes/auto-essay-closes-loop-each-week/",
-      "/notes/box-first-earns-trust/",
       "/notes/commune/",
-      "/notes/depth-3-free-is-honest-gating/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/learning-in-public-accelerates-growth/",
@@ -819,6 +766,7 @@
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/suggestions-and-proposals-make-readers-part-of-work/",
+      "/notes/the-commune-box/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/transparent-decision-making-builds-trust/",
       "/notes/voice-in-approvals-out/",
@@ -850,9 +798,9 @@
       "/notes/data-sovereignty-for-individuals/"
     ],
     "inbound": [
-      "/notes/box-first-earns-trust/",
       "/notes/data-sovereignty-for-individuals/",
       "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/the-commune-box/",
       "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
@@ -1045,7 +993,7 @@
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/build-in-public/"
     ],
@@ -1053,7 +1001,6 @@
       "/notes/ask-the-brain/",
       "/notes/auto-essay-closes-loop-each-week/",
       "/notes/awake-happy/",
-      "/notes/box-first-earns-trust/",
       "/notes/business-management-is-context-management/",
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/discovery-runs-on-time-follows-and-why/",
@@ -1100,7 +1047,7 @@
     "title": "Private AI outperforms cloud AI",
     "aliases": [],
     "outbound": [
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/voice-in-approvals-out/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
@@ -1108,7 +1055,6 @@
     ],
     "inbound": [
       "/notes/ask-the-brain/",
-      "/notes/box-first-earns-trust/",
       "/notes/business-management-is-context-management/",
       "/notes/data-sovereignty-for-individuals/",
       "/notes/evergreen-notes/",
@@ -1117,6 +1063,7 @@
       "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/personalized-ai-optimizes-communication-strategies/",
+      "/notes/the-commune-box/",
       "/notes/voice-in-approvals-out/"
     ],
     "tags": [
@@ -1155,7 +1102,7 @@
     ],
     "outbound": [
       "/notes/ledger-replaces-feeds/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/discovery-runs-on-time-follows-and-why/",
@@ -1270,14 +1217,16 @@
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/the-star/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/build-in-public/",
       "/notes/gamification-drives-self-discovery/"
     ],
     "inbound": [
       "/notes/awake-happy/",
+      "/notes/depth-3-free-is-honest-gating/",
       "/notes/gamification-drives-self-discovery/",
       "/notes/substack/",
+      "/notes/the-commune-box/",
       "/notes/the-star/"
     ],
     "tags": [
@@ -1330,6 +1279,44 @@
       "transparency"
     ],
     "status": "live"
+  },
+  "/notes/the-commune-box/": {
+    "slug": "/notes/the-commune-box/",
+    "title": "The Commune box",
+    "aliases": [],
+    "outbound": [
+      "/notes/what-is-commune/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/ask-the-brain/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
+      "/notes/local-first-software/",
+      "/notes/discovery-runs-on-time-follows-and-why/"
+    ],
+    "inbound": [
+      "/notes/ask-the-brain/",
+      "/notes/business-management-is-context-management/",
+      "/notes/commune/",
+      "/notes/data-sovereignty-for-individuals/",
+      "/notes/evergreen-notes/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/subscription-unlocks-depth-into-the-mind/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/what-is-commune/",
+      "/notes/zen-practice-protects-attention/"
+    ],
+    "tags": [
+      "privacy",
+      "local-first",
+      "self-hosting",
+      "infrastructure"
+    ],
+    "status": "live",
+    "updated": "2025-10-17T00:00:00.000Z"
   },
   "/notes/the-home-note-should-guide-first-three-steps/": {
     "slug": "/notes/the-home-note-should-guide-first-three-steps/",
@@ -1394,7 +1381,7 @@
     ],
     "outbound": [
       "/notes/ask-the-brain/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/ledger-replaces-feeds/",
       "/notes/voice-in-approvals-out/",
       "/notes/auto-essay-closes-loop-each-week/",
@@ -1474,7 +1461,7 @@
       "/notes/ask-the-brain/",
       "/notes/auto-essay-closes-loop-each-week/",
       "/notes/ledger-replaces-feeds/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/manual-file-management-is-high-friction-waste/",
@@ -1487,7 +1474,6 @@
       "/notes/ask-the-brain/",
       "/notes/atomic-notes/",
       "/notes/auto-essay-closes-loop-each-week/",
-      "/notes/box-first-earns-trust/",
       "/notes/business-management-is-context-management/",
       "/notes/commune/",
       "/notes/daily-walks-attract-downloads/",
@@ -1497,6 +1483,7 @@
       "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/the-commune-box/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
@@ -1529,7 +1516,7 @@
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/ask-the-brain/",
       "/notes/suggestions-and-proposals-make-readers-part-of-work/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/zen-practice-protects-attention/",
       "/notes/auto-essay-closes-loop-each-week/"
     ],
@@ -1541,6 +1528,7 @@
       "/notes/commune/",
       "/notes/daily-walks-attract-downloads/",
       "/notes/data-sovereignty-for-individuals/",
+      "/notes/depth-3-free-is-honest-gating/",
       "/notes/film-production-managing-information/",
       "/notes/gamification-drives-self-discovery/",
       "/notes/learning-in-public-accelerates-growth/",
@@ -1549,6 +1537,7 @@
       "/notes/skool/",
       "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/substack/",
+      "/notes/the-commune-box/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/the-star/",
       "/notes/zettelkasten-method/"
@@ -1575,7 +1564,7 @@
       "/notes/ledger-replaces-feeds/",
       "/notes/voice-in-approvals-out/",
       "/notes/ask-the-brain/",
-      "/notes/box-first-earns-trust/",
+      "/notes/the-commune-box/",
       "/notes/defaulting-to-no-protects-deep-work/",
       "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/local-first-software/",
