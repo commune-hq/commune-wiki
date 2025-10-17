@@ -11,7 +11,7 @@ summary: I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and run
 
 I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[Commune]] (that's what's powering this site). I also run [[Ads Lab]] and [[Awake Happy]]. This is my working brain in public.
 
-I walk and talk into my phone. AI turns that into drafts ([[Voice in, approvals out]]). I approve or toss. I see what changed in the [[Ledger replaces feeds]]. Three clicks from here are open. Deeper branches lock ([[Three panes deep, then you pay]]).
+I walk and talk into my phone. AI turns that into drafts ([[Automated note shaping from voice]]). I approve or toss. I see what changed in the [[Ledger replaces feeds]]. Three clicks from here are open. Deeper branches lock ([[Three panes deep, then you pay]]).
 
 Ask questions and get answers with receipts ([[Ask the Brain]]). See a fix? Leave a suggestion. I review it and the [[Ledger replaces feeds]] shows the change ([[Suggestions and Proposals make readers part of the work]]).
 

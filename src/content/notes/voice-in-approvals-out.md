@@ -1,22 +1,24 @@
 ---
-title: "Voice in, approvals out"
+title: "Automated note shaping from voice"
 created: 2025-10-15
 visibility: public
 status: live
-tags: [workflow, capture, ai-agents, voice]
-aliases: ["voice capture", "approval workflow"]
-updated: 2025-10-15
-summary: "I pace and talk. That is the input. The agent drafts a note, proposes links, and shows a small diff that says why. I approve, merge, link, or ignore."
+tags: [workflow, capture, ai-agents, voice, vision]
+aliases: ["voice capture", "approval workflow", "voice in approvals out"]
+updated: 2025-10-17
+summary: "Dump thoughts while walking. AI shapes them into atomic notes. Review in iOS app. Refine with more voice. Infinite game of hammering notes into 150-250 word format."
 ---
 
-I pace and talk. That's the input. AI drafts a note, proposes links, shows a diff. I approve, merge, or toss. No tags to babysit. No graph gardening. The UI shows actions, not confidence. [[Zen practice protects attention]] because capture stays calm.
+I dump thoughts while walking. The vision: AI that understands how I write shapes them into [[Atomic Notes]]—150 to 250 words, single concept, densely linked.
 
-If the draft sounds like a bot, it waits. If it sounds like me, it ships. My voice stays intact. My pace stays high.
+System sends drafts back to my iOS app. I review. Reply with more voice to refine. Wrong angle? Say so. Missing link? Add it. Draft sounds robotic? Reject and rephrase.
 
-Clear notes feed [[Ask the Brain]]. Real edits feed the [[Ledger replaces feeds]]. The weekly wrap ([[Auto-essay closes the loop each week]]) pulls from both.
+Infinite loop. Dump thoughts → AI drafts → review → refine → repeat. Hammer notes into atomic format over time.
 
-[[The Commune box]] keeps capture private. Heavy compute lives at home ([[Private AI outperforms cloud AI]]). The public side stays small and sharp. That's how you publish daily without burning out ([[People pay to follow a working mind]]).
+Still building the agent and algorithm. Current state: I talk, AI drafts, I approve or toss. Future state: AI learns my voice patterns, link preferences, and atomic note structure. Gets better with every cycle.
 
-I don't think about where thoughts go or how to organize them. I speak. The system routes. [[A sufficiently intelligent router eliminates the need for traditional project management]] handles the rest. [[Defaulting to No for unscheduled calls protects deep work]] becomes possible.
+[[The Commune box]] keeps capture private ([[Private AI outperforms cloud AI]]). No tags to babysit. No manual graph gardening. [[Manual file management is a high-friction waste of cognitive resources]]—voice capture eliminates that.
 
-Voice capture removes friction between thinking and recording ([[Externalizing thought builds a cognitive scaffold for solving complex problems]]). Ideas flow from mind to system without typing or organizing. [[Notes beat posts for showing progress]] because you can capture atomic thoughts immediately. [[Manual file management is a high-friction waste of cognitive resources]]—voice capture eliminates that.
+If the draft sounds like me, it ships. If it sounds like a bot, it waits. Voice stays intact. Pace stays high.
+
+Clear notes feed [[Ask the Brain]]. Real edits feed [[Ledger replaces feeds]]. [[Notes beat posts for showing progress]] because you capture atomic thoughts immediately.

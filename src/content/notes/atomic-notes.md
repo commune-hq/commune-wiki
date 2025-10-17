@@ -13,7 +13,7 @@ An atomic note focuses on a single, self-contained idea, which enables [[Associa
 
 - **Reusable**: Link to them from multiple contexts without conceptual baggage
 - **Composable**: Combine them to build complex arguments through [[Evergreen Notes]]
-- **Maintainable**: Update one idea without breaking others, supporting [[Voice in, approvals out]]
+- **Maintainable**: Update one idea without breaking others, supporting [[Automated note shaping from voice]]
 
 Traditional notes often mix multiple concepts, making them hard to reference precisely. This creates the same problem as [[Manual file management is a high-friction waste of cognitive resources]]—too many decisions bundled together. Atomic notes solve this by splitting topics into their constituent ideas.
 

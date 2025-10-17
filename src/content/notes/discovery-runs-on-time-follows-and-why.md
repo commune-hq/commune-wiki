@@ -17,4 +17,4 @@ Collect builds human trails that others can browse. Staff Picks can exist, but t
 
 The result is slower but better. People find quality by following people and following reasons. Not by training an addiction. This pairs with [[Ledger replaces feeds]] to replace ranking with time and intent, supporting [[People pay to follow a working mind]] through transparent, non-manipulative discovery.
 
-Time-based discovery also enables [[Voice in, approvals out]] because I can publish frequently without worrying about algorithmic punishment for "low engagement" content.
+Time-based discovery also enables [[Automated note shaping from voice]] because I can publish frequently without worrying about algorithmic punishment for "low engagement" content.

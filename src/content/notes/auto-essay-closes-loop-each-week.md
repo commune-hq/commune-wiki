@@ -15,6 +15,6 @@ The essay cites notes inline. It helps readers who will never pane-surf. It help
 
 They expose dead weight. If a section repeats, I make a new note or merge two. The essay turns fragments into a story without breaking the cadence of daily notes. This supports [[Notes beat posts for showing progress]] because the atomic notes remain the primary format.
 
-The weekly synthesis connects to [[Voice in, approvals out]] because the raw material comes from daily voice captures. It enables [[People pay to follow a working mind]] by providing both granular updates and broader narrative context. The approach respects [[Zen practice protects attention]] by automating the synthesis work that would otherwise require dedicated writing sessions.
+The weekly synthesis connects to [[Automated note shaping from voice]] because the raw material comes from daily voice captures. It enables [[People pay to follow a working mind]] by providing both granular updates and broader narrative context. The approach respects [[Zen practice protects attention]] by automating the synthesis work that would otherwise require dedicated writing sessions.
 
 This process also improves [[Titles are takeaways, not labels]] because unclear titles become obvious when the agent tries to cluster related notes for the weekly narrative.

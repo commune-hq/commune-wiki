@@ -11,7 +11,7 @@ summary: "Question in. Short answer out. The answer cites notes and versions. It
 
 Question in. Short answer out. The answer cites notes and versions. Links to the exact anchor you need. No invention. If it can't cite, it doesn't ship.
 
-Only works if notes have strong titles ([[Titles are takeaways, not labels]]). Depends on clean capture ([[Voice in, approvals out]]). Free search for basic lookup. Paid answers save time. Turn the notebook from reading surface to learning surface.
+Only works if notes have strong titles ([[Titles are takeaways, not labels]]). Depends on clean capture ([[Automated note shaping from voice]]). Free search for basic lookup. Paid answers save time. Turn the notebook from reading surface to learning surface.
 
 Paid answers reveal weak spots. Same question keeps showing up? I add a sentence or write a new note. Next answer gets sharper. Private Q&A runs local on [[The Commune box]] ([[Private AI outperforms cloud AI]]). Public Q&A runs on public notes so readers check sources.
 

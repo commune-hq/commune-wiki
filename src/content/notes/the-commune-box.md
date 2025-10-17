@@ -15,7 +15,7 @@ That split matters. I can pace and talk without worrying about leaks. Family doc
 
 Readers see what I choose to share. They get the public notes, [[Ledger replaces feeds]], [[Ask the Brain]] over public content. If I want to move to hosted later, I can. But the box stays mine.
 
-[[Voice in, approvals out]] works because capture happens locally. [[Private AI outperforms cloud AI]] because all context stays on the box. No cloud provider sees private notes. No data mining. No optimization for engagement.
+[[Automated note shaping from voice]] works because capture happens locally. [[Private AI outperforms cloud AI]] because all context stays on the box. No cloud provider sees private notes. No data mining. No optimization for engagement.
 
 [[Subscription unlocks depth into the mind]] explains the monetization. Self-hosting makes [[Local-First Software]] practical. Ownership first, sharing second. [[Discovery runs on time, follows, and why]] explains why that order matters.
 
