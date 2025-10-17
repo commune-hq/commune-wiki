@@ -9,7 +9,7 @@ summary: The home note is the first note when you land on a Commune-powered site
 updated: 2025-10-17
 ---
 
-[[Commune]] requires a starting note. The first note when someone lands on your site. You must design it. No blank slate.
+[[Commune]] requires a starting note. First note someone sees when they land on your site. You pick which note that is. Can't leave it blank or random.
 
 It triages readers to your best ideas. Not a comprehensive index. Not your entire graph. Just the entry points that matter most right now.
 
