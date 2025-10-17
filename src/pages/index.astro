@@ -11,8 +11,8 @@ import PlausibleScript from '../components/PlausibleScript.astro';
 import '../styles/design-system.css';
 import '../styles/notes.css';
 
-const entry = await getEntry('notes', 'commune');
-if (!entry) throw new Error('Commune note not found');
+const entry = await getEntry('notes', 'my-working-notes');
+if (!entry) throw new Error('Home note not found');
 const { Content } = await entry.render();
 const { slug, data } = entry;
 const title = data.title ?? slug;
