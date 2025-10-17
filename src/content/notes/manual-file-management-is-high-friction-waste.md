@@ -4,7 +4,7 @@ created: 2025-10-15
 visibility: public
 status: live
 tags: [productivity, automation, cognitive-load]
-aliases: ["manual file management", "file organization overhead"]
+aliases: ["manual file management", "file organization overhead", "Manual file management is high-friction waste"]
 updated: 2025-10-15
 summary: "Traditional file organization systems consume mental energy that should be spent on creative work, not digital housekeeping."
 ---

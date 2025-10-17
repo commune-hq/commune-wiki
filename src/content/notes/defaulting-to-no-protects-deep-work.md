@@ -4,6 +4,7 @@ created: 2025-10-09
 visibility: "public"
 summary: "Protecting focused work time requires saying no to spontaneous interruptions, even when they seem urgent"
 tags: ["deep-work", "boundaries", "focus", "productivity"]
+aliases: ["Defaulting to No protects deep work"]
 ---
 
 "Do you have time for a quick call?" No. It's never quick. It's not you, it's me. The thing that slows me down the most is giving away my time and shattering my focus. To protect my work/family balance and deep work, I don't do unscheduled calls. If you're not a paying client, we likely won't talk on the phone. Godspeed.

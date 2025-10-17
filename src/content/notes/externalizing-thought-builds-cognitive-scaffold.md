@@ -4,6 +4,7 @@ created: 2025-10-09
 visibility: "public"
 summary: "The practice of making your thinking visible creates feedback loops that enhance problem-solving capacity"
 tags: ["cognition", "practice", "workbench", "thinking"]
+aliases: ["Externalizing thought builds cognitive scaffold"]
 ---
 
 People call these "digital gardens," but I think of this as my Public Workbench. It's a practice. Putting it out there and seeing it helps you think and get better at solving the problems you're trying to solve in life. It's the feedback loop of externalizing and structuring thought.
