@@ -33,7 +33,12 @@
 
         if (note?.isStarred) {
           // Check if star isn't already there
-          if (!link.querySelector('.star-indicator-inline')) {
+          if (!link.querySelector('.star-indicator-inline') && !link.nextElementSibling?.classList?.contains('star-indicator-inline')) {
+            // Create wrapper to prevent line break between link and star
+            const wrapper = document.createElement('span');
+            wrapper.style.whiteSpace = 'nowrap';
+            wrapper.style.display = 'inline';
+
             // Create star as a separate clickable element (not part of the link)
             const star = document.createElement('span');
             star.className = 'star-indicator-inline';
@@ -62,8 +67,10 @@
               }
             });
 
-            // Insert star after the link
-            link.insertAdjacentElement('afterend', star);
+            // Wrap the link in the nowrap container
+            link.parentNode.insertBefore(wrapper, link);
+            wrapper.appendChild(link);
+            wrapper.appendChild(star);
           }
         }
       });
