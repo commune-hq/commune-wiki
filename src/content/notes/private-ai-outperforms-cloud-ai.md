@@ -13,7 +13,7 @@ Cloud AI models are trained on generic internet data but lack access to your spe
 
 Private AI systems running on your infrastructure can access:
 - **Complete conversation history** across all contexts, supporting [[Business management is context management]]
-- **Personal knowledge bases** with your specific terminology and concepts, enabling [[Personal Knowledge Graphs]]
+- **Personal knowledge bases** with your specific terminology and concepts, enabling [[Networked thinking reveals hidden connections]]
 - **Relationship data** including communication patterns and preferences
 - **Project context** spanning months or years of accumulated decisions
 

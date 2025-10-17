@@ -17,4 +17,4 @@ The map should stay honest. [[Depth-3 free is honest gating]] lets anyone try th
 
 This format supports [[People pay to follow a working mind]] because readers can see thinking in motion, not just polished conclusions. It enables [[Associative linking over hierarchies]] because each note can connect to any other note based on conceptual relationships.
 
-Notes are the atomic unit of [[Evergreen Notes]] and the foundation of [[Personal Knowledge Graphs]].
+Notes are the atomic unit of [[Evergreen Notes]] and the foundation of wikis.

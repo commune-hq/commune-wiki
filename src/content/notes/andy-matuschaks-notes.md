@@ -17,4 +17,4 @@ Sliding panes solve context loss. Click a link in traditional hypertext, you los
 
 The interface shapes the thinking. Linear documents force linear thought. Networked interfaces enable [[Associative linking over hierarchies]]. This is why [[Commune]]'s sliding pane interface matters—it's not just aesthetics, it's cognitive architecture.
 
-Built in public at <a href="https://notes.andymatuschak.org" target="_blank" rel="noopener noreferrer">notes.andymatuschak.org<span class="external-link-icon" aria-hidden="true">↗</span></a>. The system influenced dozens of [[Personal Knowledge Graphs]] and [[Build in Public]] implementations. The principles extend beyond notes to any system for knowledge work.
+Built in public at <a href="https://notes.andymatuschak.org" target="_blank" rel="noopener noreferrer">notes.andymatuschak.org<span class="external-link-icon" aria-hidden="true">↗</span></a>. The system influenced dozens of wikis and [[Build in Public]] implementations. The principles extend beyond notes to any system for knowledge work.

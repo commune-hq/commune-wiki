@@ -6,10 +6,10 @@ status: live
 tags: [commune, features, gamification]
 aliases: ["star", "star-system", "star-feature"]
 updated: 2025-10-16
-summary: A Commune feature marking notes that anchor key ideas in your knowledge graph—top 5% by backlinks, inspired by Skool's approach to recognizing contributors.
+summary: A Commune feature marking notes that anchor key ideas in your wiki—top 5% by backlinks, inspired by Skool's approach to recognizing contributors.
 ---
 
-The Star (⭐) marks notes that sit in the top 5% by backlinks. Other notes reach for these often—a sign they anchor key ideas in your [[Personal Knowledge Graphs|knowledge graph]].
+The Star (⭐) marks notes that sit in the top 5% by backlinks. Other notes reach for these often—a sign they anchor key ideas in your wiki.
 
 This isn't about popularity. It's about centrality. When your wiki shows which ideas carry weight across your thinking, you see patterns you'd miss otherwise. The system borrows from [[Skool]]'s approach: recognize top contributors with a visible badge. Here, the badge goes to ideas, not people.
 

@@ -17,5 +17,5 @@ Traditional note-taking creates piles of write-only notes that become [[Manual f
 
 The approach enables [[Voice in, approvals out]] because you can capture rough thoughts knowing they'll be refined over time. It supports [[Ask the Brain]] by creating a searchable knowledge base with clear, atomic claims. The system works through [[Private AI outperforms cloud AI]] because your personal terminology and connections become part of the model's context.
 
-This is how [[Andy Matuschaks Notes]] demonstrated the power of [[Personal Knowledge Graphs]] for serious intellectual work. The method requires [[Box-first earns trust]] to work at scale because you need complete control over your knowledge base to build genuine expertise over years.
+This is how [[Andy Matuschaks Notes]] demonstrated the power of [[Networked thinking reveals hidden connections]] for serious intellectual work. The method requires [[Box-first earns trust]] to work at scale because you need complete control over your knowledge base to build genuine expertise over years.
 

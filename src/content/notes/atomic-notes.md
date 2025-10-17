@@ -19,7 +19,7 @@ Traditional notes often mix multiple concepts, making them hard to reference pre
 
 When writing an [[Evergreen Notes|evergreen note]], ask: "What's the **one** idea here?" If there are multiple, split into separate notes. This approach requires [[Titles are takeaways, not labels]] because each title must capture a specific claim.
 
-This creates [[Personal Knowledge Graphs]] where each node represents a distinct concept. The method enables [[Ask the Brain]] to provide precise answers because queries can target specific ideas rather than mixed topics. It supports [[Notes beat posts for showing progress]] because you can publish individual insights as they develop.
+This creates wikis where each note represents a distinct concept. The method enables [[Ask the Brain]] to provide precise answers because queries can target specific ideas rather than mixed topics. It supports [[Notes beat posts for showing progress]] because you can publish individual insights as they develop.
 
 The atomic principle underlies [[Andy Matuschaks Notes]] and connects to [[Build in Public]] because small, focused notes are easier to share and discuss than monolithic documents.
 

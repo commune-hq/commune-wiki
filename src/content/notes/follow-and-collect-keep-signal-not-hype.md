@@ -17,4 +17,4 @@ If a note gets collected a lot but confuses people, I tighten the title through 
 
 The system enables [[People pay to follow a working mind]] because followers can see both the work and the curation that shapes it. It connects to [[Zen practice protects attention]] by avoiding the dopamine loops of engagement-driven social features.
 
-Collect creates natural pathways through [[Personal Knowledge Graphs]] based on human judgment rather than algorithmic recommendation. This supports [[Associative linking over hierarchies]] by letting readers create their own conceptual trails through the knowledge base.
+Collect creates natural pathways through your wiki based on human judgment rather than algorithmic recommendation. This supports [[Associative linking over hierarchies]] by letting readers create their own conceptual trails through the knowledge base.

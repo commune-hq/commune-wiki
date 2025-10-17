@@ -25,4 +25,4 @@ The practical benefit: information becomes more discoverable. Instead of remembe
 
 This principle applies beyond note-taking to any information system. APIs, databases, and user interfaces all benefit from associative rather than purely hierarchical organization.
 
-**Related**: [[Personal Knowledge Graphs]], [[Zettelkasten Method]], [[Network effects in knowledge work]]
+**Related**: [[Networked thinking reveals hidden connections]], [[Zettelkasten Method]], [[Network effects in knowledge work]]
