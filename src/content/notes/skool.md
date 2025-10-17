@@ -9,7 +9,7 @@ updated: 2025-10-16
 summary: A community platform that nails gamification—recognize top contributors with visible badges, make progress tangible, keep people engaged.
 ---
 
-[Skool](https://www.skool.com) is a community platform that gets [[Gamification drives self-discovery]] right. They put a rocket emoji next to top contributors' names—simple, visible, motivating. That's where [[The Star]] came from.
+<a href="https://www.skool.com/?utm_source=devonmeadows&utm_medium=website&utm_campaign=notes" target="_blank" rel="noopener noreferrer" style="white-space:nowrap">Skool<span class="external-link-icon" aria-hidden="true">↗</span></a> is a community platform that gets [[Gamification drives self-discovery]] right. They put a rocket emoji next to top contributors' names—simple, visible, motivating. That's where [[The Star]] came from.
 
 What they understand: recognition works. Not hidden metrics or buried leaderboards. Visible badges that show up everywhere your name does. The rocket isn't about collecting points—it's a signal that you add value. That changes how people engage.
 
