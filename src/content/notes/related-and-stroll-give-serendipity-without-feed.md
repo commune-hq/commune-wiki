@@ -9,7 +9,7 @@ updated: 2025-10-15
 summary: "Every note carries a few links in the prose. Each link explains itself. The right rail can show a Related list, but the real work happens inside sentences."
 ---
 
-Every note carries a few links in the prose. Each link explains itself. "See [[Ledger replaces feeds]] for why motion beats ranking." "See [[Box-first earns trust]] for the privacy piece." The right rail can show a Related list, but the real work happens inside sentences.
+Every note carries a few links in the prose. Each link explains itself. "See [[Ledger replaces feeds]] for why motion beats ranking." "See [[The Commune box]] for the privacy piece." The right rail can show a Related list, but the real work happens inside sentences.
 
 Click Stroll when you want a quiet wander. It shows one related note at a time with the "why" chip. Left. Right. No infinite scroll. Across-notebook discovery is off by default. When you turn it on, it still respects [[Depth-3 free is honest gating]].
 

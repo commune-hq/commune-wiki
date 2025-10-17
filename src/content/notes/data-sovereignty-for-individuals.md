@@ -13,7 +13,7 @@ The current model: platforms own your content, relationships, and behavior data.
 
 The alternative: your data lives on your infrastructure. You control access. You decide what publishes. Platforms that want to display your content pull from your server, not their database.
 
-This is [[Local-First Software]] plus [[Box-first earns trust]]. Your hardware, your rules. No platform can delete your account or change terms unilaterally.
+This is [[Local-First Software]] plus [[The Commune box]]. Your hardware, your rules. No platform can delete your account or change terms unilaterally.
 
 The practical benefits:
 - Complete export capability (not just "download your data")

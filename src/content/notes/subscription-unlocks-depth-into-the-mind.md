@@ -17,6 +17,6 @@ Free tier gives you three pane levels deep ([[Depth-3 free is honest gating]]). 
 
 I'm still figuring out pricing... I might do $2 to unlock the full brain, $5 for semantic search and commenting, and maybe $10 for deep research and some final level of depth I have yet to determine. Not sure if everyone should have the same tiers or if it should be different.
 
-Learning more about this process and building out the brain will likely lead people to wanting the [[Commune]] box. [[Box-first earns trust]] explains the privacy angle. Self-host it, bring your own keys, hook up your own model. Choose something like Ollama to get away from cloud providers. Store all your notes locally. As your mind gets bigger, you use more AI bandwidth to expand it. Creators hit a point where the box is cheaper than cloud credits.
+Learning more about this process and building out the brain will likely lead people to wanting the [[Commune]] box. [[The Commune box]] explains the privacy angle. Self-host it, bring your own keys, hook up your own model. Choose something like Ollama to get away from cloud providers. Store all your notes locally. As your mind gets bigger, you use more AI bandwidth to expand it. Creators hit a point where the box is cheaper than cloud credits.
 
 Makes [[Build in Public]] work because people see the value before paying. The mechanics reveal themselves ([[Gamification drives self-discovery]]).

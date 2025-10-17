@@ -16,7 +16,7 @@ Discovery happens through explicit mechanisms, not algorithms. The [[Ledger repl
 
 [[Depth-3 free is honest gating]] keeps three hops from the homepage open while protecting deeper exploration behind paid access. This creates calm surfaces for depth work. Readers get agency through [[Follow and Collect keep signal, not hype]], [[Ask the Brain]], and [[Suggestions and Proposals make readers part of the work]].
 
-Everything private runs on [[Box-first earns trust]]—your own hardware at home. You control what publishes. The platform doesn't own your knowledge graph.
+Everything private runs on [[The Commune box]]—your own hardware at home. You control what publishes. The platform doesn't own your knowledge graph.
 
 This combines [[Zen practice protects attention]] with transparency. Share the messy process of thinking, not just polished outputs. Weekly synthesis happens via [[Auto-essay closes the loop each week]], turning fragmented notes into coherent thought.
 

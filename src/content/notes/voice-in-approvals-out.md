@@ -13,7 +13,7 @@ I pace and talk. That is the input. The agent drafts a note, proposes links, and
 
 This keeps my voice intact and my pace high. If the draft sounds like a bot, it waits. If it sounds like me, it ships. This loop feeds [[Ask the Brain]] because clear notes make better answers. It also feeds [[Auto-essay closes the loop each week]] because the [[Ledger replaces feeds]] will have real reasons and real edits.
 
-Voice-in pairs with privacy through [[Box-first earns trust]]. The capture and heavy compute live at home, enabling [[Private AI outperforms cloud AI]] through complete context access. The public notebook stays small and sharp. That is how you publish daily without burning out, supporting [[People pay to follow a working mind]].
+Voice-in pairs with privacy through [[The Commune box]]. The capture and heavy compute live at home, enabling [[Private AI outperforms cloud AI]] through complete context access. The public notebook stays small and sharp. That is how you publish daily without burning out, supporting [[People pay to follow a working mind]].
 
 The workflow eliminates [[Manual file management is a high-friction waste of cognitive resources]] by removing classification decisions from the capture moment. I don't think about where it goes or how to organize it. I just speak the thought. The routing system handles the rest, showing how [[A sufficiently intelligent router eliminates the need for traditional project management]], which is why [[Defaulting to No for unscheduled calls protects deep work]] becomes possible.
 

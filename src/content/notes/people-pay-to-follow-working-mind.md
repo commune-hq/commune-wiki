@@ -13,7 +13,7 @@ People do not pay for polish. They pay to watch ideas move. A clear [[Ledger rep
 
 The trade is recency and answers. If I can see what changed and ask a good question, I pay. This works if the surface stays calm and human. That is why [[Discovery runs on time, follows, and why]] replaces ranking. That is why [[Follow and Collect keep signal, not hype]] replaces likes.
 
-The model is not novel by accident. It is a simple exchange. I show my work in the open. You fund more work because you can learn faster. The [[Box-first earns trust]] keeps capture private. The Notebook stays readable because [[Notes beat posts for showing progress]].
+The model is not novel by accident. It is a simple exchange. I show my work in the open. You fund more work because you can learn faster. The [[The Commune box]] keeps capture private. The Notebook stays readable because [[Notes beat posts for showing progress]].
 
 That combination is enough to make a fair business without the traps. No engagement optimization. No artificial scarcity. No surveillance capitalism. Just clear value: access to a thinking process that helps you think better.
 

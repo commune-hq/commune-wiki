@@ -17,7 +17,7 @@ No feed. No vibes machine. Discovery is time, follows, and a clear reason for ev
 
 You can follow for updates or collect notes to build your own trail. See [[Follow and Collect keep signal, not hype]]. You can ask questions and get short answers with receipts. See [[Ask the Brain]]. If you've got a fix or an edge case, leave a suggestion; I review it and the record updates in the [[Ledger replaces feeds]]. See [[Suggestions and Proposals make readers part of the work]].
 
-Everything private runs on my box at home. I only publish what I approve. See [[Box-first earns trust]].
+Everything private runs on my box at home. I only publish what I approve. See [[The Commune box]].
 
 Right now I'm focused on a calm, paid surface that respects attention. I'm also crossing systems work with practice—notes on tech next to notes on focus. See [[Zen practice protects attention]].
 

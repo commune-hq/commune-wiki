@@ -10,7 +10,7 @@ Managing a business is really just managing a shit ton of context that is contin
 
 Traditional business tools try to solve this by creating more containers: project folders, departmental silos, quarterly reports. But containers don't scale—they fragment context and create information islands. This is why [[Associative linking over hierarchies]] matters for business systems, not just personal notes.
 
-The breakthrough insight: instead of managing context through artificial structures, you capture it naturally through [[Voice in, approvals out]] and make it intelligently accessible via [[Ask the Brain]]. This approach requires [[Box-first earns trust]] because you need complete control over business-critical context.
+The breakthrough insight: instead of managing context through artificial structures, you capture it naturally through [[Voice in, approvals out]] and make it intelligently accessible via [[Ask the Brain]]. This approach requires [[The Commune box]] because you need complete control over business-critical context.
 
 This enables [[Integrated data analysis unlocks observations impossible in siloed systems]]. When all your context is connected—Shopify, ads, customer support, personal insights—you can see patterns that are invisible in traditional business tools. The system works through [[Private AI outperforms cloud AI]] because it has access to your complete business context.
 

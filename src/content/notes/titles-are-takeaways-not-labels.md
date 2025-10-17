@@ -11,7 +11,7 @@ summary: "A title should read like a conclusion. Labels slow readers and weaken 
 
 A title should read like a conclusion. Labels slow readers and weaken [[Ask the Brain]]. A sharp title makes a short note land. It also makes links work better because the title itself is a handle.
 
-"[[Box-first earns trust]]" is stronger than "Self-hosting." "[[Ledger replaces feeds]]" is stronger than "Changelog." Writing the claim in the title forces clarity in the body. If I cannot name the claim, I split the note or I need to think more.
+"[[The Commune box]]" is stronger than "Self-hosting." "[[Ledger replaces feeds]]" is stronger than "Changelog." Writing the claim in the title forces clarity in the body. If I cannot name the claim, I split the note or I need to think more.
 
 Good titles let the agent draft better suggestions in [[Voice in, approvals out]]. Good titles make the [[Auto-essay closes the loop each week]] outline easier to write. Titles are small, but they decide whether the whole system stays learnable.
 

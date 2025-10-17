@@ -10,7 +10,7 @@ summary: "AI running on your hardware with access to all your data beats cloud m
 
 Cloud AI is trained on generic internet data. It doesn't know your projects, your terminology, your relationships, or your accumulated decisions. That's the ceiling.
 
-Private AI running at home has access to everything. Complete conversation history across all contexts. Your wiki with your specific language. Communication patterns with specific people. Projects spanning months or years. That's why [[Box-first earns trust]] matters.
+Private AI running at home has access to everything. Complete conversation history across all contexts. Your wiki with your specific language. Communication patterns with specific people. Projects spanning months or years. That's why [[The Commune box]] matters.
 
 The agent can answer questions cloud models can't. What did Sarah and I decide about the Q4 launch? Show me all mentions of the pricing strategy from last month. Draft a follow-up in the style I used with this client before.
 
