@@ -18,8 +18,10 @@
         }
       }
 
-      // Find all links to /notes/ within the scope
-      const noteLinks = scope.querySelectorAll('a[href^="/notes/"]');
+      // Find all links to /notes/ within the scope, excluding backlinks section
+      // (BacklinksScript handles those separately)
+      const allNoteLinks = scope.querySelectorAll('a[href^="/notes/"]');
+      const noteLinks = Array.from(allNoteLinks).filter(link => !link.closest('.backlinks'));
 
       noteLinks.forEach(link => {
         const href = link.getAttribute('href');
