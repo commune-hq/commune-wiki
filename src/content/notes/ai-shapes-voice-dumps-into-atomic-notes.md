@@ -4,7 +4,7 @@ created: 2025-10-15
 visibility: public
 status: live
 tags: [workflow, capture, ai-agents, voice, vision]
-aliases: ["voice capture", "approval workflow", "voice in approvals out", "automated note shaping from voice", "Automated note shaping from voice"]
+aliases: ["voice capture", "approval workflow", "voice in approvals out", "automated note shaping from voice", "Automated note shaping from voice", "voice-in-approvals-out"]
 updated: 2025-10-17
 summary: "Dump thoughts while walking. AI shapes them into atomic notes. Review in iOS app. Refine with more voice. Infinite game of hammering notes into 150-250 word format."
 ---
