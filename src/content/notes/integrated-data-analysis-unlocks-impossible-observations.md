@@ -4,7 +4,6 @@ created: 2025-10-09
 visibility: "public"
 summary: "Connecting all your data sources—business, personal, creative—enables insights that are invisible in traditional separated systems"
 tags: ["data", "integration", "analysis", "insights"]
-aliases: ["Integrated data analysis unlocks impossible observations"]
 ---
 
 Imagine Shopify, Google ads, Facebook ads, Klaviyo, customer support, *and* my own stream of consciousness all connected. You could start to understand profitability correlating with certain strategies, seasonal events, or even the creative style of the graphics (if the model understands the graphics). "We make more money when Joel does the ads versus when Devon does the ads." You can't make those nuanced observations unless you overlap everything.

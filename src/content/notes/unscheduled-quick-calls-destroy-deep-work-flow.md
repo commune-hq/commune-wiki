@@ -5,7 +5,6 @@ visibility: public
 status: live
 tags: [focus, deep-work, boundaries, interruptions]
 summary: "Quick calls are never quick. They shatter focus and steal 15-20 minutes of recovery time after the interruption ends."
-aliases: ['Unscheduled "quick calls" destroy deep work flow states']
 ---
 
 "Got time for a quick call?" No. It's never quick.

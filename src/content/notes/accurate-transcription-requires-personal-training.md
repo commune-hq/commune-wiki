@@ -15,7 +15,7 @@ Standard transcription models are trained on generic datasets. They know common 
 - Personal abbreviations and shortcuts
 - Location names that matter to you
 
-The solution requires [[Local systems require "Enhancement Dashboards" for user-in-the-loop model training]]. You need an interface to teach the system your specific context.
+The solution requires [[Local systems require Enhancement Dashboards for user-in-the-loop model training]]. You need an interface to teach the system your specific context.
 
 Training approach:
 1. **Initial raw transcription**: Capture everything, even if imperfect

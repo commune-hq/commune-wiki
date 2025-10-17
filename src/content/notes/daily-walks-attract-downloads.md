@@ -19,4 +19,4 @@ If I don't take the walk, I work straight through from morning to dinner. My wif
 
 The walk resets me. It breaks the focus strain before dinner, so I can be present. That's more valuable than whatever extra hour of work I thought I'd get.
 
-The voice dumps capture thinking I'd otherwise lose, which connects to [[Externalizing thought builds cognitive scaffold]]. These walks often surface the insights worth sharing, which supports [[Build in Public]].
+The voice dumps capture thinking I'd otherwise lose, which connects to how [[Externalizing thought builds a cognitive scaffold for solving complex problems]]. These walks often surface the insights worth sharing, which supports [[Build in Public]].

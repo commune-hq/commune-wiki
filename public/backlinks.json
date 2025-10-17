@@ -4,10 +4,11 @@
     "title": "Accurate transcription requires training the model on personal proper nouns and context",
     "aliases": [],
     "outbound": [
+      "/notes/local-systems-require-enhancement-dashboards-for-training/",
       "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
     "inbound": [
-      "/notes/local-systems-require-enhancement-dashboards/",
+      "/notes/local-systems-require-enhancement-dashboards-for-training/",
       "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
     "tags": [
@@ -18,25 +19,52 @@
     ],
     "status": "seed"
   },
+  "/notes/ads-lab/": {
+    "slug": "/notes/ads-lab/",
+    "title": "Ads Lab",
+    "aliases": [
+      "adslab"
+    ],
+    "outbound": [
+      "/notes/skool/",
+      "/notes/awake-happy/",
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/what-is-commune/",
+      "/notes/business-management-is-context-management/"
+    ],
+    "inbound": [
+      "/notes/awake-happy/",
+      "/notes/commune/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/film-production-managing-information/",
+      "/notes/networked-thinking-reveals-hidden-connections/"
+    ],
+    "tags": [
+      "business",
+      "advertising",
+      "skool"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
+  },
   "/notes/andy-matuschaks-notes/": {
     "slug": "/notes/andy-matuschaks-notes/",
     "title": "Andy Matuschak's Notes",
-    "aliases": [
-      "Andy Matuschak",
-      "Matuschak notes",
-      "sliding panes"
-    ],
+    "aliases": [],
     "outbound": [
       "/notes/evergreen-notes/",
       "/notes/associative-linking-over-hierarchies/",
-      "/notes/commune/",
-      "/notes/personal-knowledge-graphs/",
+      "/notes/what-is-commune/",
       "/notes/build-in-public/"
     ],
     "inbound": [
       "/notes/associative-linking-over-hierarchies/",
+      "/notes/atomic-notes/",
       "/notes/build-in-public/",
-      "/notes/commune/"
+      "/notes/commune/",
+      "/notes/evergreen-notes/",
+      "/notes/network-effects-in-knowledge-work/",
+      "/notes/zettelkasten-method/"
     ],
     "tags": [
       "note-taking",
@@ -72,7 +100,6 @@
       "/notes/evergreen-notes/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/people-pay-to-follow-working-mind/",
-      "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
       "/notes/what-is-commune/",
@@ -85,8 +112,7 @@
       "citations"
     ],
     "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z",
-    "isStarred": true
+    "updated": "2025-10-15T00:00:00.000Z"
   },
   "/notes/associative-linking-over-hierarchies/": {
     "slug": "/notes/associative-linking-over-hierarchies/",
@@ -99,7 +125,9 @@
     "outbound": [
       "/notes/andy-matuschaks-notes/",
       "/notes/evergreen-notes/",
-      "/notes/personal-knowledge-graphs/"
+      "/notes/networked-thinking-reveals-hidden-connections/",
+      "/notes/zettelkasten-method/",
+      "/notes/network-effects-in-knowledge-work/"
     ],
     "inbound": [
       "/notes/andy-matuschaks-notes/",
@@ -107,10 +135,12 @@
       "/notes/business-management-is-context-management/",
       "/notes/evergreen-notes/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/network-effects-in-knowledge-work/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/notes-beat-posts-for-showing-progress/",
-      "/notes/personal-knowledge-graphs/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
-      "/notes/titles-are-takeaways-not-labels/"
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/zettelkasten-method/"
     ],
     "tags": [
       "knowledge-management",
@@ -132,10 +162,11 @@
       "/notes/associative-linking-over-hierarchies/",
       "/notes/evergreen-notes/",
       "/notes/voice-in-approvals-out/",
+      "/notes/manual-file-management-is-high-friction-waste/",
       "/notes/titles-are-takeaways-not-labels/",
-      "/notes/personal-knowledge-graphs/",
       "/notes/ask-the-brain/",
       "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/andy-matuschaks-notes/",
       "/notes/build-in-public/"
     ],
     "inbound": [
@@ -159,6 +190,7 @@
     ],
     "outbound": [
       "/notes/ledger-replaces-feeds/",
+      "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/ask-the-brain/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/voice-in-approvals-out/",
@@ -170,6 +202,7 @@
       "/notes/commune/",
       "/notes/ledger-replaces-feeds/",
       "/notes/notes-beat-posts-for-showing-progress/",
+      "/notes/release-is-monthly-human-wrap/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/voice-in-approvals-out/",
       "/notes/what-is-commune/"
@@ -182,6 +215,35 @@
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/awake-happy/": {
+    "slug": "/notes/awake-happy/",
+    "title": "Awake Happy",
+    "aliases": [
+      "awake",
+      "clothing-brand"
+    ],
+    "outbound": [
+      "/notes/ads-lab/",
+      "/notes/what-is-commune/",
+      "/notes/business-management-is-context-management/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/depth-gating-protects-computation-costs/"
+    ],
+    "inbound": [
+      "/notes/ads-lab/",
+      "/notes/commune/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/film-production-managing-information/",
+      "/notes/networked-thinking-reveals-hidden-connections/"
+    ],
+    "tags": [
+      "business",
+      "clothing",
+      "brand"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/box-first-earns-trust/": {
     "slug": "/notes/box-first-earns-trust/",
@@ -204,6 +266,7 @@
       "/notes/ask-the-brain/",
       "/notes/business-management-is-context-management/",
       "/notes/commune/",
+      "/notes/data-sovereignty-for-individuals/",
       "/notes/evergreen-notes/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/private-ai-outperforms-cloud-ai/",
@@ -231,14 +294,24 @@
       "open development"
     ],
     "outbound": [
-      "/notes/commune/",
+      "/notes/what-is-commune/",
       "/notes/andy-matuschaks-notes/",
-      "/notes/evergreen-notes/"
+      "/notes/evergreen-notes/",
+      "/notes/learning-in-public-accelerates-growth/",
+      "/notes/transparent-decision-making-builds-trust/"
     ],
     "inbound": [
       "/notes/andy-matuschaks-notes/",
       "/notes/atomic-notes/",
+      "/notes/daily-walks-attract-downloads/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/learning-in-public-accelerates-growth/",
       "/notes/people-pay-to-follow-working-mind/",
+      "/notes/skool/",
+      "/notes/suggestions-and-proposals-make-readers-part-of-work/",
+      "/notes/the-star/",
+      "/notes/transparent-decision-making-builds-trust/",
       "/notes/zen-practice-protects-attention/"
     ],
     "tags": [
@@ -255,15 +328,26 @@
     "title": "Business management is fundamentally the management of expanding context",
     "aliases": [],
     "outbound": [
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/intelligent-router-eliminates-project-management/",
       "/notes/associative-linking-over-hierarchies/",
       "/notes/voice-in-approvals-out/",
       "/notes/ask-the-brain/",
       "/notes/box-first-earns-trust/",
-      "/notes/people-pay-to-follow-working-mind/"
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/"
     ],
     "inbound": [
+      "/notes/ads-lab/",
+      "/notes/awake-happy/",
+      "/notes/deep-work-shields-attention/",
+      "/notes/film-production-managing-information/",
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
-      "/notes/intelligent-router-eliminates-project-management/"
+      "/notes/intelligent-router-eliminates-project-management/",
+      "/notes/networked-thinking-reveals-hidden-connections/"
     ],
     "tags": [
       "business",
@@ -277,12 +361,13 @@
     "slug": "/notes/commune/",
     "title": "Devon's working brain in public",
     "aliases": [
-      "commune",
       "home",
       "devon meadows"
     ],
     "outbound": [
       "/notes/what-is-commune/",
+      "/notes/ads-lab/",
+      "/notes/awake-happy/",
       "/notes/voice-in-approvals-out/",
       "/notes/ledger-replaces-feeds/",
       "/notes/depth-3-free-is-honest-gating/",
@@ -290,16 +375,13 @@
       "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/ask-the-brain/",
+      "/notes/suggestions-and-proposals-make-readers-part-of-work/",
       "/notes/box-first-earns-trust/",
       "/notes/zen-practice-protects-attention/",
       "/notes/andy-matuschaks-notes/",
       "/notes/auto-essay-closes-loop-each-week/"
     ],
-    "inbound": [
-      "/notes/andy-matuschaks-notes/",
-      "/notes/build-in-public/",
-      "/notes/local-first-software/"
-    ],
+    "inbound": [],
     "tags": [
       "home",
       "navigation",
@@ -307,6 +389,81 @@
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/daily-walks-attract-downloads/": {
+    "slug": "/notes/daily-walks-attract-downloads/",
+    "title": "Daily walks attract downloads",
+    "aliases": [
+      "daily walks",
+      "walks",
+      "downloads"
+    ],
+    "outbound": [
+      "/notes/deep-work-shields-attention/",
+      "/notes/what-is-commune/",
+      "/notes/evergreen-notes/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
+      "/notes/build-in-public/"
+    ],
+    "inbound": [
+      "/notes/deep-work-shields-attention/"
+    ],
+    "tags": [
+      "thinking",
+      "process",
+      "self-care"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
+  },
+  "/notes/data-sovereignty-for-individuals/": {
+    "slug": "/notes/data-sovereignty-for-individuals/",
+    "title": "Data sovereignty for individuals",
+    "aliases": [],
+    "outbound": [
+      "/notes/local-first-software/",
+      "/notes/box-first-earns-trust/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/what-is-commune/"
+    ],
+    "inbound": [
+      "/notes/local-first-software/"
+    ],
+    "tags": [
+      "privacy",
+      "ownership",
+      "sovereignty",
+      "control"
+    ],
+    "status": "live"
+  },
+  "/notes/deep-work-shields-attention/": {
+    "slug": "/notes/deep-work-shields-attention/",
+    "title": "Deep work shields attention",
+    "aliases": [
+      "deep work",
+      "focus",
+      "flow"
+    ],
+    "outbound": [
+      "/notes/daily-walks-attract-downloads/",
+      "/notes/unscheduled-quick-calls-destroy-deep-work-flow/",
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/business-management-is-context-management/"
+    ],
+    "inbound": [
+      "/notes/daily-walks-attract-downloads/"
+    ],
+    "tags": [
+      "work",
+      "focus",
+      "productivity"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/defaulting-to-no-protects-deep-work/": {
     "slug": "/notes/defaulting-to-no-protects-deep-work/",
@@ -316,7 +473,13 @@
       "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/intelligent-router-eliminates-project-management/"
     ],
-    "inbound": [],
+    "inbound": [
+      "/notes/deep-work-shields-attention/",
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/unscheduled-quick-calls-destroy-deep-work-flow/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/zen-practice-protects-attention/"
+    ],
     "tags": [
       "deep-work",
       "boundaries",
@@ -336,6 +499,7 @@
     "outbound": [
       "/notes/ask-the-brain/",
       "/notes/ledger-replaces-feeds/",
+      "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/people-pay-to-follow-working-mind/"
     ],
@@ -346,6 +510,7 @@
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/what-is-commune/"
     ],
     "tags": [
@@ -356,6 +521,36 @@
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/depth-gating-protects-computation-costs/": {
+    "slug": "/notes/depth-gating-protects-computation-costs/",
+    "title": "Depth gating protects computation costs",
+    "aliases": [
+      "depth gating",
+      "gating",
+      "pricing"
+    ],
+    "outbound": [
+      "/notes/the-star/",
+      "/notes/build-in-public/",
+      "/notes/what-is-commune/",
+      "/notes/awake-happy/",
+      "/notes/ads-lab/",
+      "/notes/skool/",
+      "/notes/gamification-drives-self-discovery/"
+    ],
+    "inbound": [
+      "/notes/awake-happy/",
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/the-star/"
+    ],
+    "tags": [
+      "commune",
+      "business",
+      "pricing"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/discovery-runs-on-time-follows-and-why/": {
     "slug": "/notes/discovery-runs-on-time-follows-and-why/",
@@ -402,13 +597,17 @@
       "evergreen-notes"
     ],
     "outbound": [
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/atomic-notes/",
       "/notes/associative-linking-over-hierarchies/",
       "/notes/titles-are-takeaways-not-labels/",
+      "/notes/manual-file-management-is-high-friction-waste/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/voice-in-approvals-out/",
       "/notes/ask-the-brain/",
-      "/notes/personal-knowledge-graphs/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/andy-matuschaks-notes/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/box-first-earns-trust/"
     ],
     "inbound": [
@@ -416,9 +615,12 @@
       "/notes/associative-linking-over-hierarchies/",
       "/notes/atomic-notes/",
       "/notes/build-in-public/",
+      "/notes/daily-walks-attract-downloads/",
+      "/notes/learning-in-public-accelerates-growth/",
       "/notes/notes-beat-posts-for-showing-progress/",
-      "/notes/personal-knowledge-graphs/",
-      "/notes/titles-are-takeaways-not-labels/"
+      "/notes/the-star/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/zettelkasten-method/"
     ],
     "tags": [
       "writing",
@@ -433,10 +635,21 @@
     "title": "Externalizing thought builds a cognitive scaffold for solving complex problems",
     "aliases": [],
     "outbound": [
-      "/notes/manual-file-management-is-high-friction-waste/"
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/unscheduled-quick-calls-destroy-deep-work-flow/"
     ],
     "inbound": [
-      "/notes/defaulting-to-no-protects-deep-work/"
+      "/notes/business-management-is-context-management/",
+      "/notes/daily-walks-attract-downloads/",
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/evergreen-notes/",
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
+      "/notes/release-is-monthly-human-wrap/",
+      "/notes/unscheduled-quick-calls-destroy-deep-work-flow/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/zen-practice-protects-attention/",
+      "/notes/zettelkasten-method/"
     ],
     "tags": [
       "cognition",
@@ -445,6 +658,32 @@
       "thinking"
     ],
     "status": "seed"
+  },
+  "/notes/film-production-managing-information/": {
+    "slug": "/notes/film-production-managing-information/",
+    "title": "Film production taught me context management",
+    "aliases": [
+      "film",
+      "lightiron",
+      "panavision",
+      "di-producer"
+    ],
+    "outbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/awake-happy/",
+      "/notes/ads-lab/",
+      "/notes/what-is-commune/"
+    ],
+    "inbound": [
+      "/notes/networked-thinking-reveals-hidden-connections/"
+    ],
+    "tags": [
+      "work",
+      "history",
+      "film"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/follow-and-collect-keep-signal-not-hype/": {
     "slug": "/notes/follow-and-collect-keep-signal-not-hype/",
@@ -457,11 +696,11 @@
     "outbound": [
       "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/ledger-replaces-feeds/",
+      "/notes/release-is-monthly-human-wrap/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/zen-practice-protects-attention/",
-      "/notes/personal-knowledge-graphs/",
       "/notes/associative-linking-over-hierarchies/"
     ],
     "inbound": [
@@ -469,6 +708,8 @@
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/release-is-monthly-human-wrap/",
+      "/notes/suggestions-and-proposals-make-readers-part-of-work/",
       "/notes/what-is-commune/"
     ],
     "tags": [
@@ -480,6 +721,35 @@
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
+  "/notes/gamification-drives-self-discovery/": {
+    "slug": "/notes/gamification-drives-self-discovery/",
+    "title": "Gamification drives self-discovery",
+    "aliases": [
+      "gamification",
+      "self-discovery"
+    ],
+    "outbound": [
+      "/notes/what-is-commune/",
+      "/notes/the-star/",
+      "/notes/skool/",
+      "/notes/people-pay-to-follow-working-mind/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/build-in-public/"
+    ],
+    "inbound": [
+      "/notes/ads-lab/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/skool/",
+      "/notes/the-star/"
+    ],
+    "tags": [
+      "gamification",
+      "purpose",
+      "business"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
+  },
   "/notes/integrated-data-analysis-unlocks-impossible-observations/": {
     "slug": "/notes/integrated-data-analysis-unlocks-impossible-observations/",
     "title": "Integrated data analysis unlocks observations impossible in siloed systems",
@@ -489,8 +759,12 @@
       "/notes/personalized-ai-optimizes-communication-strategies/"
     ],
     "inbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/network-effects-in-knowledge-work/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
-      "/notes/personalized-ai-optimizes-communication-strategies/"
+      "/notes/personalized-ai-optimizes-communication-strategies/",
+      "/notes/private-ai-outperforms-cloud-ai/"
     ],
     "tags": [
       "data",
@@ -510,9 +784,12 @@
       "/notes/manual-file-management-is-high-friction-waste/"
     ],
     "inbound": [
+      "/notes/business-management-is-context-management/",
       "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/manual-file-management-is-high-friction-waste/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
-      "/notes/router-tasteful-knowledge-integration/"
+      "/notes/router-tasteful-knowledge-integration/",
+      "/notes/voice-in-approvals-out/"
     ],
     "tags": [
       "router",
@@ -521,6 +798,28 @@
       "commune"
     ],
     "status": "seed"
+  },
+  "/notes/learning-in-public-accelerates-growth/": {
+    "slug": "/notes/learning-in-public-accelerates-growth/",
+    "title": "Learning in public accelerates growth",
+    "aliases": [],
+    "outbound": [
+      "/notes/build-in-public/",
+      "/notes/what-is-commune/",
+      "/notes/evergreen-notes/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/transparent-decision-making-builds-trust/"
+    ],
+    "inbound": [
+      "/notes/build-in-public/"
+    ],
+    "tags": [
+      "learning",
+      "public",
+      "feedback",
+      "growth"
+    ],
+    "status": "live"
   },
   "/notes/ledger-replaces-feeds/": {
     "slug": "/notes/ledger-replaces-feeds/",
@@ -535,7 +834,8 @@
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/discovery-runs-on-time-follows-and-why/",
-      "/notes/zen-practice-protects-attention/"
+      "/notes/zen-practice-protects-attention/",
+      "/notes/suggestions-and-proposals-make-readers-part-of-work/"
     ],
     "inbound": [
       "/notes/auto-essay-closes-loop-each-week/",
@@ -544,10 +844,13 @@
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/learning-in-public-accelerates-growth/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/suggestions-and-proposals-make-readers-part-of-work/",
       "/notes/titles-are-takeaways-not-labels/",
+      "/notes/transparent-decision-making-builds-trust/",
       "/notes/voice-in-approvals-out/",
       "/notes/what-is-commune/",
       "/notes/zen-practice-protects-attention/"
@@ -559,7 +862,8 @@
       "updates"
     ],
     "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
+    "updated": "2025-10-15T00:00:00.000Z",
+    "isStarred": true
   },
   "/notes/local-first-software/": {
     "slug": "/notes/local-first-software/",
@@ -570,10 +874,14 @@
       "data ownership"
     ],
     "outbound": [
-      "/notes/commune/"
+      "/notes/what-is-commune/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/data-sovereignty-for-individuals/"
     ],
     "inbound": [
       "/notes/box-first-earns-trust/",
+      "/notes/data-sovereignty-for-individuals/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/zen-practice-protects-attention/"
     ],
@@ -586,39 +894,47 @@
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
-  "/notes/local-systems-require-enhancement-dashboards/": {
-    "slug": "/notes/local-systems-require-enhancement-dashboards/",
+  "/notes/local-systems-require-enhancement-dashboards-for-training/": {
+    "slug": "/notes/local-systems-require-enhancement-dashboards-for-training/",
     "title": "Local systems require Enhancement Dashboards for user-in-the-loop model training",
     "aliases": [],
     "outbound": [
-      "/notes/router-tasteful-knowledge-integration/",
-      "/notes/accurate-transcription-requires-personal-training/"
+      "/notes/accurate-transcription-requires-personal-training/",
+      "/notes/private-ai-outperforms-cloud-ai/"
     ],
-    "inbound": [],
+    "inbound": [
+      "/notes/accurate-transcription-requires-personal-training/",
+      "/notes/router-tasteful-knowledge-integration/"
+    ],
     "tags": [
-      "local-ai",
+      "ai",
       "training",
-      "ui",
-      "enhancement"
+      "local-first",
+      "ux"
     ],
-    "status": "seed"
+    "status": "live"
   },
   "/notes/manual-file-management-is-high-friction-waste/": {
     "slug": "/notes/manual-file-management-is-high-friction-waste/",
     "title": "Manual file management is a high-friction waste of cognitive resources",
-    "aliases": [
-      "manual file management",
-      "file organization overhead"
-    ],
+    "aliases": [],
     "outbound": [
       "/notes/zen-practice-protects-attention/",
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/unscheduled-quick-calls-destroy-deep-work-flow/",
+      "/notes/intelligent-router-eliminates-project-management/",
       "/notes/voice-in-approvals-out/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/notes-beat-posts-for-showing-progress/"
     ],
     "inbound": [
+      "/notes/atomic-notes/",
+      "/notes/business-management-is-context-management/",
+      "/notes/evergreen-notes/",
       "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/intelligent-router-eliminates-project-management/",
-      "/notes/unscheduled-quick-calls-destroy-deep-work/"
+      "/notes/voice-in-approvals-out/"
     ],
     "tags": [
       "productivity",
@@ -627,6 +943,61 @@
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/network-effects-in-knowledge-work/": {
+    "slug": "/notes/network-effects-in-knowledge-work/",
+    "title": "Network effects in knowledge work",
+    "aliases": [],
+    "outbound": [
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/andy-matuschaks-notes/",
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/the-star/"
+    ],
+    "inbound": [
+      "/notes/associative-linking-over-hierarchies/"
+    ],
+    "tags": [
+      "network-effects",
+      "knowledge",
+      "compounding",
+      "connections"
+    ],
+    "status": "live"
+  },
+  "/notes/networked-thinking-reveals-hidden-connections/": {
+    "slug": "/notes/networked-thinking-reveals-hidden-connections/",
+    "title": "Networked thinking reveals hidden connections",
+    "aliases": [
+      "networked thinking",
+      "connected notes",
+      "wiki thinking"
+    ],
+    "outbound": [
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/awake-happy/",
+      "/notes/ads-lab/",
+      "/notes/film-production-managing-information/",
+      "/notes/business-management-is-context-management/",
+      "/notes/what-is-commune/",
+      "/notes/the-star/",
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
+      "/notes/voice-in-approvals-out/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/"
+    ],
+    "inbound": [
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/evergreen-notes/"
+    ],
+    "tags": [
+      "thinking",
+      "connections",
+      "wiki",
+      "networks"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/notes-beat-posts-for-showing-progress/": {
     "slug": "/notes/notes-beat-posts-for-showing-progress/",
@@ -641,11 +1012,11 @@
       "/notes/auto-essay-closes-loop-each-week/",
       "/notes/voice-in-approvals-out/",
       "/notes/depth-3-free-is-honest-gating/",
+      "/notes/release-is-monthly-human-wrap/",
       "/notes/ledger-replaces-feeds/",
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/associative-linking-over-hierarchies/",
-      "/notes/evergreen-notes/",
-      "/notes/personal-knowledge-graphs/"
+      "/notes/evergreen-notes/"
     ],
     "inbound": [
       "/notes/ask-the-brain/",
@@ -675,7 +1046,13 @@
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
       "/notes/private-ai-outperforms-cloud-ai/"
     ],
-    "inbound": [],
+    "inbound": [
+      "/notes/business-management-is-context-management/",
+      "/notes/data-sovereignty-for-individuals/",
+      "/notes/local-first-software/",
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/private-ai-outperforms-cloud-ai/"
+    ],
     "tags": [
       "infrastructure",
       "data-ownership",
@@ -705,11 +1082,13 @@
     "inbound": [
       "/notes/ask-the-brain/",
       "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/awake-happy/",
       "/notes/box-first-earns-trust/",
       "/notes/business-management-is-context-management/",
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/gamification-drives-self-discovery/",
       "/notes/ledger-replaces-feeds/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
@@ -721,36 +1100,6 @@
       "transparency",
       "value",
       "authenticity"
-    ],
-    "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
-  },
-  "/notes/personal-knowledge-graphs/": {
-    "slug": "/notes/personal-knowledge-graphs/",
-    "title": "Personal Knowledge Graphs",
-    "aliases": [
-      "PKG",
-      "knowledge graphs",
-      "personal knowledge networks"
-    ],
-    "outbound": [
-      "/notes/associative-linking-over-hierarchies/",
-      "/notes/evergreen-notes/"
-    ],
-    "inbound": [
-      "/notes/andy-matuschaks-notes/",
-      "/notes/associative-linking-over-hierarchies/",
-      "/notes/atomic-notes/",
-      "/notes/evergreen-notes/",
-      "/notes/follow-and-collect-keep-signal-not-hype/",
-      "/notes/notes-beat-posts-for-showing-progress/",
-      "/notes/private-ai-outperforms-cloud-ai/"
-    ],
-    "tags": [
-      "knowledge-management",
-      "graphs",
-      "personal-data",
-      "networks"
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
@@ -778,33 +1127,35 @@
   },
   "/notes/private-ai-outperforms-cloud-ai/": {
     "slug": "/notes/private-ai-outperforms-cloud-ai/",
-    "title": "Private AI outperforms cloud AI by leveraging structured, proprietary memory",
-    "aliases": [
-      "private AI advantage",
-      "local AI benefits",
-      "proprietary memory"
-    ],
+    "title": "Private AI outperforms cloud AI",
+    "aliases": [],
     "outbound": [
       "/notes/box-first-earns-trust/",
-      "/notes/personal-knowledge-graphs/",
       "/notes/voice-in-approvals-out/",
-      "/notes/ask-the-brain/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
+      "/notes/integrated-data-analysis-unlocks-impossible-observations/",
       "/notes/local-first-software/"
     ],
     "inbound": [
       "/notes/ask-the-brain/",
       "/notes/box-first-earns-trust/",
+      "/notes/business-management-is-context-management/",
+      "/notes/data-sovereignty-for-individuals/",
+      "/notes/evergreen-notes/",
+      "/notes/local-first-software/",
+      "/notes/local-systems-require-enhancement-dashboards-for-training/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/owning-data-infrastructure-eliminates-middleware/",
-      "/notes/personalized-ai-optimizes-communication-strategies/"
+      "/notes/personalized-ai-optimizes-communication-strategies/",
+      "/notes/voice-in-approvals-out/"
     ],
     "tags": [
       "ai",
       "privacy",
-      "local-first",
-      "memory"
+      "local-first"
     ],
     "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/reality-as-spiritual-hide-and-seek-game/": {
     "slug": "/notes/reality-as-spiritual-hide-and-seek-game/",
@@ -856,16 +1207,37 @@
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
+  "/notes/release-is-monthly-human-wrap/": {
+    "slug": "/notes/release-is-monthly-human-wrap/",
+    "title": "Release is a monthly human wrap",
+    "aliases": [],
+    "outbound": [
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/"
+    ],
+    "inbound": [
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/notes-beat-posts-for-showing-progress/"
+    ],
+    "tags": [
+      "publishing",
+      "synthesis",
+      "monthly",
+      "curation"
+    ],
+    "status": "live"
+  },
   "/notes/router-tasteful-knowledge-integration/": {
     "slug": "/notes/router-tasteful-knowledge-integration/",
     "title": "The router's primary challenge is updating knowledge bases tastefully and non-destructively",
     "aliases": [],
     "outbound": [
+      "/notes/local-systems-require-enhancement-dashboards-for-training/",
       "/notes/intelligent-router-eliminates-project-management/"
     ],
     "inbound": [
-      "/notes/intelligent-router-eliminates-project-management/",
-      "/notes/local-systems-require-enhancement-dashboards/"
+      "/notes/intelligent-router-eliminates-project-management/"
     ],
     "tags": [
       "router",
@@ -874,6 +1246,32 @@
       "integration"
     ],
     "status": "seed"
+  },
+  "/notes/skool/": {
+    "slug": "/notes/skool/",
+    "title": "Skool",
+    "aliases": [
+      "skool-platform"
+    ],
+    "outbound": [
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/the-star/",
+      "/notes/what-is-commune/",
+      "/notes/build-in-public/"
+    ],
+    "inbound": [
+      "/notes/ads-lab/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/the-star/"
+    ],
+    "tags": [
+      "platforms",
+      "gamification",
+      "community"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/spiritual-paradox-hider-and-seeker-are-same/": {
     "slug": "/notes/spiritual-paradox-hider-and-seeker-are-same/",
@@ -892,6 +1290,80 @@
       "non-duality"
     ],
     "status": "seed"
+  },
+  "/notes/suggestions-and-proposals-make-readers-part-of-work/": {
+    "slug": "/notes/suggestions-and-proposals-make-readers-part-of-work/",
+    "title": "Suggestions and Proposals make readers part of the work",
+    "aliases": [],
+    "outbound": [
+      "/notes/ledger-replaces-feeds/",
+      "/notes/build-in-public/",
+      "/notes/follow-and-collect-keep-signal-not-hype/"
+    ],
+    "inbound": [
+      "/notes/commune/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/transparent-decision-making-builds-trust/",
+      "/notes/what-is-commune/"
+    ],
+    "tags": [
+      "commune",
+      "collaboration",
+      "feedback",
+      "transparency"
+    ],
+    "status": "live"
+  },
+  "/notes/the-home-note-should-guide-first-three-steps/": {
+    "slug": "/notes/the-home-note-should-guide-first-three-steps/",
+    "title": "The Home note should guide the first three steps",
+    "aliases": [],
+    "outbound": [
+      "/notes/what-is-commune/",
+      "/notes/depth-3-free-is-honest-gating/"
+    ],
+    "inbound": [
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/depth-3-free-is-honest-gating/"
+    ],
+    "tags": [
+      "navigation",
+      "ux",
+      "onboarding",
+      "design"
+    ],
+    "status": "live"
+  },
+  "/notes/the-star/": {
+    "slug": "/notes/the-star/",
+    "title": "The Star",
+    "aliases": [
+      "star",
+      "star-system",
+      "star-feature"
+    ],
+    "outbound": [
+      "/notes/skool/",
+      "/notes/titles-are-takeaways-not-labels/",
+      "/notes/evergreen-notes/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/build-in-public/",
+      "/notes/gamification-drives-self-discovery/"
+    ],
+    "inbound": [
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/network-effects-in-knowledge-work/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
+      "/notes/skool/"
+    ],
+    "tags": [
+      "commune",
+      "features",
+      "gamification"
+    ],
+    "status": "live",
+    "updated": "2025-10-16T00:00:00.000Z"
   },
   "/notes/titles-are-takeaways-not-labels/": {
     "slug": "/notes/titles-are-takeaways-not-labels/",
@@ -917,7 +1389,8 @@
       "/notes/atomic-notes/",
       "/notes/auto-essay-closes-loop-each-week/",
       "/notes/evergreen-notes/",
-      "/notes/follow-and-collect-keep-signal-not-hype/"
+      "/notes/follow-and-collect-keep-signal-not-hype/",
+      "/notes/the-star/"
     ],
     "tags": [
       "writing",
@@ -928,26 +1401,47 @@
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
   },
-  "/notes/unscheduled-quick-calls-destroy-deep-work/": {
-    "slug": "/notes/unscheduled-quick-calls-destroy-deep-work/",
-    "title": "Unscheduled quick calls destroy deep work flow states",
-    "aliases": [
-      "quick calls",
-      "interruption cost",
-      "flow state protection"
-    ],
+  "/notes/transparent-decision-making-builds-trust/": {
+    "slug": "/notes/transparent-decision-making-builds-trust/",
+    "title": "Transparent decision-making builds trust",
+    "aliases": [],
     "outbound": [
+      "/notes/build-in-public/",
+      "/notes/ledger-replaces-feeds/",
+      "/notes/suggestions-and-proposals-make-readers-part-of-work/"
+    ],
+    "inbound": [
+      "/notes/build-in-public/",
+      "/notes/learning-in-public-accelerates-growth/"
+    ],
+    "tags": [
+      "transparency",
+      "trust",
+      "decisions",
+      "leadership"
+    ],
+    "status": "live"
+  },
+  "/notes/unscheduled-quick-calls-destroy-deep-work-flow/": {
+    "slug": "/notes/unscheduled-quick-calls-destroy-deep-work-flow/",
+    "title": "Unscheduled quick calls destroy deep work",
+    "aliases": [],
+    "outbound": [
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/"
+    ],
+    "inbound": [
+      "/notes/deep-work-shields-attention/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/manual-file-management-is-high-friction-waste/"
     ],
-    "inbound": [],
     "tags": [
-      "productivity",
+      "focus",
       "deep-work",
-      "communication",
-      "boundaries"
+      "boundaries",
+      "interruptions"
     ],
-    "status": "live",
-    "updated": "2025-10-15T00:00:00.000Z"
+    "status": "live"
   },
   "/notes/voice-in-approvals-out/": {
     "slug": "/notes/voice-in-approvals-out/",
@@ -962,7 +1456,12 @@
       "/notes/auto-essay-closes-loop-each-week/",
       "/notes/ledger-replaces-feeds/",
       "/notes/box-first-earns-trust/",
+      "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/people-pay-to-follow-working-mind/",
+      "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/intelligent-router-eliminates-project-management/",
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/notes-beat-posts-for-showing-progress/"
     ],
     "inbound": [
@@ -972,9 +1471,11 @@
       "/notes/box-first-earns-trust/",
       "/notes/business-management-is-context-management/",
       "/notes/commune/",
+      "/notes/daily-walks-attract-downloads/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/evergreen-notes/",
       "/notes/manual-file-management-is-high-friction-waste/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/titles-are-takeaways-not-labels/",
@@ -993,8 +1494,9 @@
   },
   "/notes/what-is-commune/": {
     "slug": "/notes/what-is-commune/",
-    "title": "Commune replaces social feeds with working memory",
+    "title": "Commune",
     "aliases": [
+      "commune",
       "what is commune",
       "about commune",
       "commune platform"
@@ -1007,12 +1509,28 @@
       "/notes/depth-3-free-is-honest-gating/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/ask-the-brain/",
+      "/notes/suggestions-and-proposals-make-readers-part-of-work/",
       "/notes/box-first-earns-trust/",
       "/notes/zen-practice-protects-attention/",
       "/notes/auto-essay-closes-loop-each-week/"
     ],
     "inbound": [
-      "/notes/commune/"
+      "/notes/ads-lab/",
+      "/notes/andy-matuschaks-notes/",
+      "/notes/awake-happy/",
+      "/notes/build-in-public/",
+      "/notes/commune/",
+      "/notes/daily-walks-attract-downloads/",
+      "/notes/data-sovereignty-for-individuals/",
+      "/notes/depth-gating-protects-computation-costs/",
+      "/notes/film-production-managing-information/",
+      "/notes/gamification-drives-self-discovery/",
+      "/notes/learning-in-public-accelerates-growth/",
+      "/notes/local-first-software/",
+      "/notes/networked-thinking-reveals-hidden-connections/",
+      "/notes/skool/",
+      "/notes/the-home-note-should-guide-first-three-steps/",
+      "/notes/zettelkasten-method/"
     ],
     "tags": [
       "commune",
@@ -1020,7 +1538,8 @@
       "knowledge-sharing",
       "working-in-public"
     ],
-    "status": "live"
+    "status": "live",
+    "isStarred": true
   },
   "/notes/zen-practice-protects-attention/": {
     "slug": "/notes/zen-practice-protects-attention/",
@@ -1036,12 +1555,15 @@
       "/notes/voice-in-approvals-out/",
       "/notes/ask-the-brain/",
       "/notes/box-first-earns-trust/",
+      "/notes/defaulting-to-no-protects-deep-work/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/",
       "/notes/local-first-software/",
       "/notes/build-in-public/"
     ],
     "inbound": [
       "/notes/auto-essay-closes-loop-each-week/",
       "/notes/commune/",
+      "/notes/deep-work-shields-attention/",
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/follow-and-collect-keep-signal-not-hype/",
       "/notes/ledger-replaces-feeds/",
@@ -1058,5 +1580,26 @@
     ],
     "status": "live",
     "updated": "2025-10-15T00:00:00.000Z"
+  },
+  "/notes/zettelkasten-method/": {
+    "slug": "/notes/zettelkasten-method/",
+    "title": "Zettelkasten Method",
+    "aliases": [],
+    "outbound": [
+      "/notes/evergreen-notes/",
+      "/notes/associative-linking-over-hierarchies/",
+      "/notes/andy-matuschaks-notes/",
+      "/notes/what-is-commune/",
+      "/notes/externalizing-thought-builds-cognitive-scaffold/"
+    ],
+    "inbound": [
+      "/notes/associative-linking-over-hierarchies/"
+    ],
+    "tags": [
+      "note-taking",
+      "knowledge-management",
+      "methodology"
+    ],
+    "status": "live"
   }
 }

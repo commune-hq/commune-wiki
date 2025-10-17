@@ -15,6 +15,6 @@ This feature works only if notes have strong titles. See [[Titles are takeaways,
 
 Paid answers also reveal weak spots. If the same question shows up, I add a sentence to the note or write a new note. Then the next answer gets sharper. Ask-the-Brain over private daily notes runs local on the [[Box-first earns trust]]. Public Q&A runs on public notes so readers can check sources.
 
-That split keeps privacy intact and still helps people learn fast. This connects to [[Private AI outperforms cloud AI by leveraging structured, proprietary memory]] because the system has access to complete context and personal terminology. It supports [[People pay to follow a working mind]] by providing immediate value through instant, cited answers.
+That split keeps privacy intact and still helps people learn fast. This connects to how [[Private AI outperforms cloud AI]] because the system has access to complete context and personal terminology. It supports [[People pay to follow a working mind]] by providing immediate value through instant, cited answers.
 
 The feature also improves through [[Notes beat posts for showing progress]] because atomic notes with clear claims make better retrieval targets than long-form posts.

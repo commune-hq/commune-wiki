@@ -16,7 +16,7 @@ Key requirements:
 - **Context awareness**: Understand what information belongs where
 - **Personal taste**: Adapt to individual preferences and patterns
 
-This connects to why [[Local systems require "Enhancement Dashboards" for user-in-the-loop model training]]. The system needs to learn your specific preferences for how information should be integrated.
+This connects to why [[Local systems require Enhancement Dashboards for user-in-the-loop model training]]. The system needs to learn your specific preferences for how information should be integrated.
 
 The payoff is [[A sufficiently intelligent router eliminates the need for traditional project management]]. When the router can tastefully maintain context, you don't need artificial PM overhead.
 

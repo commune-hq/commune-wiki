@@ -29,4 +29,4 @@ This philosophy drives [[Commune]]'s architecture: AI runs locally, knowledge ba
 
 **Key insight**: Local-first doesn't mean local-only. It means local-capable with optional cloud features.
 
-**Related**: [[Private AI outperforms cloud AI]], [[Owning data infrastructure eliminates middleware]], [[Data sovereignty for individuals]]
+**Related**: [[Private AI outperforms cloud AI]], [[Owning your data infrastructure eliminates the need for specialized middleware and roles]], [[Data sovereignty for individuals]]

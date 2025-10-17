@@ -18,6 +18,6 @@ Potential applications:
 
 This requires [[Integrated data analysis unlocks observations impossible in siloed systems]]. You need the full context of all interactions—not just formal communications, but casual conversations, project outcomes, and emotional dynamics.
 
-The privacy implications are significant, which is why this needs to be built on [[Private AI outperforms cloud AI by leveraging structured, proprietary memory]]. This level of personal data should never leave your control.
+The privacy implications are significant, which is why this needs to be built on [[Private AI outperforms cloud AI]]. This level of personal data should never leave your control.
 
 This connects to [[Accurate transcription requires training the model on personal proper nouns and context]]. The system needs to understand your specific relationships and contexts to provide meaningful insights.

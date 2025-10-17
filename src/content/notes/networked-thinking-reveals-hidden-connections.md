@@ -13,7 +13,7 @@ Building a wiki where notes link to each other lets you see patterns you'd miss 
 
 The power isn't in storing information—it's in discovering connections. When you write [[Awake Happy]] taught me economics matter, and link it to [[Ads Lab]] bridges what I learned in e-commerce, you start seeing threads across your whole story.
 
-Cross-domain insights happen naturally. A business lesson connects to a personal observation through shared principles. [[Film production taught me context management]] links to [[Business management is context management]] links to [[Commune]]—suddenly fifteen years of experience has a through-line.
+Cross-domain insights happen naturally. A business lesson connects to a personal observation through shared principles. [[Film production taught me context management]] links to the insight that [[Business management is fundamentally the management of expanding context]], which links to [[Commune]]—suddenly fifteen years of experience has a through-line.
 
 This is why [[The Star]] matters. The notes with the most backlinks aren't just popular—they're central to how you think. They anchor everything else.
 
@@ -22,8 +22,8 @@ The system enables questions traditional search can't answer:
 - Where do my business projects and personal principles overlap?
 - What contradictions exist in my thinking?
 
-[[Private AI outperforms cloud AI]] because the agent has access to all these connections. [[Integrated data analysis unlocks impossible observations]] when your Shopify data, ad campaigns, voice notes, and wiki all link together.
+[[Private AI outperforms cloud AI]] because the agent has access to all these connections. [[Integrated data analysis unlocks observations impossible in siloed systems]] when your Shopify data, ad campaigns, voice notes, and wiki all link together.
 
 The trick is balance. Too much automatic linking creates noise. Too little manual curation misses connections. That's why [[Voice in, approvals out]] works—I capture freely, the agent proposes links, I approve what fits.
 
-The result: [[Externalizing thought builds cognitive scaffold]]. Each note becomes a building block. The more you write, the more sophisticated your thinking becomes.
+The result: [[Externalizing thought builds a cognitive scaffold for solving complex problems]]. Each note becomes a building block. The more you write, the more sophisticated your thinking becomes.

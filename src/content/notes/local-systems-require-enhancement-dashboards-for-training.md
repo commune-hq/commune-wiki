@@ -5,7 +5,6 @@ visibility: public
 status: live
 tags: [ai, training, local-first, ux]
 summary: "Local AI needs a UI for correcting mistakes. User feedback trains the model. The dashboard shows what needs review."
-aliases: ['Local systems require "Enhancement Dashboards" for user-in-the-loop model training']
 ---
 
 Local AI gets better by learning from your corrections. But that requires an interface for you to fix its mistakes and confirm good outputs.

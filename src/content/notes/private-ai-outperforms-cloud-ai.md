@@ -4,7 +4,6 @@ created: 2025-10-15
 visibility: public
 status: live
 tags: [ai, privacy, local-first]
-aliases: ["private AI", "local AI", "Private AI outperforms cloud AI by leveraging structured, proprietary memory"]
 updated: 2025-10-16
 summary: "AI running on your hardware with access to all your data beats cloud models trained on generic internet content. Context wins."
 ---
@@ -17,4 +16,4 @@ The agent can answer questions cloud models can't. What did Sarah and I decide a
 
 Context beats raw intelligence. A smaller model with full access to your data outperforms a larger model without it. That's why [[Voice in, approvals out]] works. The system learns your voice over time.
 
-Your data never leaves your infrastructure. No trust boundary with cloud providers. [[Owning data infrastructure eliminates middleware]] gives you this advantage. [[Integrated data analysis unlocks impossible observations]] becomes possible when everything connects. [[Local-First Software]] plus local AI changes the game.
+Your data never leaves your infrastructure. No trust boundary with cloud providers. [[Owning your data infrastructure eliminates the need for specialized middleware and roles]] gives you this advantage. [[Integrated data analysis unlocks observations impossible in siloed systems]] becomes possible when everything connects. [[Local-First Software]] plus local AI changes the game.

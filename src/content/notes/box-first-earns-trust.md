@@ -15,6 +15,6 @@ Readers still get a great surface. They see the notes I want to share. They see 
 
 This is the answer to the anti-algorithm stance in [[Discovery runs on time, follows, and why]]. Ownership and privacy first. Then sharing. Not the other way around.
 
-Box-first enables [[Voice in, approvals out]] because I can capture anything without fear. It supports [[Private AI outperforms cloud AI by leveraging structured, proprietary memory]] by keeping all context local. It also makes [[People pay to follow a working mind]] possible because readers trust that what they see is genuine, not optimized for engagement.
+Box-first enables [[Voice in, approvals out]] because I can capture anything without fear. It shows why [[Private AI outperforms cloud AI]] by keeping all context local. It also makes [[People pay to follow a working mind]] possible because readers trust that what they see is genuine, not optimized for engagement.
 
 The Box is what makes [[Local-First Software]] practical for knowledge work at scale.
