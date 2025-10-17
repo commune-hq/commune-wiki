@@ -9,14 +9,14 @@ summary: "Readers can suggest fixes or additions. You review and approve. The le
 
 Most platforms separate creators from readers. You publish, they consume. Maybe they comment. That's it.
 
-Commune flips this. Readers can propose changes—corrections, additions, new connections. You review the proposal, approve or reject. If approved, it updates the note and shows in [[Ledger replaces feeds]].
+[[Commune]] flips this. Readers propose changes—corrections, additions, new connections. I review, approve or reject. Approved changes update the note and show in [[Ledger replaces feeds]].
 
-This isn't Wikipedia-style open editing. You control what publishes. But it also isn't a one-way broadcast. Readers who spot gaps or errors can contribute directly to improving the work.
+Not Wikipedia-style open editing. I control what publishes. But not a one-way broadcast either. Readers who spot gaps or errors contribute directly.
 
-The system tracks who suggested what. Attribution matters. If someone adds value, the ledger shows it. This connects to [[Build in Public]]—the work becomes collaborative without losing authorship.
+System tracks who suggested what. Attribution matters. Someone adds value, the ledger shows it. [[Build in Public]] becomes collaborative without losing authorship.
 
-Think of it as pull requests for thought. Someone sees a broken link, a missing connection, a better way to phrase an idea. They submit it. You decide. The wiki gets better.
+Pull requests for thought. Broken link, missing connection, better phrasing—they submit, I decide, wiki gets better.
 
-This enables [[Follow and Collect keep signal, not hype]] because engaged readers become collaborators. The people who care enough to suggest improvements are exactly the people worth paying attention to.
+Engaged readers become collaborators ([[Follow and Collect keep signal, not hype]]). People who care enough to suggest improvements are exactly who to pay attention to.
 
-The approval workflow protects quality while enabling contribution. You're not crowdsourcing authority—you're accepting help from people who understand the work well enough to improve it.
+Approval workflow protects quality while enabling contribution. Not crowdsourcing authority—accepting help from people who understand the work well enough to improve it.
