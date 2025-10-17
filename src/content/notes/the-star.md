@@ -9,7 +9,7 @@ updated: 2025-10-16
 summary: A Commune feature marking notes that anchor key ideas in your wiki—top 5% by backlinks, inspired by Skool's approach to recognizing contributors.
 ---
 
-The Star (⭐) marks notes that sit in the top 5% by backlinks. Other notes reach for these often—a sign they anchor key ideas in your wiki.
+The Star is a [[Commune]] feature that marks notes in the top 5% by backlinks. When other notes link to something often, it anchors key ideas in your wiki. The star (⭐) makes that visible.
 
 This isn't about popularity. It's about centrality. When your wiki shows which ideas carry weight across your thinking, you see patterns you'd miss otherwise. The system borrows from [[Skool]]'s approach: recognize top contributors with a visible badge. Here, the badge goes to ideas, not people.
 
