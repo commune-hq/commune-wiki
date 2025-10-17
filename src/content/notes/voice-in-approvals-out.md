@@ -15,7 +15,7 @@ System sends drafts back to my iOS app. I review. Reply with more voice to refin
 
 Infinite loop. Dump thoughts → AI drafts → review → refine → repeat. Hammer notes into atomic format over time.
 
-Still building the agent and algorithm. Current state: I talk, AI drafts, I approve or toss. Future state: AI learns my voice patterns, link preferences, and atomic note structure. Gets better with every cycle.
+Still building the agent and algorithm. Current state: I talk, AI drafts, I manually refine. The vision is I approve or toss. Future state: AI learns my voice patterns, link preferences, and atomic note structure. Gets better with every cycle.
 
 [[The Commune box]] keeps capture private ([[Private AI outperforms cloud AI]]). No tags to babysit. No manual graph gardening. [[Manual file management is a high-friction waste of cognitive resources]]. Voice capture eliminates that.
 

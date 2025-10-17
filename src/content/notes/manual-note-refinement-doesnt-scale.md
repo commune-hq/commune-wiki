@@ -1,10 +1,10 @@
 ---
-title: Manual note refinement doesn't scale
+title: Manual note refinement doesnt scale
 created: 2025-10-17
 visibility: public
 status: live
 tags: [workflow, reflect, process, automation]
-aliases: ["reflect workflow", "higher self prompt", "old process"]
+aliases: ["reflect workflow", "higher self prompt", "old process", "Manual note refinement doesn't scale"]
 updated: 2025-10-17
 summary: I used Reflect with a "higher self" prompt to refine my voice dumps. Had to manually select transcripts, run analysis, copy/paste formatted output, update the prompt. Too arduous. Couldn't get my data out. That's why I'm building Commune.
 ---
