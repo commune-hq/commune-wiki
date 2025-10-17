@@ -106,6 +106,7 @@
     ],
     "outbound": [
       "/notes/evergreen-notes/",
+      "/notes/my-working-notes/",
       "/notes/associative-linking-over-hierarchies/",
       "/notes/what-is-commune/",
       "/notes/build-in-public/"
@@ -1000,7 +1001,10 @@
       "/notes/the-commune-box/",
       "/notes/andy-matuschaks-notes/"
     ],
-    "inbound": [],
+    "inbound": [
+      "/notes/andy-matuschaks-notes/",
+      "/notes/what-is-commune/"
+    ],
     "tags": [
       "home",
       "navigation",
@@ -1766,7 +1770,8 @@
       "/notes/discovery-runs-on-time-follows-and-why/",
       "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/the-commune-box/",
-      "/notes/auto-essay-closes-loop-each-week/"
+      "/notes/auto-essay-closes-loop-each-week/",
+      "/notes/my-working-notes/"
     ],
     "inbound": [
       "/notes/ads-lab/",

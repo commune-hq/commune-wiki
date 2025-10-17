@@ -9,7 +9,7 @@ updated: 2025-10-17
 summary: "Andy Matuschak's note-taking system pioneered the concept of evergreen notes with sliding pane interfaces and dense linking."
 ---
 
-Andy Matuschak's public note system at <a href="https://notes.andymatuschak.org" target="_blank" rel="noopener noreferrer">notes.andymatuschak.org<span class="external-link-icon" aria-hidden="true">↗</span></a> pioneered [[Evergreen Notes]] with sliding panes. Most note-taking optimizes for capture. His system optimizes for thinking.
+Andy Matuschak's public note system at <a href="https://notes.andymatuschak.org" target="_blank" rel="noopener noreferrer">notes.andymatuschak.org<span class="external-link-icon" aria-hidden="true">↗</span></a> pioneered [[Evergreen Notes]] with sliding panes. Most note-taking optimizes for capture. His system optimizes for thinking. He inspired [[My Working Notes]].
 
 The core innovation is notes that compound over time. Each note is atomic, concept-oriented, densely linked. See [[Evergreen Notes]]. Not an archive. A thinking environment that evolves with you.
 

@@ -20,4 +20,4 @@ I run [[The Commune box]] at home. It's optional. You control what publishes. Th
 
 Share the messy process, not just polished outputs. [[Auto-essay closes the loop each week]] turns fragmented notes into coherent thought every week.
 
-This site runs an early version. I'm building it in public. Follow [[See what I'm working on]] to see what changes.
+This site runs an early version of commune displaying [[My Working Notes]].
