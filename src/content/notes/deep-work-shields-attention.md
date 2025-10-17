@@ -15,7 +15,7 @@ When I'm on my computer, my goal is deep work. Focused, uninterrupted thinking t
 
 Both [[Unscheduled quick calls destroy deep work]] and [[Defaulting to No for unscheduled calls protects deep work]] are boundaries I've built to protect focus. Quick calls fragment attention. Saying "no" by default keeps my calendar clear.
 
-The phrase "deep work" comes from Cal Newport, but the practice is ancient. It's what happens when I eliminate distractions and think hard about one thing for hours. [[Zen practice protects attention]] does this too. Meditation trains the muscle of sustained focus.
+The phrase "deep work" comes from Cal Newport, but the practice is ancient. It's what happens when I eliminate distractions and think hard about one thing for hours. Meditation trains the muscle of sustained focus.
 
 For me, deep work happens in the morning and right after my afternoon walk. That post-walk sprint before dinner is gold. My mind is clear, I've processed thoughts on the walk, and I can hammer out real progress.
 
