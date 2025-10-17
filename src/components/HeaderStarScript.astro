@@ -37,9 +37,9 @@
         <button class="star-modal-close" aria-label="Close">&times;</button>
         <div class="star-modal-body">
           <div class="star-modal-icon">⭐</div>
-          <h2>Top 5% Most Referenced</h2>
-          <p>This note sits in the <strong>top 5%</strong> by backlinks. Other notes reach for it often—a sign it anchors key ideas in the knowledge graph.</p>
-          <p><a href="/notes/the-star/" class="star-link">Learn more about the <span class="star-emoji">⭐</span> system</a></p>
+          <h2>Top 5%</h2>
+          <p>Other notes link here often. Shows this idea anchors your wiki.</p>
+          <p><a href="/notes/the-star/" class="star-link">More about <span class="star-emoji">⭐</span></a></p>
         </div>
       </div>
     `;
@@ -102,7 +102,7 @@
             const star = document.createElement('span');
             star.className = 'star-indicator';
             star.innerHTML = ' ⭐';
-            star.setAttribute('aria-label', 'Top 5% most referenced note - click to learn more');
+            star.setAttribute('aria-label', 'Top 5% most linked - click to learn more');
             star.setAttribute('role', 'button');
             star.setAttribute('tabindex', '0');
 
