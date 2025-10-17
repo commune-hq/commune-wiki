@@ -1,12 +1,12 @@
 ---
-title: "Devon's working brain in public"
+title: Working notes
 created: 2025-10-09
 visibility: public
 status: live
 tags: [home, navigation, working-in-public]
-aliases: ["home", "devon meadows"]
-updated: 2025-10-15
-summary: "I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and I run Ads Lab and Awake Happy. This is my working brain in public."
+aliases: []
+updated: 2025-10-17
+summary: I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building Commune and running Ads Lab and Awake Happy. These are my working notes.
 ---
 
 I'm Devon Meadows. Dad. Thinker. Tinkerer. I'm building [[Commune]] (that's what's powering this website). I also run [[Ads Lab]] and [[Awake Happy]]. This is my working brain in public.
