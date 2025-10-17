@@ -98,6 +98,10 @@
         h1s.forEach(h1 => {
           // Check if star isn't already there
           if (!h1.querySelector('.star-indicator')) {
+            // Create wrapper to prevent line break between last word and star
+            const wrapper = document.createElement('span');
+            wrapper.style.whiteSpace = 'nowrap';
+
             // Create star element (inline, clickable)
             const star = document.createElement('span');
             star.className = 'star-indicator';
@@ -120,7 +124,26 @@
               }
             });
 
-            h1.appendChild(star);
+            // Get the h1's text content
+            const textContent = h1.textContent || '';
+            const words = textContent.trim().split(/\s+/);
+
+            // If there's more than one word, wrap the last word + star
+            if (words.length > 1) {
+              const lastWord = words.pop();
+              const restOfText = words.join(' ');
+
+              h1.textContent = restOfText + ' ';
+              wrapper.textContent = lastWord;
+              wrapper.appendChild(star);
+              h1.appendChild(wrapper);
+            } else {
+              // Just one word, append star directly with nowrap
+              wrapper.textContent = textContent;
+              wrapper.appendChild(star);
+              h1.textContent = '';
+              h1.appendChild(wrapper);
+            }
           }
         });
       }
@@ -152,6 +175,7 @@
     opacity: 0.9;
     transition: opacity 0.2s ease, transform 0.2s ease;
     user-select: none;
+    white-space: nowrap;
   }
 
   .star-indicator:hover {
