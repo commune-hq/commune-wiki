@@ -11,13 +11,13 @@ Local AI gets better by learning from your corrections. But that requires an int
 
 Enhancement Dashboards surface what needs review. Transcriptions with low confidence scores. Proposed edits that seem off. Routing decisions that might be wrong. You review, correct, approve. The system learns.
 
-This is user-in-the-loop training. Not fine-tuning—more like ongoing calibration. The model sees your corrections and adjusts. Over time, it makes fewer mistakes and understands your preferences better.
+This is user-in-the-loop training. Not fine-tuning. More like ongoing calibration. The model sees your corrections and adjusts. Over time, it makes fewer mistakes and understands your preferences better.
 
-The dashboard prevents review from becoming overwhelming. It shows only what needs attention, sorted by confidence or importance. You're not checking everything—just the edge cases where the model is uncertain.
+The dashboard prevents review from becoming overwhelming. It shows only what needs attention, sorted by confidence or importance. You're not checking everything. Just the edge cases where the model is uncertain.
 
 This connects to [[Accurate transcription requires training the model on personal proper nouns and context]]. Generic speech-to-text fails on your terminology, your accent, your speaking style. Local training fixes that, but only if you have a way to correct mistakes.
 
-The workflow: capture automatically, surface uncertainties, human reviews and corrects, model improves. Repeat. The system gets smarter without manual training data preparation.
+The workflow is simple. Capture automatically, surface uncertainties, human reviews and corrects, model improves. Repeat. The system gets smarter without manual training data preparation.
 
 This is why [[Private AI outperforms cloud AI]]. Cloud models can't learn from your specific corrections. They serve millions of users with one model. Local AI can specialize completely to you.
 

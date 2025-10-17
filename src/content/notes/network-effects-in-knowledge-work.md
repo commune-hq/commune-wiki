@@ -15,10 +15,10 @@ This is why [[Associative linking over hierarchies]] matters. Hierarchies force 
 
 The compounding happens through unexpected connections. You write a note about business management. It links to notes about AI, notes about attention, notes about infrastructure. Suddenly you see patterns invisible in isolation.
 
-[[Andy Matuschak's Notes]] demonstrate this. His system has thousands of notes. New notes reference old notes, creating surprising connections years apart. The value isn't in individual notes—it's in the web.
+[[Andy Matuschak's Notes]] demonstrate this. His system has thousands of notes. New notes reference old notes, creating surprising connections years apart. The value isn't in individual notes. It's in the web.
 
 This enables [[Integrated data analysis unlocks observations impossible in siloed systems]]. When everything connects, you see what others miss. Siloed information has linear value. Networked information has exponential value.
 
-The practical insight: invest in infrastructure for connection, not just capture. Make linking easy. Surface related notes automatically. Prioritize integration over organization.
+The practical insight is invest in infrastructure for connection, not just capture. Make linking easy. Surface related notes automatically. Prioritize integration over organization.
 
 This is what [[The Star]] measures. Notes with many inbound links anchor the network. They're connection points that make everything else more valuable.
