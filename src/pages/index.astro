@@ -361,6 +361,10 @@ function getRelativeDate(dateString: string): string {
           if (typeof window.initializeHeaderStar === 'function') {
             window.initializeHeaderStar(pane);
           }
+          // Update relative dates for the new pane
+          if (typeof window.updateRelativeDates === 'function') {
+            window.updateRelativeDates();
+          }
 
           setTimeout(() => focusPane(pane), 0);
           console.log('Pane opened successfully');
@@ -492,7 +496,8 @@ function getRelativeDate(dateString: string): string {
 
   <script is:inline>
     // Fix timezone issue: Recalculate dates client-side
-    function updateRelativeDates() {
+    // Make it globally available so panes can use it
+    window.updateRelativeDates = function() {
       document.querySelectorAll('.note-date[data-date]').forEach(el => {
         const dateString = el.dataset.date;
         if (!dateString) return;
@@ -519,10 +524,10 @@ function getRelativeDate(dateString: string): string {
 
         el.textContent = prefix + relativeText;
       });
-    }
+    };
 
     // Run on page load
-    updateRelativeDates();
+    window.updateRelativeDates();
   </script>
 
   <BacklinksScript />
