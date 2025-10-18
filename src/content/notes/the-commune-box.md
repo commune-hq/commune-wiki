@@ -9,7 +9,7 @@ updated: 2025-10-18
 summary: The vision for Commune is to fully enable people with a physical box they own at home. Self-host your wiki, run local AI, keep your data. This is how I run my instance today.
 ---
 
-The vision for [[Commune]] is to fully enable people with a physical box they own at home. Not a product yet... an idea I'm [[Build in Public|building toward in public]]. This is how I run my own instance right now.
+The vision for [[Commune]] is to fully enable people with a physical box they own at home. Not a product yet. This is how I run my own instance right now.
 
 I want to help people push their ideas forward independently and maybe make a living from that alone. You shouldn't need to rely on me or any cloud company to run your wiki, analyze your notes, or make money from your work. As your wiki grows, computation costs grow with it. There's no way to make that affordable if I'm doing all the computing. The only sustainable path is running it at home.
 
