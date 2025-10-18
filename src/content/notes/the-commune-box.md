@@ -11,7 +11,7 @@ summary: The vision for Commune is to fully enable people with a physical box th
 
 The vision for [[Commune]] is to fully enable people with a physical box they own at home. Not a product yet. This is how I run my own instance right now.
 
-I want to help people push their ideas forward independently and maybe make a living from that alone. You shouldn't need to rely on me or any cloud company to run your wiki, analyze your notes, or make money from your work. As your wiki grows, computation costs grow with it. There's no way to make that affordable if I'm doing all the computing. The only sustainable path is running it at home.
+I want to help people push their ideas forward independently and maybe make a living from that alone ([[Build in Public]]). You shouldn't need to rely on me or any cloud company to run your wiki, analyze your notes, or make money from your work. As your wiki grows, computation costs grow with it. There's no way to make that affordable if I'm doing all the computing. The only sustainable path is running it at home.
 
 It's just a computer. Maybe a purpose-built device, maybe you repurpose one you already have. [[Data sovereignty for individuals]] means you own all of your data. Your wiki self-hosted. [[Local-First Software]] means AI analysis and search run locally through something like Ollama. Agent flows you can see and manage.
 
