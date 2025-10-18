@@ -1,0 +1,155 @@
+---
+/**
+ * Homepage Footer Cards
+ * Two-column layout showing backlinks and recent activity
+ * Only displays on the home note (My Working Notes)
+ */
+
+interface Props {
+  slug: string;
+  backlinks?: Array<{
+    slug: string;
+    title: string;
+  }>;
+}
+
+const { slug, backlinks = [] } = Astro.props;
+
+// Only show on home note
+const isHomePage = slug === '/notes/my-working-notes/';
+if (!isHomePage) return null;
+---
+
+{isHomePage && (
+  <section class="home-footer-cards">
+    <div class="footer-cards-container">
+
+      <!-- Left Card: Backlinks -->
+      <div class="footer-card backlinks-card">
+        <h3 class="card-title">Notes linking here</h3>
+        <div class="card-content">
+          {backlinks.length === 0 ? (
+            <p class="empty-state">No backlinks yet</p>
+          ) : (
+            <ul class="backlinks-list">
+              {backlinks.slice(0, 5).map((link) => (
+                <li>
+                  <a href={link.slug}>{link.title}</a>
+                </li>
+              ))}
+            </ul>
+          )}
+          {backlinks.length > 5 && (
+            <button class="expand-button">
+              View all {backlinks.length} links →
+            </button>
+          )}
+        </div>
+      </div>
+
+      <!-- Right Card: Recent Activity -->
+      <div class="footer-card activity-card">
+        <h3 class="card-title">Recent work</h3>
+        <div class="card-content">
+          <p class="empty-state">Commit history analysis coming soon</p>
+          <!-- Will be populated with LLM-analyzed commit summaries -->
+        </div>
+      </div>
+
+    </div>
+  </section>
+)}
+
+<style>
+  .home-footer-cards {
+    margin-top: 4rem;
+    padding-top: 3rem;
+    border-top: 1px solid var(--c-border);
+  }
+
+  .footer-cards-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    max-width: 100%;
+  }
+
+  /* Mobile: Stack vertically */
+  @media (max-width: 767px) {
+    .footer-cards-container {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .footer-card {
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius-md);
+    padding: 1.5rem;
+    min-height: 200px;
+  }
+
+  .card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin: 0 0 1rem 0;
+    color: var(--c-text);
+  }
+
+  .card-content {
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .backlinks-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .backlinks-list li {
+    margin-bottom: 0.75rem;
+  }
+
+  .backlinks-list a {
+    color: var(--c-text-accent);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: all 0.15s ease;
+    display: block;
+    padding: 0.5rem;
+    margin: -0.5rem;
+    border-radius: var(--c-radius-sm);
+  }
+
+  .backlinks-list a:hover {
+    background: var(--c-bg);
+    border-bottom-color: var(--c-accent);
+  }
+
+  .empty-state {
+    color: var(--c-text-muted);
+    font-style: italic;
+    margin: 0;
+  }
+
+  .expand-button {
+    margin-top: 1rem;
+    background: transparent;
+    border: 1px solid var(--c-border);
+    color: var(--c-text-accent);
+    padding: 0.5rem 1rem;
+    border-radius: var(--c-radius-sm);
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: all 0.15s ease;
+    width: 100%;
+    text-align: center;
+  }
+
+  .expand-button:hover {
+    background: var(--c-bg);
+    border-color: var(--c-accent);
+  }
+</style>

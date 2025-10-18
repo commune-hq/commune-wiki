@@ -7,6 +7,7 @@ import Backlinks from '../../components/Backlinks.astro';
 import BacklinksScript from '../../components/BacklinksScript.astro';
 import StarredLinksScript from '../../components/StarredLinksScript.astro';
 import HeaderStarScript from '../../components/HeaderStarScript.astro';
+import HomeFooterCards from '../../components/HomeFooterCards.astro';
 import Footer from '../../components/Footer.astro';
 import PlausibleScript from '../../components/PlausibleScript.astro';
 import '../../styles/design-system.css';
@@ -28,6 +29,25 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const { slug, data } = entry;
 const title = data.title ?? slug;
+
+// Load backlinks for footer cards
+let backlinksData: Array<{ slug: string; title: string }> = [];
+try {
+  const backlinksJson = await import('/public/backlinks.json');
+  const currentSlug = `/notes/${slug}/`;
+  const noteData = backlinksJson.default[currentSlug];
+  if (noteData && noteData.inbound) {
+    backlinksData = noteData.inbound.map((inboundSlug: string) => {
+      const inboundNote = backlinksJson.default[inboundSlug];
+      return {
+        slug: inboundSlug,
+        title: inboundNote?.title || inboundSlug
+      };
+    });
+  }
+} catch (e) {
+  console.error('Failed to load backlinks:', e);
+}
 
 // Helper function for relative date formatting
 function getRelativeDate(dateString: string): string {
@@ -96,7 +116,7 @@ function getRelativeDate(dateString: string): string {
             "url": "https://devonmeadows.com/"
           },
           "datePublished": `${data.created || data.updated}T00:00:00-07:00`,
-          "dateModified": `${data.updated}T00:00:00-07:00`,
+          "dateModified": `${data.updated || data.created}T00:00:00-07:00`,
           "url": Astro.url.href,
           "isPartOf": {
             "@id": "https://devonmeadows.com/#website"
@@ -136,7 +156,7 @@ function getRelativeDate(dateString: string): string {
                         <article class="prose">
                             {/* Date above title */}
                             {(data.updated || data.created) && (
-                              <div class="note-date">
+                              <div class="note-date" data-date={data.updated || data.created}>
                                 {getRelativeDate(data.updated || data.created)}
                               </div>
                             )}
@@ -146,6 +166,7 @@ function getRelativeDate(dateString: string): string {
                             <Content />
                         </article>
                         <Backlinks slug={`/notes/${slug}/`} title={title} />
+                        <HomeFooterCards slug={`/notes/${slug}/`} backlinks={backlinksData} />
                         <Footer />
                     </div>
                 </div>
@@ -502,6 +523,39 @@ function getRelativeDate(dateString: string): string {
 
 
     </script>
+
+    <script is:inline>
+      // Fix timezone issue: Recalculate dates client-side
+      function updateRelativeDates() {
+        document.querySelectorAll('.note-date[data-date]').forEach(el => {
+          const dateString = el.dataset.date;
+          if (!dateString) return;
+
+          const date = new Date(dateString + 'T12:00:00');
+          const now = new Date();
+          const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+          const noteDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+          const diffTime = today.getTime() - noteDate.getTime();
+          const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+          let text = '';
+          if (diffDays === 0) text = 'Today';
+          else if (diffDays === 1) text = 'Yesterday';
+          else if (diffDays < 7) text = `${diffDays} days ago`;
+          else if (diffDays < 14) text = '1 week ago';
+          else if (diffDays < 30) text = `${Math.floor(diffDays / 7)} weeks ago`;
+          else if (diffDays < 60) text = '1 month ago';
+          else text = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+          el.textContent = text;
+        });
+      }
+
+      // Run on page load
+      updateRelativeDates();
+    </script>
+
     <BacklinksScript />
     <StarredLinksScript />
     <HeaderStarScript />
