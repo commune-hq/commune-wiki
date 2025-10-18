@@ -104,8 +104,10 @@ function getRelativeDate(dateString: string): string {
             <article class="prose">
               {/* Date above title */}
               {(data.updated || data.created) && (
-                <div class="note-date">
-                  {getRelativeDate(data.updated || data.created)}
+                <div class="note-date"
+                     data-date={data.updated || data.created}
+                     data-is-updated={data.updated ? 'true' : 'false'}>
+                  {(data.updated ? 'Updated ' : 'Created ') + (data.updated || data.created)}
                 </div>
               )}
 
@@ -470,6 +472,42 @@ function getRelativeDate(dateString: string): string {
 
 
   </script>
+
+  <script is:inline>
+    // Fix timezone issue: Recalculate dates client-side
+    function updateRelativeDates() {
+      document.querySelectorAll('.note-date[data-date]').forEach(el => {
+        const dateString = el.dataset.date;
+        if (!dateString) return;
+
+        const isUpdated = el.dataset.isUpdated === 'true';
+        const prefix = isUpdated ? 'Updated ' : 'Created ';
+
+        const date = new Date(dateString + 'T12:00:00');
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const noteDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+        const diffTime = today.getTime() - noteDate.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        let relativeText = '';
+        if (diffDays === 0) relativeText = 'today';
+        else if (diffDays === 1) relativeText = 'yesterday';
+        else if (diffDays < 7) relativeText = `${diffDays} days ago`;
+        else if (diffDays < 14) relativeText = '1 week ago';
+        else if (diffDays < 30) relativeText = `${Math.floor(diffDays / 7)} weeks ago`;
+        else if (diffDays < 60) relativeText = '1 month ago';
+        else relativeText = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        el.textContent = prefix + relativeText;
+      });
+    }
+
+    // Run on page load
+    updateRelativeDates();
+  </script>
+
   <BacklinksScript />
   <StarredLinksScript />
   <HeaderStarScript />
