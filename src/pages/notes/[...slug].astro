@@ -158,7 +158,7 @@ function getRelativeDate(dateString: string): string {
                             {(data.updated || data.created) && (
                               <div class="note-date"
                                    data-date={data.updated || data.created}
-                                   data-is-updated={!!data.updated}>
+                                   data-is-updated={data.updated ? 'true' : 'false'}>
                                 {(data.updated ? 'Updated ' : 'Created ') + getRelativeDate(data.updated || data.created)}
                               </div>
                             )}
