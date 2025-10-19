@@ -170,7 +170,7 @@ function getRelativeDate(dateString: string): string {
 
               {/* Links to this note card (second on mobile, right on desktop) */}
               <div class="home-card backlinks-card">
-                <Backlinks slug={`/notes/${slug}/`} title={title} hideCount={true} />
+                <Backlinks slug={`/notes/${slug}/`} title={title} />
               </div>
             </div>
           </div>
@@ -868,21 +868,30 @@ function getRelativeDate(dateString: string): string {
     font-variant-numeric: tabular-nums;
   }
 
-  .update-link,
-  .backlink-link {
+  .update-link {
     color: var(--c-text) !important;
     text-decoration: none;
-    border-bottom: 1px solid var(--c-border) !important;
-    padding-bottom: 1px;
-    transition: all 0.15s ease;
+    border-bottom: none !important;
+    transition: color 0.15s ease;
     flex: 1;
     font-size: 0.85rem;
   }
 
-  .update-link:hover,
+  .update-link:hover {
+    color: var(--c-accent) !important;
+  }
+
+  .backlink-link {
+    color: var(--c-text) !important;
+    text-decoration: none;
+    border-bottom: none !important;
+    transition: color 0.15s ease;
+    flex: 1;
+    font-size: 0.85rem;
+  }
+
   .backlink-link:hover {
     color: var(--c-accent) !important;
-    border-bottom-color: var(--c-accent) !important;
   }
 
   .view-all-link {
@@ -898,10 +907,19 @@ function getRelativeDate(dateString: string): string {
     border-bottom-color: var(--c-accent) !important;
   }
 
-  /* Make backlinks inside card match smaller sizing */
-  .backlinks-card aside.backlinks h3 {
-    font-size: 0.95rem;
-    margin-bottom: 0.75rem;
+  /* Make backlinks title match Updates card title exactly */
+  .backlinks-card aside.backlinks h4 {
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    margin: 0 0 0.75rem 0 !important;
+    color: var(--c-text) !important;
+  }
+
+  /* Remove top border and padding from backlinks in card */
+  .backlinks-card aside.backlinks {
+    margin-top: 0 !important;
+    padding-top: 0 !important;
+    border-top: none !important;
   }
 
   .backlinks-card aside.backlinks ul {
