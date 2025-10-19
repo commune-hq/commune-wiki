@@ -151,7 +151,6 @@
       "/notes/manual-note-refinement-doesnt-scale/",
       "/notes/notes-beat-posts-for-showing-progress/",
       "/notes/people-pay-to-follow-working-mind/",
-      "/notes/the-commune-box/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/titles-are-takeaways-not-labels/"
     ],
@@ -339,8 +338,10 @@
       "/notes/gamification-drives-self-discovery/",
       "/notes/learning-in-public-accelerates-growth/",
       "/notes/people-pay-to-follow-working-mind/",
+      "/notes/research-oss-business-models/",
       "/notes/skool/",
       "/notes/subscription-unlocks-depth-into-the-mind/",
+      "/notes/the-commune-box/",
       "/notes/the-star/",
       "/notes/transparent-decision-making-builds-trust/"
     ],
@@ -451,7 +452,8 @@
       "/notes/what-is-commune/"
     ],
     "inbound": [
-      "/notes/local-first-software/"
+      "/notes/local-first-software/",
+      "/notes/the-commune-box/"
     ],
     "tags": [
       "privacy",
@@ -836,7 +838,6 @@
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
       "/notes/suggestions-and-proposals-make-readers-part-of-work/",
-      "/notes/the-commune-box/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/titles-are-takeaways-not-labels/",
       "/notes/transparent-decision-making-builds-trust/",
@@ -1011,7 +1012,7 @@
       "working-in-public"
     ],
     "status": "live",
-    "updated": "2025-10-17T00:00:00.000Z"
+    "updated": "2025-10-18T00:00:00.000Z"
   },
   "/notes/network-effects-in-knowledge-work/": {
     "slug": "/notes/network-effects-in-knowledge-work/",
@@ -1119,7 +1120,9 @@
     ],
     "inbound": [
       "/notes/manual-note-refinement-doesnt-scale/",
-      "/notes/reflect/"
+      "/notes/reflect/",
+      "/notes/research-digital-garden-tech-stacks/",
+      "/notes/research-oss-business-models/"
     ],
     "tags": [
       "tools",
@@ -1143,7 +1146,8 @@
       "/notes/data-sovereignty-for-individuals/",
       "/notes/local-first-software/",
       "/notes/manual-file-management-is-high-friction-waste/",
-      "/notes/private-ai-outperforms-cloud-ai/"
+      "/notes/private-ai-outperforms-cloud-ai/",
+      "/notes/the-commune-box/"
     ],
     "tags": [
       "infrastructure",
@@ -1229,7 +1233,8 @@
       "/notes/mobile-preview-without-breaking-flow/"
     ],
     "inbound": [
-      "/notes/mobile-preview-without-breaking-flow/"
+      "/notes/mobile-preview-without-breaking-flow/",
+      "/notes/research-digital-garden-tech-stacks/"
     ],
     "tags": [
       "commune",
@@ -1308,6 +1313,7 @@
       "/notes/cursor/",
       "/notes/manual-note-refinement-doesnt-scale/",
       "/notes/obsidian/",
+      "/notes/research-digital-garden-tech-stacks/",
       "/notes/the-higher-self-prompt-in-reflect/"
     ],
     "tags": [
@@ -1366,6 +1372,83 @@
       "curation"
     ],
     "status": "live"
+  },
+  "/notes/research-creator-pricing-2024-2025/": {
+    "slug": "/notes/research-creator-pricing-2024-2025/",
+    "title": "Deep Research: Creator Platform Pricing",
+    "aliases": [],
+    "outbound": [
+      "/notes/substack/",
+      "/notes/skool/",
+      "/notes/what-is-commune/"
+    ],
+    "inbound": [],
+    "tags": [
+      "deep-research",
+      "pricing",
+      "creators",
+      "substack",
+      "skool"
+    ],
+    "status": "live",
+    "updated": "2025-10-19T00:00:00.000Z"
+  },
+  "/notes/research-digital-garden-tech-stacks/": {
+    "slug": "/notes/research-digital-garden-tech-stacks/",
+    "title": "Deep Research: Digital Garden Tech Stacks",
+    "aliases": [],
+    "outbound": [
+      "/notes/obsidian/",
+      "/notes/reflect/",
+      "/notes/what-is-commune/",
+      "/notes/preview-panes-preserve-reading-flow/"
+    ],
+    "inbound": [],
+    "tags": [
+      "deep-research",
+      "astro",
+      "nextjs",
+      "architecture"
+    ],
+    "status": "live",
+    "updated": "2025-10-19T00:00:00.000Z"
+  },
+  "/notes/research-hardware-ecosystems/": {
+    "slug": "/notes/research-hardware-ecosystems/",
+    "title": "Deep Research: Hardware Ecosystems",
+    "aliases": [],
+    "outbound": [
+      "/notes/the-commune-box/",
+      "/notes/what-is-commune/"
+    ],
+    "inbound": [],
+    "tags": [
+      "deep-research",
+      "hardware",
+      "raspberry-pi",
+      "self-hosting"
+    ],
+    "status": "live",
+    "updated": "2025-10-19T00:00:00.000Z"
+  },
+  "/notes/research-oss-business-models/": {
+    "slug": "/notes/research-oss-business-models/",
+    "title": "Deep Research: OSS Business Models",
+    "aliases": [],
+    "outbound": [
+      "/notes/obsidian/",
+      "/notes/what-is-commune/",
+      "/notes/build-in-public/"
+    ],
+    "inbound": [],
+    "tags": [
+      "deep-research",
+      "open-source",
+      "business-models",
+      "bootstrap"
+    ],
+    "status": "live",
+    "updated": "2025-10-19T00:00:00.000Z"
   },
   "/notes/router-tasteful-knowledge-integration/": {
     "slug": "/notes/router-tasteful-knowledge-integration/",
@@ -1428,6 +1511,7 @@
       "/notes/ads-lab/",
       "/notes/gamification-drives-self-discovery/",
       "/notes/mobile-preview-without-breaking-flow/",
+      "/notes/research-creator-pricing-2024-2025/",
       "/notes/the-star/"
     ],
     "tags": [
@@ -1495,6 +1579,7 @@
       "/notes/subscription-unlocks-depth-into-the-mind/"
     ],
     "inbound": [
+      "/notes/research-creator-pricing-2024-2025/",
       "/notes/subscription-unlocks-depth-into-the-mind/"
     ],
     "tags": [
@@ -1533,12 +1618,13 @@
     "aliases": [],
     "outbound": [
       "/notes/what-is-commune/",
-      "/notes/ledger-replaces-feeds/",
-      "/notes/ask-the-brain/",
+      "/notes/build-in-public/",
+      "/notes/data-sovereignty-for-individuals/",
+      "/notes/local-first-software/",
+      "/notes/owning-data-infrastructure-eliminates-middleware/",
       "/notes/ai-shapes-voice-dumps-into-atomic-notes/",
       "/notes/private-ai-outperforms-cloud-ai/",
-      "/notes/subscription-unlocks-depth-into-the-mind/",
-      "/notes/local-first-software/"
+      "/notes/subscription-unlocks-depth-into-the-mind/"
     ],
     "inbound": [
       "/notes/ai-shapes-voice-dumps-into-atomic-notes/",
@@ -1555,6 +1641,7 @@
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/reflect/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/research-hardware-ecosystems/",
       "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/the-home-note-should-guide-first-three-steps/",
       "/notes/titles-are-takeaways-not-labels/",
@@ -1567,7 +1654,7 @@
       "infrastructure"
     ],
     "status": "live",
-    "updated": "2025-10-17T00:00:00.000Z",
+    "updated": "2025-10-18T00:00:00.000Z",
     "isStarred": true
   },
   "/notes/the-higher-self-prompt-in-reflect/": {
@@ -1798,6 +1885,10 @@
       "/notes/people-pay-to-follow-working-mind/",
       "/notes/preview-panes-preserve-reading-flow/",
       "/notes/reflect/",
+      "/notes/research-creator-pricing-2024-2025/",
+      "/notes/research-digital-garden-tech-stacks/",
+      "/notes/research-hardware-ecosystems/",
+      "/notes/research-oss-business-models/",
       "/notes/seo-optimized-atomic-notes/",
       "/notes/skool/",
       "/notes/subscription-unlocks-depth-into-the-mind/",

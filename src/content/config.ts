@@ -28,5 +28,13 @@ export const collections = {
 			summary: z.string().optional(),
 		}),
 	}),
+	// Deep research reports (long-form, separate from atomic notes)
+	research: defineCollection({
+		type: 'content',
+		schema: z.object({
+			title: z.string().optional(),
+			author: z.string().default('Devon Meadows'),
+		}),
+	}),
 };
 

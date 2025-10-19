@@ -1,0 +1,203 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Header from '../../components/Header.astro';
+import SearchModal from '../../components/SearchModal.astro';
+import Footer from '../../components/Footer.astro';
+import PlausibleScript from '../../components/PlausibleScript.astro';
+import '../../styles/design-system.css';
+import '../../styles/notes.css';
+
+export async function getStaticPaths() {
+	const research = await getCollection('research');
+	return research.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+interface Props {
+	entry: CollectionEntry<'research'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const title = entry.data.title || entry.slug;
+
+// Map slug to summary note URL
+const summaryUrlMap: Record<string, string> = {
+	'oss-business-models': '/notes/research-oss-business-models',
+	'creator-platform-pricing': '/notes/research-creator-pricing-2024-2025',
+	'digital-garden-tech-stacks': '/notes/research-digital-garden-tech-stacks',
+	'hardware-ecosystems': '/notes/research-hardware-ecosystems',
+};
+
+const summaryUrl = summaryUrlMap[entry.slug] || '/';
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{title} | Commune Research</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={`Deep research: ${title}`} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={`Deep research: ${title}`} />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:site_name" content="Commune" />
+  <meta property="og:image" content="https://devonmeadows.com/og-image.jpg" />
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={`Deep research: ${title}`} />
+  <meta name="twitter:image" content="https://devonmeadows.com/og-image.jpg" />
+
+  <meta name="author" content={entry.data.author || 'Devon Meadows'} />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+  <PlausibleScript domain="devonmeadows.com" />
+</head>
+<body>
+  <Header />
+  <SearchModal />
+
+  <main style="max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 200px);">
+    <div style="margin-bottom: 2rem;">
+      <a href={summaryUrl} style="color: var(--c-accent); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--c-bg-soft); border-radius: var(--c-radius-sm); border: 1px solid var(--c-border); transition: all 0.15s ease;">
+        <span>←</span>
+        <span>Back to Summary</span>
+      </a>
+    </div>
+
+    <article class="prose research-content" style="max-width: none;">
+      <Content />
+    </article>
+
+    <div style="margin: 4rem 0 2rem; padding-top: 2rem; border-top: 1px solid var(--c-border);">
+      <a href={summaryUrl} style="color: var(--c-accent); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--c-bg-soft); border-radius: var(--c-radius-sm); border: 1px solid var(--c-border); transition: all 0.15s ease;">
+        <span>←</span>
+        <span>Back to Summary</span>
+      </a>
+    </div>
+
+    <Footer />
+  </main>
+</body>
+</html>
+
+<style is:global>
+  body {
+    background: var(--c-bg);
+    color: var(--c-text);
+  }
+
+  /* Research content specific styles */
+  .research-content {
+    line-height: 1.8;
+  }
+
+  .research-content h1 {
+    font-size: 2.2rem;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  .research-content h2 {
+    font-size: 1.6rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .research-content h3 {
+    font-size: 1.3rem;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .research-content h4 {
+    font-size: 1.1rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .research-content table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .research-content th,
+  .research-content td {
+    border: 1px solid var(--c-border);
+    padding: 0.75rem;
+    text-align: left;
+  }
+
+  .research-content th {
+    background: var(--c-bg-soft);
+    font-weight: 600;
+  }
+
+  .research-content code {
+    background: var(--c-bg-soft);
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--c-radius-sm);
+    font-size: 0.9em;
+    font-family: 'Monaco', 'Courier New', monospace;
+  }
+
+  .research-content pre {
+    background: var(--c-bg-soft);
+    padding: 1rem;
+    border-radius: var(--c-radius-md);
+    overflow-x: auto;
+    margin: 1.5rem 0;
+  }
+
+  .research-content pre code {
+    background: transparent;
+    padding: 0;
+  }
+
+  .research-content blockquote {
+    border-left: 4px solid var(--c-accent);
+    padding-left: 1.5rem;
+    margin: 1.5rem 0;
+    color: var(--c-text-muted);
+    font-style: italic;
+  }
+
+  .research-content hr {
+    border: none;
+    border-top: 1px solid var(--c-border);
+    margin: 3rem 0;
+  }
+
+  .research-content ul,
+  .research-content ol {
+    margin: 1rem 0;
+    padding-left: 2rem;
+  }
+
+  .research-content li {
+    margin: 0.5rem 0;
+    line-height: 1.7;
+  }
+
+  /* Responsive tables */
+  @media (max-width: 768px) {
+    .research-content table {
+      font-size: 0.8rem;
+    }
+
+    .research-content th,
+    .research-content td {
+      padding: 0.5rem;
+    }
+  }
+</style>
