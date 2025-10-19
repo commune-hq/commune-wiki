@@ -25,34 +25,38 @@ const { Content } = await entry.render();
 const title = entry.data.title || entry.slug;
 
 // Map slug to summary note URL and metadata
-const researchMeta: Record<string, { summaryUrl: string; wordCount: string; aiSource: string; model: string }> = {
+const researchMeta: Record<string, { summaryUrl: string; wordCount: string; aiSource: string; model: string; context: string }> = {
 	'oss-business-models': {
 		summaryUrl: '/notes/research-oss-business-models',
 		wordCount: '10,200',
 		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5'
+		model: 'Claude Sonnet 3.5',
+		context: 'Deep research as part of [[My Working Notes]] as I explore [[Commune]] and [[Build in Public]].'
 	},
 	'creator-platform-pricing': {
 		summaryUrl: '/notes/research-creator-pricing-2024-2025',
 		wordCount: '8,400',
 		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5'
+		model: 'Claude Sonnet 3.5',
+		context: 'Deep research as part of [[My Working Notes]] as I explore [[Commune]], [[Substack]], and [[Skool]].'
 	},
 	'digital-garden-tech-stacks': {
 		summaryUrl: '/notes/research-digital-garden-tech-stacks',
 		wordCount: '9,600',
 		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5'
+		model: 'Claude Sonnet 3.5',
+		context: 'Deep research as part of [[My Working Notes]] as I explore [[Commune]], [[Obsidian]], and [[Reflect]].'
 	},
 	'hardware-ecosystems': {
 		summaryUrl: '/notes/research-hardware-ecosystems',
 		wordCount: '13,800',
 		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5'
+		model: 'Claude Sonnet 3.5',
+		context: 'Deep research as part of [[My Working Notes]] as I explore [[The Commune Box]].'
 	},
 };
 
-const meta = researchMeta[entry.slug] || { summaryUrl: '/', wordCount: 'N/A', aiSource: 'Unknown', model: 'Unknown' };
+const meta = researchMeta[entry.slug] || { summaryUrl: '/', wordCount: 'N/A', aiSource: 'Unknown', model: 'Unknown', context: 'Deep research as part of [[My Working Notes]].' };
 const summaryUrl = meta.summaryUrl;
 ---
 <html lang="en">
@@ -88,10 +92,7 @@ const summaryUrl = meta.summaryUrl;
     <!-- Match atomic notes header exactly -->
     <div class="note-header">
       <div class="note-date">Created October 18, 2025</div>
-      <div class="note-meta-right">
-        <span class="research-badge">📚 Deep Research</span>
-        <a href={summaryUrl} class="back-to-summary-link">← Back to Summary</a>
-      </div>
+      <a href={summaryUrl} class="back-to-summary-link">← Back to Summary</a>
     </div>
 
     <article class="prose research-content" style="max-width: none;">
@@ -100,8 +101,9 @@ const summaryUrl = meta.summaryUrl;
 
     <!-- Research info box (will be moved via JS to appear after h1) -->
     <div class="research-info-box" id="research-info-box">
+      <div class="research-badge-header">📚 Deep Research</div>
       <p class="research-intro">
-        Deep research conducted by Devon Meadows as part of <a href="/notes/my-working-notes" class="wikilink">My Working Notes</a> to inform strategic decisions for Commune.
+        {meta.context}
       </p>
       <div class="research-meta-grid">
         <div class="meta-item">
@@ -195,30 +197,12 @@ const summaryUrl = meta.summaryUrl;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    margin-bottom: 0.5rem;
-    padding-bottom: 1rem;
-    border-bottom: 1px solid var(--c-border);
+    margin-bottom: 1.5rem;
   }
 
   .note-date {
     font-size: 0.85rem;
     color: var(--c-text-muted);
-  }
-
-  .note-meta-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-
-  .research-badge {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.6rem;
-    background: var(--c-bg-soft);
-    border: 1px solid var(--c-border);
-    border-radius: var(--c-radius-sm);
-    color: var(--c-text-muted);
-    font-weight: 500;
   }
 
   .back-to-summary-link {
@@ -239,6 +223,13 @@ const summaryUrl = meta.summaryUrl;
     background: var(--c-bg-soft);
     border-left: 3px solid var(--c-accent);
     border-radius: var(--c-radius-md);
+  }
+
+  .research-badge-header {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--c-text);
+    margin-bottom: 0.75rem;
   }
 
   .research-intro {
