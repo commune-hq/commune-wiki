@@ -1430,6 +1430,7 @@
       "/notes/substack/",
       "/notes/skool/",
       "/notes/what-is-commune/",
+      "/notes/the-commune-box/",
       "/research/creator-platform-pricing"
     ],
     "inbound": [],
@@ -1491,8 +1492,8 @@
     "collection": "notes",
     "aliases": [],
     "outbound": [
-      "/notes/obsidian/",
       "/notes/what-is-commune/",
+      "/notes/obsidian/",
       "/notes/build-in-public/",
       "/research/oss-business-models"
     ],
@@ -1705,6 +1706,7 @@
       "/notes/private-ai-outperforms-cloud-ai/",
       "/notes/reflect/",
       "/notes/related-and-stroll-give-serendipity-without-feed/",
+      "/notes/research-creator-pricing-2024-2025/",
       "/notes/research-hardware-ecosystems/",
       "/notes/subscription-unlocks-depth-into-the-mind/",
       "/notes/the-home-note-should-guide-first-three-steps/",

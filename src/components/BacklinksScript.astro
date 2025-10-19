@@ -42,9 +42,10 @@
         // Show the section and populate links
         section.classList.remove('hidden');
 
-        // Update heading with count
+        // Update heading with count (unless hideCount attribute is present)
         const heading = section.querySelector('h4');
-        if (heading) {
+        const hideCount = section.hasAttribute('data-hide-count');
+        if (heading && !hideCount) {
           const count = items.length;
           const linkText = count === 1 ? 'link' : 'links';
           heading.textContent = `${count} ${linkText} to this note`;
