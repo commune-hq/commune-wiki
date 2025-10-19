@@ -1,5 +1,13 @@
 ---
 title: "The Commune Box: Hardware + Software Ecosystem Research"
+summaryNote: "research-hardware-ecosystems"
+created: "2025-10-18"
+updated: "2025-10-19"
+wordCount: 13800
+model: "Claude Sonnet 3.5"
+aiSource: "Claude Code"
+context: "Deep research as part of [[My Working Notes]] as I explore [[The Commune Box]]."
+summary: "Analysis of home server hardware ecosystems including Raspberry Pi, Umbrel, and Home Assistant. Informs hardware strategy for Commune Box product."
 ---
 
 # The Commune Box: Hardware + Software Ecosystem Research

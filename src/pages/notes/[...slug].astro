@@ -532,6 +532,19 @@ function getRelativeDate(dateString: string): string {
     </script>
 
     <script is:inline>
+      // === Research Link Navigation ===
+      // Make research links open in new tab with icon indicator
+      document.addEventListener('DOMContentLoaded', () => {
+        // Add target="_blank" to all research links
+        const researchLinks = document.querySelectorAll('a[data-collection="research"]');
+        researchLinks.forEach(link => {
+          link.setAttribute('target', '_blank');
+          link.setAttribute('rel', 'noopener noreferrer');
+        });
+      });
+    </script>
+
+    <script is:inline>
       // Fix timezone issue: Recalculate dates client-side
       // Make it globally available so panes can use it
       window.updateRelativeDates = function() {

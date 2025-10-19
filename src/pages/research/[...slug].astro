@@ -5,6 +5,7 @@ import Header from '../../components/Header.astro';
 import SearchModal from '../../components/SearchModal.astro';
 import Footer from '../../components/Footer.astro';
 import PlausibleScript from '../../components/PlausibleScript.astro';
+import StarredLinksScript from '../../components/StarredLinksScript.astro';
 import '../../styles/design-system.css';
 import '../../styles/notes.css';
 
@@ -22,67 +23,91 @@ interface Props {
 
 const { entry } = Astro.props;
 const { Content } = await entry.render();
-const title = entry.data.title || entry.slug;
+const { data } = entry;
+const title = data.title;
 
-// Map slug to summary note URL and metadata
-const researchMeta: Record<string, { summaryUrl: string; wordCount: string; aiSource: string; model: string; context: string }> = {
-	'oss-business-models': {
-		summaryUrl: '/notes/research-oss-business-models',
-		wordCount: '10,200',
-		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5',
-		context: 'Deep research as part of [[My Working Notes]] as I explore [[Commune]] and [[Build in Public]].'
-	},
-	'creator-platform-pricing': {
-		summaryUrl: '/notes/research-creator-pricing-2024-2025',
-		wordCount: '8,400',
-		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5',
-		context: 'Deep research as part of [[My Working Notes]] as I explore [[Commune]], [[Substack]], and [[Skool]].'
-	},
-	'digital-garden-tech-stacks': {
-		summaryUrl: '/notes/research-digital-garden-tech-stacks',
-		wordCount: '9,600',
-		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5',
-		context: 'Deep research as part of [[My Working Notes]] as I explore [[Commune]], [[Obsidian]], and [[Reflect]].'
-	},
-	'hardware-ecosystems': {
-		summaryUrl: '/notes/research-hardware-ecosystems',
-		wordCount: '13,800',
-		aiSource: 'Claude Code',
-		model: 'Claude Sonnet 3.5',
-		context: 'Deep research as part of [[My Working Notes]] as I explore [[The Commune Box]].'
-	},
-};
+// Build summary URL from frontmatter
+const summaryUrl = `/notes/${data.summaryNote}/`;
 
-const meta = researchMeta[entry.slug] || { summaryUrl: '/', wordCount: 'N/A', aiSource: 'Unknown', model: 'Unknown', context: 'Deep research as part of [[My Working Notes]].' };
-const summaryUrl = meta.summaryUrl;
+// Format word count with comma
+const formattedWordCount = data.wordCount.toLocaleString();
 ---
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <title>{title} | Commune Research</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="description" content={`Deep research: ${title}`} />
+  <meta name="description" content={data.summary || `Deep research: ${title}`} />
 
   <!-- Open Graph -->
   <meta property="og:title" content={title} />
-  <meta property="og:description" content={`Deep research: ${title}`} />
+  <meta property="og:description" content={data.summary || `Deep research: ${title}`} />
   <meta property="og:type" content="article" />
   <meta property="og:url" content={Astro.url} />
   <meta property="og:site_name" content="Commune" />
   <meta property="og:image" content="https://devonmeadows.com/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  {data.created && <meta property="article:published_time" content={`${data.created}T00:00:00-07:00`} />}
+  {data.updated && <meta property="article:modified_time" content={`${data.updated}T00:00:00-07:00`} />}
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
-  <meta name="twitter:description" content={`Deep research: ${title}`} />
+  <meta name="twitter:description" content={data.summary || `Deep research: ${title}`} />
   <meta name="twitter:image" content="https://devonmeadows.com/og-image.jpg" />
 
-  <meta name="author" content={entry.data.author || 'Devon Meadows'} />
+  <meta name="author" content={data.author} />
   <link rel="icon" type="image/png" href="/favicon-32x32.png" />
   <PlausibleScript domain="devonmeadows.com" />
+
+  <!-- JSON-LD Structured Data: Article + BreadcrumbList -->
+  <script type="application/ld+json" set:html={JSON.stringify({
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Article",
+        "headline": title,
+        "description": data.summary || title,
+        "image": "https://devonmeadows.com/og-image.jpg",
+        "author": {
+          "@type": "Person",
+          "name": data.author,
+          "url": "https://devonmeadows.com/"
+        },
+        "datePublished": `${data.created}T00:00:00-07:00`,
+        "dateModified": `${data.updated || data.created}T00:00:00-07:00`,
+        "wordCount": data.wordCount,
+        "url": Astro.url.href,
+        "isPartOf": {
+          "@id": "https://devonmeadows.com/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://devonmeadows.com/"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Summary",
+            "item": `https://devonmeadows.com${summaryUrl}`
+          },
+          {
+            "@type": "ListItem",
+            "position": 3,
+            "name": title,
+            "item": Astro.url.href
+          }
+        ]
+      }
+    ]
+  })} />
 </head>
 <body>
   <Header />
@@ -91,7 +116,7 @@ const summaryUrl = meta.summaryUrl;
   <main style="max-width: 65ch; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 200px);">
     <!-- Match atomic notes header exactly -->
     <div class="note-header">
-      <div class="note-date">Created October 18, 2025</div>
+      <div class="note-date">Created {new Date(data.created + 'T00:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</div>
       <a href={summaryUrl} class="back-to-summary-link">← Back to Summary</a>
     </div>
 
@@ -102,21 +127,19 @@ const summaryUrl = meta.summaryUrl;
     <!-- Research info box (will be moved via JS to appear after h1) -->
     <div class="research-info-box" id="research-info-box">
       <div class="research-badge-header">📚 Deep Research</div>
-      <p class="research-intro">
-        {meta.context}
-      </p>
+      <p class="research-intro">{data.context}</p>
       <div class="research-meta-grid">
         <div class="meta-item">
           <span class="meta-label">Generated with:</span>
-          <span class="meta-value">{meta.aiSource}</span>
+          <span class="meta-value">{data.aiSource}</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Model:</span>
-          <span class="meta-value">{meta.model}</span>
+          <span class="meta-value">{data.model}</span>
         </div>
         <div class="meta-item">
           <span class="meta-label">Length:</span>
-          <span class="meta-value">{meta.wordCount} words</span>
+          <span class="meta-value">{formattedWordCount} words</span>
         </div>
       </div>
     </div>
@@ -138,7 +161,7 @@ const summaryUrl = meta.summaryUrl;
 
   <script>
     // Add external link indicators to all external links
-    document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', async () => {
       const researchContent = document.querySelector('.research-content');
       if (!researchContent) return;
 
@@ -147,6 +170,170 @@ const summaryUrl = meta.summaryUrl;
       const h1 = researchContent.querySelector('h1');
       if (infoBox && h1) {
         h1.after(infoBox);
+      }
+
+      // Process wikilinks in info box context
+      const contextPara = document.querySelector('.research-intro');
+      if (contextPara) {
+        try {
+          // Fetch backlinks data to resolve wikilink titles to URLs
+          const response = await fetch('/backlinks.json');
+          const backlinks = await response.json();
+
+          // Build title -> URL lookup
+          const titleToUrl = new Map();
+          for (const [url, note] of Object.entries(backlinks)) {
+            titleToUrl.set(note.title.toLowerCase(), url);
+            // Also add aliases
+            if (note.aliases) {
+              for (const alias of note.aliases) {
+                titleToUrl.set(alias.toLowerCase(), url);
+              }
+            }
+          }
+
+          // Process wikilinks [[Title]] in context text
+          let html = contextPara.textContent;
+          html = html.replace(/\[\[([^\]]+)\]\]/g, (match, title) => {
+            const url = titleToUrl.get(title.trim().toLowerCase());
+            if (url) {
+              return `<a href="${url}" class="wikilink">${title.trim()}</a>`;
+            }
+            // If not found, just return the title without brackets
+            return title.trim();
+          });
+
+          contextPara.innerHTML = html;
+        } catch (error) {
+          console.error('Failed to process wikilinks in context:', error);
+        }
+      }
+
+      // Add hover preview functionality (desktop only) - same as notes pages
+      if (window.innerWidth >= 1024) {
+        const previewCache = new Map();
+
+        const showPreview = (el, html, x, y) => {
+          try {
+            let card = document.getElementById('note-hover');
+            if(!card){
+              card = document.createElement('div');
+              card.id = 'note-hover';
+              card.style.position = 'fixed';
+              card.style.maxWidth = '380px';
+              card.style.background = 'var(--c-bg)';
+              card.style.boxShadow = 'var(--c-shadow-xl)';
+              card.style.border = '1px solid var(--c-border)';
+              card.style.borderRadius = 'var(--c-radius-lg)';
+              card.style.padding = '1rem 1.2rem';
+              card.style.zIndex = 'var(--z-hover)';
+              card.style.pointerEvents = 'none';
+              document.body.appendChild(card);
+            }
+            card.innerHTML = html;
+
+            // Viewport-aware positioning
+            const padding = 16;
+            const offsetFromCursor = 16;
+
+            // Measure card dimensions
+            card.style.opacity = '0';
+            card.hidden = false;
+            const rect = card.getBoundingClientRect();
+            const cardWidth = rect.width;
+            const cardHeight = rect.height;
+            card.style.opacity = '1';
+
+            // Calculate position with edge detection
+            let left = x + offsetFromCursor;
+            let top = y + offsetFromCursor;
+
+            // Check right edge
+            if (left + cardWidth + padding > window.innerWidth) {
+              left = x - cardWidth - offsetFromCursor;
+              if (left < padding) left = window.innerWidth - cardWidth - padding;
+            }
+            if (left < padding) left = padding;
+
+            // Check bottom edge
+            if (top + cardHeight + padding > window.innerHeight) {
+              top = y - cardHeight - offsetFromCursor;
+              if (top < padding) top = window.innerHeight - cardHeight - padding;
+            }
+            if (top < padding) top = padding;
+
+            card.style.left = left + 'px';
+            card.style.top = top + 'px';
+            card.hidden = false;
+          } catch (error) {
+            console.error('Error showing hover card:', error);
+          }
+        };
+
+        const hidePreview = () => {
+          try {
+            const card = document.getElementById('note-hover');
+            if (card) card.hidden = true;
+          } catch (error) {
+            console.error('Error hiding hover card:', error);
+          }
+        };
+
+        const handlePreviewHover = async (e) => {
+          try {
+            const a = e.target?.closest?.('a[href^="/notes/"]');
+            if(!a) return;
+            const url = a.getAttribute('href');
+            if(previewCache.has(url)){
+              showPreview(a, previewCache.get(url), e.clientX, e.clientY);
+              return;
+            }
+
+            // Show immediate loading state
+            showPreview(a, '<div style="font-weight:600;color:var(--c-text-muted)">Loading preview...</div>', e.clientX, e.clientY);
+
+            const controller = new AbortController();
+            const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+            const r = await fetch(url, {
+              signal: controller.signal,
+              headers: { 'Accept': 'text/html' }
+            });
+            clearTimeout(timeoutId);
+
+            if (!r.ok) {
+              showPreview(a, '<div style="color:var(--c-text-muted)">Preview unavailable</div>', e.clientX, e.clientY);
+              return;
+            }
+
+            const t = await r.text();
+            const doc = new DOMParser().parseFromString(t, 'text/html');
+            const content = doc.querySelector('.pane .pane-content') ?? doc.body;
+            const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+            const title = doc.title?.replace(/ \|.*/, '') || 'Untitled';
+            const html = `<div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem;line-height:1.3">${title}</div><div style="font-size:0.85rem;line-height:1.5;color:var(--c-text-accent)">${paras}</div>`;
+            previewCache.set(url, html);
+            showPreview(a, html, e.clientX, e.clientY);
+          } catch (error) {
+            if (error.name !== 'AbortError') {
+              showPreview(a, '<div style="color:var(--c-text-muted)">Preview failed</div>', e.clientX, e.clientY);
+            }
+          }
+        };
+
+        const handlePreviewLeave = (e) => {
+          try {
+            const a = e.target?.closest?.('a[href^="/notes/"]');
+            if (!a) return;
+            hidePreview();
+          } catch (error) {
+            console.error('Error in preview leave:', error);
+          }
+        };
+
+        // Add event listeners
+        document.addEventListener('mouseenter', handlePreviewHover, true);
+        document.addEventListener('mouseleave', handlePreviewLeave, true);
       }
 
       const links = researchContent.querySelectorAll('a');
@@ -183,6 +370,8 @@ const summaryUrl = meta.summaryUrl;
       }
     });
   </script>
+
+  <StarredLinksScript />
 </body>
 </html>
 
@@ -250,7 +439,7 @@ const summaryUrl = meta.summaryUrl;
   }
 
   .research-intro a.wikilink {
-    border-bottom: 1px dashed var(--c-accent);
+    border-bottom: 1px solid var(--c-accent);
   }
 
   .research-meta-grid {

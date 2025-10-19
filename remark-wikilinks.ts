@@ -19,30 +19,35 @@ import { fileURLToPath } from 'node:url';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Cache for note metadata to avoid re-reading files
-let notesCache: Map<string, { slug: string; title: string; aliases: string[] }> | null = null;
+let notesCache: Map<string, { slug: string; title: string; aliases: string[]; collection: 'notes' | 'research'; urlPath: string }> | null = null;
 
 /**
- * Build a lookup table of title/alias → slug for WikiLink resolution
+ * Build a lookup table of title/alias → {slug, collection, urlPath} for WikiLink resolution
  */
-async function buildNotesLookup(): Promise<Map<string, string>> {
+async function buildNotesLookup(): Promise<Map<string, { slug: string; collection: 'notes' | 'research'; urlPath: string }>> {
 	if (notesCache && notesCache.size > 0) {
-		const lookup = new Map<string, string>();
+		const lookup = new Map<string, { slug: string; collection: 'notes' | 'research'; urlPath: string }>();
 		for (const note of notesCache.values()) {
-			lookup.set(note.title.toLowerCase(), note.slug);
+			lookup.set(note.title.toLowerCase(), { slug: note.slug, collection: note.collection, urlPath: note.urlPath });
 			for (const alias of note.aliases) {
-				lookup.set(alias.toLowerCase(), note.slug);
+				lookup.set(alias.toLowerCase(), { slug: note.slug, collection: note.collection, urlPath: note.urlPath });
 			}
 		}
 		return lookup;
 	}
 
 	notesCache = new Map();
-	const lookup = new Map<string, string>();
+	const lookup = new Map<string, { slug: string; collection: 'notes' | 'research'; urlPath: string }>();
 
 	try {
+		// Scan both notes and research collections
 		const notesDir = path.join(process.cwd(), 'src/content/notes');
-		const noteFiles = await globby(['**/*.{md,mdx}'], { cwd: notesDir, absolute: true });
+		const researchDir = path.join(process.cwd(), 'src/content/research');
 
+		const noteFiles = await globby(['**/*.{md,mdx}'], { cwd: notesDir, absolute: true });
+		const researchFiles = await globby(['**/*.{md,mdx}'], { cwd: researchDir, absolute: true });
+
+		// Process notes collection
 		for (const file of noteFiles) {
 			const content = readFileSync(file, 'utf8');
 			const { data } = matter(content);
@@ -53,13 +58,33 @@ async function buildNotesLookup(): Promise<Map<string, string>> {
 			const slug = pathToSlug(file);
 			const title = (data.title as string) || slug;
 			const aliases = (data.aliases as string[]) || [];
+			const urlPath = `/notes/${slug}/`;
 
-			notesCache.set(slug, { slug, title, aliases });
+			notesCache.set(slug, { slug, title, aliases, collection: 'notes', urlPath });
 
 			// Add to lookup
-			lookup.set(title.toLowerCase(), slug);
+			lookup.set(title.toLowerCase(), { slug, collection: 'notes', urlPath });
 			for (const alias of aliases) {
-				lookup.set(alias.toLowerCase(), slug);
+				lookup.set(alias.toLowerCase(), { slug, collection: 'notes', urlPath });
+			}
+		}
+
+		// Process research collection (always public)
+		for (const file of researchFiles) {
+			const content = readFileSync(file, 'utf8');
+			const { data } = matter(content);
+
+			const slug = pathToSlug(file);
+			const title = (data.title as string) || slug;
+			const aliases = (data.aliases as string[]) || [];
+			const urlPath = `/research/${slug}`;
+
+			notesCache.set(slug, { slug, title, aliases, collection: 'research', urlPath });
+
+			// Add to lookup
+			lookup.set(title.toLowerCase(), { slug, collection: 'research', urlPath });
+			for (const alias of aliases) {
+				lookup.set(alias.toLowerCase(), { slug, collection: 'research', urlPath });
 			}
 		}
 	} catch (error) {
@@ -122,23 +147,42 @@ export default function remarkWikiLinks() {
 				});
 			}
 
-			// Resolve WikiLink to slug
+			// Resolve WikiLink to URL path
 			const trimmedLinkText = linkText.trim();
 			const lookupKey = trimmedLinkText.toLowerCase();
-			const resolvedSlug = lookup.get(lookupKey);
+			const resolved = lookup.get(lookupKey);
 
-			if (resolvedSlug) {
-				// Create a proper link node
-				newNodes.push({
+			if (resolved) {
+				// Create a proper link node with correct URL for collection
+				// Add data-collection attribute to identify research links for styling
+				const linkNode: any = {
 					type: 'link',
-					url: `/notes/${resolvedSlug}/`,
+					url: resolved.urlPath,
 					children: [
 						{
 							type: 'text',
 							value: displayText?.trim() || trimmedLinkText,
 						},
 					],
-				});
+				};
+
+				// Add data attribute for research links (will be used for new tab behavior)
+				if (resolved.collection === 'research') {
+					linkNode.data = {
+						hProperties: {
+							'data-collection': 'research',
+							'class': 'wikilink research-link'
+						}
+					};
+				} else {
+					linkNode.data = {
+						hProperties: {
+							'class': 'wikilink'
+						}
+					};
+				}
+
+				newNodes.push(linkNode);
 			} else {
 				// Leave unresolved WikiLinks as plain text (without brackets)
 				// These are notes that don't exist yet in the public wiki

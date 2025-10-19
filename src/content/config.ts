@@ -32,8 +32,25 @@ export const collections = {
 	research: defineCollection({
 		type: 'content',
 		schema: z.object({
-			title: z.string().optional(),
+			title: z.string(),
 			author: z.string().default('Devon Meadows'),
+			// Link to the summary note slug (e.g., "research-oss-business-models")
+			summaryNote: z.string(),
+			// ISO date strings for timestamps
+			created: z.union([z.string(), z.date()]).transform(val =>
+				val instanceof Date ? val.toISOString().split('T')[0] : val
+			),
+			updated: z.union([z.string(), z.date()]).transform(val =>
+				val instanceof Date ? val.toISOString().split('T')[0] : val
+			).optional(),
+			// Research metadata
+			wordCount: z.number(),
+			model: z.string().default('Claude Sonnet 3.5'),
+			aiSource: z.string().default('Claude Code'),
+			// Context for info box (can contain wikilinks)
+			context: z.string(),
+			// Short description for SEO
+			summary: z.string().optional(),
 		}),
 	}),
 };

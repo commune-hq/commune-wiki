@@ -1,5 +1,13 @@
 ---
 title: "Creator Platform Pricing Research 2024-2025"
+summaryNote: "research-creator-pricing-2024-2025"
+created: "2025-10-18"
+updated: "2025-10-19"
+wordCount: 8400
+model: "Claude Sonnet 3.5"
+aiSource: "Claude Code"
+context: "Deep research as part of [[My Working Notes]] as I explore [[Commune]], [[Substack]], and [[Skool]]."
+summary: "Analysis of creator platform pricing trends 2024-2025, including Substack, Skool, Patreon, and beehiiv. Reveals shift toward transparency and creator ownership."
 ---
 
 # Creator Platform Pricing Research 2024-2025

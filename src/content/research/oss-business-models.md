@@ -1,5 +1,13 @@
 ---
 title: "Open Source Business Models Research: Developer Tools & Creator Platforms"
+summaryNote: "research-oss-business-models"
+created: "2025-10-18"
+updated: "2025-10-19"
+wordCount: 10200
+model: "Claude Sonnet 3.5"
+aiSource: "Claude Code"
+context: "Deep research as part of [[My Working Notes]] as I explore [[Commune]] and [[Build in Public]]."
+summary: "Research on how companies like Plausible, Ghost, and Obsidian built sustainable open source businesses. Bootstrap model validated: $2-3M with 4-18 people."
 ---
 
 # Open Source Business Models Research: Developer Tools & Creator Platforms

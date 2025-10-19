@@ -1,5 +1,13 @@
 ---
 title: "Digital Garden & Knowledge Management Tech Stack Research"
+summaryNote: "research-digital-garden-tech-stacks"
+created: "2025-10-18"
+updated: "2025-10-19"
+wordCount: 9600
+model: "Claude Sonnet 3.5"
+aiSource: "Claude Code"
+context: "Deep research as part of [[My Working Notes]] as I explore [[Commune]], [[Obsidian]], and [[Reflect]]."
+summary: "Technical analysis of digital garden frameworks and knowledge management tools. Compares Astro, Next.js, and static site approaches for building Commune."
 ---
 
 # Digital Garden & Knowledge Management Tech Stack Research

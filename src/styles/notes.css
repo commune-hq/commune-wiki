@@ -69,3 +69,17 @@ body.panes-open, body.modal-open {
 	overflow: hidden;
 }
 
+/* Research link styling - opens in new tab */
+a.research-link::after {
+	content: "↗";
+	display: inline-block;
+	margin-left: 0.25rem;
+	font-size: 0.8em;
+	opacity: 0.6;
+	transition: opacity 0.15s ease;
+}
+
+a.research-link:hover::after {
+	opacity: 1;
+}
+

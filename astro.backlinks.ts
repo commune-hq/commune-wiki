@@ -147,6 +147,7 @@ function calculateStars(notes: Map<string, NoteMetadata>): Set<string> {
 interface NoteMetadata {
 	slug: string;
 	title: string;
+	collection: 'notes' | 'research'; // Track which collection this belongs to
 	aliases: string[];
 	outbound: string[]; // slugs this note links to
 	inbound: string[];  // slugs that link to this note
@@ -168,17 +169,23 @@ export default function backlinksIntegration(): AstroIntegration {
 					const titleToSlug: Map<string, string> = new Map();
 					const aliasToSlug: Map<string, string> = new Map();
 
-					// First pass: collect all notes, titles, and aliases
-					const noteFiles = await globby(['src/content/notes/**/*.{md,mdx}']);
+					// First pass: collect all notes and research, titles, and aliases
+					const noteFiles = await globby([
+						'src/content/notes/**/*.{md,mdx}',
+						'src/content/research/**/*.{md,mdx}'
+					]);
 
 					for (const file of noteFiles) {
 						const src = await readFile(file, 'utf8');
 						const { content, data } = matter(src);
 
-						// Skip private/draft notes
-						if (data.visibility !== 'public') continue;
+						// Determine collection from file path
+						const collection = file.includes('/notes/') ? 'notes' : 'research';
 
-						const slug = pathToSlug(file);
+						// Skip private/draft notes (research is always public)
+						if (collection === 'notes' && data.visibility !== 'public') continue;
+
+						const { slug, urlPath } = pathToSlug(file, collection);
 						const title = (data.title as string) || slug;
 						const aliases = (data.aliases as string[]) || [];
 						const tags = (data.tags as string[]) || [];
@@ -188,9 +195,10 @@ export default function backlinksIntegration(): AstroIntegration {
 						// Extract outbound links from content
 						const outbound = extractLinks(content);
 
-						notes.set(slug, {
-							slug,
+						notes.set(urlPath, {
+							slug: urlPath,
 							title,
+							collection,
 							aliases,
 							outbound,
 							inbound: [], // will be populated in second pass
@@ -200,11 +208,11 @@ export default function backlinksIntegration(): AstroIntegration {
 						});
 
 						// Build title -> slug map
-						titleToSlug.set(title.toLowerCase(), slug);
+						titleToSlug.set(title.toLowerCase(), urlPath);
 
 						// Build alias -> slug map
 						for (const alias of aliases) {
-							aliasToSlug.set(alias.toLowerCase(), slug);
+							aliasToSlug.set(alias.toLowerCase(), urlPath);
 						}
 					}
 
@@ -286,16 +294,25 @@ export default function backlinksIntegration(): AstroIntegration {
 }
 
 /**
- * Convert file path to note slug (with /notes/ prefix for URL)
- * Example: src/content/notes/evergreen-notes.md → /notes/evergreen-notes/
+ * Convert file path to note slug (with collection prefix for URL)
+ * Examples:
+ *   src/content/notes/evergreen-notes.md → { slug: 'evergreen-notes', urlPath: '/notes/evergreen-notes/' }
+ *   src/content/research/oss-business-models.md → { slug: 'oss-business-models', urlPath: '/research/oss-business-models' }
  */
-function pathToSlug(filePath: string): string {
+function pathToSlug(filePath: string, collection: 'notes' | 'research'): { slug: string; urlPath: string } {
+	const contentDir = collection === 'notes' ? 'src/content/notes' : 'src/content/research';
 	const slug = path
-		.relative('src/content/notes', filePath)
+		.relative(contentDir, filePath)
 		.replace(/\\/g, '/')
 		.replace(/\.(md|mdx)$/, '')
 		.replace(/\/index$/, '');
-	return `/notes/${slug}/`;
+
+	// Notes have trailing slash, research doesn't (to match Astro routes)
+	const urlPath = collection === 'notes'
+		? `/notes/${slug}/`
+		: `/research/${slug}`;
+
+	return { slug, urlPath };
 }
 
 /**
