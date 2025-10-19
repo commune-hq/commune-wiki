@@ -32,7 +32,7 @@
   /* Z-index scale */
   --z-header: 50;
   --z-panes: 40;
-  --z-hover: 60;
+  --z-hover: 110;
   --z-modal-shade: 100;
   --z-modal: 101;
   
