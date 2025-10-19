@@ -1,10 +1,8 @@
-# Digital Garden & Knowledge Management Tech Stack Research
-
-**Research Date**: 2025-10-18
-**Purpose**: Analyze architecture decisions for digital garden and knowledge management tools to inform Commune development
-**Scope**: Static vs dynamic architectures, sync engines, AI integration, self-hosting patterns
-
 ---
+title: "Digital Garden & Knowledge Management Tech Stack Research"
+---
+
+# Digital Garden & Knowledge Management Tech Stack Research
 
 ## Executive Summary
 
@@ -17,7 +15,6 @@ This research analyzes the technical architectures of leading knowledge manageme
 4. **Islands architecture enables progressive enhancement**: Ship zero JavaScript by default, hydrate only interactive components
 5. **SQLite FTS5 provides excellent search**: 50x faster than full-text alternatives (1s → 20ms)
 
----
 
 ## 1. Product Tech Stack Decision Matrix
 
@@ -31,7 +28,6 @@ This research analyzes the technical architectures of leading knowledge manageme
 | **Andy Matuschak** | Custom static site | Static HTML/JSON | None (static) | N/A | Web only | None |
 | **Quartz** | Static site generator | Markdown → HTML | None (rebuild) | N/A | Web only | None |
 
----
 
 ## 2. Static vs Dynamic Architecture Analysis
 
@@ -69,7 +65,6 @@ This research analyzes the technical architectures of leading knowledge manageme
 
 **Best For**: Content-heavy sites with occasional interactivity (digital gardens, documentation, blogs)
 
----
 
 #### **Next.js with ISR**
 **Architecture**: Hybrid SSR/SSG with Incremental Static Regeneration
@@ -99,7 +94,6 @@ export async function getStaticProps() {
 
 **Best For**: Dynamic content that updates frequently, complex data-driven apps, e-commerce
 
----
 
 #### **Eleventy (11ty)**
 **Architecture**: Zero-config static site generator (Node-based)
@@ -117,7 +111,6 @@ export async function getStaticProps() {
 
 **Best For**: Minimalist blogs, documentation, marketing sites
 
----
 
 #### **Quartz**
 **Architecture**: Obsidian-focused static site generator
@@ -143,7 +136,6 @@ Markdown (remark-parse)
 
 **Best For**: Publishing Obsidian vaults as digital gardens
 
----
 
 ### 2.2 SEO Performance: Static vs Dynamic
 
@@ -157,7 +149,6 @@ Markdown (remark-parse)
 
 **2025 Hybrid Rendering Trend**: Industry converging on **partial hydration** as best practice — static HTML + selective interactivity.
 
----
 
 ## 3. Real-Time Sync & Collaboration Architectures
 
@@ -206,7 +197,6 @@ ytext.insert(0, 'Hello World')
 - [YJS GitHub](https://github.com/yjs/yjs)
 - [Mastering Real-Time Collaborative Editing](https://dev.to/hexshift/mastering-real-time-collaborative-editing-with-yjs-and-websockets-12n)
 
----
 
 ### 3.2 Datomic Immutable Database (Roam Research)
 
@@ -245,7 +235,6 @@ Result:              Time travel, audit trail, undo for free
 **Sources:**
 - [Deep Dive Into Roam's Data Structure](https://www.zsolt.blog/2021/01/Roam-Data-Structure-Query.html)
 
----
 
 ### 3.3 Obsidian Sync (Proprietary)
 
@@ -270,7 +259,6 @@ Result:              Time travel, audit trail, undo for free
 **Sources:**
 - [Obsidian Forum: Sync Conflict Resolution](https://forum.obsidian.md/t/robust-sync-conflict-resolution/93544)
 
----
 
 ### 3.4 Notion's Block-Based Architecture
 
@@ -296,7 +284,6 @@ Storage: S3 for data lake, PostgreSQL for transactional data
 - [Breaking Down Notion's Tech Stack](https://slashdev.io/-breaking-down-notions-tech-stack)
 - [How Notion Prepared Their Database for Millions](https://medium.com/@nidhey60/how-notion-prepared-their-database-for-millions-of-users-dc198079e74c)
 
----
 
 ## 4. Privacy & Self-Hosting Architectures
 
@@ -316,7 +303,6 @@ Storage: S3 for data lake, PostgreSQL for transactional data
 **Sources:**
 - [Reflect Security and Encryption](https://reflect.academy/security-and-encryption)
 
----
 
 #### **Logseq Local-First + Git Sync**
 **Privacy Model:**
@@ -335,7 +321,6 @@ Both:          Zero cloud dependency
 **Sources:**
 - [Logseq Architecture](https://github.com/logseq/logseq)
 
----
 
 ### 4.2 Self-Hosting with Tailscale
 
@@ -384,7 +369,6 @@ Tailscale (VPN layer)
 - [Self-Hosting with Tailscale](https://homelabs.guru/en/setting-up-tailscale-for-self-hosting/)
 - [Headscale: Self-Hosted Tailscale](https://www.virtualizationhowto.com/2023/05/headscale-awesome-self-hosted-tailscale-control-server/)
 
----
 
 ## 5. AI/Agent Integration Patterns (2024-2025)
 
@@ -435,7 +419,6 @@ final = agent.improve(draft, reflection)
 - [Agentic AI Architectures](https://medium.com/@anil.jain.baba/agentic-ai-architectures-and-design-patterns-288ac589179a)
 - [AI Agents Q1 2025 Landscape](https://www.ml-science.com/blog/2025/4/17/developments-in-ai-agents-q1-2025-landscape-analysis)
 
----
 
 ### 5.2 LLM Integration for Digital Gardens
 
@@ -460,7 +443,6 @@ User Query
 - **Cloud LLM** (OpenAI, Anthropic): Fast, costs money, data leaves device
 - **Hybrid**: Summarize locally, send summaries to cloud
 
----
 
 ## 6. Multi-Tenant Architecture for Commune
 
@@ -499,7 +481,6 @@ SELECT * FROM notes;  -- Only sees tenant_123 data
 - [Data Isolation and Sharding Architectures](https://medium.com/@justhamade/data-isolation-and-sharding-architectures-for-multi-tenant-systems-20584ae2bc31)
 - [Designing Postgres for Multi-tenancy](https://www.crunchydata.com/blog/designing-your-postgres-database-for-multi-tenancy)
 
----
 
 ### 6.2 Row-Level Security (RLS) Alternative
 
@@ -525,7 +506,6 @@ SET app.tenant_id = 'tenant-123-uuid';
 - Performance overhead on every query
 - Risk of bugs exposing data
 
----
 
 ## 7. Backlinks & Graph Implementation
 
@@ -540,7 +520,6 @@ SET app.tenant_id = 'tenant-123-uuid';
 Pros: Simple, no precomputation
 Cons: Slow for large graphs
 
----
 
 **Approach 2: Indexed link table (Scalable)**
 ```sql
@@ -575,7 +554,6 @@ await db.transaction(async (tx) => {
 Pros: Fast queries, supports advanced graph algorithms
 Cons: Write overhead, consistency maintenance
 
----
 
 **Approach 3: Graph database (Neo4j, DGraph)**
 ```cypher
@@ -598,7 +576,6 @@ RETURN related, length(path)
 Pros: Native graph queries, powerful traversals
 Cons: Operational complexity, separate database
 
----
 
 ### 7.2 Graph Visualization Performance
 
@@ -640,7 +617,6 @@ cytoscape({
 - [Comparison of JavaScript Graph Libraries](https://www.cylynx.io/blog/a-comparison-of-javascript-graph-network-visualisation-libraries/)
 - [Best Libraries for Large Network Graphs](https://weber-stephen.medium.com/the-best-libraries-and-methods-to-render-large-network-graphs-on-the-web-d122ece2f4dc)
 
----
 
 ## 8. Full-Text Search Implementation
 
@@ -691,7 +667,6 @@ LIMIT 10;
 - [SQLite FTS5 Extension](https://www.sqlite.org/fts5.html)
 - [Real-Time Full-Text Search with FTS5](https://blog.sqlite.ai/real-time-full-text-site-search-with-sqlite-fts5-extension)
 
----
 
 ### 8.2 Alternative: MeiliSearch (Self-Hosted)
 
@@ -708,7 +683,6 @@ LIMIT 10;
 - Separate service (more ops complexity)
 - Requires RAM (indexes in memory)
 
----
 
 ## 9. Content Update Strategies for Static Sites
 
@@ -743,7 +717,6 @@ curl -X POST https://api.github.com/repos/user/commune/dispatches \
   -d '{"event_type": "content-update"}'
 ```
 
----
 
 ### 9.2 Incremental Builds
 
@@ -770,7 +743,6 @@ export async function getStaticProps() {
 4. Next request gets fresh version
 ```
 
----
 
 ### 9.3 Content Freshness Recommendations
 
@@ -788,7 +760,6 @@ Index pages:      Daily rebuild (new note listings)
 Search index:     On-demand (content change webhook)
 ```
 
----
 
 ## 10. Recommendation for Commune Architecture
 
@@ -822,7 +793,6 @@ Search index:     On-demand (content change webhook)
 - **Monitoring**: Self-hosted (Prometheus + Grafana on Tailscale)
 - **Backups**: Automated Borg backups to B2 or S3
 
----
 
 ### 10.2 Architecture Decision Rationale
 
@@ -856,7 +826,6 @@ Search index:     On-demand (content change webhook)
 - Access from anywhere (VPN mesh)
 - Can expose selectively (public digital garden + private admin API)
 
----
 
 ### 10.3 Migration Path (MVP → Scale)
 
@@ -890,7 +859,6 @@ PostgreSQL Citus (schema-based sharding)
 YJS sync per tenant
 ```
 
----
 
 ## 11. Key Technical Insights & Sources
 
@@ -913,7 +881,6 @@ YJS sync per tenant
 - Dynamic user dashboards (Astro server endpoints or separate API)
 - Real-time sync via WebSocket islands
 
----
 
 ### 11.2 Islands Architecture Deep Dive
 
@@ -928,10 +895,8 @@ Traditional SPAs ship entire framework (React, Vue) even for static content.
 
 **Example (Commune):**
 ```astro
----
 // Astro component (static)
 import GraphVisualization from './GraphVisualization.jsx'
----
 
 <article>
   <h1>My Note</h1>
@@ -952,7 +917,6 @@ After (Islands):  50kb JS bundle, 0.5s load
 - [Islands Architecture](https://www.patterns.dev/vanilla/islands-architecture/)
 - [Astro Islands Docs](https://docs.astro.build/en/concepts/islands/)
 
----
 
 ### 11.3 CRDT vs Operational Transform (OT)
 
@@ -971,7 +935,6 @@ After (Islands):  50kb JS bundle, 0.5s load
 - [Synergy Codes: YJS CRDT](https://www.synergycodes.com/yjs)
 - [Deep Dive into Real-Time Frameworks](https://shanechang.com/p/deep-dive-into-realtime-frameworks/)
 
----
 
 ### 11.4 Graph Database Performance
 
@@ -987,7 +950,6 @@ After (Islands):  50kb JS bundle, 0.5s load
 
 **Commune Recommendation**: Start with PostgreSQL link table, add Neo4j if graph queries become bottleneck.
 
----
 
 ## 12. Further Reading
 
@@ -1013,7 +975,6 @@ After (Islands):  50kb JS bundle, 0.5s load
 - [Tailscale Self-Hosting Guide](https://homelabs.guru/en/setting-up-tailscale-for-self-hosting/)
 - [Headscale GitHub](https://github.com/juanfont/headscale)
 
----
 
 ## Appendix: Glossary
 
@@ -1030,7 +991,6 @@ After (Islands):  50kb JS bundle, 0.5s load
 | **RAG** | Retrieval-Augmented Generation - LLM pattern to ground responses in retrieved documents |
 | **Sharding** | Horizontal database partitioning - Split data across multiple servers |
 
----
 
 **Document Metadata:**
 - **Total Sources**: 38 web searches

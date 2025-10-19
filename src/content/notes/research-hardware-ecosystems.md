@@ -25,4 +25,5 @@ Researched 50,000+ words across Raspberry Pi strategy, Umbrel architecture, Home
 
 **Badge system for ownership**: Show "Self-Hosted" vs "Commune Box" vs "Cloud-Hosted" badges on profiles. Status signal without gating functionality.
 
-[Read Full Research Report →](/research/hardware-ecosystems)
+Full Deep Research:
+[[The Commune Box: Hardware + Software Ecosystem Research]]

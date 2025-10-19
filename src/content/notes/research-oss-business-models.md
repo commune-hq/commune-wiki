@@ -19,4 +19,5 @@ The research drew from 40+ web searches across founder interviews, blog posts, r
 
 Ghost and Plausible both generate 99%+ revenue from managed hosting, not self-hosted users. Bootstrap validated: $2-3M sustainable with 4-18 people. No need for VC if product solves real problem and distribution is organic through [[Build in Public]] (GitHub stars, community).
 
-[Read Full Research Report →](/research/oss-business-models)
+Full Deep Research:
+[[Open Source Business Models Research: Developer Tools & Creator Platforms]]

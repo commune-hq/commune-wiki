@@ -24,15 +24,36 @@ const { entry } = Astro.props;
 const { Content } = await entry.render();
 const title = entry.data.title || entry.slug;
 
-// Map slug to summary note URL
-const summaryUrlMap: Record<string, string> = {
-	'oss-business-models': '/notes/research-oss-business-models',
-	'creator-platform-pricing': '/notes/research-creator-pricing-2024-2025',
-	'digital-garden-tech-stacks': '/notes/research-digital-garden-tech-stacks',
-	'hardware-ecosystems': '/notes/research-hardware-ecosystems',
+// Map slug to summary note URL and metadata
+const researchMeta: Record<string, { summaryUrl: string; wordCount: string; aiSource: string; model: string }> = {
+	'oss-business-models': {
+		summaryUrl: '/notes/research-oss-business-models',
+		wordCount: '10,200',
+		aiSource: 'Claude Code',
+		model: 'Claude Sonnet 3.5'
+	},
+	'creator-platform-pricing': {
+		summaryUrl: '/notes/research-creator-pricing-2024-2025',
+		wordCount: '8,400',
+		aiSource: 'Claude Code',
+		model: 'Claude Sonnet 3.5'
+	},
+	'digital-garden-tech-stacks': {
+		summaryUrl: '/notes/research-digital-garden-tech-stacks',
+		wordCount: '9,600',
+		aiSource: 'Claude Code',
+		model: 'Claude Sonnet 3.5'
+	},
+	'hardware-ecosystems': {
+		summaryUrl: '/notes/research-hardware-ecosystems',
+		wordCount: '13,800',
+		aiSource: 'Claude Code',
+		model: 'Claude Sonnet 3.5'
+	},
 };
 
-const summaryUrl = summaryUrlMap[entry.slug] || '/';
+const meta = researchMeta[entry.slug] || { summaryUrl: '/', wordCount: 'N/A', aiSource: 'Unknown', model: 'Unknown' };
+const summaryUrl = meta.summaryUrl;
 ---
 <html lang="en">
 <head>
@@ -63,27 +84,103 @@ const summaryUrl = summaryUrlMap[entry.slug] || '/';
   <Header />
   <SearchModal />
 
-  <main style="max-width: 800px; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 200px);">
-    <div style="margin-bottom: 2rem;">
-      <a href={summaryUrl} style="color: var(--c-accent); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--c-bg-soft); border-radius: var(--c-radius-sm); border: 1px solid var(--c-border); transition: all 0.15s ease;">
-        <span>←</span>
-        <span>Back to Summary</span>
-      </a>
+  <main style="max-width: 65ch; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 200px);">
+    <!-- Match atomic notes header exactly -->
+    <div class="note-header">
+      <div class="note-date">Created October 18, 2025</div>
+      <div class="note-meta-right">
+        <span class="research-badge">📚 Deep Research</span>
+        <a href={summaryUrl} class="back-to-summary-link">← Back to Summary</a>
+      </div>
     </div>
 
     <article class="prose research-content" style="max-width: none;">
       <Content />
     </article>
 
-    <div style="margin: 4rem 0 2rem; padding-top: 2rem; border-top: 1px solid var(--c-border);">
-      <a href={summaryUrl} style="color: var(--c-accent); text-decoration: none; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: var(--c-bg-soft); border-radius: var(--c-radius-sm); border: 1px solid var(--c-border); transition: all 0.15s ease;">
-        <span>←</span>
-        <span>Back to Summary</span>
-      </a>
+    <!-- Research info box (will be moved via JS to appear after h1) -->
+    <div class="research-info-box" id="research-info-box">
+      <p class="research-intro">
+        Deep research conducted by Devon Meadows as part of <a href="/notes/my-working-notes" class="wikilink">My Working Notes</a> to inform strategic decisions for Commune.
+      </p>
+      <div class="research-meta-grid">
+        <div class="meta-item">
+          <span class="meta-label">Generated with:</span>
+          <span class="meta-value">{meta.aiSource}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Model:</span>
+          <span class="meta-value">{meta.model}</span>
+        </div>
+        <div class="meta-item">
+          <span class="meta-label">Length:</span>
+          <span class="meta-value">{meta.wordCount} words</span>
+        </div>
+      </div>
     </div>
 
-    <Footer />
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top" aria-label="Back to top">
+      ↑
+    </button>
+
+    <Footer>
+      <div slot="before-footer" class="research-footer-content">
+        <a href={summaryUrl} class="footer-back-link">← Back to Summary</a>
+        <p class="footer-context">
+          Part of <a href="/">Devon Meadows' working notes</a> · Powered by <a href="https://github.com/dmthepm/commune" target="_blank" rel="noopener">Commune</a>
+        </p>
+      </div>
+    </Footer>
   </main>
+
+  <script>
+    // Add external link indicators to all external links
+    document.addEventListener('DOMContentLoaded', () => {
+      const researchContent = document.querySelector('.research-content');
+      if (!researchContent) return;
+
+      // Move info box after h1 title
+      const infoBox = document.getElementById('research-info-box');
+      const h1 = researchContent.querySelector('h1');
+      if (infoBox && h1) {
+        h1.after(infoBox);
+      }
+
+      const links = researchContent.querySelectorAll('a');
+      links.forEach(link => {
+        const href = link.getAttribute('href');
+        if (href && (href.startsWith('http://') || href.startsWith('https://'))) {
+          // Check if it's not an internal link
+          if (!href.includes('devonmeadows.com')) {
+            link.setAttribute('target', '_blank');
+            link.setAttribute('rel', 'noopener noreferrer');
+          }
+        }
+      });
+
+      // Back to top button functionality
+      const backToTopBtn = document.getElementById('back-to-top');
+      if (backToTopBtn) {
+        // Show/hide based on scroll position
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 500) {
+            backToTopBtn.classList.add('visible');
+          } else {
+            backToTopBtn.classList.remove('visible');
+          }
+        });
+
+        // Scroll to top on click
+        backToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+      }
+    });
+  </script>
 </body>
 </html>
 
@@ -93,6 +190,189 @@ const summaryUrl = summaryUrlMap[entry.slug] || '/';
     color: var(--c-text);
   }
 
+  /* Note header - match atomic notes style exactly */
+  .note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 0.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid var(--c-border);
+  }
+
+  .note-date {
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+  }
+
+  .note-meta-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .research-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.6rem;
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius-sm);
+    color: var(--c-text-muted);
+    font-weight: 500;
+  }
+
+  .back-to-summary-link {
+    color: var(--c-accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: opacity 0.15s ease;
+  }
+
+  .back-to-summary-link:hover {
+    opacity: 0.7;
+  }
+
+  /* Research info box */
+  .research-info-box {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: var(--c-bg-soft);
+    border-left: 3px solid var(--c-accent);
+    border-radius: var(--c-radius-md);
+  }
+
+  .research-intro {
+    margin: 0 0 1rem 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--c-text);
+  }
+
+  .research-intro a {
+    color: var(--c-accent);
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-accent);
+  }
+
+  .research-intro a:hover {
+    opacity: 0.7;
+  }
+
+  .research-intro a.wikilink {
+    border-bottom: 1px dashed var(--c-accent);
+  }
+
+  .research-meta-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .meta-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .meta-label {
+    font-size: 0.75rem;
+    color: var(--c-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .meta-value {
+    font-size: 0.9rem;
+    color: var(--c-text);
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .research-meta-grid {
+      grid-template-columns: 1fr;
+      gap: 0.75rem;
+    }
+  }
+
+  /* Back to top button */
+  .back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
+    color: var(--c-text);
+    font-size: 1.2rem;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .back-to-top:hover {
+    background: var(--c-bg);
+    border-color: var(--c-accent);
+    color: var(--c-accent);
+  }
+
+  .back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* Footer content */
+  .research-footer-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--c-border);
+  }
+
+  .footer-back-link {
+    color: var(--c-accent);
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: opacity 0.15s ease;
+  }
+
+  .footer-back-link:hover {
+    opacity: 0.7;
+  }
+
+  .footer-context {
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+    margin: 0;
+  }
+
+  .footer-context a {
+    color: var(--c-accent);
+    text-decoration: none;
+  }
+
+  .footer-context a:hover {
+    opacity: 0.7;
+  }
+
+  /* External link indicators */
+  .research-content a[target="_blank"]::after {
+    content: "↗";
+    display: inline-block;
+    margin-left: 0.25rem;
+    font-size: 0.8em;
+    opacity: 0.6;
+  }
+
   /* Research content specific styles */
   .research-content {
     line-height: 1.8;
@@ -100,6 +380,7 @@ const summaryUrl = summaryUrlMap[entry.slug] || '/';
 
   .research-content h1 {
     font-size: 2.2rem;
+    line-height: 1.2;
     margin-top: 0;
     margin-bottom: 1rem;
   }
@@ -127,8 +408,9 @@ const summaryUrl = summaryUrlMap[entry.slug] || '/';
   .research-content table {
     width: 100%;
     border-collapse: collapse;
-    margin: 1.5rem 0;
+    margin: 1.5rem auto;
     font-size: 0.9rem;
+    max-width: max-content;
   }
 
   .research-content th,

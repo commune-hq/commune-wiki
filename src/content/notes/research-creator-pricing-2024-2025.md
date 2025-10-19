@@ -25,4 +25,5 @@ Researched 60+ sources including creator tweets, Reddit discussions, platform an
 
 **0% fees at $49**: Ghost charges $49/month but 0% on creator revenue. At $10K/month creator revenue, Ghost saves creators $1,200/month vs [[Substack]]. This wins at scale.
 
-[Read Full Research Report →](/research/creator-platform-pricing)
+Full Deep Research:
+[[Creator Platform Pricing Research 2024-2025]]

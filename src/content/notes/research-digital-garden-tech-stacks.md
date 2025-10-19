@@ -25,4 +25,5 @@ Researched performance benchmarks, framework comparisons, digital garden impleme
 
 **Shared component library**: @commune/ui published to npm. Both Astro wiki and Next.js agent import same components. DRY code, consistent UX.
 
-[Read Full Research Report →](/research/digital-garden-tech-stacks)
+Full Deep Research:
+[[Digital Garden & Knowledge Management Tech Stack Research]]

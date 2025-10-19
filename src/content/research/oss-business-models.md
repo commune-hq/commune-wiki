@@ -1,9 +1,8 @@
-# Open Source Business Models Research: Developer Tools & Creator Platforms
-
-**Research Date**: October 18, 2025
-**Focus**: Revenue strategies, OSS licensing, and community engagement for developer tools and creator platforms
-
 ---
+title: "Open Source Business Models Research: Developer Tools & Creator Platforms"
+---
+
+# Open Source Business Models Research: Developer Tools & Creator Platforms
 
 ## Executive Summary
 
@@ -18,8 +17,6 @@ This research analyzes six successful companies that use open source or open for
 4. **Community ≠ Customers (But Drives Them)**: 99% of community members will never pay, but they build brand awareness. The conversion happens indirectly through word-of-mouth and GitHub stars driving discovery.
 
 5. **Small Teams Can Win**: Bootstrap-friendly models exist. Plausible ($3.1M revenue, 4 people), Obsidian ($2M revenue, 18 people), and Ghost ($7.5M revenue, non-profit) prove you don't need VC funding.
-
----
 
 ## Company Deep Dives
 
@@ -646,21 +643,23 @@ commune-cli/           → Apache 2.0 (dev tooling)
 ### 6. Pricing Philosophy: Convenience, Not Features
 
 **What to Charge For**:
-✅ **Managed hosting** (convenience)
-✅ **Sync across devices** (convenience)
-✅ **Backups and recovery** (peace of mind)
-✅ **Priority support** (time savings)
-✅ **Publishing to web** (convenience)
-✅ **Custom domains** (branding)
-✅ **Analytics** (insights)
+
+- ✅ **Managed hosting** (convenience)
+- ✅ **Sync across devices** (convenience)
+- ✅ **Backups and recovery** (peace of mind)
+- ✅ **Priority support** (time savings)
+- ✅ **Publishing to web** (convenience)
+- ✅ **Custom domains** (branding)
+- ✅ **Analytics** (insights)
 
 **What to Keep Free**:
-✅ **Core note-taking** (Andy Matuschak panes)
-✅ **Backlinks and graph** (core value prop)
-✅ **Tags and search** (table stakes)
-✅ **Markdown export** (data ownership)
-✅ **Plugin system** (ecosystem growth)
-✅ **Self-hosting** (trust + compliance)
+
+- ✅ **Core note-taking** (Andy Matuschak panes)
+- ✅ **Backlinks and graph** (core value prop)
+- ✅ **Tags and search** (table stakes)
+- ✅ **Markdown export** (data ownership)
+- ✅ **Plugin system** (ecosystem growth)
+- ✅ **Self-hosting** (trust + compliance)
 
 **Philosophy**: "Free users own their data. Paid users save time."
 
