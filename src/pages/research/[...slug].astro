@@ -209,6 +209,17 @@ const formattedWordCount = data.wordCount.toLocaleString();
         }
       }
 
+      // Wrap tables in scrollable container for mobile
+      const tables = researchContent.querySelectorAll('table');
+      tables.forEach(table => {
+        if (!table.parentElement.classList.contains('table-wrapper')) {
+          const wrapper = document.createElement('div');
+          wrapper.className = 'table-wrapper';
+          table.parentNode.insertBefore(wrapper, table);
+          wrapper.appendChild(table);
+        }
+      });
+
       // Add hover preview functionality (desktop only) - same as notes pages
       if (window.innerWidth >= 1024) {
         const previewCache = new Map();
@@ -651,8 +662,17 @@ const formattedWordCount = data.wordCount.toLocaleString();
     line-height: 1.7;
   }
 
-  /* Responsive tables */
+  /* Responsive adjustments */
+  @media (max-width: 1023px) {
+    /* Match notes page h1 size on mobile (~30px) */
+    .research-content h1 {
+      font-size: 1.875rem;
+      line-height: 1.25;
+    }
+  }
+
   @media (max-width: 768px) {
+    /* Smaller table text on mobile */
     .research-content table {
       font-size: 0.8rem;
     }
@@ -661,5 +681,16 @@ const formattedWordCount = data.wordCount.toLocaleString();
     .research-content td {
       padding: 0.5rem;
     }
+  }
+
+  /* Table wrapper for horizontal scroll on mobile */
+  .table-wrapper {
+    overflow-x: auto;
+    margin: 1.5rem 0;
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+  }
+
+  .table-wrapper table {
+    margin: 0; /* Remove default table margin when inside wrapper */
   }
 </style>

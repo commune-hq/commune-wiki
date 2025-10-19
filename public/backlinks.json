@@ -2,6 +2,7 @@
   "/notes/accurate-transcription-requires-personal-training/": {
     "slug": "/notes/accurate-transcription-requires-personal-training/",
     "title": "Accurate transcription requires training the model on personal proper nouns and context",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/local-systems-require-enhancement-dashboards-for-training/",
@@ -22,6 +23,7 @@
   "/notes/ads-lab/": {
     "slug": "/notes/ads-lab/",
     "title": "Ads Lab",
+    "collection": "notes",
     "aliases": [
       "adslab"
     ],
@@ -49,6 +51,7 @@
   "/notes/ai-shapes-voice-dumps-into-atomic-notes/": {
     "slug": "/notes/ai-shapes-voice-dumps-into-atomic-notes/",
     "title": "AI shapes voice dumps into atomic notes",
+    "collection": "notes",
     "aliases": [
       "voice capture",
       "approval workflow",
@@ -101,6 +104,7 @@
   "/notes/andy-matuschaks-notes/": {
     "slug": "/notes/andy-matuschaks-notes/",
     "title": "Andy Matuschak's Notes",
+    "collection": "notes",
     "aliases": [
       "Andy Matuschaks Notes"
     ],
@@ -131,6 +135,7 @@
   "/notes/ask-the-brain/": {
     "slug": "/notes/ask-the-brain/",
     "title": "Ask the Brain",
+    "collection": "notes",
     "aliases": [
       "question answering",
       "brain search",
@@ -166,6 +171,7 @@
   "/notes/associative-linking-over-hierarchies/": {
     "slug": "/notes/associative-linking-over-hierarchies/",
     "title": "Associative linking over hierarchies",
+    "collection": "notes",
     "aliases": [
       "associative ontologies",
       "network thinking",
@@ -203,6 +209,7 @@
   "/notes/atomic-notes/": {
     "slug": "/notes/atomic-notes/",
     "title": "Atomic Notes",
+    "collection": "notes",
     "aliases": [
       "atomic",
       "atomic-notes"
@@ -234,6 +241,7 @@
   "/notes/auto-essay-closes-loop-each-week/": {
     "slug": "/notes/auto-essay-closes-loop-each-week/",
     "title": "Auto-essay closes the loop each week",
+    "collection": "notes",
     "aliases": [
       "weekly essay",
       "auto synthesis",
@@ -266,6 +274,7 @@
   "/notes/auto-generated-og-images-for-notes/": {
     "slug": "/notes/auto-generated-og-images-for-notes/",
     "title": "Auto-generated OG images for notes",
+    "collection": "notes",
     "aliases": [
       "automatic images",
       "og image generation",
@@ -291,6 +300,7 @@
   "/notes/awake-happy/": {
     "slug": "/notes/awake-happy/",
     "title": "Awake Happy",
+    "collection": "notes",
     "aliases": [
       "awake",
       "clothing-brand"
@@ -319,6 +329,7 @@
   "/notes/build-in-public/": {
     "slug": "/notes/build-in-public/",
     "title": "Build in Public",
+    "collection": "notes",
     "aliases": [
       "building in public",
       "transparent development",
@@ -357,6 +368,7 @@
   "/notes/business-management-is-context-management/": {
     "slug": "/notes/business-management-is-context-management/",
     "title": "Business management is fundamentally the management of expanding context",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/manual-file-management-is-high-friction-waste/",
@@ -391,6 +403,7 @@
   "/notes/cursor/": {
     "slug": "/notes/cursor/",
     "title": "Cursor",
+    "collection": "notes",
     "aliases": [
       "cursor ai",
       "cursor editor"
@@ -416,6 +429,7 @@
   "/notes/daily-walks-attract-downloads/": {
     "slug": "/notes/daily-walks-attract-downloads/",
     "title": "Daily walks attract downloads",
+    "collection": "notes",
     "aliases": [
       "daily walks",
       "walks",
@@ -443,6 +457,7 @@
   "/notes/data-sovereignty-for-individuals/": {
     "slug": "/notes/data-sovereignty-for-individuals/",
     "title": "Data sovereignty for individuals",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/local-first-software/",
@@ -466,6 +481,7 @@
   "/notes/deep-work-shields-attention/": {
     "slug": "/notes/deep-work-shields-attention/",
     "title": "Deep work shields attention",
+    "collection": "notes",
     "aliases": [
       "deep work",
       "focus",
@@ -491,6 +507,7 @@
   "/notes/defaulting-to-no-protects-deep-work/": {
     "slug": "/notes/defaulting-to-no-protects-deep-work/",
     "title": "Defaulting to No for unscheduled calls protects deep work",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/externalizing-thought-builds-cognitive-scaffold/",
@@ -512,6 +529,7 @@
   "/notes/discovery-runs-on-time-follows-and-why/": {
     "slug": "/notes/discovery-runs-on-time-follows-and-why/",
     "title": "Discovery runs on time, follows, and why",
+    "collection": "notes",
     "aliases": [
       "discovery",
       "anti-algorithm",
@@ -541,6 +559,7 @@
   "/notes/evergreen-notes/": {
     "slug": "/notes/evergreen-notes/",
     "title": "Evergreen Notes",
+    "collection": "notes",
     "aliases": [
       "evergreen",
       "evergreen-notes"
@@ -584,6 +603,7 @@
   "/notes/externalizing-thought-builds-cognitive-scaffold/": {
     "slug": "/notes/externalizing-thought-builds-cognitive-scaffold/",
     "title": "Externalizing thought builds a cognitive scaffold for solving complex problems",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/manual-file-management-is-high-friction-waste/",
@@ -611,6 +631,7 @@
   "/notes/film-production-managing-information/": {
     "slug": "/notes/film-production-managing-information/",
     "title": "Film production taught me context management",
+    "collection": "notes",
     "aliases": [
       "film",
       "lightiron",
@@ -637,6 +658,7 @@
   "/notes/follow-and-collect-keep-signal-not-hype/": {
     "slug": "/notes/follow-and-collect-keep-signal-not-hype/",
     "title": "Follow and Collect keep signal, not hype",
+    "collection": "notes",
     "aliases": [
       "follow collect",
       "social features",
@@ -668,6 +690,7 @@
   "/notes/gamification-drives-self-discovery/": {
     "slug": "/notes/gamification-drives-self-discovery/",
     "title": "Gamification drives self-discovery",
+    "collection": "notes",
     "aliases": [
       "gamification",
       "self-discovery"
@@ -697,6 +720,7 @@
   "/notes/homepage-cards-triage-discovery/": {
     "slug": "/notes/homepage-cards-triage-discovery/",
     "title": "Homepage cards triage discovery",
+    "collection": "notes",
     "aliases": [
       "two-column layout",
       "homepage layout"
@@ -720,6 +744,7 @@
   "/notes/integrated-data-analysis-unlocks-impossible-observations/": {
     "slug": "/notes/integrated-data-analysis-unlocks-impossible-observations/",
     "title": "Integrated data analysis unlocks observations impossible in siloed systems",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/business-management-is-context-management/",
@@ -744,6 +769,7 @@
   "/notes/intelligent-commit-summaries-replace-verbose-logs/": {
     "slug": "/notes/intelligent-commit-summaries-replace-verbose-logs/",
     "title": "Intelligent commit summaries replace verbose logs",
+    "collection": "notes",
     "aliases": [
       "commit history analysis",
       "smart summaries",
@@ -769,6 +795,7 @@
   "/notes/intelligent-router-eliminates-project-management/": {
     "slug": "/notes/intelligent-router-eliminates-project-management/",
     "title": "A sufficiently intelligent router eliminates the need for traditional project management",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/business-management-is-context-management/",
@@ -793,6 +820,7 @@
   "/notes/learning-in-public-accelerates-growth/": {
     "slug": "/notes/learning-in-public-accelerates-growth/",
     "title": "Learning in public accelerates growth",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/build-in-public/",
@@ -815,6 +843,7 @@
   "/notes/ledger-replaces-feeds/": {
     "slug": "/notes/ledger-replaces-feeds/",
     "title": "See what I'm working on",
+    "collection": "notes",
     "aliases": [
       "changelog",
       "activity log",
@@ -857,6 +886,7 @@
   "/notes/local-first-software/": {
     "slug": "/notes/local-first-software/",
     "title": "Local-First Software",
+    "collection": "notes",
     "aliases": [
       "local-first",
       "offline-first",
@@ -885,6 +915,7 @@
   "/notes/local-systems-require-enhancement-dashboards-for-training/": {
     "slug": "/notes/local-systems-require-enhancement-dashboards-for-training/",
     "title": "Local systems require Enhancement Dashboards for user-in-the-loop model training",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/accurate-transcription-requires-personal-training/",
@@ -905,6 +936,7 @@
   "/notes/manual-file-management-is-high-friction-waste/": {
     "slug": "/notes/manual-file-management-is-high-friction-waste/",
     "title": "Manual file management is a high-friction waste of cognitive resources",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/defaulting-to-no-protects-deep-work/",
@@ -935,6 +967,7 @@
   "/notes/manual-note-refinement-doesnt-scale/": {
     "slug": "/notes/manual-note-refinement-doesnt-scale/",
     "title": "Manual note refinement doesnt scale",
+    "collection": "notes",
     "aliases": [
       "reflect workflow",
       "higher self prompt",
@@ -967,6 +1000,7 @@
   "/notes/mobile-preview-without-breaking-flow/": {
     "slug": "/notes/mobile-preview-without-breaking-flow/",
     "title": "Mobile preview without breaking flow",
+    "collection": "notes",
     "aliases": [
       "mobile ux",
       "mobile preview",
@@ -992,6 +1026,7 @@
   "/notes/my-working-notes/": {
     "slug": "/notes/my-working-notes/",
     "title": "My Working Notes",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/what-is-commune/",
@@ -1017,6 +1052,7 @@
   "/notes/network-effects-in-knowledge-work/": {
     "slug": "/notes/network-effects-in-knowledge-work/",
     "title": "Network effects in knowledge work",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/associative-linking-over-hierarchies/",
@@ -1038,6 +1074,7 @@
   "/notes/networked-thinking-reveals-hidden-connections/": {
     "slug": "/notes/networked-thinking-reveals-hidden-connections/",
     "title": "Networked thinking reveals hidden connections",
+    "collection": "notes",
     "aliases": [
       "networked thinking",
       "connected notes",
@@ -1072,6 +1109,7 @@
   "/notes/notes-beat-posts-for-showing-progress/": {
     "slug": "/notes/notes-beat-posts-for-showing-progress/",
     "title": "Notes beat posts for showing progress",
+    "collection": "notes",
     "aliases": [
       "notes vs posts",
       "atomic writing",
@@ -1109,6 +1147,7 @@
   "/notes/obsidian/": {
     "slug": "/notes/obsidian/",
     "title": "Obsidian",
+    "collection": "notes",
     "aliases": [
       "obsidian app"
     ],
@@ -1135,6 +1174,7 @@
   "/notes/owning-data-infrastructure-eliminates-middleware/": {
     "slug": "/notes/owning-data-infrastructure-eliminates-middleware/",
     "title": "Owning your data infrastructure eliminates the need for specialized middleware and roles",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/intelligent-router-eliminates-project-management/",
@@ -1160,6 +1200,7 @@
   "/notes/people-pay-to-follow-working-mind/": {
     "slug": "/notes/people-pay-to-follow-working-mind/",
     "title": "I hope people will pay for a working mind",
+    "collection": "notes",
     "aliases": [
       "paid content",
       "working in public",
@@ -1201,6 +1242,7 @@
   "/notes/personalized-ai-optimizes-communication-strategies/": {
     "slug": "/notes/personalized-ai-optimizes-communication-strategies/",
     "title": "Deeply personalized AI can analyze relationships and optimize communication strategies",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/integrated-data-analysis-unlocks-impossible-observations/",
@@ -1222,6 +1264,7 @@
   "/notes/preview-panes-preserve-reading-flow/": {
     "slug": "/notes/preview-panes-preserve-reading-flow/",
     "title": "Preview panes preserve reading flow",
+    "collection": "notes",
     "aliases": [
       "preview principle",
       "flow preservation",
@@ -1248,6 +1291,7 @@
   "/notes/private-ai-outperforms-cloud-ai/": {
     "slug": "/notes/private-ai-outperforms-cloud-ai/",
     "title": "Private AI outperforms cloud AI",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/the-commune-box/",
@@ -1281,6 +1325,7 @@
   "/notes/reality-as-spiritual-hide-and-seek-game/": {
     "slug": "/notes/reality-as-spiritual-hide-and-seek-game/",
     "title": "Reality is often framed in esoteric traditions as a spiritual game of hide-and-seek",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/spiritual-paradox-hider-and-seeker-are-same/"
@@ -1299,6 +1344,7 @@
   "/notes/reflect/": {
     "slug": "/notes/reflect/",
     "title": "Reflect",
+    "collection": "notes",
     "aliases": [
       "reflect app"
     ],
@@ -1326,6 +1372,7 @@
   "/notes/related-and-stroll-give-serendipity-without-feed/": {
     "slug": "/notes/related-and-stroll-give-serendipity-without-feed/",
     "title": "Related and Stroll give serendipity without a feed",
+    "collection": "notes",
     "aliases": [
       "related stroll",
       "serendipitous discovery",
@@ -1356,6 +1403,7 @@
   "/notes/release-is-monthly-human-wrap/": {
     "slug": "/notes/release-is-monthly-human-wrap/",
     "title": "Release is a monthly human wrap",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/auto-essay-closes-loop-each-week/",
@@ -1376,11 +1424,13 @@
   "/notes/research-creator-pricing-2024-2025/": {
     "slug": "/notes/research-creator-pricing-2024-2025/",
     "title": "Deep Research: Creator Platform Pricing",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/substack/",
       "/notes/skool/",
-      "/notes/what-is-commune/"
+      "/notes/what-is-commune/",
+      "/research/creator-platform-pricing"
     ],
     "inbound": [],
     "tags": [
@@ -1396,12 +1446,14 @@
   "/notes/research-digital-garden-tech-stacks/": {
     "slug": "/notes/research-digital-garden-tech-stacks/",
     "title": "Deep Research: Digital Garden Tech Stacks",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/obsidian/",
       "/notes/reflect/",
       "/notes/what-is-commune/",
-      "/notes/preview-panes-preserve-reading-flow/"
+      "/notes/preview-panes-preserve-reading-flow/",
+      "/research/digital-garden-tech-stacks"
     ],
     "inbound": [],
     "tags": [
@@ -1416,10 +1468,12 @@
   "/notes/research-hardware-ecosystems/": {
     "slug": "/notes/research-hardware-ecosystems/",
     "title": "Deep Research: Hardware Ecosystems",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/the-commune-box/",
-      "/notes/what-is-commune/"
+      "/notes/what-is-commune/",
+      "/research/hardware-ecosystems"
     ],
     "inbound": [],
     "tags": [
@@ -1434,11 +1488,13 @@
   "/notes/research-oss-business-models/": {
     "slug": "/notes/research-oss-business-models/",
     "title": "Deep Research: OSS Business Models",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/obsidian/",
       "/notes/what-is-commune/",
-      "/notes/build-in-public/"
+      "/notes/build-in-public/",
+      "/research/oss-business-models"
     ],
     "inbound": [],
     "tags": [
@@ -1453,6 +1509,7 @@
   "/notes/router-tasteful-knowledge-integration/": {
     "slug": "/notes/router-tasteful-knowledge-integration/",
     "title": "The router's primary challenge is updating knowledge bases tastefully and non-destructively",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/local-systems-require-enhancement-dashboards-for-training/",
@@ -1472,6 +1529,7 @@
   "/notes/seo-optimized-atomic-notes/": {
     "slug": "/notes/seo-optimized-atomic-notes/",
     "title": "SEO-optimized atomic notes",
+    "collection": "notes",
     "aliases": [
       "GEO",
       "LLM discovery",
@@ -1498,6 +1556,7 @@
   "/notes/skool/": {
     "slug": "/notes/skool/",
     "title": "Skool",
+    "collection": "notes",
     "aliases": [
       "skool-platform"
     ],
@@ -1525,6 +1584,7 @@
   "/notes/spiritual-paradox-hider-and-seeker-are-same/": {
     "slug": "/notes/spiritual-paradox-hider-and-seeker-are-same/",
     "title": "The ultimate paradox of the spiritual search is realizing the Hider and the Seeker are the same",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/reality-as-spiritual-hide-and-seek-game/"
@@ -1543,6 +1603,7 @@
   "/notes/subscription-unlocks-depth-into-the-mind/": {
     "slug": "/notes/subscription-unlocks-depth-into-the-mind/",
     "title": "Subscription unlocks depth into the mind",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/what-is-commune/",
@@ -1573,6 +1634,7 @@
   "/notes/substack/": {
     "slug": "/notes/substack/",
     "title": "Substack",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/what-is-commune/",
@@ -1593,6 +1655,7 @@
   "/notes/suggestions-and-proposals-make-readers-part-of-work/": {
     "slug": "/notes/suggestions-and-proposals-make-readers-part-of-work/",
     "title": "Suggestions and Proposals make readers part of the work",
+    "collection": "notes",
     "aliases": [
       "collaborative editing",
       "reader contributions"
@@ -1615,6 +1678,7 @@
   "/notes/the-commune-box/": {
     "slug": "/notes/the-commune-box/",
     "title": "The Commune box",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/what-is-commune/",
@@ -1660,6 +1724,7 @@
   "/notes/the-higher-self-prompt-in-reflect/": {
     "slug": "/notes/the-higher-self-prompt-in-reflect/",
     "title": "The higher self prompt",
+    "collection": "notes",
     "aliases": [
       "higher self",
       "higher self prompt",
@@ -1684,6 +1749,7 @@
   "/notes/the-home-note-should-guide-first-three-steps/": {
     "slug": "/notes/the-home-note-should-guide-first-three-steps/",
     "title": "The home note triages to your best ideas",
+    "collection": "notes",
     "aliases": [
       "home note",
       "starting note"
@@ -1708,6 +1774,7 @@
   "/notes/the-star/": {
     "slug": "/notes/the-star/",
     "title": "The Star",
+    "collection": "notes",
     "aliases": [
       "star",
       "star-system",
@@ -1739,6 +1806,7 @@
   "/notes/three-panes-deep-then-you-pay/": {
     "slug": "/notes/three-panes-deep-then-you-pay/",
     "title": "Three panes deep, then you pay",
+    "collection": "notes",
     "aliases": [
       "depth-3-free-is-honest-gating"
     ],
@@ -1766,6 +1834,7 @@
   "/notes/titles-are-takeaways-not-labels/": {
     "slug": "/notes/titles-are-takeaways-not-labels/",
     "title": "Titles are takeaways, not labels",
+    "collection": "notes",
     "aliases": [
       "note titles",
       "takeaway titles",
@@ -1801,6 +1870,7 @@
   "/notes/transparent-decision-making-builds-trust/": {
     "slug": "/notes/transparent-decision-making-builds-trust/",
     "title": "Transparent decision-making builds trust",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/build-in-public/",
@@ -1822,6 +1892,7 @@
   "/notes/unscheduled-quick-calls-destroy-deep-work-flow/": {
     "slug": "/notes/unscheduled-quick-calls-destroy-deep-work-flow/",
     "title": "Unscheduled quick calls destroy deep work",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/defaulting-to-no-protects-deep-work/",
@@ -1843,6 +1914,7 @@
   "/notes/what-is-commune/": {
     "slug": "/notes/what-is-commune/",
     "title": "Commune",
+    "collection": "notes",
     "aliases": [
       "commune",
       "what is commune",
@@ -1913,6 +1985,7 @@
   "/notes/zettelkasten-method/": {
     "slug": "/notes/zettelkasten-method/",
     "title": "Zettelkasten Method",
+    "collection": "notes",
     "aliases": [],
     "outbound": [
       "/notes/evergreen-notes/",
@@ -1930,5 +2003,57 @@
       "methodology"
     ],
     "status": "live"
+  },
+  "/research/creator-platform-pricing": {
+    "slug": "/research/creator-platform-pricing",
+    "title": "Creator Platform Pricing Research 2024-2025",
+    "collection": "research",
+    "aliases": [],
+    "outbound": [],
+    "inbound": [
+      "/notes/research-creator-pricing-2024-2025/"
+    ],
+    "tags": [],
+    "status": "seed",
+    "updated": "2025-10-19"
+  },
+  "/research/digital-garden-tech-stacks": {
+    "slug": "/research/digital-garden-tech-stacks",
+    "title": "Digital Garden & Knowledge Management Tech Stack Research",
+    "collection": "research",
+    "aliases": [],
+    "outbound": [],
+    "inbound": [
+      "/notes/research-digital-garden-tech-stacks/"
+    ],
+    "tags": [],
+    "status": "seed",
+    "updated": "2025-10-19"
+  },
+  "/research/hardware-ecosystems": {
+    "slug": "/research/hardware-ecosystems",
+    "title": "The Commune Box: Hardware + Software Ecosystem Research",
+    "collection": "research",
+    "aliases": [],
+    "outbound": [],
+    "inbound": [
+      "/notes/research-hardware-ecosystems/"
+    ],
+    "tags": [],
+    "status": "seed",
+    "updated": "2025-10-19"
+  },
+  "/research/oss-business-models": {
+    "slug": "/research/oss-business-models",
+    "title": "Open Source Business Models Research: Developer Tools & Creator Platforms",
+    "collection": "research",
+    "aliases": [],
+    "outbound": [],
+    "inbound": [
+      "/notes/research-oss-business-models/"
+    ],
+    "tags": [],
+    "status": "seed",
+    "updated": "2025-10-19"
   }
 }
