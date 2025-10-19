@@ -1,0 +1,132 @@
+---
+import { getCollection } from 'astro:content';
+import Header from '../../components/Header.astro';
+import SearchModal from '../../components/SearchModal.astro';
+import Footer from '../../components/Footer.astro';
+import PlausibleScript from '../../components/PlausibleScript.astro';
+import '../../styles/design-system.css';
+import '../../styles/notes.css';
+
+// Get all updates, sorted by date descending
+const updates = await getCollection('updates');
+updates.sort((a, b) => b.data.date.localeCompare(a.data.date));
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Updates | Commune</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Changelog of updates to Devon's working notes and research" />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+  <PlausibleScript domain="devonmeadows.com" />
+</head>
+<body>
+  <Header />
+  <SearchModal />
+
+  <main style="max-width: 65ch; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 200px);">
+    <div style="margin-bottom: 2rem;">
+      <a href="/" style="color: var(--c-accent); text-decoration: none; font-size: 0.85rem;">← Home</a>
+    </div>
+
+    <h1 style="font-size: 2.4rem; margin-bottom: 1rem;">Updates</h1>
+    <p style="color: var(--c-text-muted); margin-bottom: 3rem; line-height: 1.7;">
+      Changes to notes, research, and the wiki. One update per day when meaningful changes happen.
+    </p>
+
+    <div class="updates-list">
+      {updates.map((update) => {
+        const dateObj = new Date(update.data.date + 'T00:00:00');
+        const formattedDate = dateObj.toLocaleDateString('en-US', {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric'
+        });
+
+        return (
+          <article class="update-item">
+            <time class="update-date">{formattedDate}</time>
+            <div class="update-content">
+              <h2 class="update-title">
+                <a href={`/updates/${update.slug}`}>{update.data.title}</a>
+              </h2>
+              <p class="update-summary">{update.data.summary}</p>
+            </div>
+          </article>
+        );
+      })}
+    </div>
+
+    <Footer />
+  </main>
+</body>
+</html>
+
+<style>
+  body {
+    background: var(--c-bg);
+    color: var(--c-text);
+  }
+
+  .updates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .update-item {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  .update-date {
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+    padding-top: 0.25rem;
+    text-align: right;
+  }
+
+  .update-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .update-title {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+    line-height: 1.3;
+  }
+
+  .update-title a {
+    color: var(--c-text);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .update-title a:hover {
+    color: var(--c-accent);
+  }
+
+  .update-summary {
+    margin: 0;
+    color: var(--c-text-muted);
+    line-height: 1.6;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 768px) {
+    .update-item {
+      grid-template-columns: 1fr;
+      gap: 0.5rem;
+    }
+
+    .update-date {
+      text-align: left;
+      padding-top: 0;
+    }
+  }
+</style>

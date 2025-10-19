@@ -1,0 +1,264 @@
+---
+import { getCollection } from 'astro:content';
+import type { CollectionEntry } from 'astro:content';
+import Header from '../../components/Header.astro';
+import SearchModal from '../../components/SearchModal.astro';
+import Footer from '../../components/Footer.astro';
+import PlausibleScript from '../../components/PlausibleScript.astro';
+import StarredLinksScript from '../../components/StarredLinksScript.astro';
+import '../../styles/design-system.css';
+import '../../styles/notes.css';
+
+export async function getStaticPaths() {
+	const updates = await getCollection('updates');
+	return updates.map((entry) => ({
+		params: { slug: entry.slug },
+		props: { entry },
+	}));
+}
+
+interface Props {
+	entry: CollectionEntry<'updates'>;
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const { data } = entry;
+const title = data.title;
+const dateObj = new Date(data.date + 'T00:00:00');
+const formattedDate = dateObj.toLocaleDateString('en-US', {
+	month: 'long',
+	day: 'numeric',
+	year: 'numeric'
+});
+---
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>{title} | Commune Updates</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content={data.summary} />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={data.summary} />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content={Astro.url} />
+  <meta property="og:site_name" content="Commune" />
+  {data.date && <meta property="article:published_time" content={`${data.date}T00:00:00-07:00`} />}
+
+  <meta name="author" content={data.author} />
+  <link rel="icon" type="image/png" href="/favicon-32x32.png" />
+  <PlausibleScript domain="devonmeadows.com" />
+</head>
+<body>
+  <Header />
+  <SearchModal />
+
+  <main style="max-width: 65ch; margin: 0 auto; padding: 2rem 1.5rem; min-height: calc(100vh - 200px);">
+    <div class="note-header">
+      <div class="note-date">{formattedDate}</div>
+      <a href="/updates" class="back-to-updates-link">← All Updates</a>
+    </div>
+
+    <article class="prose">
+      <h1>{title}</h1>
+      <Content />
+    </article>
+
+    <Footer />
+  </main>
+
+  <StarredLinksScript />
+
+  <script is:inline>
+    // Preview pane functionality
+    if (window.innerWidth >= 1024) {
+      const previewCache = new Map();
+
+      const showPreview = (el, html, x, y) => {
+        try {
+          let card = document.getElementById('note-hover');
+          if(!card){
+            card = document.createElement('div');
+            card.id = 'note-hover';
+            card.style.position = 'fixed';
+            card.style.maxWidth = '380px';
+            card.style.background = 'var(--c-bg)';
+            card.style.boxShadow = 'var(--c-shadow-xl)';
+            card.style.border = '1px solid var(--c-border)';
+            card.style.borderRadius = 'var(--c-radius-lg)';
+            card.style.padding = '1rem 1.2rem';
+            card.style.zIndex = 'var(--z-hover)';
+            card.style.pointerEvents = 'none';
+            document.body.appendChild(card);
+          }
+          card.innerHTML = html;
+
+          const padding = 16;
+          const offsetFromCursor = 16;
+          card.style.opacity = '0';
+          card.hidden = false;
+          const rect = card.getBoundingClientRect();
+          const cardWidth = rect.width;
+          const cardHeight = rect.height;
+          card.style.opacity = '1';
+
+          let left = x + offsetFromCursor;
+          let top = y + offsetFromCursor;
+
+          if (left + cardWidth + padding > window.innerWidth) {
+            left = x - cardWidth - offsetFromCursor;
+            if (left < padding) left = window.innerWidth - cardWidth - padding;
+          }
+          if (left < padding) left = padding;
+
+          if (top + cardHeight + padding > window.innerHeight) {
+            top = y - cardHeight - offsetFromCursor;
+            if (top < padding) top = window.innerHeight - cardHeight - padding;
+          }
+          if (top < padding) top = padding;
+
+          card.style.left = left + 'px';
+          card.style.top = top + 'px';
+          card.hidden = false;
+        } catch (error) {
+          console.error('Error showing hover card:', error);
+        }
+      };
+
+      const hidePreview = () => {
+        try {
+          const card = document.getElementById('note-hover');
+          if (card) card.hidden = true;
+        } catch (error) {
+          console.error('Error hiding hover card:', error);
+        }
+      };
+
+      const handlePreviewHover = async (e) => {
+        try {
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if(!a) return;
+          const url = a.getAttribute('href');
+          if(previewCache.has(url)){
+            showPreview(a, previewCache.get(url), e.clientX, e.clientY);
+            return;
+          }
+
+          showPreview(a, '<div style="font-weight:600;color:var(--c-text-muted)">Loading preview...</div>', e.clientX, e.clientY);
+
+          const controller = new AbortController();
+          const timeoutId = setTimeout(() => controller.abort(), 2000);
+
+          const r = await fetch(url, {
+            signal: controller.signal,
+            headers: { 'Accept': 'text/html' }
+          });
+          clearTimeout(timeoutId);
+
+          if (!r.ok) {
+            showPreview(a, '<div style="color:var(--c-text-muted)">Preview unavailable</div>', e.clientX, e.clientY);
+            return;
+          }
+
+          const t = await r.text();
+          const doc = new DOMParser().parseFromString(t, 'text/html');
+          const content = doc.querySelector('.pane .pane-content') ?? doc.body;
+          const paras = Array.from(content.querySelectorAll('p')).slice(0,3).map(p => p.outerHTML).join('');
+          const title = doc.title?.replace(/ \|.*/, '') || 'Untitled';
+          const html = `<div style="font-size:1.1rem;font-weight:600;margin-bottom:.5rem;line-height:1.3">${title}</div><div style="font-size:0.85rem;line-height:1.5;color:var(--c-text-accent)">${paras}</div>`;
+          previewCache.set(url, html);
+          showPreview(a, html, e.clientX, e.clientY);
+        } catch (error) {
+          if (error.name !== 'AbortError') {
+            showPreview(a, '<div style="color:var(--c-text-muted)">Preview failed</div>', e.clientX, e.clientY);
+          }
+        }
+      };
+
+      const handlePreviewLeave = (e) => {
+        try {
+          const a = e.target?.closest?.('a[href^="/notes/"]');
+          if (!a) return;
+          hidePreview();
+        } catch (error) {
+          console.error('Error in preview leave:', error);
+        }
+      };
+
+      document.addEventListener('mouseenter', handlePreviewHover, true);
+      document.addEventListener('mouseleave', handlePreviewLeave, true);
+    }
+  </script>
+</body>
+</html>
+
+<style is:global>
+  body {
+    background: var(--c-bg);
+    color: var(--c-text);
+  }
+
+  .note-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+  }
+
+  .note-date {
+    font-size: 0.85rem;
+    color: var(--c-text-muted);
+  }
+
+  .back-to-updates-link {
+    color: var(--c-accent);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: opacity 0.15s ease;
+  }
+
+  .back-to-updates-link:hover {
+    opacity: 0.7;
+  }
+
+  .prose h1 {
+    font-size: 2.4rem;
+    line-height: 1.2;
+    margin: 0 0 1.5rem;
+  }
+
+  .prose h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 2em;
+    margin-bottom: 0.75em;
+  }
+
+  .prose p {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    line-height: 1.7;
+  }
+
+  .prose ul, .prose ol {
+    margin-top: 1.25em;
+    margin-bottom: 1.25em;
+    padding-left: 2rem;
+  }
+
+  .prose li {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+    line-height: 1.7;
+  }
+
+  @media (max-width: 1023px) {
+    .prose h1 {
+      font-size: 1.875rem;
+      line-height: 1.25;
+    }
+  }
+</style>

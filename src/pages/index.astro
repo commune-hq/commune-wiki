@@ -1,5 +1,5 @@
 ---
-import { getEntry } from 'astro:content';
+import { getEntry, getCollection } from 'astro:content';
 import Header from '../components/Header.astro';
 import SearchModal from '../components/SearchModal.astro';
 import Backlinks from '../components/Backlinks.astro';
@@ -16,6 +16,12 @@ if (!entry) throw new Error('Home note not found');
 const { Content } = await entry.render();
 const { slug, data } = entry;
 const title = data.title ?? slug;
+
+// Fetch recent updates for homepage card
+const allUpdates = await getCollection('updates');
+const recentUpdates = allUpdates
+  .sort((a, b) => b.data.date.localeCompare(a.data.date))
+  .slice(0, 5);
 
 // Helper function for relative date formatting
 function getRelativeDate(dateString: string): string {
@@ -132,7 +138,41 @@ function getRelativeDate(dateString: string): string {
 
               <Content />
             </article>
-            <Backlinks slug={`/notes/${slug}/`} title={title} />
+
+            {/* Two-card layout: Updates + Links to this note */}
+            <div class="home-cards">
+              {/* Updates card (first on mobile, left on desktop) */}
+              <div class="home-card updates-card">
+                <h2 class="card-title">Updates</h2>
+                {recentUpdates.length > 0 ? (
+                  <ul class="update-list">
+                    {recentUpdates.map((update) => {
+                      const updateDate = new Date(update.data.date + 'T00:00:00');
+                      const formattedDate = updateDate.toLocaleDateString('en-US', {
+                        month: 'short',
+                        day: 'numeric'
+                      });
+                      return (
+                        <li class="update-item">
+                          <time class="update-item-date">{formattedDate}</time>
+                          <a href={`/updates/${update.slug}`} class="update-link">
+                            {update.data.title}
+                          </a>
+                        </li>
+                      );
+                    })}
+                  </ul>
+                ) : (
+                  <p style="color: var(--c-text-muted); font-size: 0.85rem;">No updates yet.</p>
+                )}
+                <a href="/updates" class="view-all-link">View all updates →</a>
+              </div>
+
+              {/* Links to this note card (second on mobile, right on desktop) */}
+              <div class="home-card backlinks-card">
+                <Backlinks slug={`/notes/${slug}/`} title={title} />
+              </div>
+            </div>
           </div>
           <Footer />
         </div>
@@ -776,10 +816,112 @@ function getRelativeDate(dateString: string): string {
     font-style:italic;
   }
 
+  /* Homepage Cards Layout */
+  .home-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  .home-card {
+    background: var(--c-bg-soft);
+    border: 1px solid var(--c-border);
+    border-radius: var(--c-radius-md);
+    padding: 1.5rem;
+    transition: border-color 0.15s ease;
+  }
+
+  .home-card:hover {
+    border-color: var(--c-accent-border);
+  }
+
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 600;
+    margin: 0 0 0.75rem 0;
+    color: var(--c-text);
+  }
+
+  .update-list,
+  .backlink-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.75rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .update-item,
+  .backlink-item {
+    display: flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+
+  .update-item-date {
+    font-size: 0.75rem;
+    color: var(--c-text-muted);
+    min-width: 55px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .update-link,
+  .backlink-link {
+    color: var(--c-text) !important;
+    text-decoration: none;
+    border-bottom: 1px solid var(--c-border) !important;
+    padding-bottom: 1px;
+    transition: all 0.15s ease;
+    flex: 1;
+    font-size: 0.85rem;
+  }
+
+  .update-link:hover,
+  .backlink-link:hover {
+    color: var(--c-accent) !important;
+    border-bottom-color: var(--c-accent) !important;
+  }
+
+  .view-all-link {
+    display: inline-block;
+    color: var(--c-accent) !important;
+    text-decoration: none;
+    font-size: 0.8rem;
+    border-bottom: 1px solid transparent !important;
+    transition: border-color 0.15s ease;
+  }
+
+  .view-all-link:hover {
+    border-bottom-color: var(--c-accent) !important;
+  }
+
+  /* Make backlinks inside card match smaller sizing */
+  .backlinks-card aside.backlinks h3 {
+    font-size: 0.95rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .backlinks-card aside.backlinks ul {
+    gap: 0.6rem;
+  }
+
+  .backlinks-card aside.backlinks a {
+    font-size: 0.85rem;
+  }
+
   @media (max-width: 1023px) {
     .prose h1 {
       font-size: 1.875rem;
       line-height: 1.25;
+    }
+
+    /* Stack cards on mobile: Updates first, Related Notes second */
+    .home-cards {
+      grid-template-columns: 1fr;
+      gap: 1rem;
     }
 
     #pane-container {
