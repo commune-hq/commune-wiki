@@ -10,6 +10,24 @@ import '../../styles/notes.css';
 // Get all updates, sorted by date descending
 const updates = await getCollection('updates');
 updates.sort((a, b) => b.data.date.localeCompare(a.data.date));
+
+// Helper function for relative date formatting (Skool-style: today, yesterday, 5d, Aug 12)
+function getRelativeDate(dateString: string): string {
+  const date = new Date(dateString + 'T12:00:00');
+  const now = new Date();
+  const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+  const noteDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+  const diffTime = today.getTime() - noteDate.getTime();
+  const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+  if (diffDays === 0) return 'today';
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays < 30) return `${diffDays}d`;
+
+  // For 30+ days, show month and day
+  return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+}
 ---
 <html lang="en">
 <head>
@@ -36,16 +54,11 @@ updates.sort((a, b) => b.data.date.localeCompare(a.data.date));
 
     <div class="updates-list">
       {updates.map((update) => {
-        const dateObj = new Date(update.data.date + 'T00:00:00');
-        const formattedDate = dateObj.toLocaleDateString('en-US', {
-          month: 'short',
-          day: 'numeric',
-          year: 'numeric'
-        });
+        const relativeDate = getRelativeDate(update.data.date);
 
         return (
           <article class="update-item">
-            <time class="update-date">{formattedDate}</time>
+            <time class="update-date">{relativeDate}</time>
             <div class="update-content">
               <h2 class="update-title">
                 <a href={`/updates/${update.slug}`}>{update.data.title}</a>

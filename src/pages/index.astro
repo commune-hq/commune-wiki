@@ -23,7 +23,7 @@ const recentUpdates = allUpdates
   .sort((a, b) => b.data.date.localeCompare(a.data.date))
   .slice(0, 5);
 
-// Helper function for relative date formatting
+// Helper function for relative date formatting (Skool-style: today, yesterday, 5d, Aug 12)
 function getRelativeDate(dateString: string): string {
   // Parse date in local timezone by appending time
   const date = new Date(dateString + 'T12:00:00');
@@ -34,14 +34,11 @@ function getRelativeDate(dateString: string): string {
   const diffTime = today.getTime() - noteDate.getTime();
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
-  if (diffDays === 0) return 'Today';
-  if (diffDays === 1) return 'Yesterday';
-  if (diffDays < 7) return `${diffDays} days ago`;
-  if (diffDays < 14) return '1 week ago';
-  if (diffDays < 30) return `${Math.floor(diffDays / 7)} weeks ago`;
-  if (diffDays < 60) return '1 month ago';
+  if (diffDays === 0) return 'today';
+  if (diffDays === 1) return 'yesterday';
+  if (diffDays < 30) return `${diffDays}d`;
 
-  // For older dates, show month and day
+  // For 30+ days, show month and day
   return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
 }
 ---
@@ -143,18 +140,14 @@ function getRelativeDate(dateString: string): string {
             <div class="home-cards">
               {/* Updates card (first on mobile, left on desktop) */}
               <div class="home-card updates-card">
-                <h2 class="card-title">Updates</h2>
+                <h2 class="card-title">Recent</h2>
                 {recentUpdates.length > 0 ? (
                   <ul class="update-list">
                     {recentUpdates.map((update) => {
-                      const updateDate = new Date(update.data.date + 'T00:00:00');
-                      const formattedDate = updateDate.toLocaleDateString('en-US', {
-                        month: 'short',
-                        day: 'numeric'
-                      });
+                      const relativeDate = getRelativeDate(update.data.date);
                       return (
                         <li class="update-item">
-                          <time class="update-item-date">{formattedDate}</time>
+                          <time class="update-item-date">{relativeDate}</time>
                           <a href={`/updates/${update.slug}`} class="update-link">
                             {update.data.title}
                           </a>
