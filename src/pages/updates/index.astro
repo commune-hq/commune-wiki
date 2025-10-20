@@ -22,7 +22,7 @@ function getRelativeDate(dateString: string): string {
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
   if (diffDays === 0) return 'today';
-  if (diffDays === 1) return 'yesterday';
+  if (diffDays === 1) return '1d';
   if (diffDays < 30) return `${diffDays}d`;
 
   // For 30+ days, show month and day
@@ -47,7 +47,7 @@ function getRelativeDate(dateString: string): string {
       <a href="/" style="color: var(--c-accent); text-decoration: none; font-size: 0.85rem;">← Home</a>
     </div>
 
-    <h1 style="font-size: 2.4rem; margin-bottom: 1rem;">Updates</h1>
+    <h1 style="font-size: 2.4rem; margin-bottom: 1rem;">Recent updates</h1>
     <p style="color: var(--c-text-muted); margin-bottom: 3rem; line-height: 1.7;">
       Changes to notes, research, and the wiki. One update per day when meaningful changes happen.
     </p>

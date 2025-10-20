@@ -35,7 +35,7 @@ function getRelativeDate(dateString: string): string {
   const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
 
   if (diffDays === 0) return 'today';
-  if (diffDays === 1) return 'yesterday';
+  if (diffDays === 1) return '1d';
   if (diffDays < 30) return `${diffDays}d`;
 
   // For 30+ days, show month and day
@@ -140,7 +140,7 @@ function getRelativeDate(dateString: string): string {
             <div class="home-cards">
               {/* Updates card (first on mobile, left on desktop) */}
               <div class="home-card updates-card">
-                <h2 class="card-title">Recent</h2>
+                <h2 class="card-title">Recent updates</h2>
                 {recentUpdates.length > 0 ? (
                   <ul class="update-list">
                     {recentUpdates.map((update) => {
