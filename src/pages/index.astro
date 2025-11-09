@@ -147,7 +147,7 @@ function getRelativeDate(dateString: string): string {
                       const relativeDate = getRelativeDate(update.data.date);
                       return (
                         <li class="update-item">
-                          <time class="update-item-date">{relativeDate}</time>
+                          <time class="update-item-date update-date" data-date={update.data.date}>{relativeDate}</time>
                           <a href={`/updates/${update.slug}`} class="update-link">
                             {update.data.title}
                           </a>
@@ -398,6 +398,9 @@ function getRelativeDate(dateString: string): string {
           if (typeof window.updateRelativeDates === 'function') {
             window.updateRelativeDates();
           }
+          if (typeof window.updateRecentUpdateDates === 'function') {
+            window.updateRecentUpdateDates();
+          }
 
           setTimeout(() => focusPane(pane), 0);
           console.log('Pane opened successfully');
@@ -559,8 +562,33 @@ function getRelativeDate(dateString: string): string {
       });
     };
 
+    // Update "Recent updates" dates (Skool-style format)
+    window.updateRecentUpdateDates = function() {
+      document.querySelectorAll('.update-date[data-date]').forEach(el => {
+        const dateString = el.dataset.date;
+        if (!dateString) return;
+
+        const date = new Date(dateString + 'T12:00:00');
+        const now = new Date();
+        const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+        const noteDate = new Date(date.getFullYear(), date.getMonth(), date.getDate());
+
+        const diffTime = today.getTime() - noteDate.getTime();
+        const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+
+        let relativeText = '';
+        if (diffDays === 0) relativeText = 'today';
+        else if (diffDays === 1) relativeText = '1d';
+        else if (diffDays < 30) relativeText = `${diffDays}d`;
+        else relativeText = date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+
+        el.textContent = relativeText;
+      });
+    };
+
     // Run on page load
     window.updateRelativeDates();
+    window.updateRecentUpdateDates();
   </script>
 
   <BacklinksScript />
